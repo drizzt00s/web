@@ -1,0 +1,122 @@
+﻿<script type="text/javascript">
+ $(function(){
+  function checkUploadedPicStatus(){
+   var url="ajax.ejs";
+   $.ajax({
+     url:url,
+     type:"GET",
+     cache:false,
+     success:function(data, textStatus, jqXHR){
+       leftPicLength=data.remainingPic;
+     },
+     error:function(jqXHR, textStatus, errorThrown){
+     }
+   })
+  }
+checkUploadedPicStatus();
+  
+ 
+ 
+ 
+ 
+ 
+  function checkFileType(){
+    var flag=true;
+    $.each($(".myUpLoadPic"),function(i,v){
+	      var checkType=$(".myUpLoadPic").val();
+		  checkType=checkType.toLowerCase();
+		  var checkTypeProcessed=checkType.lastIndexOf(".");
+		  checkType=checkType.substring(checkTypeProcessed+1);
+		  if(checkType.indexOf("gif")==-1&&checkType.indexOf("jpg")==-1&&checkType.indexOf("png")==-1){
+		      var checkIndex=$(".myUpLoadPic").index(v);
+			  $(".myUpLoadPic").eq(checkIndex).next().show();
+			  flag=false;
+			  return false;
+		  }
+	}); 
+	alert(flag);
+	
+	if(flag){
+	 return true;
+	}
+	else{
+	  return false;
+	}
+  }
+ 
+ 
+ 
+function checkIsAllowedToUpload(){
+  var checkFile=checkFileType();
+  
+  //alert(checkFile);
+  
+  if(!checkFile){
+     return false;
+  }
+  var upLoadPicNumber=0;
+  $.each($(".myUpLoadPic"),function(index,value){
+                 var checkIfPicUpload=$(value).val();
+                 if(checkIfPicUpload!=""){
+                     upLoadPicNumber++
+                 }
+            }
+         )
+         if(upLoadPicNumber>leftPicLength){
+             alert("您只能上传12张图片，您现在已经上传了"+(12-leftPicLength)+"张图片!");
+             return false;
+         }
+         else{
+             var currentSubmitTime=parseInt($("#jsCheckRefresh").val());
+             currentSubmitTime++;
+             $("#jsCheckRefresh").val(currentSubmitTime.toString());
+             document.getElementById("editPic").submit();
+         }
+}
+
+
+
+$("#submitPic").bind("click",checkIsAllowedToUpload);
+ })
+</script>
+<input type="hidden" value="<%=isSubmitted%>" id="checkSubmitted" />
+<div class="showUploadPicResult">
+ <p>一次最多可上传4张照片，可多次上传，您总共还能上传<span id="remainingPic"><%=remainingPic%></span>张照片</p>
+  <p>照片上传完毕!</p>
+  <p id="picUploadResultWrap">
+  <p class="uploadedPicWrap">
+  照片<span id="picIndex"><%=picIndex%></span>:
+  <span id="picUploadResult"><%=picUploadResult%></span><span id="picUploadFailureReason"><%=picUploadFailureReason%></span>
+  </p>
+<p class="uploadedPicWrap">
+  照片<span id="picIndex2"><%=picIndexB%></span>:
+  <span id="picUploadResult2"><%=picUploadResultB%></span><span id="picUploadFailureReason2"><%=picUploadFailureReasonB%></span>
+</p>
+<p class="uploadedPicWrap">
+  照片<span id="picIndex3"><%=picIndexC%></span>:
+  <span id="picUploadResult3"><%=picUploadResultC%></span><span id="picUploadFailureReason3"><%=picUploadFailureReasonC%></span>
+</p>
+<p class="uploadedPicWrap">
+  照片<span id="picIndex4"><%=picIndexD%></span>:
+  <span id="picUploadResult4"><%=picUploadResultD%></span><span id="picUploadFailureReason4"><%=picUploadFailureReasonD%></span>
+</p>
+</p>
+
+  <p>进入<a href="userPhotoes.ejs">“您的影集”</a> ，或者 <a href="editPic.ejs">继续上传</a> 照片。</p>
+  <input type="button" id="uploadPicAgain" value="继续上传照片" onclick="window.location.href='editPic.ejs'" />
+</div>
+<div class="editPic">
+  <form action="editPic.ejs" method="post" id="editPic" enctype="multipart/form-data">
+  <div id="submitPicWrap">
+   <p><label for="uploadPic">上传照片1</label><input type="file" id="uploadPic" name="uploadPic" class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
+   <p><label for="uploadPic2">上传照片2</label><input type="file" id="uploadPic2" name="uploadPic2"  class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
+   <p><label for="uploadPic3">上传照片3</label><input type="file" id="uploadPic3" name="uploadPic3" class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
+   <p><label for="uploadPic4">上传照片4</label><input type="file" id="uploadPic4" name="uploadPic4" class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
+   <input type="hidden" value="0" name="checkRefresh" id="jsCheckRefresh" />
+   <input type="button" value="立刻上传" id="submitPic"/><br />
+
+   <input type="hidden" name="checkSubmit" />
+  </form>
+</div>
+
+<a href="matchCondition.ejs">继续</a><!--设置速配条件-->

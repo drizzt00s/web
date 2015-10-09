@@ -1,0 +1,14 @@
+      .errorMsg1,.errorMsg2{
+      color:red;
+      }
+      .regSuccess{
+      color:green;
+      font-size:16px;
+      }
+      .frontToEndErrorRegister{
+          color:red;
+          display:none;
+
+
+
+      }

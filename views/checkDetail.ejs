@@ -1,0 +1,176 @@
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <script src="/javascript/index.js"></script>
+  <script src="/javascript/message.js"></script>
+  <script src="/javascript/socket.js"></script>
+  <!--<script src="/javascript/startDb.js"></script>-->
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        function checkData(){
+          var data=$("#myStoreData").text();
+          var dataJosn=eval("("+data+")");
+          var account=dataJosn["account"];
+          var faleseName=dataJosn["falseName"];
+          var gender=dataJosn["gender"];
+          var trueName=dataJosn["trueName"].substring(0,1);
+          if(gender=="女"){
+             genderName=trueName+"小姐";
+          }
+          else{
+             genderName=trueName+"先生";
+          }
+		  if(dataJosn.avatar){
+		    var images=eval("("+dataJosn.avatar+")")["con"];//array
+          smallImage="";
+          //images 每循环一次，都要在smallImage里生成一个html字符串
+          for(var i=1;i<images.length;i++){
+              smallImage+="<img src='"+"../uploads/pic/"+account+"/"+images[i]+"' />";
+          }
+          var imageWrap=$("<div class='imageWrap'>"+
+                          "<img class='mainImage' src='"+"../uploads/pic/"+account+"/"+images[0]+"' /><br />"+
+                           smallImage+
+                           "</div>");
+		  }
+		  else{
+		     var imageWrap=$("<div class='imageWrap'>"+
+                          "<img class='mainImage' src='../uploads/pic/default/unknown.png'><br />"+
+                           "</div>");
+		  }			   
+          var address=dataJosn["address"];
+          var age=parseInt((new Date().getYear()))-parseInt(dataJosn["birthday"].substring(0,4));
+          var height=dataJosn["height"];
+          var job=dataJosn["jobinfo1"];
+          var income=dataJosn["monthincome"];
+          var horos=dataJosn["horoscope"];
+          var sign=dataJosn["sign"];
+          var housingCondition=dataJosn["housingcondition"];
+          var education=dataJosn["education"];
+          var ifHasCar=dataJosn["ifHasCar"];
+          var marriage=dataJosn["marriageStatus"];
+          var ifHasChild=dataJosn["ifhaschildren"];
+          var loveType=""//恋爱类型
+          var lastLogin="";
+          //details
+          var homeTown=dataJosn["province"];
+          var school="";//毕业院校
+          var bodyShape=""//体型
+          var major=""//所学专业
+          var weight=dataJosn["weight"];
+          var companyType=dataJosn["companyinfo"]//公司性质
+          var companyType2="";//公司行业
+          var race=dataJosn["race"];
+          var zongJiao=dataJosn["religion"];
+          //个人生活资料,上面还少一部分"对方想寻找"
+          var aboutParents=dataJosn["parentstatus"];
+          var liftStyle=""//生活作息
+          var liftStyle1=""//家中排行
+          var ifSmoking=dataJosn["ifSmoking"];
+          var ifDrinking=dataJosn["ifDrinking"];
+          var housing=""//家务
+          var cooks=dataJosn["cooks"];//厨艺
+          //爱情规划
+          var whenToMarriage=dataJosn["whenToMarrige"];
+          var dateType="";//喜欢的约会方式
+          var ifWantChild=dataJosn["whenHasChild"];//是否想要小孩
+          var targetExpect="";//希望对方看重什么
+          var willingWithPareent=dataJosn["liveWithParents"];
+          var expectedMarriage="";//期待的婚礼
+          //兴趣爱好
+          var foodLoved=dataJosn["foodloved"];
+          var hobbies=dataJosn["hobby"];
+          var musicLoved=dataJosn["musicloved"];
+          var sportsLoved=dataJosn["sportsloved"];
+          var movieLoved=dataJosn["movieloved"];
+          //自我介绍
+         $(".basicInfo").append(imageWrap);
+          //插入图片
+         var selfInfo=dataJosn["selfintri"];
+         var info1=$("<div>"+faleseName+"</div>");
+         $(".basicInfo").append(info1);
+         var info2=$("<div>"+genderName+"</div>");
+          $(".basicInfo").append(info2);
+         var info3=$("<div>"+address+"</div>");
+          $(".basicInfo").append(info3);
+         var info4=$("<div>"+age+"</div>");
+          $(".basicInfo").append(info4);
+         var info5=$("<div>"+height+"</div>");
+          $(".basicInfo").append(info5);
+         var info6=$("<div>"+job+"</div>");
+          $(".basicInfo").append(info6);
+         var info7=$("<div>"+horos+"</div>");
+          $(".basicInfo").append(info7);
+         var info8=$("<div>"+income+"</div>");
+          $(".basicInfo").append(info8);
+         var info9=$("<div>"+sign+"</div>");
+          $(".basicInfo").append(info9);
+         var info10=$("<div>"+housingCondition+"</div>");
+          $(".basicInfo").append(info10);
+         var info11=$("<div>"+education+"</div>");
+          $(".basicInfo").append(info11);
+         var info12=$("<div>"+ifHasCar+"</div>");
+          $(".basicInfo").append(info12);
+         var info13=$("<div>"+marriage+"</div>");
+          $(".basicInfo").append(info13);
+         var info14=$("<div>"+ifHasChild+"</div>");
+          $(".basicInfo").append(info14);
+         var info14=$("<div>"+ifHasChild+"</div>");
+          $(".basicInfo").append(info14);
+         var info15=$("<div>"+homeTown+"</div>");
+         $(".details") .append(info15);
+         var info16=$("<div>"+weight+"</div>");
+         $(".details").append(info16);
+         var info17=$("<div>"+companyType+"</div>");
+         $(".details").append(info17);
+         var info18=$("<div>"+race+"</div>");
+         $(".details").append(info18);
+         var info19=$("<div>"+zongJiao+"</div>");
+         $(".details").append(info19);
+         var info20=$("<div>"+aboutParents+"</div>");
+         $(".lifeDetails").append(info20);
+         var info21=$("<div>"+ifSmoking+"</div>");
+         $(".lifeDetails").append(info21);
+         var info22=$("<div>"+ifDrinking+"</div>");
+         $(".lifeDetails").append(info22);
+         var info23=$("<div>"+cooks+"</div>");
+         $(".lifeDetails").append(info23);
+         var info24=$("<div>"+whenToMarriage+"</div>");
+         $(".lovePlan").append(info24);
+         var info25=$("<div>"+ifWantChild+"</div>");
+         $(".lovePlan").append(info25);
+         var info26=$("<div>"+willingWithPareent+"</div>");
+         $(".lovePlan").append(info26);
+         var info27=$("<div>"+foodLoved+"</div>");
+         $(".myHobbies").append(info27);
+         var info28=$("<div>"+hobbies+"</div>");
+         $(".myHobbies").append(info28);
+         var info29=$("<div>"+musicLoved+"</div>");
+         $(".myHobbies").append(info29);
+         var info30=$("<div>"+sportsLoved+"</div>");
+         $(".myHobbies").append(info30);
+         var info31=$("<div>"+movieLoved+"</div>");
+         $(".myHobbies").append(info31);
+         var info32=$("<div>"+selfInfo+"</div>");
+         $(".selfInfo").append(info32);
+
+
+
+        }
+        checkData();
+
+
+
+    })
+  </script>
+  <div class="wrap">
+   <div class="storeData" id="myStoreData" style="display:none;"><%= storeData %></div>
+   <div class="showDataWrap">
+      <div class="basicInfo"></div><!--basicInfo-->
+      <div class="details"></div><!--details-->
+      <div class="lookingFor"></div><!--lookingFor-->
+      <div class="lifeDetails"></div><!--lifeDetails-->
+      <div class="lovePlan"></div><!--lovePlan-->
+      <div class="myHobbies"></div><!--myHobbies-->
+      <div class="selfInfo"></div><!--selfInfo-->
+   </div><!--showDataWrap-->
+  </div>

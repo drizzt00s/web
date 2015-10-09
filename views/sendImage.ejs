@@ -1,0 +1,48 @@
+﻿ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html>
+ <head>
+ <script src="../public/javascript/jquery-1.4.2.js"></script>
+ <style type="text/css">
+ *{
+  padding:0;
+  margin:0;
+ }
+ #sendFile{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+ }
+ #previewImage{
+    position:absolute;
+    top:0;
+    left:0;
+ }
+.imagePreviewHidden{
+visibility:hidden;
+}
+ </style>
+</head>
+<body>
+<form method="post" id="sendFile" action="socketImage.ejs" enctype="multipart/form-data">
+<input type="hidden" value="" name="whoGotImage" id="whoseImage" />
+<input type="hidden" value="" name="whoSentImage" id="whoSent" />
+  <input type="file" id="fileContainer" name="myFile" size="1"   />
+<img src="" id="previewImage" />
+</form>
+<form method="post"  class="imagePreviewHidden" action="imagePreview.ejs" enctype="multipart/form-data">
+  <input type="file" id="fileContainerHidden" name="myFileHidden" size="1"  />
+</form>
+<script type="text/javascript">
+/*
+  function imagePreview(input){
+     var imgUrl=$(input).val();
+     var inputHidden=($(input).parent("#sendFile").siblings(".imagePreviewHidden").find("#fileContainerHidden")
+     var formHidden=($(input).parent("#sendFile").siblings(".imagePreviewHidden"))[0];
+     formHidden.find("#fileContainerHidden").val();
+     form.submit();
+ } 
+ */
+</script>
+</body>
+</html>

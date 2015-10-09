@@ -1,0 +1,68 @@
+ <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <style type="text/css">
+    #onlineMember{
+	   display:none;
+	}
+  </style>
+  <script src="/javascript/index.js"></script>
+  <script src="/javascript/message.js"></script>
+  <script src="/javascript/socket.js"></script>
+  <script src="/javascript/json.js"></script>
+  <!--<script src="/javascript/startDb.js"></script>-->
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+ $(function(){
+    function displayAllOnline(){
+	  var onlineArray=$("#onlineMember").text();
+	  if(onlineArray){
+	     $.ajax({
+		  url:"displayWhoOnline.ejs",
+		  data:{"d":onlineArray},
+		  type:"post",
+		  success:function(d){
+		      for(var i=0;i<d.length;i++){
+			    var falseName=d[i]["falseName"];
+				var xinzuo=d[i]["xinzuo"];
+				var pic=d[i]["pic"];
+				var eachUser=$("<div class='eachUser'>"+
+				               "<img src='"+pic+"' />"+
+							   "<span class='xin'>"+xinzuo+"</span>"+
+							   "<span class='falseName'>"+falseName+"</span>"+
+							   "</div>");		
+			    eachUser.appendTo("#wrap");
+			  }
+			
+			 
+			 
+			 
+		  },
+		  error:function(xhr,responseText,e){
+		    if(e){
+			   throw e;
+			}
+		  }
+        });
+	  }
+	  else{
+	    var warningMsg="目前没有人在线";
+	  }
+	}
+	 displayAllOnline();
+ })
+  </script>
+  <div class="wrap">
+   <div id="onlineMember">
+    <%=onlines%></onlines>
+   </div>
+  <div class="wrap" id="wrap">
+  
+  
+  
+  </div>
+
+
+
+
+
+  </div>

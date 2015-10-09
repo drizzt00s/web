@@ -1,0 +1,420 @@
+﻿ <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link rel='stylesheet' href='/stylesheets/rights.css' />
+  
+  <!--new added-->
+  <link rel='stylesheet' href='/stylesheets/main.css' />
+  <!--new added-->
+
+
+
+  <script src="/javascript/socket.js"></script>
+  <script src="/javascript/index.js"></script>
+  <script src="/javascript/message.js"></script>
+  <script src="/javascript/common.js"></script>
+  <script src="/javascript/libraries.js"></script>
+
+
+  <!--js libary-->
+  <!--js libary-->
+
+  <!--js models-->
+  <script src="/javascript/module/requireDailyMatch.js"></script>   
+  <script src="/javascript/module/checkLogin.js"></script>
+  <script src="/javascript/module/watch.js"></script>
+  <script src="/javascript/module/findWatchs.js"></script>
+  <script src="/javascript/module/whoWatchMe.js"></script>
+  <script src="/javascript/module/checkLastLoginTime.js"></script>
+  <script src="/javascript/module/loginReminder.js"></script>
+  <script src="/javascript/module/addToBlackList.js"></script>
+  <!--js models-->
+
+
+
+
+
+
+  <!--<script src="/javascript/startDb.js"></script>-->
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <!--<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>-->
+  
+
+
+  <!--angular-->
+  <script src="/javascript/angularMain/main.js"></script>
+  <script src="/javascript/service/login.js"></script>
+  <script src="/javascript/controller/allControllers.js"></script>
+
+  <!--angular-->
+
+
+
+  <script type="text/javascript">
+     
+
+	 
+
+     
+	 
+	 
+	 
+	 
+	 
+	 
+	 $(function(){
+	     function showProfile(){
+		    //先检查用户是否已经登录
+			if($("#checkLogin").val()==0){
+			  return false;
+			}
+		     var username=getTargetCookie("username");
+			 var url="homePageHelp.ejs";
+			 $.ajax({
+			   url:url,
+			   type:"post",
+			   data:{"username":username},
+			   success:function(d){
+			      if(d.indexOf("unknown.png")!=-1){
+				   var profileUrl=d;
+				  }
+				  else{
+			
+				    var profileUrl="../uploads/pic/"+username+"/"+d;
+				  }
+				   $("#myProfile").attr("src",profileUrl);
+				   $("#myProfileLink").attr("href","editProfile.ejs?user="+username);
+			   },
+			   error:function(xhr,textStatus,e){
+			     if(e){
+				   throw e;
+				 }
+			   }
+			 });
+		 }
+		showProfile();
+		
+		function fetchDailyMatch(){
+
+		   	if($("#checkLogin").val()==0){
+			  return false;
+			}
+			var url="fetchDailyMatch";
+			var currentTime=(new Date()).getTime();
+			$.ajax({
+			   url:url,
+			   data:{d:currentTime},
+			   cache:false,
+			   type:"post",
+			   success:function(d){
+                   if(d instanceof Object){
+	                  //alert("success")
+					  //alert(d.length);
+					  //alert(JSON.stringify(d));
+					   for(var i=0;i<d.length;i++){
+					      if(i!=d.length-1){
+						    var dailyMatch="<div class='dailyMatch'>";
+						   if(d[i]["profile"].length==0){
+						     //没有profile
+						      dailyMatch+="<a href='userDetails.ejs?check="+d[i]["username"]+"' >"+"<img src='../uploads/pic/default/unknown.png' />"+"</a>";
+						   }else{
+						     dailyMatch+="<a href='userDetails.ejs?check="+d[i]["username"]+"' >"+"<img src='../uploads/pic/"+d[i]["username"]+"/"+d[i]["profile"]+"' />"+"</a><br />";
+						   }
+						  dailyMatch+="<a href='userDetails.ejs?check="+d[i]["username"]+"' >"+"<span>"+d[i]["falseName"]+"</span>"+"</a><br />";
+						  dailyMatch+="<span>"+d[i]["age"]+"</span>";
+						  dailyMatch+="<span>"+d[i]["location"]+"</span>";
+						  dailyMatch+="<span>"+d[i]["height"]+"</span>";
+						  dailyMatch=$(dailyMatch);
+						  $("#todayMatch").append(dailyMatch);
+						 }
+						 if(i==d.length-1){
+						   var matchString="你的择友要求:";
+						   matchString+=d[i]["conditionString"];
+						   $("#myMatch").text(matchString);
+						 }
+					   }  
+                   }				   
+
+				  else{
+				     alert(d);
+				  }
+			   }
+			});	
+		}
+		//fetchDailyMatch();
+	 })
+	 
+
+  </script>
+  <script type="text/javascript">
+  
+  
+
+  
+  
+  
+    $(function(){
+       //ajax获取用户收件箱里有几条未读信息
+       // InitAjax(1);
+       //突然有问题，先注释掉	 
+	  /*************added on 2013/8/13***********/
+
+	  /*
+	  function requireAutoWatch(){
+        var username=getTargetCookie("username");
+	    if(username){
+		  var newAjax=new Search();
+		  newAjax.ajaxPost("/WebstormProjects/web/views/requireAutoWatch.ejs",username,callBack);
+		  function callBack(o){
+		    for(var i=0;i<o.length;i++){
+			   var falseName=o[i][0]["falseName"];
+			   var username=o[i][0]["account"];
+			   var address=o[i][0]["province"];
+			   var pic=o[i][0]["avatar"];
+			   if(!pic){
+			     pic="../uploads/pic/default/unknown.png";
+			   }
+			   else{
+			     pic="../uploads/pic/"+username+"/"+(eval("("+pic+")")["con"][0]);
+			   }
+			   var wrap=$("<div>"+
+			              "<span class='autoWatchFalseName'>"+falseName+"</span>"+
+						  "<span class='autoWatchAddress'>"+address+"</span>"+
+			              "<a href='userDetails.ejs?check="+username+"'"+"><img class='autoWatchImg' src='"+pic+"' /></a>"+
+						  "</div>");
+			       wrap.appendTo($("#whoWatchMe2"));
+			}
+		  }
+		}
+	  }*/
+	    /*************added on 2013/8/13***********/ //此功能和点击"我关注的人"重复
+	  
+
+
+
+
+
+
+
+	   
+      
+	  
+	  function requireNewMsgLength(){
+	      if($("#checkLogin").val()==0){
+			 return false;
+		  }
+	     var username=getTargetCookie("username");
+		 var data={
+		   "username":username
+		 
+		 }
+	     var url="countNewMsg";
+		 $.ajax({
+		  url:url,
+		  data:data,
+		  cache:false,
+		  type:"post",
+		  success:function(d){
+			$("#remindNewMsg").text(d.newMsg);
+		  } 
+		 });
+	  
+	  
+	  }
+	  
+	  
+	  
+	  
+	
+	 // requireAutoWatch();
+	 // requireNewMsgLength();
+
+	   
+    })
+  </script>
+ <div class="wrap" ng-app="indexPage">
+
+
+
+
+
+
+<div class="loginArea"  ng-controller="loginAreaController" ng-hide="data.showLoginArea">
+<form action='#' method='post' id='loginForm'>
+ <label for='account'>账号:</label><input type='text' id='account' name='account' autocomplete='on' ng-model='data.account'   />
+   <span id='accErrorMsg'>{{data.accErrorMsg}}</span>
+
+ <label for='pass'>密码:</label><input type='password' id='pass' name='password' autocomplete='on' ng-model='data.pass' />
+ <span id='passErrorMsg'>{{data.passErrorMsg}}</span>
+
+ <input type='button' value='提交' id='submitThis' ng-click='submitLogin();' />
+ <input type='hidden' name='checkSubmit'>
+
+ </form>
+</div>
+
+
+
+
+
+
+
+
+
+ <div class="showing" id="showing">
+ </div>
+
+ <div class="whoWatchMe" id="whoWatchMe">
+ </div>
+ 
+  <div class="whoWatchMe2" id="whoWatchMe2">
+ </div>
+ 
+ <div class="eachDayMatch" id="eachDayMatch">
+ </div>
+ 
+ 
+ 
+ 
+
+
+
+  <div class="left">
+  <input type="hidden" value="<%=isSignUp%>" id="checkLogin" />
+  
+  
+  
+
+    <p class="register">
+      <a href="register.ejs">注册
+      </a><br />
+      <!-- <a href="#" id="login" ng-controller="loginController" ng-click="poplogin();">登录</a>-->
+    </p>
+    <div class="userInfo">
+      <p>欢迎:<span id="userFalseName"><%=userName%></span><a href="signOut.ejs" id="mySignOut">注销</a></p>
+	  <a href="#" id="myProfileLink"><img src="#" id="myProfile" /></a>
+	  
+	  
+    </div>
+	
+	
+
+
+	<script src="/javascript/header.js"></script>
+	  
+    <div class="indexTitle">
+	
+	
+	
+	
+	
+	
+      <span>佳缘首页</span>
+      <span><a href="me.ejs">我的佳缘</a></span>
+      <span><a href="search.ejs">爱情搜索</a></span>
+    </div><!--indexTitle-->
+    <div class="msg">
+	<span id="sendBox"><a href="#" id="sendBoxlink" onclick="$('.sendBoxContents').show();">发件箱</a><span id="newMsgLength" style="color:red;"></span></span>
+	<div class="sendBoxContents">
+	  <a href="#" id="mySendRead" onclick="$('#sendRead').show();$('#sendUnread').hide();">对方已读消息</a>
+	  <a href="#" id="mySendUnread" onclick="$('#sendUnread').show();$('#sendRead').hide()">对方未读消息</a>
+	  <div id="sendRead"></div>
+	  <div id="sendUnread"></div>
+	</div><!--sendBoxContents-->
+	
+	
+	
+	
+    <span id="msg1"><a href="#" id="msg2">收件箱</a><span id="newMsgLength" style="color:red;"></span></span>
+    <div id="msg3" class="msg3">
+		<div class="msg3Title">
+			<a href="#" class="newMsg" id="newMsg" onclick="$(document.getElementById('newMsgContainer')).show();$(document.getElementById('oldMsgContainer')).hide();"  >未读信息<span id="remindNewMsg" style="color:red;"></span></a>
+			<a href="#" class="oldMsg" id="oldMsg" onclick="$(document.getElementById('newMsgContainer')).hide();$(document.getElementById('oldMsgContainer')).show();">已读信息</a>
+		</div>
+
+		<div class="newMsgContainer" id="newMsgContainer"></div>
+		<div class="oldMsgContainer" id="oldMsgContainer"></div>
+		
+		
+		
+	</div><!--msg3-->
+    </div><!--msg-->
+    <div class="secret">
+       <div class="userFunction">
+         <span>收件箱<span class='newMsgRemain" style='color:red;'></span></span>
+         <span>发件箱</span>
+         <span>通信录</span>
+         <span>我的帖子</span>
+         <span><a href="#" onclick='findWatchs();'>我关注的人</a><span class="watch1"></span></span>
+         <span><a href="#" onclick='whoWatchMe();'>关注我的人</a><span class="watch2"></span></span>
+         <span>我的查看者<span class="watch3"></span></span>
+         <span>我的黑名单<span class="watch4"></span></span>
+         <span><a href="./editBasic1.ejs">修改资料</a></span>
+         <span>管理照片</span>
+         <span><a href='submitProof.ejs'>提交证件</a></span>
+
+
+    
+         <span><a href='matchCondition.ejs'>修改速配条件<a></span>
+         <!--<span><a href='editMatchCondition.ejs'>修改速配条件<a></span>-->
+
+
+
+
+
+         <span><a href='#'>修改个人选项<a></span>
+         <span><a href='#'>联系速配红娘<a></span>
+         <span><a href='#'>购买高级服务<a></span>
+
+		 
+       </div>
+       <div class="others"></div>
+    </div><!--secret-->
+  </div><!--left-->
+  <div id="showingPic">
+  </div><!--showingPic--><!--首页主体-->
+  
+  
+  <div id="todayMatch" class="todayMatch">
+     <p>每日懂你</p>
+	 <p id="myMatch"></p>
+  </div><!--todayMatch-->
+ </div>
+
+
+ <script type="text/javascript">
+    $(function(){
+         if(checkLogin()){
+             requireEachDayMatch();
+
+
+             $(".watch").live("click",function(e){
+                 watch(e.target);
+             });
+
+
+            $(".lastLoginTime").live("click",function(e){
+                checkLastLoginTime(e);
+	         });
+
+
+	         $(".loginReminder").live("click",function(e){
+                 loginReminder(e);
+              });
+
+
+
+         }
+         else{
+              // alert("请登录");
+         }
+
+    })
+ </script>
+
+ <script type="text/javascript">
+   var app=angular.module("myApp",[]);
+   app.controller("test",function($scope){
+       $scope.test="";
+   });
+ </script>
+

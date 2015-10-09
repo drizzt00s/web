@@ -1,0 +1,253 @@
+﻿*{
+     padding:0;
+     margin:0;
+
+ }
+  .popDiv{
+        width:300px;
+        top:50%;
+        margin-top:-150px;
+        left:50%;
+        margin-left:-150px;
+        background-color:#fff;
+        border:solid 1px #000;
+        padding-top:10px;
+        padding-left:10px;
+      }
+      #accErrorMsg,#passErrorMsg{
+         color:red;
+
+      }
+      .secret{
+        display:none;
+      }
+      
+      .userInfo{
+       display:none;
+      }
+      .wrap{
+      width:1200px;
+      margin:0 auto;
+      }
+      .msgBox{
+        width:400px;
+        height:400px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin-top:100px;
+        margin-left:-400px;
+        border:solid 1px #000;
+        background-color:gray;
+      }
+      #msg3{
+
+
+      }
+      .eachUserWrap{
+          margin-top:20px;
+          background-color:gray;
+          position:relative;
+          margin-top:100px;
+      }
+    .eachUserWrap img{
+	  width:180px;
+	  height:80px;
+	
+	}
+	
+	
+	
+      .msgMain{
+          height:170px;
+          border:solid 3px #000;
+          background-color:#fff;
+          font-size:11px;
+         
+         
+
+
+      }
+       #msgMain{
+    overflow:auto;
+}
+
+
+
+      .onlineTalkInterface{
+
+          position:absolute;
+          bottom:0;
+          right:0;
+          width:500px;
+          border:solid 1px #000;
+
+
+
+      }
+      .remindMsg{
+          font-weight:bolder;
+          color:red;
+      }
+      .remindOfflineImg{
+ 
+          font-weight:bolder;
+          color:green;
+
+      }
+
+
+
+
+      #fileContainer{
+       border:solid 1px red;
+
+}
+
+.myMsgContainerFrom{
+  color:green;
+
+
+}
+.myMsgContainerTime{
+
+color:blue;
+
+}
+.msgWrapToSpan2,.msgWrapToSpan3,.msgWrapEndSpan2,.msgWrapEndSpan3{
+font-size:12px!important;
+font-weight:bolder;
+
+}
+.msgWrapFrom{
+margin-top:15px;
+}
+.imageWrap{
+ border:solid 1px red;
+ width:494px;
+ height:70px;
+ position:absolute;
+ top:0;
+ left:0;
+}
+.imagePreviewHidden{
+visibility:hidden;
+}
+.isOnline{
+font-size:12px!important;
+color:red;
+}
+.closeTalk{
+
+ width:32px;
+ height:32px;
+ position:absolute;
+ bottom:0;
+ right:0;
+ background-image:url(../images/close.png);
+
+}
+.navi{
+list-style-type:none;
+_zoom:1;
+overflow:hidde;
+}
+.navi li{
+ float:left;
+ margin-left:15px;
+}
+
+
+/************************************************************index.ejs***********************************************/
+.insertMsg{
+margin-top:15px;
+}
+.readMsg{
+ display:block;
+ width:100px;
+ height:20px;
+ border:solid 1px blue;
+ line-height:20px;
+ text-align:center;
+ cursor:pointer;
+
+}
+.contents{
+  display:none;
+
+
+}
+.msg3Title{
+  overflow:hidden;
+  _zoom:1;
+
+}
+.newMsg{
+   width:49%;
+  float:left;
+cursor:pointer;
+
+}
+.oldMSg{
+
+  width:49%;
+  float:right;
+cursor:pointer;
+
+}
+
+.msg3{
+  display:none;
+}
+.newMsgContainer{
+  border:solid 1px red;
+
+}
+.oldMsgContainer{
+  background-color:green;
+  display:none;
+}
+.finalRepHolder{
+ position:absolute;
+ bottom:0;
+ left:0;
+}
+.userIcon{
+width:100px;
+height:70px;
+}
+.sendPost{
+ display:none;
+}
+#replyImgIndex{
+ display:none;
+}
+.sendThisPost{
+ margin-top:100px;
+}
+.eachPost{
+margin-top:15px;
+}
+.watchSuccess{
+     width:100px;
+     height:100px;
+     position:absolute;
+     top:50%;
+     left:50%;
+     margin-top:-50px;
+     margin-left:-50px;
+     border:solid 1px red;
+}
+.sendBoxContents{
+ display:none;
+ border:solid 1px red;
+}
+#sendRead{
+display:none;
+}
+#sendUnread{
+display:none;
+}
+
+
+

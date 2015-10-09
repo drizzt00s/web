@@ -1,0 +1,194 @@
+﻿  <link rel='stylesheet' href='/stylesheets/register.css' />
+  <link rel='stylesheet' href='/stylesheets/_x_ctr_location.css' />
+
+  <script src="/javascript/locationPicker.js"></script>
+  <script src="/javascript/validation.js"></script>
+  <script src="/javascript/cookieHelp.js"></script>
+  <script src="/javascript/_x_ctr_location-1.0.min.js"></script>
+  <script src="/javascript/validationList.js"></script>
+  <script src="/javascript/errorHandler.js"></script>
+  <script src="/javascript/operation.js"></script>
+
+
+  <script src="/javascript/angularMain/main.js"></script>
+  <script src="/javascript/service/emailReg.js"></script>
+  <script src="/javascript/controller/emailRegController.js"></script>
+
+  
+  <title><%= title %></title>
+
+ <div id="registerMain" ng-app="register">
+  <div class="register" id="register" ng-controller="registerController" >
+    <form id="submitForm" method="post" action="register.ejs">
+      <p class='regSuccess'><%=successMsg%></p>
+
+
+     
+
+
+
+
+
+
+      <p id="l1">
+        <label for="username">电子邮件:</label><input type="text" id="username" name="username" />
+        <span class="errorMsg1"><%=accountErrorMsg%></span>
+      </p>
+
+      <p id="l2">
+        <label for="password">密码：</label><input type="password" id="password" name="password"/>
+        <span class="errorMsg2"><%=passwordErrorMsg%></span>
+        <span class="frontToEndErrorRegister">请填写密码</span>
+        </p>
+      <p id="l3"><label for="checkPassword">再次输入密码：</label>
+      <input type="password" id="checkPassword"   name="checkPassword"  />
+      </p>
+
+
+
+
+
+
+
+
+         <p class="addres">
+          <label>常住地:</label>
+           <input type="text" id="txt_area" size="80" name="address" />
+           <!--<input type="text" id="txt_Code" />-->
+         </p>
+
+
+
+    
+                                       <p id="l4"><label for='falseName'>昵称(不可更改):</label><input type='text' id='falseName' name='falseName'><span class="frontToEndErrorRegister">请填写昵称</span></p>
+                                       <p><label for='gender'>性别(不可更改):</label>
+                                       <select  id='gender' name='gender'>
+                                          <option value="请选择">请选择</option>
+                                          <option value="男">男</option>
+                                          <option value="女">女</option>
+                                       </select>
+                                       <span class="frontToEndErrorRegister">请选择性别</span>
+                                       </p>
+                                      <p><label for='birthday'>生日(不可更改):</label>
+                                       <select  id='birthdayYear' name='birthday'>
+
+                                           <%- partial('listItems',regHtml1)%>
+                                       </select><span>年</span>
+                                       <select  id='birthdayMonth'  name='birthday'>
+                                       <option>12</option>
+                                       <option>11</option>
+                                       <option>10</option>
+                                       <option>9</option>
+                                       <option>8</option>
+                                       <option>7</option>
+                                       <option>6</option>
+                                       <option>5</option>
+                                       <option>4</option>
+                                       <option>3</option>
+                                       <option>2</option>
+                                       <option>1</option>
+                                       </select><span>月</span>
+                                       <select  id='birthdayDay'  name='birthday'>
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>6</option>
+                                       <option>7</option>
+                                       <option>8</option>
+                                       <option>9</option>
+                                       "option>10</option>
+                                       <option>11</option>
+                                       <option>12</option>
+                                       <option>13</option>
+                                       <option>14</option>
+                                       <option>15</option>
+                                       <option>16</option>
+                                       <option>17</option>
+                                       <option>18</option>
+                                       <option>19</option>
+                                       <option>20</option>
+                                       <option>21</option>
+                                       <option>22</option>
+                                       <option>23</option>
+                                       <option>24</option>
+                                       <option>25</option>
+                                       <option>26</option>
+                                       <option>27</option>
+                                       <option>28</option>
+                                       <option>29</option>
+                                       <option>30</option>
+                                       <option>31</option>
+                                       </select><span>日</span>
+                                       </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      
+                                     
+                                      
+                                       <p id="l5"><label for='mobile'>手机号码:</label><input type='text' id='mobile' name='mobile' /><span class='noticeInfo1'>仅限数字</span></p>
+                                      
+                                       
+                                       <p><label for='marriageStatus'>婚姻状况:</label>
+                                        <select  id='marriageStatus' name='marriageStatus'>
+                                         <option>未婚</option>
+                                         <option>离异</option>
+                                         <!--<option>离异有小孩</option>-->
+										 <!--暂时注掉这个选项,来保证和设置速配条件里的婚姻状况选项一致 matchCondtion.ejs-->
+                                         <option>丧偶</option>
+                                         </select>
+                                         </p>
+                                         <p><label for='education'>学历:</label>
+                                         <select  id='education' name='education'>
+                                         <option>博士</option>
+                                         <option>硕士</option>
+                                         <option>本科</option>
+                                         <option>大专</option>
+                                         <option>高中</option>
+                                         <option>初中</option>
+                                         <option>小学</option>
+                                         </select>
+                                         </p>
+                                       <p><label for='height'>身高:</label>
+                                       <select  id='height' name='userHeight'>
+                                         <%-partial("listItems",regHtml2)%>
+                                       </select><span>公分</span>
+                                       </p>
+    <input type="hidden" name="checkSubmit" id="checkSubmit"><br />
+
+
+   <!-- <input type="submit" value="submit" id="submitRegister"  />-->
+   <!-- 改为angularjs提交 原来submitRegister 对应的提交逻辑对应于javascript/validation.js 下的$("#submitRegister").live-->
+     
+
+    <input type="button" value="提交" ng-click="registetSubmit(e);"/>
+
+    </form>
+    <a href="index.ejs">回首页</a>
+   </div>
+  </div>
+
+
+
+
+
+
+
+     
+
+
+
+ 

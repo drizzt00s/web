@@ -1,0 +1,169 @@
+*{
+   font-size:18px;
+
+}
+
+.eachPost span{
+margin-left:15px;
+}
+
+.replayPost{
+float:right;
+}
+
+.postDetailWrap{
+ overflow:hidden;
+ _zoom:1;
+ margin-top:50px;
+}
+.rightContents{
+ width:33%;
+ float:right;
+}
+
+
+
+.replyTime{
+position:absolute;
+bottom:0;
+right:0;
+}
+.replyByWhom{
+ width:100px;
+ height:160px;
+ position:absolute;
+ top:0;
+ left:0;
+}
+.eachReplyWrap{
+border:solid 1px gray;
+margin-top:5px;
+min-height:150px;
+position:relative;
+}
+
+
+.postOwner{
+overflow:hidden;
+_zoom:1;
+width:65%;
+float:left;
+}
+
+
+
+.firstFloor{
+overflow:hidden;
+_zoom:1;
+border:solid 1px gray;
+position:relative;
+}
+.pOwner{
+width:20%;
+min-height:150px;
+float:left;
+}
+.pContents{
+ width:78%;
+ min-height:150px;
+float:right;
+}
+.firstLayerTime{
+ position:absolute;
+ bottom:0;
+ right:38px;
+}
+.replayWrap{
+ position:absolute;
+ bottom:0;
+ left:0;
+}
+.userImg{
+ width:70%;
+ height:50%;
+ margin:8px;
+}
+#postOwnerImg{
+ width:60%;
+ height:40%;
+ margin:8px;
+}
+
+.finalRepHolder{
+margin-left:130px;
+}
+.replyContents{
+ width:540px;
+ height:140px;
+ position:absolute;
+ left:130px;
+ top:10px;
+
+}
+.thisReplyPic{
+
+
+}
+
+
+.replyText{
+ /*
+  display:none;*/
+}
+#replyImgIndex{
+  display:none;
+}
+.submitPicWrap{
+ display:none;
+}
+.picPreviewWrap{
+ padding:10px;
+}
+.replays{
+}
+.eachImg{
+/*
+width:180px;
+height:100px;
+*/
+cursor:pointer;
+}
+.bigPic{
+
+}
+.rollPic{
+     width:390px;
+	 height:390px;
+	 position:relative;
+	 display:none;
+	 border:solid 1px red;
+}
+.rollPic div{
+  position:absolute;
+  width:50%;
+  height:500px;
+  cursor:pointer;
+}
+.rollPicLeft{
+top:0;
+left:0;
+}
+.rollPicRight{
+top:0;
+right:0;
+}
+
+.myPicPreview{
+ width:500px;
+ background-color:gray;
+}
+.postEachImg{
+ margin-top:10px;
+ margin-left:200px;
+ /*
+  ¡Ÿ ±—˘ Ω
+ */
+}
+
+
+

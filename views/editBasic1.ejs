@@ -1,0 +1,170 @@
+﻿<style type="text/css">
+ .fixedInfo{
+position:relative;
+}
+.toEditFixedInfo{
+  position:absolute;
+  bottom:0;
+  right:0;
+  display:none;
+  border:solid 1px red;
+}
+#closeToEditFixedInfo{
+ bottom:0;
+ right:0;
+position:absolute;
+}
+</style>
+<div class="editBasic1">
+  <div class="fixedInfo">
+     <h4>您的固定信息</h4>
+      <p>
+       您是一位<span><%=editGender%></span>士 ,<span><%=editBirthday%></span>出生,<span><%=editMarriageStatus%></span>,<span><%=editEducation%></span>学历, 身高<span><%=editHeight%></span><a href="#" class="editFixedInfo" id="editFixedInfo" >我要修改</a>
+     </p>
+     <div class="toEditFixedInfo">
+       <h4>修改途径</h4>
+       <p><b>性别</b>请致电:021-64895968 客服帮助修改</p>
+       <p><b>出生日期</b><a href="#">认证身份证</a>或<a href="#">上传身份证</a>，系统自动更改</p>
+       <p><b>婚姻状况</b><a href="#">上传户口本或婚育证明</a>，客服帮助修改</p>
+       <p><b>学历</b><a href="#">上传毕业证或学位证</a>，客服帮助修改</p>
+       <p><b>身高</b>发送体检证明至drizzt82s@163.com，注明ID和真实姓名，客服帮助修改</p>
+       <a href="#" id="closeToEditFixedInfo">关闭</a>
+     </div>
+  </div>
+  <form action="editBasic1.ejs" method="post" id="editBasic1">
+    <div>
+     <label for="editFalseName">昵称:</label><input type="text" id="editFalseName" value="<%=userFalseName%>" name="editFalseName" />
+    </div>
+    <div>
+     <label for="editMobile">手机:</label><input type="text" id="editMobile" value="<%=editMobile%>" name="editMobile" />
+    </div>
+     <div>
+     <label for="editMail">邮箱:</label><input type="text" id="editMail" value="<%=editMail%>" name="editMail" />
+    </div>
+    <div class="birthplaceInfo">
+      <span>籍贯</span>
+      <input type="text" id="birthPlaceProvince"  name="birthPlaceProvince" class="birthPlaceProvince" value="请选择" />
+      <input type="text" id="birthPlaceCity"  name="birthPlaceCity" class="birthPlaceCity" value="请选择" />
+      <div class="provinceInfo" id="provinceInfo">
+        <div class="provinceInfo1">请选择省/直辖市</div>
+        <div class="provinceInfo2"><span class="selectProvince">北京</span><span class="selectProvince">上海</span><span class="selectProvince">广州</span><span class="selectProvince">深圳</span><span class="selectProvince">重庆</span><span class="selectProvince">天津</span></div>
+        <div class="provinceInfo3">
+         <span class="selectProvince">广东</span>
+         <span class="selectProvince">江苏</span>
+         <span class="selectProvince">浙江</span>
+         <span class="selectProvince">四川</span>
+         <span class="selectProvince">福建</span>
+         <span class="selectProvince">山东</span>
+         <span class="selectProvince">湖北</span>
+         <span class="selectProvince">河北</span>
+         <span class="selectProvince">山西</span>
+         <span class="selectProvince">内蒙古</span>
+         <span class="selectProvince">辽宁</span>
+         <span class="selectProvince">吉林</span>
+         <span class="selectProvince">黑龙江</span>
+         <span class="selectProvince">安徽</span>
+         <span class="selectProvince">江西</span>
+         <span class="selectProvince">河南</span>
+         <span class="selectProvince">湖南</span>
+         <span class="selectProvince">广西</span>
+         <span class="selectProvince">海南</span>
+         <span class="selectProvince">贵州</span>
+         <span class="selectProvince">云南</span>
+         <span class="selectProvince">西藏</span>
+         <span class="selectProvince">陕西</span>
+         <span class="selectProvince">甘肃</span>
+         <span class="selectProvince">青海</span>
+         <span class="selectProvince">宁夏</span>
+         <span class="selectProvince">新疆</span>
+        </div>
+       <div>
+        <span class="selectProvince">香港</span>
+        <span class="selectProvince">澳门</span>
+        <span class="selectProvince">台湾</span>
+        <span class="selectProvince">国外</span>
+       </div>
+      </div><!--provinceInfo-->
+      <div class="cityInfo" id="cityInfo">
+      <div class="cityInfoTitle">请选择市/区/县城</div>
+      </div>
+     <div>
+ <div>
+     <span>月收入:</span>
+     <select name="editIncome">
+      <option><2000</option>
+      <option>2000-5000</option>
+      <option>5000-10000</option>
+      <option>10000-15000</option>
+      <option>15000-20000</option>
+      <option>20000-30000</option>
+	  <option>50000以上</option>
+	  5
+     </select>
+ </div>
+  <div>
+       <span>有无孩子:</span>
+	  <!--
+       <select name="editOffspring" id="editOffspring">
+        <option>请选择</option>
+        <option>没有</option>
+        <option>有，我们住在一起</option>
+        <option>有，我们偶尔一起住</option>
+        <option>有，但不在身边</option>
+       </select>-->
+	   <!--将option的值改成和高级搜索的值一样-->
+	   
+	   <select name="editOffspring" id="editOffspring">
+        <option>请选择</option>
+        <option>无小孩</option>
+        <option>有小孩归自己</option>
+        <option>有小孩归对方</option>
+       </select>
+
+   </div>
+<div>
+       <span>住房条件:</span>
+       <select name="editHouse">
+        <option>与父母同住</option>
+        <option>租房</option>
+        <option>已购房</option>
+        <option>已购房有贷款</option>
+        <option>住单位</option>
+        <option>住亲朋家</option>
+       </select>
+   </div>
+   <input type="submit" value="保存并继续" /><br />
+   <input type="submit" value="提交" /><br />
+   <input type="hidden" name="checkSubmit" />
+  </form>
+  <div>填写完整，资料完整度增长30%（审核不通过则还原）</div>
+</div>
+<script type="text/javascript">
+   $(function(){
+      $("#editBasic1").bind("submit",function(e){
+	     var checkEmpty=$("#editOffspring").val();
+		 if(checkEmpty.indexOf("请选择")!=-1){
+		    alert("请选择有无孩子");
+			return false;
+		 }
+		 
+		 var checkProvince=$("#birthPlaceProvince").val();
+		 var checkCity=$("#birthPlaceCity").val();
+		 if(checkProvince.indexOf("请选择")!=-1||checkCity.indexOf("请选择")!=-1){
+		    alert("请填写城市和省份");
+		    return false;
+		 }
+		 
+		 
+	  
+	  });
+   
+   
+   
+
+	
+	
+   
+   })
+</script>
+
+

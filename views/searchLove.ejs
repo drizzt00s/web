@@ -1,0 +1,44 @@
+<title>
+	<%=title%></title>
+<link rel='stylesheet' href='/stylesheets/index.css' />
+<script src="/javascript/index.js"></script>
+<script src="/javascript/json.js"></script>
+<script src="/javascript/message.js"></script>
+<script src="/javascript/socket.js"></script>
+<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+<script src="/javascript/searchResult.js"></script>
+<style type="text/css">
+	.showSearchResult{
+	overflow:hidden;
+	width:100%;
+	}
+	.eachSearchResult{
+	width:200px;
+	float:left;
+	}
+	.searchCondition{
+	     margin-top:30px;
+	   }
+</style>
+<script src="/javascript/navi.js"></script>
+<div class="wrap">
+	<div id="searchResult" style="display:none;"><%=searchContents%></div>
+	<div class="searchCondition" id="searchCondition">
+		<p>
+		  您当前的搜索是<span class="condition1"><%=searchConditionGender%></span>
+			            <span class="condition2"><%=searchConditionAgeRange%></span>
+			            <span class="condition3"><%=searchConditionLocation%></span>
+			            <span class="condition4"><%=searchConditionIfHasPic%></span>
+		</p>
+	</div>
+	<div class="showSearchResult" id="showSearchResult"></div>
+	<!--showSearchResult-->
+
+
+
+
+
+
+
+</div>
+

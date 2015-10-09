@@ -1,0 +1,167 @@
+﻿<div class="editStep2">
+  <form action="edit2.ejs" method="post" id="editStep2">
+    <div>
+    <span>是否吸烟</span>
+    <select  id="edit2a" name="edit2a">
+    <option>不抽烟</option>
+    <option>有时社交场合抽一点</option>
+    <option>经常抽</option>
+    </select>
+    </div>
+     <div>
+        <span>是否喝酒</span>
+        <select  id="edit2b" name="edit2b">
+        <option>不喝酒</option>
+        <option>有时社交场合喝一点</option>
+        <option>经常喝</option>
+        </select>
+        </div>
+    <div>
+    <span>是否购车</span>
+    <select  id="edit2c" name="edit2c" class="checkEmpty">
+    <option>请选择</option>
+    <option>已购车</option>
+    <option>未购车</option>
+    </select>
+    </div>
+    <div>
+    <span>厨艺</span>
+    <select  id="edit2d" name="edit2d" class="checkEmpty">
+    <option>请选择</option>
+    <option>色香味俱全</option>
+    <option>能做几样可口的小菜</option>
+    <option>有待提高</option>
+    </select>
+    </div>
+        <div>
+        <span>家务</span>
+        <select  id="edit2e" name="edit2e" class="checkEmpty">
+        <option>请选择</option>
+        <option>愿意承担大部分家务</option>
+        <option>希望对方承担大部分家务</option>
+        <option>各自忙闲，协商分担家务</option>
+        </select>
+        </div>
+    <div>
+    <span>存款</span>
+    <select  id="edit2f" name="edit2f" class="checkEmpty">
+    <option>请选择</option>
+    <option>3万以下</option>
+    <option>3-10万</option>
+    <option>10-50万</option>
+    <option>50万以上</option>
+    <option>保密</option>
+    </select>
+    </div>
+        <div>
+        <span>何时想结婚</span>
+        <select  id="edit2g" name="edit2g" class="checkEmpty">
+        <option>请选择</option>
+        <option>认同闪婚</option>
+        <option>一年内</option>
+        <option>二年内</option>
+        <option>三年内</option>
+        <option>时机成熟就结婚</option>
+        </select>
+        </div>
+        <div>
+        <span>是否想要孩子</span>
+        <select  id="edit2h" name="edit2h" class="checkEmpty">
+        <option>请选择</option>
+        <option>想要孩子</option>
+        <option>不想要孩子</option>
+        <option>视情况而定</option>
+        </select>
+        </div>
+        <div>
+        <span>与对方父母同住</span>
+        <select  id="edit2i" name="edit2i" class="checkEmpty">
+        <option>请选择</option>
+        <option>愿意</option>
+        <option>不愿意</option>
+        <option>视具体情况而定</option>
+        </select>
+       </div>
+   <div>
+     <span>较大的消费：</span>
+     <span><input type="checkbox" name="mainCost"  value="美食" /><span>美食</span></span>
+     <span><input type="checkbox" name="mainCost"  value="服饰" /><span>服饰</span></span>
+     <span><input type="checkbox" name="mainCost"  value="化妆" /><span>化妆</span></span>
+     <span><input type="checkbox" name=mainCost""  value="健身" /><span>健身</span></span>
+     <span><input type="checkbox" name="mainCost"  value="娱乐" /><span>娱乐</span></span>
+     <span><input type="checkbox" name="mainCost"  value="旅行" /><span>旅行</span></span>
+     <span><input type="checkbox" name="mainCost"  value="社交" /><span>社交</span></span>
+     <span><input type="checkbox" name="mainCost"  value="文化" /><span>文化</span></span>
+     <span><input type="checkbox" name="mainCost"  value="自我提升" /><span>自我提升</span></span>
+     <span><input type="checkbox" name="mainCost"  value="其他" /><span>其他</span></span>
+   </div>
+   <div>
+     <span>喜欢怎样的约会：</span>
+     <span><input type="checkbox" name="mainRecreation"  value="餐厅" /><span>餐厅</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="茶楼" /><span>茶楼</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="咖啡厅" /><span>咖啡厅</span></span>
+     <span><input type="checkbox" name=mainRecreation""  value="酒吧" /><span>酒吧</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="看电影" /><span>看电影</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="看演出" /><span>看演出</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="看展览" /><span>看展览</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="逛街" /><span>逛街</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="公园散步" /><span>公园散步</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="郊游" /><span>郊游</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="户外运动" /><span>户外运动</span></span>
+     <span><input type="checkbox" name="mainRecreation"  value="其它" /><span>其它</span></span>
+   </div>
+   <input type="submit" value="保存并继续" /><br />
+   <input type="hidden" name="checkSubmit" />
+  </form>
+</div>
+
+<script type="text/javascript">
+   $(function(){
+        $("#editStep2").bind("submit",function(e){
+		 var emptyFlag=false;
+		     /*
+edit2c //是否购车
+edit2d  //厨艺
+edit2e  //家务
+edit2f  //存款
+edit2g   //何时结婚
+edit2h   //是否想要孩子
+edit2i    //是否愿意和父母同住
+ */
+  $.each($(".checkEmpty"),function(i,v){
+     var checkEmpty=$(v).val();
+	 if(checkEmpty.indexOf("请选择")!=-1){
+	   var getInfo=$(v).prev().text();
+	   alert("请选择"+getInfo);
+	   emptyFlag=true;
+	   return false;
+	 }
+  
+  });
+  if(emptyFlag){
+    return false;
+  }
+ 
+ 
+ 
+    var checkEmpty1=$("#edit2c").val();
+	var checkEmpty2=$("#edit2d").val();
+	var checkEmpty3=$("#edit2e").val();
+	var checkEmpty4=$("#edit2f").val();
+	var checkEmpty5=$("#edit2g").val();
+	var checkEmpty6=$("#edit2h").val();
+	var checkEmpty7=$("#edit2i").val();
+		
+		
+		
+		
+});
+	  
+	  
+
+
+	
+	
+   
+   })
+</script>

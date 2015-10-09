@@ -1,0 +1,6 @@
+add columns in talbe d:
+lastLogin
+loginTimeInt
+lastdailymatch
+matchCondtion
+whoExpectYouLogin

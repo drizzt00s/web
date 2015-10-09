@@ -1,0 +1,166 @@
+﻿  <link rel='stylesheet' href='/stylesheets/register.css' />
+  <script src="/javascript/validation.js"></script>
+  <script src="/javascript/cookieHelp.js"></script>
+  <title><%= title %></title>
+  <div class="register">
+    <form action="register.ejs" id="submitForm" method="post">
+    <p class='regSuccess'><%=successMsg%></p>
+    <p><label for="username">用户名：</label><input type="text" id="username" name="username" /><span class="errorMsg1"><%=accountErrorMsg%></span></p>
+    <p><label for="password">密码：</label><input type="password" id="password" name="password"/><span class="errorMsg2"><%=passwordErrorMsg%></span><span class="frontToEndErrorRegister">请填写密码</span></p>
+    <p><label for="checkPassword">再次输入密码：</label><input type="password" id="checkPassword" name="checkPassword"  /></p>
+    <div class="birthplaceInfo">
+     <span>居住地区</span>
+     <input type="text" id="birthPlaceProvince"  name="selectProvince" class="birthPlaceProvince"  />
+     <input type="text" id="birthPlaceCity"  name="selectProvinceCity" class="birthPlaceCity" /><span class="frontToEndErrorRegister">请填写居住省份和城市</span>
+     <div class="provinceInfo" id="provinceInfo">
+       <div class="provinceInfo1">请选择省/直辖市</div>
+       <div class="provinceInfo2"><span class="selectProvince">北京</span><span class="selectProvince">上海</span><span class="selectProvince">广州</span><span class="selectProvince">深圳</span><span class="selectProvince">重庆</span><span class="selectProvince">天津</span></div>
+       <div class="provinceInfo3">
+        <span class="selectProvince">广东</span>
+        <span class="selectProvince">江苏</span>
+        <span class="selectProvince">浙江</span>
+        <span class="selectProvince">四川</span>
+        <span class="selectProvince">福建</span>
+        <span class="selectProvince">山东</span>
+        <span class="selectProvince">湖北</span>
+        <span class="selectProvince">河北</span>
+        <span class="selectProvince">山西</span>
+        <span class="selectProvince">内蒙古</span>
+        <span class="selectProvince">辽宁</span>
+        <span class="selectProvince">吉林</span>
+        <span class="selectProvince">黑龙江</span>
+        <span class="selectProvince">安徽</span>
+        <span class="selectProvince">江西</span>
+        <span class="selectProvince">河南</span>
+        <span class="selectProvince">湖南</span>
+        <span class="selectProvince">广西</span>
+        <span class="selectProvince">海南</span>
+        <span class="selectProvince">贵州</span>
+        <span class="selectProvince">云南</span>
+        <span class="selectProvince">西藏</span>
+        <span class="selectProvince">陕西</span>
+        <span class="selectProvince">甘肃</span>
+        <span class="selectProvince">青海</span>
+        <span class="selectProvince">宁夏</span>
+        <span class="selectProvince">新疆</span>
+       </div>
+      <div>
+       <span class="selectProvince">香港</span>
+       <span class="selectProvince">澳门</span>
+       <span class="selectProvince">台湾</span>
+       <span class="selectProvince">国外</span>
+      </div>
+     </div><!--provinceInfo-->
+     <div class="cityInfo" id="cityInfo">
+     <div class="cityInfoTitle">请选择市/区/县城</div>
+     </div>
+    <div>
+                                       <p><label for='falseName'>昵称(不可更改):</label><input type='text' id='falseName' name='falseName'><span class="frontToEndErrorRegister">请填写昵称</span></p>
+                                       <p><label for='gender'>性别(不可更改):</label>
+                                       <select  id='gender' name='gender'>
+                                          <option value="请选择">请选择</option>
+                                          <option value="男">男</option>
+                                          <option value="女">女</option>
+                                       </select>
+                                       <span class="frontToEndErrorRegister">请选择性别</span>
+                                       </p>
+                                      <p><label for='birthday'>生日(不可更改):</label>
+                                       <select  id='birthdayYear' name='birthday'>
+
+                                           <%- partial('listItems',regHtml1)%>
+                                       </select><span>年</span>
+                                       <select  id='birthdayMonth'  name='birthday'>
+                                       <option>12</option>
+                                       <option>11</option>
+                                       <option>10</option>
+                                       <option>9</option>
+                                       <option>8</option>
+                                       <option>7</option>
+                                       <option>6</option>
+                                       <option>5</option>
+                                       <option>4</option>
+                                       <option>3</option>
+                                       <option>2</option>
+                                       <option>1</option>
+                                       </select><span>月</span>
+                                       <select  id='birthdayDay'  name='birthday'>
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>6</option>
+                                       <option>7</option>
+                                       <option>8</option>
+                                       <option>9</option>
+                                       "option>10</option>
+                                       <option>11</option>
+                                       <option>12</option>
+                                       <option>13</option>
+                                       <option>14</option>
+                                       <option>15</option>
+                                       <option>16</option>
+                                       <option>17</option>
+                                       <option>18</option>
+                                       <option>19</option>
+                                       <option>20</option>
+                                       <option>21</option>
+                                       <option>22</option>
+                                       <option>23</option>
+                                       <option>24</option>
+                                       <option>25</option>
+                                       <option>26</option>
+                                       <option>27</option>
+                                       <option>28</option>
+                                       <option>29</option>
+                                       <option>30</option>
+                                       <option>31</option>
+                                       </select><span>日</span>
+                                       </p>
+                                       <p><label for='email'>电子邮件:</label><input type='text' id='email' name='email' /> <span class="frontToEndErrorRegister">请填写电子邮件</span></p>
+                                       <p><label for='trueName'>真实姓名:</label><input type='text' id='trueName' name='trueName' /> <span class="frontToEndErrorRegister">请填写您的真实姓名</span></p>
+                                       <p><label for='indentityCard'>身份证号:</label><input type='text' id='indentityCard' name='indentityCard' /> <span class="frontToEndErrorRegister">请填写您的身份证</span></p>
+                                       <p><label for='address'>通讯地址:</label><input type='text' id='address' name='address' /><span class='postCode'>邮政编码</span><input type='text' id='postCode' name='postCode' /></p>
+                                       <p><label for='mobile'>手机号码:</label><input type='text' id='mobile' name='mobile' /><span class='noticeInfo1'>仅限数字</span></p>
+                                       <p><label for='phone'>固定电话:</label><input type='text' id='phone' name='phone' /></p>
+                                       <p><label for='personalWebsite'>个人主页:</label><input type='text' id='personalWebsite' name='personalWebsite' /></p>
+                                       <p><label for='marriageStatus'>婚姻状况:</label>
+                                        <select  id='marriageStatus' name='marriageStatus'>
+                                         <option>未婚</option>
+                                         <option>离异</option>
+                                         <!--<option>离异有小孩</option>-->
+										 <!--暂时注掉这个选项,来保证和设置速配条件里的婚姻状况选项一致 matchCondtion.ejs-->
+                                         <option>丧偶</option>
+                                         </select>
+                                         </p>
+                                         <p><label for='education'>学历:</label>
+                                         <select  id='education' name='education'>
+                                         <option>博士</option>
+                                         <option>硕士</option>
+                                         <option>本科</option>
+                                         <option>大专</option>
+                                         <option>高中</option>
+                                         <option>初中</option>
+                                         <option>小学</option>
+                                         </select>
+                                         </p>
+                                       <p><label for='height'>身高:</label>
+                                       <select  id='height' name='userHeight'>
+                                         <%-partial("listItems",regHtml2)%>
+                                       </select><span>公分</span>
+                                       </p>
+    <input type="hidden" name="checkSubmit" id="checkSubmit"><br />
+    <input type="submit" value="submit" id="submitRegister" />
+    </form>
+    <a href="index.ejs">回首页</a>
+   </div>
+
+
+
+
+
+
+
+
+
+

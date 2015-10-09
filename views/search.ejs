@@ -1,0 +1,138 @@
+﻿<script type="text/javascript">
+$(function(){
+function judgeUserLogin(){
+  var isLogin=checkIfLogin("checkLogin");
+   //调用一个公共的方法checkIfLogin来确定用户是否登录，此方法和后端代码有关系。应用中的每个页面如需判断用户是否登录的话，
+   //都应该用此方法和逻辑，避免重复开发
+   if(isLogin){
+     $("#loginOrRegister").css("display","none");
+     var getUsername=document.cookie;
+     var username=getTargetCookie("username");
+     $("#showUsername").css("display","block");
+     $("#username").text(username);
+   }
+}
+judgeUserLogin();
+//先判断用户是否登录，如果没登录，什么事都不做，如果登录，显示用户的用户名
+})
+</script>
+<script src="/javascript/search.js"></script>
+<script src="/javascript/index.js"></script>
+<div class="searchAll">
+ <link rel='stylesheet' href='/stylesheets/index.css' />
+ <link rel='stylesheet' href='/stylesheets/register.css' />
+ <div class="searchHeader">
+  <div class="headerBanner">
+    <a href="index.ejs">佳缘首页</a>
+    <a href="#">我的佳缘</a>
+    <a href="#">搜索会员</a>
+    <a href="#">最新会员</a>
+    <a href="#">在线聊天</a>
+    <a href="#">交友活动</a>
+    <a href="#">情感博客</a>
+    <a href="#">晒幸福</a>
+    <a href="#">手机交友</a>
+    <a href="#">斑竹小龙女</a>
+    <a href="#">我要猎婚</div></a>
+    <span id="loginOrRegister"><a href="#" id="login">登录</a><a href="register.ejs">注册</a></span>
+    <span id="showUsername" style="display:none;">欢迎,<span id="username"></span><span><a href="signOut.ejs">退出登录</a></span></span>
+    <div class="tabs">
+      <span>全部会员</span>
+      <span>在线会员</span>
+      <span>最新会员</span>
+      <span>地图搜索</span>
+      <span>星座速配</span>
+      <span>佳缘热榜</span>
+    </div>
+   </div><!--searchHeader-->
+   <div class="searchBody">
+   <div id="search">
+    <div>
+    我要找<select name="searchCondition1" id="searchCondition1"><option>女朋友</option><option>男朋友</option></select>
+    年龄从<select name="searchCondition2" id="searchCondition2"><%- partial('listItems',searchCondition2)%></select>到
+    <select name="searchCondition3" id="searchCondition3"><%- partial('listItems',searchCondition2)%></select>岁
+    居住地区
+   <input type="text" id="birthPlaceProvince"  name="selectProvince" class="birthPlaceProvince"  />
+   <input type="text" id="birthPlaceCity"  name="selectProvinceCity" class="birthPlaceCity"  /><span class="frontToEndErrorRegister" style="display:none;">请填写居住省份和城市</span>
+  <div class="provinceInfo" id="provinceInfo">
+       <div class="provinceInfo1">请选择省/直辖市</div>
+       <div class="provinceInfo2"><span class="selectProvince">北京</span><span class="selectProvince">上海</span><span class="selectProvince">广州</span><span class="selectProvince">深圳</span><span class="selectProvince">重庆</span><span class="selectProvince">天津</span></div>
+       <div class="provinceInfo3">
+        <span class="selectProvince">广东</span>
+        <span class="selectProvince">江苏</span>
+        <span class="selectProvince">浙江</span>
+        <span class="selectProvince">四川</span>
+        <span class="selectProvince">福建</span>
+        <span class="selectProvince">山东</span>
+        <span class="selectProvince">湖北</span>
+        <span class="selectProvince">河北</span>
+        <span class="selectProvince">山西</span>
+        <span class="selectProvince">内蒙古</span>
+        <span class="selectProvince">辽宁</span>
+        <span class="selectProvince">吉林</span>
+        <span class="selectProvince">黑龙江</span>
+        <span class="selectProvince">安徽</span>
+        <span class="selectProvince">江西</span>
+        <span class="selectProvince">河南</span>
+        <span class="selectProvince">湖南</span>
+        <span class="selectProvince">广西</span>
+        <span class="selectProvince">海南</span>
+        <span class="selectProvince">贵州</span>
+        <span class="selectProvince">云南</span>
+        <span class="selectProvince">西藏</span>
+        <span class="selectProvince">陕西</span>
+        <span class="selectProvince">甘肃</span>
+        <span class="selectProvince">青海</span>
+        <span class="selectProvince">宁夏</span>
+        <span class="selectProvince">新疆</span>
+       </div>
+      <div>
+       <span class="selectProvince">香港</span>
+       <span class="selectProvince">澳门</span>
+       <span class="selectProvince">台湾</span>
+       <span class="selectProvince">国外</span>
+      </div>
+     </div><!--provinceInfo-->
+     <div class="cityInfo" id="cityInfo">
+     <div class="cityInfoTitle">请选择市/区/县城</div>
+     </div>
+    </div>
+   <label for="searchCondition4">有照片</label> <input type="checkbox" name="searchCondition4" id="searchCondition4" />
+   <a href="#">展开更多条件</a>
+   </div><!--search-->
+   <div class="advancedSearch">
+     身高<select name="searchCondition5" id="searchCondition5"><%- partial('listItems',searchCondition5)%></select>
+     到<select name="searchCondition6" id="searchCondition6"><%- partial('listItems',searchCondition5)%></select>厘米
+     学历<select name="searchCondition7" id="searchCondition7"><%- partial('listItems',searchCondition6)%></select>
+
+     住房:<select name="searchCondition9" id="searchCondition9"><%- partial('listItems',searchCondition8)%></select>
+     月薪:<select name="searchCondition10" id="searchCondition10"><%- partial('listItems',searchCondition9)%></select>
+     婚史:<select name="searchCondition11" id="searchCondition11"><%- partial('listItems',searchCondition10)%></select>
+     购车:<select name="searchCondition12" id="searchCondition12"><%- partial('listItems',searchCondition11)%></select>
+     职业:<select name="searchCondition13" id="searchCondition13"><%- partial('listItems',searchCondition12)%></select>
+     有无子女:<select name="searchCondition14" id="searchCondition14"><%- partial('listItems',searchCondition13)%></select>
+     公司类型:<select name="searchCondition15" id="searchCondition15"><%- partial('listItems',searchCondition14)%></select>
+     户口地区:<select name="searchCondition16" id="searchCondition16"><%- partial('listItems',searchCondition15)%></select>
+     血型:<select name="searchCondition17" id="searchCondition17"><%- partial('listItems',searchCondition16)%></select>
+	 
+	 <!--
+     籍贯:<select name="searchCondition18" id="searchCondition18"><%- partial('listItems',searchCondition17)%></select>
+     生肖:<select name="searchCondition19" id="searchCondition19"><%- partial('listItems',searchCondition18)%></select>
+     民族:<select name="searchCondition20" id="searchCondition20"><%- partial('listItems',searchCondition19)%></select>
+     星座:<select name="searchCondition21" id="searchCondition21"><%- partial('listItems',searchCondition20)%></select>
+     宗教信仰:<select name="searchCondition22" id="searchCondition22"><%- partial('listItems',searchCondition21)%></select>
+     诚信等级:<select name="searchCondition23" id="searchCondition23"><%- partial('listItems',searchCondition22)%></select>
+     爱情测试类型:<select name="searchCondition24" id="searchCondition24"><%- partial('listItems',searchCondition23)%></select>-->
+
+
+
+
+   </div>
+
+
+
+
+
+   </div><!--searchBody-->
+    <div id="checkIfLogin" style="display:none"/><input type="hidden" value="<%=isLogin%>" id="checkLogin" /></div>
+</div>

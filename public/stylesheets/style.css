@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.birthplaceInfo{
+    position:relative;
+}
+.provinceInfo{
+    width:325px;
+    height:270px;
+    display:none;
+    border:solid 1px red;
+    position:absolute;
+    left:0px;
+    top:20px;
+    background-color:gray;
+}
+.provinceInfo span{
+    cursor:pointer;
+}
+.cityInfo{
+    display:none;
+    border:solid 1px red;
+    position:absolute;
+    border:solid 1px red;
+    left:160px;
+    top:20px;
+    background-color:gray;
+}
+.cityInfo span{
+    cursor:pointer;
+}
+.selected{
+    background-color:red;
+}
+.notForSelect{
+    cursor:auto!important;
+    background-color:blue;
+}
+#hiddenForm{
+display:none;
+}
+
+.errorsHolder{
+	color:red;
+}

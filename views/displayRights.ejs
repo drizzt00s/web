@@ -1,0 +1,46 @@
+﻿<%=title%></title>
+<link rel='stylesheet' href='/stylesheets/rights.css' />
+<script src="/javascript/jquery-1.4.2.js"></script>
+<script src="/javascript/cookieHelp.js"></script>
+<script src="/javascript/index.js"></script>
+<script src="/javascript/message.js"></script>
+<script src="/javascript/socket.js"></script>
+<script src="/javascript/common.js"></script>
+<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+<!--<script src="/javascript/class.js"></script>--><!--类库，建设中-->
+<script type="text/javascript">
+function globalBroadcast(){
+     if(!getTargetCookie("username")){
+	    //$("#login").trigger("click");
+		alert('请先登录');
+		return false;
+	 }
+	 var broadCastWrap=$("<div class='broadCastWrap'>"+
+	                     "<textarea id='broadcastContents'></textarea>"+
+						 "<input type='button' value='提交' id='submitbroadcast' onclick='submitbroadcast()'/>"+
+						 "</div>");
+     broadCastWrap.appendTo($("body"));
+   }
+   
+   
+   
+   function submitbroadcast(contents){
+      var username=getTargetCookie("username");
+	  var falseName=getTargetCookie("falseName");
+	  if(username){
+	   var contents=$("#broadcastContents").val();
+	    if(contents){
+	     socket.emit("globalBroadcast",{"d":contents,"username":username,"falseName":falseName});
+	   }
+	  }
+	  else{
+	   throw new Error("用户还没登录");
+	  }
+   }
+</script>
+<div class="wrap">
+ <a href="#" onclick='globalBroadcast()'>首页广播</a>
+
+
+
+</div>

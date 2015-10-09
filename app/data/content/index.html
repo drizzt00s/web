@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="libs/jquery-1.4.2.js"></script>
+	<script type="text/javascript">
+	  $(function(){
+	        
+	  
+	  
+	  })
+	  
+	  function closeWindow(){
+	    window.close();
+	  }
+	  function miniWindow(){
+	    window.frame.minimize();
+	  
+	  }
+	  
+	  function textAjax(){
+	    url="ajax.js",
+		data={
+		 "username":"lili",
+		 "age":45
+		}
+		
+		
+		
+		
+		$.ajax({
+		  url:url,
+		  data:dara,
+		  type:"POST",
+		  success:function(data){
+		    alert(data);
+		  
+		  },
+		  error:function(err){
+		  alert(err);
+		  }
+		
+		});
+		
+	    
+	  
+	  
+	  
+	  
+	  }
+	</script>
+  </head>
+  <body>
+    <div class="appWrap">
+      <div class="title-bar">
+          <!-- Title Bar Elements go here... -->
+          <div class="title-drag"></div>
+          <span class="app-icon"></span><!--.app-icon-->
+          <span class="app-title"></span><!--.app-title-->
+          <span class="button-container window-controls">
+               <ul class="inline">
+                    <li><a class="button minimize-button" href="#minimize-app" onclick="miniWindow()">Minimize</a></li>
+                    <li><a class="button maximize-button" href="#maximize-app">Maximize</a></li>
+                    <li><a class="button close-button" href="#close-app" onclick="closeWindow()">Close</a></li>
+               </ul>
+          </span><!--.window-controls-->
+          <span class="button-container fullscreen-button-container">
+               <a class="button fullscreen-button" href="#fullscreen-app">Full Screen</a>
+          </span>
+     </div><!--.title-bar-->
+     <div class="app-content">
+          <!-- App content goes here... -->
+     </div><!--.app-body-->
+     <div class="status-bar">
+          <!-- Status Bar elements are here... -->
+     </div><!--.status-bar-->
+  </div>
+	
+	<a href="#" onclick="textAjax()">连接</a>
+	
+	
+	
+  </body>
+</html>

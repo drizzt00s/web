@@ -1,0 +1,54 @@
+﻿<div class="editStep1">
+  <form action="edit1.ejs" method="post" id="editStep1">
+	<div><label for='edit1'>真实姓名:</label><input type="text" name="myName" id="edit1" /></div>
+	<div><label for='edit2'>体重:</label>
+	<select id="myS" name="weight">
+      <%- partial('listItems',editHtml1)%>
+    </select>
+    <span>公斤</span>
+	</div>
+	<div>
+	<label for='edit4'>生肖:</label>
+	<select name="sign">
+	<script type="text/javascript">
+         var sx=["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"];
+         var inserted5=createHtml(sx,1);
+         document.write(inserted5);
+        </script>
+
+	</select>
+
+	</div>
+	<div><label for='edit5'>星座:</label><select name="horoscope">
+	<script type="text/javascript">
+         var xz=["白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天枰座","天蝎座","射手座","魔蝎座","水瓶座","双鱼座"];
+         var inserted4=createHtml(xz,1);
+         document.write(inserted4);
+        </script>
+
+	</select></div>
+	<div><label for='edit6'>血型:</label>
+	<select name="bloodType">
+	<option>A型</option>
+	<option>B型</option>
+	<option>AB型</option>
+	<option>O型</option>
+	</select></div>
+	<div><label for='edit7'>民族:</label><select name="race">
+	<option>汉族</option>
+	<option>蒙古族</option>
+	<option>回族</option>
+	<option>藏族</option>
+	<option>维吾尔族</option>
+	<option>壮族</option>
+	<option>布依族</option>
+	<option>朝鲜族</option>
+	<option>满族</option>
+	<option>其他名族</option>
+	</select><input type="text" name="otherRaces" /></div>
+	<div><label for='edit8'>宗教信仰:</label><select name="religion"><option>无</option><option>佛教</option><option>基督教</option><option>天主教</option><option>穆斯林</option></select></div>
+	<div><div>描述一下您的性格，开朗、文静、乐观、友善、理智？</div><textarea name="selfIntri"></textarea></div>
+	<input type="submit" value="保存并继续" /><br />
+	<input type="hidden" name="checkSubmit" />
+  </form>
+</div>
