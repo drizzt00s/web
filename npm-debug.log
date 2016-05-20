@@ -1,36 +1,87 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
-1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   '-g',
-1 verbose cli   'express@3.5.0' ]
-2 info using npm@2.14.4
-3 info using node@v4.1.1
-4 verbose install initial load of C:\Users\wanmengj\AppData\Roaming\npm\package.json
-5 verbose stack Error: Failed to parse json
-5 verbose stack No data, empty input at 1:1
-5 verbose stack
-5 verbose stack ^
-5 verbose stack     at parseError (C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:379:11)
-5 verbose stack     at parseJson (C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:68:23)
-5 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:48:5
-5 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:76:16
-5 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:380:3)
-6 verbose cwd C:\Users\wanmengj\web
-7 error Windows_NT 6.1.7601
-8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "express@3.5.0"
-9 error node v4.1.1
-10 error npm  v2.14.4
-11 error file C:\Users\wanmengj\AppData\Roaming\npm\package.json
-12 error code EJSONPARSE
-13 error Failed to parse json
-13 error No data, empty input at 1:1
-13 error
-13 error ^
-14 error File: C:\Users\wanmengj\AppData\Roaming\npm\package.json
-15 error Failed to parse package.json data.
-15 error package.json must be actual JSON, not just JavaScript.
-15 error
-15 error This is not a bug in npm.
-15 error Tell the package author to fix their package.json file. JSON.parse
-16 verbose exit [ 1, true ]
+1 verbose cli   'angular' ]
+2 info using npm@1.1.46
+3 info using node@v0.8.5
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose config file C:\Users\wanmengj\.npmrc
+6 verbose config file C:\Program Files (x86)\nodejs\etc\npmrc
+7 verbose config file C:\Program Files (x86)\nodejs\node_modules\npm\npmrc
+8 verbose read json C:\Users\wanmengj\pro\web\package.json
+9 warn package.json application-name@0.0.1 No README.md file found!
+10 verbose read json C:\Users\wanmengj\pro\web\node_modules\ajax.js\package.json
+11 verbose read json C:\Users\wanmengj\pro\web\node_modules\commented.txt\package.json
+12 verbose read json C:\Users\wanmengj\pro\web\node_modules\connect\package.json
+13 verbose read json C:\Users\wanmengj\pro\web\node_modules\connect-mongo\package.json
+14 verbose read json C:\Users\wanmengj\pro\web\node_modules\createHtml.js\package.json
+15 verbose read json C:\Users\wanmengj\pro\web\node_modules\db.js\package.json
+16 verbose read json C:\Users\wanmengj\pro\web\node_modules\dbSettings.js\package.json
+17 verbose read json C:\Users\wanmengj\pro\web\node_modules\debug\package.json
+18 verbose read json C:\Users\wanmengj\pro\web\node_modules\ejs\package.json
+19 verbose read json C:\Users\wanmengj\pro\web\node_modules\express\package.json
+20 verbose read json C:\Users\wanmengj\pro\web\node_modules\express-partials\package.json
+21 verbose read json C:\Users\wanmengj\pro\web\node_modules\fresh\package.json
+22 verbose read json C:\Users\wanmengj\pro\web\node_modules\harmony\package.json
+23 verbose read json C:\Users\wanmengj\pro\web\node_modules\imagemagick\package.json
+24 verbose read json C:\Users\wanmengj\pro\web\node_modules\index.js\package.json
+25 verbose read json C:\Users\wanmengj\pro\web\node_modules\moduleUser.js\package.json
+26 verbose read json C:\Users\wanmengj\pro\web\node_modules\mongodb\package.json
+27 verbose read json C:\Users\wanmengj\pro\web\node_modules\mysql\package.json
+28 verbose read json C:\Users\wanmengj\pro\web\node_modules\mysqlSettings.js\package.json
+29 verbose read json C:\Users\wanmengj\pro\web\node_modules\range-parser\package.json
+30 verbose read json C:\Users\wanmengj\pro\web\node_modules\routeIndex.js\package.json
+31 verbose read json C:\Users\wanmengj\pro\web\node_modules\send\package.json
+32 verbose read json C:\Users\wanmengj\pro\web\node_modules\serverCommon.js\package.json
+33 verbose read json C:\Users\wanmengj\pro\web\node_modules\socket.io\package.json
+34 verbose read json C:\Users\wanmengj\pro\web\node_modules\socketAll.js\package.json
+35 verbose read json C:\Users\wanmengj\pro\web\node_modules\stringTools.js\package.json
+36 verbose read json C:\Users\wanmengj\pro\web\node_modules\user.js\package.json
+37 verbose read json C:\Users\wanmengj\pro\web\node_modules\utlity.js\package.json
+38 verbose from cache C:\Users\wanmengj\pro\web\package.json
+39 verbose readDependencies using package.json deps
+40 verbose cache add [ 'angular', null ]
+41 silly cache add name=undefined spec="angular" args=["angular",null]
+42 verbose parsed url { pathname: 'angular', path: 'angular', href: 'angular' }
+43 silly lockFile 54e0c177-angular angular
+44 verbose lock angular C:\Users\wanmengj\AppData\Roaming\npm-cache\54e0c177-angular.lock
+45 silly lockFile 54e0c177-angular angular
+46 verbose addNamed [ 'angular', '' ]
+47 verbose addNamed [ null, '' ]
+48 silly lockFile fdbbf89d-angular angular@
+49 verbose lock angular@ C:\Users\wanmengj\AppData\Roaming\npm-cache\fdbbf89d-angular.lock
+50 silly addNameRange { name: 'angular', range: '', hasData: false }
+51 verbose url raw angular
+52 verbose url resolving [ 'https://registry.npmjs.org/', './angular' ]
+53 verbose url resolved https://registry.npmjs.org/angular
+54 info retry registry request attempt 1 at 15:50:49
+55 http GET https://registry.npmjs.org/angular
+56 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+57 info retry registry request attempt 2 at 15:51:01
+58 http GET https://registry.npmjs.org/angular
+59 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+60 info retry registry request attempt 3 at 15:52:02
+61 http GET https://registry.npmjs.org/angular
+62 silly lockFile fdbbf89d-angular angular@
+63 error Error: SSL Error: CERT_UNTRUSTED
+63 error     at ClientRequest.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\main.js:440:26)
+63 error     at ClientRequest.g (events.js:185:14)
+63 error     at ClientRequest.EventEmitter.emit (events.js:88:17)
+63 error     at HTTPParser.parserOnIncomingClient [as onIncoming] (http.js:1455:7)
+63 error     at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:111:23)
+63 error     at CleartextStream.socketOnData [as ondata] (http.js:1366:20)
+63 error     at CleartextStream.CryptoStream._push (tls.js:485:27)
+63 error     at SecurePair.cycle (tls.js:839:20)
+63 error     at EncryptedStream.CryptoStream.write (tls.js:220:13)
+63 error     at Socket.ondata (stream.js:38:26)
+64 error If you need help, you may report this log at:
+64 error     <http://github.com/isaacs/npm/issues>
+64 error or email it to:
+64 error     <npm-@googlegroups.com>
+65 error System Windows_NT 6.1.7601
+66 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "angular"
+67 error cwd C:\Users\wanmengj\pro\web
+68 error node -v v0.8.5
+69 error npm -v 1.1.46
+70 verbose exit [ 1, true ]
