@@ -106,7 +106,7 @@ app.post("/WebstormProjects/web/views/socketImage.ejs",function(req,res){
 });
 //socket聊天图片逻辑
 
-/*=================我的佳缘===============*/
+
 app.post("/WebstormProjects/web/views/imagePreview.ejs",function(req,res){
   var img=req.files;
   res.redirect("/WebstormProjects/web/views/sendImage.ejs");
@@ -428,7 +428,10 @@ app.get("/WebstormProjects/web/views/edit5.ejs",routes.edit);
 app.post("/WebstormProjects/web/views/edit5.ejs",routes.editPost);
 app.get("/WebstormProjects/web/views/edit6.ejs",routes.edit);
 app.post("/WebstormProjects/web/views/edit6.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/editBasic1.ejs",routes.edit);
+
+
+
+
 app.post("/WebstormProjects/web/views/editBasic1.ejs",routes.editPost);
 app.get("/WebstormProjects/web/views/editPic.ejs",routes.edit);
 app.post("/WebstormProjects/web/views/editPic.ejs",routes.editPost);
@@ -537,13 +540,7 @@ app.post("/forgetPass",function(req,res){
      });
 });
 
-app.post("/login",function(reg,res){
-    var account=reg.body.username;
-    var pass=reg.body.pass;
-    var User=user.user;
-    var userInstance=new User();
-    userInstance.loginCheck(account,pass,reg,res);
-});
+
 
 app.post("/WebstormProjects/web/views/expectOtherLogin.ejs",function(req,res){
     var expectWhomLogin=req.body.expectWhomLogin; //希望谁登录时提醒(昵称)
@@ -1247,10 +1244,7 @@ app.get("/WebstormProjects/web/views/displayRights.ejs",function(req,res){
 res.render("displayRights.ejs",{"title":"特权"});
 });
 
-/*===================================特权相关=============================*/
-app.get("/WebstormProjects/web/views/mapSearch.ejs",function(req,res){
-res.render("mapSearch.ejs",{"title":"地图搜索"});
-});
+
 
 /*===================================加入黑名单==========================*/
 app.post("/WebstormProjects/web/views/addToBlackList.ejs",function(req,res){
@@ -1306,14 +1300,9 @@ app.get("/WebstormProjects/web/views/postPicPreview.ejs",function(req,res){
   res.render("postPicPreview.ejs",{"title":"","picFlag":""});
 });
 
-
-
 app.get("/WebstormProjects/web/views/whiteCollar.ejs",function(req,res){
   res.render("whiteCollar.ejs",{"title":"白领交友","postImgWarning":"","postImgWarningFlag":"0"});
 });
-
-
-
 
 app.post("/WebstormProjects/web/views/postPicPreview.ejs",routes.displayPostPicPreview);
 
@@ -1752,7 +1741,6 @@ app.post("/WebstormProjects/web/views/returnIcons.ejs",function(req,res){
                 storePicUrl.push(pic);
             }
             else{
-             console.log("AA");
                var pic="unknown.png";
                storePicUrl.push(pic);
             }
@@ -2144,6 +2132,7 @@ else{
 
 
 
+
 app.get("/",routes.index);
 /*
 app.get("/WebstormProjects/web/views/index.ejs",routes.index);
@@ -2171,6 +2160,8 @@ app.get("/route/login/showUserPic",routerLogin.showUserPic);
 app.get("/WebstormProjects/web/views/ajax.ejs",routes.ajaxQuery);
 入口页面showUserPic的备用路由，代码稳定后删除
 */
+
+app.post("/login",routerLogin.login);
 
 /* on login */
 
@@ -2246,9 +2237,7 @@ app.get("/info/me",routes.me);
 
 
 /* forum */
-
 app.get("/forum",routes.getForum)
-
 
 
 /*
@@ -2275,3 +2264,19 @@ app.post("/postDetailImg.ejs",routes.forumPostImage);
 
 /* forum */
 
+
+
+
+/* map */
+app.get("/mapSearch",routes.mapSearch);
+
+/* map */
+
+
+
+/* edit info*/
+
+app.get("/editBasic1.ejs",routes.edit);
+
+
+/* edit info*/

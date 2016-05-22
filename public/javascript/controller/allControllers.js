@@ -3,7 +3,6 @@ home page controllers
 */
 
 
-
 indexPage.controller("loginAreaController",function($scope,login){
      $scope.checkIfLogined=function(){
          return parseInt(jQuery("#checkLogin").val());

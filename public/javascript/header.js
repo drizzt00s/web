@@ -102,7 +102,7 @@ document.write("<span>有照片</span>"+
 "<a href='/forum'>白领</a>"+
 "</form>");
 document.write(
-"<a href='mapSearch.ejs' id='searchByMap'>地图搜索</a>"+
+"<a href='/map' id='searchByMap'>地图搜索</a>"+
 "<a href='/forum' id='forum'>速配论坛</a>"+
 "<a href='latestMember.ejs' id='newestMember'>最新会员</a>"+
 "<a href='onlineMember.ejs' id='onlineMember'>在线会员</a>"+
