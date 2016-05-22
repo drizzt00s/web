@@ -51,7 +51,7 @@ function checkUnreadMsg(){
 
 
 function showUserPic(){
-        var url="ajax.ejs";
+        var url = "/route/login/showUserPic";
         $.ajax({
             url:url+"?isShowPic=showAllUserPics",
             cache:false,

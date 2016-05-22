@@ -98,14 +98,14 @@ document.write("<span>有照片</span>"+
 "<input type='checkbox' name='hasPic' id='ifHasImage' />"+
 "<input type='hidden' name='simpleSearch' value='1' id='simpleSearch' />"+
 "<input type='submit' id='submit' value='搜索' />"+
-"<a href='advancedSearch.ejs'>高级搜索</a>"+
+"<a href='/search'>高级搜索</a>"+
+"<a href='/forum'>白领</a>"+
 "</form>");
 document.write(
 "<a href='mapSearch.ejs' id='searchByMap'>地图搜索</a>"+
-"<a href='forum.ejs' id='forum'>速配论坛</a>"+
+"<a href='/forum' id='forum'>速配论坛</a>"+
 "<a href='latestMember.ejs' id='newestMember'>最新会员</a>"+
 "<a href='onlineMember.ejs' id='onlineMember'>在线会员</a>"+
-//"<a href='#' id='newCrystalMemeber'>新水晶会员</a>"+
 "</div>");
 
 

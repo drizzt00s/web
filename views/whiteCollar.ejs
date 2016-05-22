@@ -327,11 +327,11 @@ function login2(){
 			  submitPic(postId);
 			}
 			else{
-			 window.location.href='whiteCollar.ejs';
+			 window.location.href='/forum';
 			}
 		 }
 		 else{
-		   window.location.href='whiteCollar.ejs';
+		   window.location.href='/forum';
 		 }
 	   }
 	 },
@@ -373,7 +373,7 @@ function login2(){
  <!--带有图片预览功能的回复框-->
  <div class="sendThisPost">
         <div class="sendText">
-		  <a href="javascript:void(0)" onclick="$('#replyImgIndex').show();" id="thisUploadPic">上传图片</a><br />
+		  <!--<a href="javascript:void(0)" onclick="$('#replyImgIndex').show();" id="thisUploadPic">上传图片</a><br />-->
 		  <span>标题:</span><input type="text" id="postTitle2" /><br />
 		  <span>内容:</span><textarea id='replayTextareaImg' class='replayTextareaImg'></textarea><br />
 		</div>

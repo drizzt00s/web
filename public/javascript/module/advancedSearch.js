@@ -54,7 +54,7 @@ function advancedSearch(){
        var newSearch=new Search();
        //取值
      //alert(JSON.stringify(storeData));
-       newSearch.ajaxSearch("advancedSearch.ejs",storeData,"post","advancedSearchResult");
+       newSearch.ajaxSearch("/search",storeData,"post","advancedSearchResult");
 }
 
 

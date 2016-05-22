@@ -7,7 +7,6 @@
   <!--new added-->
 
 
-
   <script src="/javascript/socket.js"></script>
   <script src="/javascript/index.js"></script>
   <script src="/javascript/message.js"></script>
@@ -31,9 +30,6 @@
 
 
 
-
-
-
   <!--<script src="/javascript/startDb.js"></script>-->
   <script src="http://localhost:8080/socket.io/socket.io.js"></script>
   <!--<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>-->
@@ -52,15 +48,7 @@
   <script type="text/javascript">
      
 
-	 
 
-     
-	 
-	 
-	 
-	 
-	 
-	 
 	 $(function(){
 	     function showProfile(){
 		    //先检查用户是否已经登录
@@ -107,9 +95,6 @@
 			   type:"post",
 			   success:function(d){
                    if(d instanceof Object){
-	                  //alert("success")
-					  //alert(d.length);
-					  //alert(JSON.stringify(d));
 					   for(var i=0;i<d.length;i++){
 					      if(i!=d.length-1){
 						    var dailyMatch="<div class='dailyMatch'>";
@@ -149,8 +134,7 @@
   
   
 
-  
-  
+ 
   
     $(function(){
        //ajax获取用户收件箱里有几条未读信息
@@ -285,12 +269,12 @@
   
 
     <p class="register">
-      <a href="register.ejs">注册
+      <a href="/register">注册
       </a><br />
       <!-- <a href="#" id="login" ng-controller="loginController" ng-click="poplogin();">登录</a>-->
     </p>
     <div class="userInfo">
-      <p>欢迎:<span id="userFalseName"><%=userName%></span><a href="signOut.ejs" id="mySignOut">注销</a></p>
+      <p>欢迎:<span id="userFalseName"><%=userName%></span><a href="/logoff" id="mySignOut">注销</a></p>
 	  <a href="#" id="myProfileLink"><img src="#" id="myProfile" /></a>
 	  
 	  
@@ -309,7 +293,7 @@
 	
 	
       <span>佳缘首页</span>
-      <span><a href="me.ejs">我的佳缘</a></span>
+      <span><a href="/info/me">我的佳缘</a></span>
       <span><a href="search.ejs">爱情搜索</a></span>
     </div><!--indexTitle-->
     <div class="msg">
@@ -411,10 +395,5 @@
     })
  </script>
 
- <script type="text/javascript">
-   var app=angular.module("myApp",[]);
-   app.controller("test",function($scope){
-       $scope.test="";
-   });
- </script>
+
 
