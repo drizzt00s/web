@@ -46,6 +46,7 @@ app.configure(function(){
 
 require('socketAll.js').startSocket();
 var utility = require('utlity.js');
+var dbUtlity = require('dbUtlity.js');
 var routerLogin = require('routerLogin.js');
 
 
@@ -342,25 +343,7 @@ app.post("/WebstormProjects/web/views/posts.ejs",function(req,res){
     var postBody=req.body.postContent; 
 })
 
-app.get("/WebstormProjects/web/views/userDetails.ejs",function(req,res){
-    var data=req.query.check;
-    var Client =require("mysql").Client;
-    var client =new Client();
-    client.user="root";
-    client.password="5611559w";
-    client.query("USE user");
-    var queryString="SELECT * FROM d WHERE account='"+data+"'";
-    client.query(queryString,function(error,result){
-            if(error){
-             throw error;
-            }
-          var dataProcessed= JSON.stringify(result[0]);
 
-        client.end();
-        res.render("./checkDetail.ejs",{storeData:dataProcessed,title:"查看详细"});
-        } );
-});
-//用户查看其它用户的详细资料
 
 app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
       var Client =require("mysql").Client;
@@ -413,29 +396,17 @@ app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
 
 
 
-app.get("/WebstormProjects/web/views/userPhotoes.ejs",routes.edit);
+
 app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
 
-app.get("/WebstormProjects/web/views/edit1.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/edit1.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/edit2.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/edit2.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/edit3.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/edit3.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/edit4.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/edit4.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/edit5.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/edit5.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/edit6.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/edit6.ejs",routes.editPost);
 
 
 
 
-app.post("/WebstormProjects/web/views/editBasic1.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/editPic.ejs",routes.edit);
-app.post("/WebstormProjects/web/views/editPic.ejs",routes.editPost);
-app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
+
+
+
+
 
 
 
@@ -454,9 +425,8 @@ app.post("/WebstormProjects/web/views/checkSentMsg",routes.checkSentMsgs);
 app.post("/WebstormProjects/web/views/fetchReadProfile",routes.fetchReadProfile);
 app.post("/WebstormProjects/web/views/updateProfileLink",routes.updateProfileLink);
 
-app.get("/WebstormProjects/web/views/matchCondition.ejs",routes.matchCondition);
-app.post("/WebstormProjects/web/views/matchConditionPost",routes.matchConditionPost);
-app.post("/WebstormProjects/web/views/fetchCondtion",routes.fetchCondtion);
+
+
 app.post("/WebstormProjects/web/views/fetchDailyMatch",routes.fetchDailyMatch);
 app.post("/WebstormProjects/web/views/countNewMsg",routes.countNewMsg);
 
@@ -480,33 +450,39 @@ app.post("/WebstormProjects/web/views/save.ejs",function(req,res){
  console.log(req.body.age);
 });
 
-app.get("/WebstormProjects/web/uploads/pic/:name/:pic",function(req,res){
+app.get("/uploads/pic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
-        res.sendfile("./uploads/pic/"+username+"/"+pic);
+       // res.sendfile("./web/uploads/pic/"+username+"/"+pic);
+        res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+        
 });
-app.get("/WebstormProjects/web/uploads/pic/:name/:pic",function(req,res){
+app.get("/uploads/pic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
-        res.sendfile("./web/uploads/pic/"+username+"/"+pic);
-});
-//上传的图片的路由
-app.get("/WebstormProjects/web/uploads/postPic/:name/:pic",function(req,res){
-        var username=req.params.name;
-        var pic=req.params.pic;
-        res.sendfile("./web/uploads/postPic/"+username+"/"+pic);
+      //  res.sendfile("./web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
-app.get("/WebstormProjects/web/uploads/postPicPreview/:name/:pic",function(req,res){
+app.get("/uploads/postPic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
-        res.sendfile("./web/uploads/postPicPreview/"+username+"/"+pic);
+      //  res.sendfile("./web/uploads/postPic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
-app.get("/WebstormProjects/web/uploads/subPostPic/:name/:pic",function(req,res){
+app.get("/uploads/postPicPreview/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
-        res.sendfile("./web/uploads/subPostPic/"+username+"/"+pic);
+      //  res.sendfile("./web/uploads/postPicPreview/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+});
+//上传的图片的路由
+app.get("/uploads/subPostPic/:name/:pic",function(req,res){
+        var username=req.params.name;
+        var pic=req.params.pic;
+      //  res.sendfile("./web/uploads/subPostPic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
 
@@ -1199,48 +1175,15 @@ app.get("/WebstormProjects/web/uploads/proofPic/gangao/:username/:pic",function(
 });
 
 /*===================================修改随配条件=============================*/
-app.get("/WebstormProjects/web/views/editMatchCondition.ejs",function(req,res){
-res.render("editMatchCondition.ejs",{"title":"修改速配条件"});
-});
 
-app.post("/WebstormProjects/web/views/editMatchCondition.ejs",function(req,res){
-  var userName=req.body.d.username;
-  var matchData=req.body.d.data;//json
-  var storeData=[];
-  for(var i in matchData){
-    storeData.push(matchData[i]);
-  }
-  storeData.push(userName);
-  var columnArray=["gender","ageFrom","ageTo","area1","area2","height1","height2","education","job","marrige","monthIncome","housing","race","xz","sx","bloodType","ifSmoking","ifDrinking","userName"];
-  var client=utility.prepareDb();
-  var queryString="select * from dd where username='"+userName+"'";
-  client.query(queryString,function(e,r){
-    if(e){
-     throw e;
-    }
-    if(r.length!==0){
-     var queryString=common.processString.createQueryString(storeData,columnArray,3,"dd");
-     client.query(queryString,function(e,r){
-      if(e){
-      throw e;
-      }
-       res.send("1"); 
-     });
-    }
-    else{
-     var queryString=common.processString.createQueryString(storeData,columnArray,1,"dd");
-     client.query(queryString,function(e,r){
-    if(e){
-      throw e;
-    }
-    res.send("1");
-      });
-    }
-  });
-});
+
+
+
+
+
 
 /*===================================证件认证=============================*/
-app.get("/WebstormProjects/web/views/displayRights.ejs",function(req,res){
+app.get("/payment",function(req,res){
 res.render("displayRights.ejs",{"title":"特权"});
 });
 
@@ -1250,7 +1193,7 @@ res.render("displayRights.ejs",{"title":"特权"});
 app.post("/WebstormProjects/web/views/addToBlackList.ejs",function(req,res){
  var blackWhom=req.body.d.blackWhom;
  var whoBlacks=req.body.d.whoBlacks;
- var querySting=common.processString.createQueryString([whoBlacks],["username"],2,"blacklist");
+ var querySting = dbUtlity.createQueryString([whoBlacks],["username"],2,"blacklist");
  var client=utility.prepareDb();
  client.query(querySting,function(e,r){
      if(e){
@@ -1262,7 +1205,7 @@ app.post("/WebstormProjects/web/views/addToBlackList.ejs",function(req,res){
        store=JSON.stringify(store);
        var dataArray=[store,whoBlacks];
        var column=["blacklist","username"];
-       var queryString=common.processString.createQueryString(dataArray,column,1,"blacklist");
+       var queryString = dbUtlity.createQueryString(dataArray,column,1,"blacklist");
        client.query(queryString,function(e,r){
         if(e){
          throw e;
@@ -1779,7 +1722,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
       var columnArray=["username"];
       var queryType=2;
       var tableName="extra2";
-      var queryString=common.processString.createQueryString(dataArray,columnArray,queryType,tableName);
+      var queryString = dbUtlity.createQueryString(dataArray,columnArray,queryType,tableName);
       var client=utility.prepareDb();
       client.query(queryString,function(e,r){
          if(e){
@@ -1793,7 +1736,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
          }
          var newR=removeRedundant(storeNewR);
          var storeWatch={};
-         common.processString.recurQuery(newR,"d","falseName",res);
+         dbUtlity.recurQuery(newR,"d","falseName",res);
       });
       return false;
     }
@@ -1804,7 +1747,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
       var columnArray=["watch"];
       var queryType=2
       var tableName="extra2";
-      var queryString=common.processString.createQueryString(dataArray,columnArray,queryType,tableName);
+      var queryString = dbUtlity.createQueryString(dataArray,columnArray,queryType,tableName);
       var client=utility.prepareDb();
       client.query(queryString,function(e,r){
          if(e){
@@ -1818,7 +1761,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
          }
          var newR=removeRedundant(storeNewR);
          var storeWatch={};
-         common.processString.recurQuery(newR,"d","account",res);
+         dbUtlity.recurQuery(newR,"d","account",res);
       });
       return false;
     }
@@ -1828,7 +1771,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
     var columnArray=["username","watch"];
     var table="extra2";
     var type=1;
-    var queryString=common.processString.createQueryString(dataArray,columnArray,type,table);
+    var queryString = dbUtlity.createQueryString(dataArray,columnArray,type,table);
     var client=utility.prepareDb();
     client.query(queryString,function(e){
         if(e){
@@ -1960,10 +1903,7 @@ app.post("/WebstormProjects/web/views/requireDayMatch.ejs",function(req,res){
 })
 
 
-app.get("/user/:uid",function(req,res){
-var thisUid=req.params.uid;
-res.render("./user.ejs",{"title":"test","id":thisUid});
-});
+
 
 
 
@@ -2012,119 +1952,10 @@ function removeRedundant(o){
 
 
 
-if(!common){
-    var common={};
-    common.processString=(function(){
-        function _recurQuery(dataArray,table,targetColumn,res,queryType){
-           if(!dataArray instanceof Array){
-            throw new Error("dataArray must be an array");
-           }
-           if(typeof(table)!='string'){
-             throw new Error("dataArray must be a string");
-           }
-           var recurIndex=0;
-           var client=utility.prepareDb();
-           var storeQueryResult=[];
-           recurQueryDetail(dataArray,table,targetColumn,res);
-           function recurQueryDetail(dataArray,table,targetColumn,res){
-             if(recurIndex===dataArray.length){
-             res.send(storeQueryResult);
-             return false;
-            }
-            var queryString="select * from "+table+" where "+targetColumn+"='"+dataArray[recurIndex]+"'";
-            client.query(queryString,function(e,r){
-              if(e){
-               throw e;
-              }
-              storeQueryResult.push(r);
-              recurIndex++;
-              recurQueryDetail(dataArray,table,targetColumn,res);
-            });
-          }
-        }
-        function _createQueryString(dataArray,columnArray,queryType,tableName){
-            if(arguments.length!==4){
-                throw new Error("arguments'length must be four");
-            }
-            if(!dataArray instanceof Array||!columnArray instanceof Array){
-                throw new Error("Two arguments must be Array");
-            }
-            if(typeof queryType!=="number"){
-                throw new Error("queryType must be a number");
-            }
-            if(typeof tableName!=="string"){
-                throw new Error("tableName must be a string");
-            }
-            var queryString="";
-            if(queryType===1){
-                //insert
-                queryString="insert into "+tableName+"(";
-                for(var i=0;i<columnArray.length;i++){
-                    if(i===(columnArray.length-1)){
-                        queryString+=(columnArray[i]+")");
-                        break;
-                    }
-                    queryString+=(columnArray[i]+",");
-                }
-                queryString=queryString+" values(";
-                for(var j=0;j<dataArray.length;j++){
-                    if(j===(dataArray.length-1)){
-                        queryString+=("'"+dataArray[j]+"'"+")");
-                        break;
-                    }
-                    queryString+=("'"+dataArray[j]+"'" +",");
-                }
-                return queryString;
-            }
-            else if(queryType===2){
-            //select
-                queryString="select * from "+tableName+" where ";
-                if(columnArray.length===1){
-                    queryString="select * from "+tableName+" where "+columnArray[0]+"="+"'"+dataArray+"'";
-                    return queryString;
-                }
-                else{
-                    for(var i=0;i<columnArray.length;i++){
-                        if(i===(columnArray.length-1)){
-                            queryString+=(columnArray[i]+"='"+dataArray[i]+"'");
-                            break;
-                        }
-                        queryString+=(columnArray[i]+"='"+dataArray[i]+"'"+" and ");
-                    }
-                     return queryString;
-                }
-            }
-            else if(queryType==3){
-             //update
-             var queryString="update "+tableName+" set ";
-             for(var i=0;i<columnArray.length;i++){
-                if(i===(columnArray.length-2)){
-                  queryString+=(columnArray[i]+"='"+dataArray[i]+"'");
-                  continue;
-                }
-                if(i===(columnArray.length-1)){
-                    queryString+=(" where username='"+dataArray[i]+"'");
-                    break;
-                }
-                queryString+=(columnArray[i]+"='"+dataArray[i]+"'"+",");
-              }
-               return queryString;
-            }
-        }
-        return {
-            createQueryString:function(dataArray,columnArray,queryType,tableName){
-               var r= _createQueryString(dataArray,columnArray,queryType,tableName);
-               return r;
-            },
-            recurQuery:function(dataArray,table,targetColumn,res,queryType){
-              _recurQuery(dataArray,table,targetColumn,res,queryType);
-            }
-        };
-    })();
-}
-else{
-    throw new error("name space in use");
-}
+
+
+
+
 
 
 
@@ -2138,14 +1969,6 @@ app.get("/",routes.index);
 app.get("/WebstormProjects/web/views/index.ejs",routes.index);
 入口的备用路由，代码稳定后删除
 */
-
-
-
-
-
-
-
-
 
 
 
@@ -2274,9 +2097,40 @@ app.get("/mapSearch",routes.mapSearch);
 
 
 
-/* edit info*/
-
-app.get("/editBasic1.ejs",routes.edit);
 
 
-/* edit info*/
+/* user */
+app.get("/user/userDetails.ejs", routes.checkUserDetails);
+//用户查看其它用户的详细资料
+app.get("/user/match_condition",routes.getMatchCondition);
+app.post("/user/edit_match_condition",routes.editMatchCondition);
+app.get("/user/editBasic1.ejs",routes.edit);
+app.post("/user/editBasic1.ejs",routes.editPost);
+app.get("/user/edit1.ejs",routes.edit);
+app.post("/user/edit1.ejs",routes.editPost);
+app.get("/user/edit2.ejs",routes.edit);
+app.post("/user/edit2.ejs",routes.editPost);
+app.get("/user/edit3.ejs",routes.edit);
+app.post("/user/edit3.ejs",routes.editPost);
+app.get("/user/edit4.ejs",routes.edit);
+app.post("/user/edit4.ejs",routes.editPost);
+app.get("/user/edit5.ejs",routes.edit);
+app.post("/user/edit5.ejs",routes.editPost);
+app.get("/user/edit6.ejs",routes.edit);
+app.post("/user/edit6.ejs",routes.editPost);
+app.get("/user/editPic.ejs",routes.edit);
+app.post("/user/editPic.ejs",routes.editPost);
+app.get("/user/userPhotoes.ejs",routes.edit);
+app.get("/user/matchCondition.ejs",routes.matchCondition);
+app.post("/user/matchConditionPost",routes.matchConditionPost);
+app.post("/user/fetchCondtion",routes.fetchCondtion);
+
+/* user */
+
+
+
+
+
+
+
+app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);

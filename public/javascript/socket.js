@@ -99,7 +99,7 @@ function showUserPic(){
                         "<span class='eachUserWrap5'>"+education+"</span>"+
                         "<span class='eachUserWrap6'>"+income+"</span>"+
                         "<div class='eachUserWrap7'>"+selfIntro+"</div>"+
-						"<span class='rights'><a href='displayRights.ejs'>开通特权</a></span>"+
+						"<span class='rights'><a href='/payment'>开通特权</a></span>"+
 					    "<p class='lastLoginTime'><a href='#'>最后登陆时间</a></p>"+ //added on 2013/10/23
 						"<p class='loginReminder'><a href='#'>上线提醒</a></p>"+  //added on 2013/10/24
                         "<p><span><a href='javascript:void(0)' id='sendMsg'>发送悄悄话</a></span></p>"+
@@ -107,7 +107,7 @@ function showUserPic(){
                        //"<p><span><a href='javascript:void(0)' id='watch' onclick='watch(this)'>关注Ta</a></span></p>"+
                         "<p><span><a href='#' class='watch'>关注Ta</a></span></p>"+
 						"<p><span><a href='javascript:void(0)' id='addToBlackList' onclick='addToBlackList(this)'>加入黑名单</a></span></p>"+
-                        "<div><a class='eachUserWrap8' href='userDetails.ejs?check="+account+"'"+">查看详细</a></div>"+
+                        "<div><a class='eachUserWrap8' href='/user/userDetails.ejs?check="+account+"'"+">查看详细</a></div>"+
                        "<div class='isOnline'></div>"+
                         "</div>");
                     eachUserWrap.appendTo($("#showingPic")); 

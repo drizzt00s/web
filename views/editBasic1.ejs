@@ -31,7 +31,7 @@ position:absolute;
        <a href="#" id="closeToEditFixedInfo">关闭</a>
      </div>
   </div>
-  <form action="editBasic1.ejs" method="post" id="editBasic1">
+  <form action="/user/editBasic1.ejs" method="post" id="editBasic1">
     <div>
      <label for="editFalseName">昵称:</label><input type="text" id="editFalseName" value="<%=userFalseName%>" name="editFalseName" />
     </div>
@@ -133,7 +133,6 @@ position:absolute;
        </select>
    </div>
    <input type="submit" value="保存并继续" /><br />
-   <input type="submit" value="提交" /><br />
    <input type="hidden" name="checkSubmit" />
   </form>
   <div>填写完整，资料完整度增长30%（审核不通过则还原）</div>

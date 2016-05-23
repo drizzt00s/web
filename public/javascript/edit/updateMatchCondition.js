@@ -45,7 +45,7 @@ function updateMatchCondition(){
 	  dataAll.username=username;
 	  dataAll.data=storeData;
 	  var newSearch=new Search();
-	  newSearch.ajaxPost("/WebstormProjects/web/views/editMatchCondition.ejs",dataAll,editMatchCallback);
+	  newSearch.ajaxPost("/user/edit_match_condition",dataAll,editMatchCallback);
     function editMatchCallback(){
 	  alert("修改速配条件成功!");
 	 }

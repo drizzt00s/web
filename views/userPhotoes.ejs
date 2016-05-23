@@ -2,7 +2,7 @@
 $(function(){
   function getUserPhoto(){
   var getUsername=$("#hiddenUsername").val();
-  var url="ajax.ejs";
+  var url="/route/login/showUserPic";
   $.ajax({
     url:url+"?username="+getUsername+"&isShowPic=1",
     cache:false,

@@ -2,86 +2,1406 @@
 1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
 1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   'angular' ]
+1 verbose cli   '-g',
+1 verbose cli   'node-inspector' ]
 2 info using npm@1.1.46
 3 info using node@v0.8.5
 4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
 5 verbose config file C:\Users\wanmengj\.npmrc
 6 verbose config file C:\Program Files (x86)\nodejs\etc\npmrc
 7 verbose config file C:\Program Files (x86)\nodejs\node_modules\npm\npmrc
-8 verbose read json C:\Users\wanmengj\pro\web\package.json
-9 warn package.json application-name@0.0.1 No README.md file found!
-10 verbose read json C:\Users\wanmengj\pro\web\node_modules\ajax.js\package.json
-11 verbose read json C:\Users\wanmengj\pro\web\node_modules\commented.txt\package.json
-12 verbose read json C:\Users\wanmengj\pro\web\node_modules\connect\package.json
-13 verbose read json C:\Users\wanmengj\pro\web\node_modules\connect-mongo\package.json
-14 verbose read json C:\Users\wanmengj\pro\web\node_modules\createHtml.js\package.json
-15 verbose read json C:\Users\wanmengj\pro\web\node_modules\db.js\package.json
-16 verbose read json C:\Users\wanmengj\pro\web\node_modules\dbSettings.js\package.json
-17 verbose read json C:\Users\wanmengj\pro\web\node_modules\debug\package.json
-18 verbose read json C:\Users\wanmengj\pro\web\node_modules\ejs\package.json
-19 verbose read json C:\Users\wanmengj\pro\web\node_modules\express\package.json
-20 verbose read json C:\Users\wanmengj\pro\web\node_modules\express-partials\package.json
-21 verbose read json C:\Users\wanmengj\pro\web\node_modules\fresh\package.json
-22 verbose read json C:\Users\wanmengj\pro\web\node_modules\harmony\package.json
-23 verbose read json C:\Users\wanmengj\pro\web\node_modules\imagemagick\package.json
-24 verbose read json C:\Users\wanmengj\pro\web\node_modules\index.js\package.json
-25 verbose read json C:\Users\wanmengj\pro\web\node_modules\moduleUser.js\package.json
-26 verbose read json C:\Users\wanmengj\pro\web\node_modules\mongodb\package.json
-27 verbose read json C:\Users\wanmengj\pro\web\node_modules\mysql\package.json
-28 verbose read json C:\Users\wanmengj\pro\web\node_modules\mysqlSettings.js\package.json
-29 verbose read json C:\Users\wanmengj\pro\web\node_modules\range-parser\package.json
-30 verbose read json C:\Users\wanmengj\pro\web\node_modules\routeIndex.js\package.json
-31 verbose read json C:\Users\wanmengj\pro\web\node_modules\send\package.json
-32 verbose read json C:\Users\wanmengj\pro\web\node_modules\serverCommon.js\package.json
-33 verbose read json C:\Users\wanmengj\pro\web\node_modules\socket.io\package.json
-34 verbose read json C:\Users\wanmengj\pro\web\node_modules\socketAll.js\package.json
-35 verbose read json C:\Users\wanmengj\pro\web\node_modules\stringTools.js\package.json
-36 verbose read json C:\Users\wanmengj\pro\web\node_modules\user.js\package.json
-37 verbose read json C:\Users\wanmengj\pro\web\node_modules\utlity.js\package.json
-38 verbose from cache C:\Users\wanmengj\pro\web\package.json
-39 verbose readDependencies using package.json deps
-40 verbose cache add [ 'angular', null ]
-41 silly cache add name=undefined spec="angular" args=["angular",null]
-42 verbose parsed url { pathname: 'angular', path: 'angular', href: 'angular' }
-43 silly lockFile 54e0c177-angular angular
-44 verbose lock angular C:\Users\wanmengj\AppData\Roaming\npm-cache\54e0c177-angular.lock
-45 silly lockFile 54e0c177-angular angular
-46 verbose addNamed [ 'angular', '' ]
-47 verbose addNamed [ null, '' ]
-48 silly lockFile fdbbf89d-angular angular@
-49 verbose lock angular@ C:\Users\wanmengj\AppData\Roaming\npm-cache\fdbbf89d-angular.lock
-50 silly addNameRange { name: 'angular', range: '', hasData: false }
-51 verbose url raw angular
-52 verbose url resolving [ 'https://registry.npmjs.org/', './angular' ]
-53 verbose url resolved https://registry.npmjs.org/angular
-54 info retry registry request attempt 1 at 15:50:49
-55 http GET https://registry.npmjs.org/angular
-56 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
-57 info retry registry request attempt 2 at 15:51:01
-58 http GET https://registry.npmjs.org/angular
-59 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
-60 info retry registry request attempt 3 at 15:52:02
-61 http GET https://registry.npmjs.org/angular
-62 silly lockFile fdbbf89d-angular angular@
-63 error Error: SSL Error: CERT_UNTRUSTED
-63 error     at ClientRequest.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\main.js:440:26)
-63 error     at ClientRequest.g (events.js:185:14)
-63 error     at ClientRequest.EventEmitter.emit (events.js:88:17)
-63 error     at HTTPParser.parserOnIncomingClient [as onIncoming] (http.js:1455:7)
-63 error     at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:111:23)
-63 error     at CleartextStream.socketOnData [as ondata] (http.js:1366:20)
-63 error     at CleartextStream.CryptoStream._push (tls.js:485:27)
-63 error     at SecurePair.cycle (tls.js:839:20)
-63 error     at EncryptedStream.CryptoStream.write (tls.js:220:13)
-63 error     at Socket.ondata (stream.js:38:26)
-64 error If you need help, you may report this log at:
-64 error     <http://github.com/isaacs/npm/issues>
-64 error or email it to:
-64 error     <npm-@googlegroups.com>
-65 error System Windows_NT 6.1.7601
-66 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "angular"
-67 error cwd C:\Users\wanmengj\pro\web
-68 error node -v v0.8.5
-69 error npm -v 1.1.46
-70 verbose exit [ 1, true ]
+8 verbose read json C:\Users\wanmengj\AppData\Roaming\npm\package.json
+9 verbose read json C:\Users\wanmengj\AppData\Roaming\npm\package.json
+10 verbose cache add [ 'node-inspector', null ]
+11 silly cache add name=undefined spec="node-inspector" args=["node-inspector",null]
+12 verbose parsed url { pathname: 'node-inspector',
+12 verbose parsed url   path: 'node-inspector',
+12 verbose parsed url   href: 'node-inspector' }
+13 silly lockFile 4198ef9e-node-inspector node-inspector
+14 verbose lock node-inspector C:\Users\wanmengj\AppData\Roaming\npm-cache\4198ef9e-node-inspector.lock
+15 silly lockFile 4198ef9e-node-inspector node-inspector
+16 verbose addNamed [ 'node-inspector', '' ]
+17 verbose addNamed [ null, '' ]
+18 silly lockFile e68b88da-node-inspector node-inspector@
+19 verbose lock node-inspector@ C:\Users\wanmengj\AppData\Roaming\npm-cache\e68b88da-node-inspector.lock
+20 silly addNameRange { name: 'node-inspector', range: '', hasData: false }
+21 verbose url raw node-inspector
+22 verbose url resolving [ 'https://registry.npmjs.org/', './node-inspector' ]
+23 verbose url resolved https://registry.npmjs.org/node-inspector
+24 info retry registry request attempt 1 at 12:25:58
+25 verbose etag "7N6XI20BQK17IYEKCLWTP20YC"
+26 http GET https://registry.npmjs.org/node-inspector
+27 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+28 info retry registry request attempt 2 at 12:26:09
+29 verbose etag "7N6XI20BQK17IYEKCLWTP20YC"
+30 http GET https://registry.npmjs.org/node-inspector
+31 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+32 info retry registry request attempt 3 at 12:27:09
+33 verbose etag "7N6XI20BQK17IYEKCLWTP20YC"
+34 http GET https://registry.npmjs.org/node-inspector
+35 silly registry.get cb [ 304, undefined ]
+36 verbose etag node-inspector from cache
+37 silly addNameRange number 2 { name: 'node-inspector', range: '', hasData: true }
+38 silly addNameRange versions [ 'node-inspector',
+38 silly addNameRange   [ '0.0.1',
+38 silly addNameRange     '0.0.2',
+38 silly addNameRange     '0.0.3',
+38 silly addNameRange     '0.0.4',
+38 silly addNameRange     '0.1.0',
+38 silly addNameRange     '0.1.1',
+38 silly addNameRange     '0.1.2',
+38 silly addNameRange     '0.1.3',
+38 silly addNameRange     '0.1.4',
+38 silly addNameRange     '0.1.5',
+38 silly addNameRange     '0.1.6',
+38 silly addNameRange     '0.1.7',
+38 silly addNameRange     '0.1.8',
+38 silly addNameRange     '0.1.9',
+38 silly addNameRange     '0.1.10',
+38 silly addNameRange     '0.3.0',
+38 silly addNameRange     '0.3.1',
+38 silly addNameRange     '0.3.2',
+38 silly addNameRange     '0.3.3',
+38 silly addNameRange     '0.3.4',
+38 silly addNameRange     '0.4.0',
+38 silly addNameRange     '0.5.0',
+38 silly addNameRange     '0.6.0',
+38 silly addNameRange     '0.6.1',
+38 silly addNameRange     '0.6.2',
+38 silly addNameRange     '0.7.0-1',
+38 silly addNameRange     '0.2.0-beta1',
+38 silly addNameRange     '0.2.0-beta2',
+38 silly addNameRange     '0.2.0-beta3',
+38 silly addNameRange     '0.2.0-beta4',
+38 silly addNameRange     '0.3.0-preview1',
+38 silly addNameRange     '0.7.0-2',
+38 silly addNameRange     '0.7.0',
+38 silly addNameRange     '0.7.1',
+38 silly addNameRange     '0.7.2',
+38 silly addNameRange     '0.7.3',
+38 silly addNameRange     '0.7.4',
+38 silly addNameRange     '0.8.0',
+38 silly addNameRange     '0.8.1',
+38 silly addNameRange     '0.8.3',
+38 silly addNameRange     '0.9.0',
+38 silly addNameRange     '0.9.1',
+38 silly addNameRange     '0.9.2',
+38 silly addNameRange     '0.10.0',
+38 silly addNameRange     '0.10.1',
+38 silly addNameRange     '0.10.2',
+38 silly addNameRange     '0.11.0',
+38 silly addNameRange     '0.11.1',
+38 silly addNameRange     '0.11.2',
+38 silly addNameRange     '0.12.0',
+38 silly addNameRange     '0.12.1',
+38 silly addNameRange     '0.12.2',
+38 silly addNameRange     '0.12.3',
+38 silly addNameRange     '0.12.4',
+38 silly addNameRange     '0.12.5',
+38 silly addNameRange     '0.12.6',
+38 silly addNameRange     '0.12.7',
+38 silly addNameRange     '0.12.8' ] ]
+39 verbose addNamed [ 'node-inspector', '0.12.8' ]
+40 verbose addNamed [ '0.12.8', '0.12.8' ]
+41 silly lockFile ec4e2ca3-node-inspector-0-12-8 node-inspector@0.12.8
+42 verbose lock node-inspector@0.12.8 C:\Users\wanmengj\AppData\Roaming\npm-cache\ec4e2ca3-node-inspector-0-12-8.lock
+43 verbose read json C:\Users\wanmengj\AppData\Roaming\npm-cache\node-inspector\0.12.8\package\package.json
+44 warn package.json node-inspector@0.12.8 No README.md file found!
+45 silly lockFile ec4e2ca3-node-inspector-0-12-8 node-inspector@0.12.8
+46 silly lockFile e68b88da-node-inspector node-inspector@
+47 silly resolved [ { name: 'node-inspector',
+47 silly resolved     version: '0.12.8',
+47 silly resolved     description: 'Web Inspector based nodeJS debugger',
+47 silly resolved     homepage: 'http://github.com/node-inspector/node-inspector',
+47 silly resolved     author: { name: 'Danny Coates', email: 'dannycoates@gmail.com' },
+47 silly resolved     keywords: [ 'debug', 'debugger', 'inspector', 'profiler' ],
+47 silly resolved     repository:
+47 silly resolved      { type: 'git',
+47 silly resolved        url: 'git+ssh://git@github.com/node-inspector/node-inspector.git' },
+47 silly resolved     engines: { node: '>=0.8.0' },
+47 silly resolved     bin:
+47 silly resolved      { 'node-inspector': './bin/inspector.js',
+47 silly resolved        'node-debug': './bin/node-debug.js' },
+47 silly resolved     dependencies:
+47 silly resolved      { async: '~0.9',
+47 silly resolved        'biased-opener': '~0.2.2',
+47 silly resolved        debug: '^2.2.0',
+47 silly resolved        express: '^4.12.3',
+47 silly resolved        glob: '^5.0.5',
+47 silly resolved        'path-is-absolute': '^1.0.0',
+47 silly resolved        rc: '^1.0.1',
+47 silly resolved        semver: '^4.3.4',
+47 silly resolved        'serve-favicon': '^2.1.1',
+47 silly resolved        'strong-data-uri': '^1.0.0',
+47 silly resolved        'v8-debug': '~0.7.1',
+47 silly resolved        'v8-profiler': '~5.6.0',
+47 silly resolved        which: '^1.1.1',
+47 silly resolved        ws: '^1.0.1',
+47 silly resolved        yargs: '^3.9.0' },
+47 silly resolved     devDependencies:
+47 silly resolved      { promise: '^7.0.3',
+47 silly resolved        mocha: '^1.21',
+47 silly resolved        chai: '^2.1',
+47 silly resolved        jshint: '^2.4.4',
+47 silly resolved        'fs-extra': '~0.8.1' },
+47 silly resolved     preferGlobal: true,
+47 silly resolved     scripts:
+47 silly resolved      { pretest: 'jshint .',
+47 silly resolved        test: 'mocha',
+47 silly resolved        'generate-front-end': 'node --harmony tools/generate-front-end' },
+47 silly resolved     contributors:
+47 silly resolved      [ [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object],
+47 silly resolved        [Object] ],
+47 silly resolved     gitHead: 'c2dd1eb0129d3d27528a09a8c1d0997f9485ed3c',
+47 silly resolved     bugs: { url: 'https://github.com/node-inspector/node-inspector/issues' },
+47 silly resolved     _id: 'node-inspector@0.12.8',
+47 silly resolved     _shasum: 'a59c3dc47cb08d15a2e526be3a1da7d64e5c227f',
+47 silly resolved     _from: 'node-inspector',
+47 silly resolved     _npmVersion: '2.14.12',
+47 silly resolved     _nodeVersion: '4.3.0',
+47 silly resolved     _npmUser: { name: '3y3', email: '3y3@bk.ru' },
+47 silly resolved     dist:
+47 silly resolved      { shasum: 'a59c3dc47cb08d15a2e526be3a1da7d64e5c227f',
+47 silly resolved        tarball: 'https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz' },
+47 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+47 silly resolved     _npmOperationalInternal:
+47 silly resolved      { host: 'packages-12-west.internal.npmjs.com',
+47 silly resolved        tmp: 'tmp/node-inspector-0.12.8.tgz_1460144653202_0.7097845498938113' },
+47 silly resolved     directories: {},
+47 silly resolved     _resolved: 'https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz',
+47 silly resolved     readme: 'ERROR: No README.md file found!' } ]
+48 info install node-inspector@0.12.8 into C:\Users\wanmengj\AppData\Roaming\npm
+49 info installOne node-inspector@0.12.8
+50 verbose from cache C:\Users\wanmengj\AppData\Roaming\npm-cache\node-inspector\0.12.8\package\package.json
+51 info C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector unbuild
+52 verbose read json C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector\package.json
+53 verbose tar unpack C:\Users\wanmengj\AppData\Roaming\npm-cache\node-inspector\0.12.8\package.tgz
+54 silly lockFile c20c7e69--npm-node-modules-node-inspector C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector
+55 verbose lock C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector C:\Users\wanmengj\AppData\Roaming\npm-cache\c20c7e69--npm-node-modules-node-inspector.lock
+56 silly gunzTarPerm modes [ '755', '644' ]
+57 silly gunzTarPerm extractEntry package.json
+58 silly gunzTarPerm extractEntry README.md
+59 silly gunzTarPerm extractEntry LICENSE
+60 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+61 silly gunzTarPerm extractEntry index.js
+62 silly gunzTarPerm extractEntry bin/inspector.js
+63 silly gunzTarPerm extractEntry bin/node-debug.js
+64 silly gunzTarPerm extractEntry bin/run-repl.js
+65 silly gunzTarPerm extractEntry ChangeLog.md
+66 silly gunzTarPerm extractEntry .gitattributes
+67 silly gunzTarPerm modified mode [ '.gitattributes', 436, 420 ]
+68 silly gunzTarPerm extractEntry .jshintrc
+69 silly gunzTarPerm extractEntry .jshintignore
+70 silly gunzTarPerm extractEntry docs/embedding.md
+71 silly gunzTarPerm modified mode [ 'docs/embedding.md', 436, 420 ]
+72 silly gunzTarPerm extractEntry front-end/Runtime.js
+73 silly gunzTarPerm extractEntry front-end/devtools.js
+74 silly gunzTarPerm extractEntry front-end/externs.js
+75 silly gunzTarPerm extractEntry front-end/inspector.js
+76 silly gunzTarPerm extractEntry front-end/toolbox.js
+77 silly gunzTarPerm extractEntry front-end/treeoutline.js
+78 silly gunzTarPerm extractEntry front-end/inspectorSyntaxHighlight.css
+79 silly gunzTarPerm extractEntry front-end/common/Color.js
+80 silly gunzTarPerm extractEntry front-end/common/NotificationService.js
+81 silly gunzTarPerm extractEntry front-end/common/Object.js
+82 silly gunzTarPerm extractEntry front-end/common/ParsedURL.js
+83 silly gunzTarPerm extractEntry front-end/common/Progress.js
+84 silly gunzTarPerm extractEntry front-end/common/ModuleExtensionInterfaces.js
+85 silly gunzTarPerm extractEntry front-end/common/Settings.js
+86 silly gunzTarPerm extractEntry front-end/common/StaticContentProvider.js
+87 silly gunzTarPerm extractEntry front-end/common/TextRange.js
+88 silly gunzTarPerm extractEntry front-end/common/TextUtils.js
+89 silly gunzTarPerm extractEntry front-end/common/Throttler.js
+90 silly gunzTarPerm extractEntry front-end/common/Lock.js
+91 silly gunzTarPerm extractEntry front-end/common/UIString.js
+92 silly gunzTarPerm extractEntry front-end/common/Geometry.js
+93 silly gunzTarPerm extractEntry front-end/common/WebInspector.js
+94 silly gunzTarPerm extractEntry front-end/common/ContentProvider.js
+95 silly gunzTarPerm extractEntry front-end/common/WorkerRuntime.js
+96 silly gunzTarPerm extractEntry front-end/common/Console.js
+97 silly gunzTarPerm extractEntry front-end/common/ResourceType.js
+98 silly gunzTarPerm extractEntry front-end/common/module.json
+99 silly gunzTarPerm extractEntry front-end/components/CookiesTable.js
+100 silly gunzTarPerm extractEntry front-end/components/Drawer.js
+101 silly gunzTarPerm extractEntry front-end/components/ExecutionContextSelector.js
+102 silly gunzTarPerm extractEntry front-end/components/HandlerRegistry.js
+103 silly gunzTarPerm extractEntry front-end/components/DockController.js
+104 silly gunzTarPerm extractEntry front-end/components/DOMBreakpointsSidebarPane.js
+105 silly gunzTarPerm extractEntry front-end/components/NativeBreakpointsSidebarPane.js
+106 silly gunzTarPerm extractEntry front-end/components/ObjectPopoverHelper.js
+107 silly gunzTarPerm extractEntry front-end/components/ObjectPropertiesSection.js
+108 silly gunzTarPerm extractEntry front-end/components/ShortcutsScreen.js
+109 silly gunzTarPerm extractEntry front-end/components/DOMPresentationUtils.js
+110 silly gunzTarPerm extractEntry front-end/components/TargetsComboBoxController.js
+111 silly gunzTarPerm extractEntry front-end/components/InspectElementModeController.js
+112 silly gunzTarPerm extractEntry front-end/components/InspectorView.js
+113 silly gunzTarPerm extractEntry front-end/components/breakpointsList.css
+114 silly gunzTarPerm extractEntry front-end/components/module.json
+115 silly gunzTarPerm extractEntry front-end/console/ConsolePanel.js
+116 silly gunzTarPerm extractEntry front-end/console/ConsoleView.js
+117 silly gunzTarPerm extractEntry front-end/console/ConsoleViewMessage.js
+118 silly gunzTarPerm extractEntry front-end/console/consoleView.css
+119 silly gunzTarPerm extractEntry front-end/console/module.json
+120 silly gunzTarPerm extractEntry front-end/devices/DevicesView.js
+121 silly gunzTarPerm extractEntry front-end/devices/devicesView.css
+122 silly gunzTarPerm extractEntry front-end/devices/module.json
+123 silly gunzTarPerm extractEntry front-end/devtools.css
+124 silly gunzTarPerm extractEntry front-end/devtools.html
+125 silly gunzTarPerm extractEntry front-end/Images/popoverArrows.png
+126 silly gunzTarPerm extractEntry front-end/Images/applicationCache.png
+127 silly gunzTarPerm extractEntry front-end/Images/breakpoint.png
+128 silly gunzTarPerm extractEntry front-end/Images/breakpointConditional.png
+129 silly gunzTarPerm extractEntry front-end/Images/breakpointConditional_2x.png
+130 silly gunzTarPerm extractEntry front-end/Images/breakpoint_2x.png
+131 silly gunzTarPerm extractEntry front-end/Images/checker.png
+132 silly gunzTarPerm extractEntry front-end/Images/chromeDisabledSelect.png
+133 silly gunzTarPerm extractEntry front-end/Images/chromeDisabledSelect_2x.png
+134 silly gunzTarPerm extractEntry front-end/Images/chromeLeft.png
+135 silly gunzTarPerm extractEntry front-end/Images/chromeMiddle.png
+136 silly gunzTarPerm extractEntry front-end/Images/chromeRight.png
+137 silly gunzTarPerm extractEntry front-end/Images/chromeSelect.png
+138 silly gunzTarPerm extractEntry front-end/Images/chromeSelect_2x.png
+139 silly gunzTarPerm extractEntry front-end/Images/cookie.png
+140 silly gunzTarPerm extractEntry front-end/Images/database.png
+141 silly gunzTarPerm extractEntry front-end/Images/databaseTable.png
+142 silly gunzTarPerm extractEntry front-end/Images/deleteIcon.png
+143 silly gunzTarPerm extractEntry front-end/Images/domain.png
+144 silly gunzTarPerm extractEntry front-end/Images/errorWave.png
+145 silly gunzTarPerm extractEntry front-end/Images/errorWave_2x.png
+146 silly gunzTarPerm extractEntry front-end/Images/fileSystem.png
+147 silly gunzTarPerm extractEntry front-end/Images/forward.png
+148 silly gunzTarPerm extractEntry front-end/Images/frame.png
+149 silly gunzTarPerm extractEntry front-end/Images/graphLabelCalloutLeft.png
+150 silly gunzTarPerm extractEntry front-end/Images/graphLabelCalloutRight.png
+151 silly gunzTarPerm extractEntry front-end/Images/indexedDB.png
+152 silly gunzTarPerm extractEntry front-end/Images/indexedDBIndex.png
+153 silly gunzTarPerm extractEntry front-end/Images/indexedDBObjectStore.png
+154 silly gunzTarPerm extractEntry front-end/Images/localStorage.png
+155 silly gunzTarPerm extractEntry front-end/Images/navigationControls.png
+156 silly gunzTarPerm extractEntry front-end/Images/navigationControls_2x.png
+157 silly gunzTarPerm extractEntry front-end/Images/paneAddButtons.png
+158 silly gunzTarPerm extractEntry front-end/Images/paneElementStateButtons.png
+159 silly gunzTarPerm extractEntry front-end/Images/paneFilterButtons.png
+160 silly gunzTarPerm extractEntry front-end/Images/paneRefreshButtons.png
+161 silly gunzTarPerm extractEntry front-end/Images/back.png
+162 silly gunzTarPerm extractEntry front-end/Images/popoverBackground.png
+163 silly gunzTarPerm extractEntry front-end/Images/profileGroupIcon.png
+164 silly gunzTarPerm extractEntry front-end/Images/profileIcon.png
+165 silly gunzTarPerm extractEntry front-end/Images/profileSmallIcon.png
+166 silly gunzTarPerm extractEntry front-end/Images/radioDot.png
+167 silly gunzTarPerm extractEntry front-end/Images/resourceCSSIcon.png
+168 silly gunzTarPerm extractEntry front-end/Images/resourceDocumentIcon.png
+169 silly gunzTarPerm extractEntry front-end/Images/resourceDocumentIconSmall.png
+170 silly gunzTarPerm extractEntry front-end/Images/resourceJSIcon.png
+171 silly gunzTarPerm extractEntry front-end/Images/resourcePlainIcon.png
+172 silly gunzTarPerm extractEntry front-end/Images/resourcePlainIconSmall.png
+173 silly gunzTarPerm extractEntry front-end/Images/resourcesTimeGraphIcon.png
+174 silly gunzTarPerm extractEntry front-end/Images/responsiveDesign.png
+175 silly gunzTarPerm extractEntry front-end/Images/responsiveDesign_2x.png
+176 silly gunzTarPerm extractEntry front-end/Images/searchNext.png
+177 silly gunzTarPerm extractEntry front-end/Images/searchPrev.png
+178 silly gunzTarPerm extractEntry front-end/Images/sessionStorage.png
+179 silly gunzTarPerm extractEntry front-end/Images/settingsListRemove.png
+180 silly gunzTarPerm extractEntry front-end/Images/settingsListRemove_2x.png
+181 silly gunzTarPerm extractEntry front-end/Images/src/breakpoint.svg
+182 silly gunzTarPerm extractEntry front-end/Images/src/breakpointConditional.svg
+183 silly gunzTarPerm extractEntry front-end/Images/src/errorWave.svg
+184 silly gunzTarPerm extractEntry front-end/Images/src/optimize_png.hashes
+185 silly gunzTarPerm extractEntry front-end/Images/src/responsiveDesign.svg
+186 silly gunzTarPerm extractEntry front-end/Images/src/settingsListRemove.svg
+187 silly gunzTarPerm extractEntry front-end/Images/src/statusbarButtonGlyphs.svg
+188 silly gunzTarPerm extractEntry front-end/Images/src/svg2png.hashes
+189 silly gunzTarPerm extractEntry front-end/Images/statusbarButtonGlyphs.png
+190 silly gunzTarPerm extractEntry front-end/Images/statusbarButtonGlyphs_2x.png
+191 silly gunzTarPerm extractEntry front-end/Images/statusbarResizerHorizontal.png
+192 silly gunzTarPerm extractEntry front-end/Images/statusbarResizerVertical.png
+193 silly gunzTarPerm extractEntry front-end/Images/thumbActiveHoriz.png
+194 silly gunzTarPerm extractEntry front-end/Images/thumbActiveVert.png
+195 silly gunzTarPerm extractEntry front-end/Images/thumbHoriz.png
+196 silly gunzTarPerm extractEntry front-end/Images/thumbHoverHoriz.png
+197 silly gunzTarPerm extractEntry front-end/Images/thumbHoverVert.png
+198 silly gunzTarPerm extractEntry front-end/Images/thumbVert.png
+199 silly gunzTarPerm extractEntry front-end/Images/toolbarItemSelected.png
+200 silly gunzTarPerm extractEntry front-end/Images/touchCursor.png
+201 silly gunzTarPerm extractEntry front-end/Images/touchCursor_2x.png
+202 silly gunzTarPerm extractEntry front-end/Images/transformControls.png
+203 silly gunzTarPerm extractEntry front-end/Images/transformControls_2x.png
+204 silly gunzTarPerm extractEntry front-end/devtools.json
+205 silly gunzTarPerm extractEntry front-end/devtools_app/DevToolsAPI.js
+206 silly gunzTarPerm extractEntry front-end/devtools_app/DevToolsApp.js
+207 silly gunzTarPerm extractEntry front-end/devtools_app/InspectorFrontendHostImpl.js
+208 silly gunzTarPerm extractEntry front-end/devtools_app/UITests.js
+209 silly gunzTarPerm extractEntry front-end/devtools_app/module.json
+210 silly gunzTarPerm extractEntry front-end/dialog.css
+211 silly gunzTarPerm extractEntry front-end/documentation/DocumentationCatalog.js
+212 silly gunzTarPerm extractEntry front-end/documentation/DocumentationView.js
+213 silly gunzTarPerm extractEntry front-end/documentation/JSArticle.js
+214 silly gunzTarPerm extractEntry front-end/documentation/WikiParser.js
+215 silly gunzTarPerm extractEntry front-end/documentation/documentationView.css
+216 silly gunzTarPerm extractEntry front-end/documentation/module.json
+217 silly gunzTarPerm extractEntry front-end/elements/AnimationsSidebarPane.js
+218 silly gunzTarPerm extractEntry front-end/elements/ElementsSidebarPane.js
+219 silly gunzTarPerm extractEntry front-end/elements/ElementsTreeOutline.js
+220 silly gunzTarPerm extractEntry front-end/elements/EventListenersSidebarPane.js
+221 silly gunzTarPerm extractEntry front-end/elements/ElementsPanel.js
+222 silly gunzTarPerm extractEntry front-end/elements/PlatformFontsSidebarPane.js
+223 silly gunzTarPerm extractEntry front-end/elements/ElementsBreadcrumbs.js
+224 silly gunzTarPerm extractEntry front-end/elements/Spectrum.js
+225 silly gunzTarPerm extractEntry front-end/elements/StylesSectionModel.js
+226 silly gunzTarPerm extractEntry front-end/elements/StylesSidebarPane.js
+227 silly gunzTarPerm extractEntry front-end/elements/MetricsSidebarPane.js
+228 silly gunzTarPerm extractEntry front-end/elements/PropertiesSidebarPane.js
+229 silly gunzTarPerm extractEntry front-end/elements/breadcrumbs.css
+230 silly gunzTarPerm extractEntry front-end/elements/elementsPanel.css
+231 silly gunzTarPerm extractEntry front-end/elements/elementsTreeOutline.css
+232 silly gunzTarPerm extractEntry front-end/elements/module.json
+233 silly gunzTarPerm extractEntry front-end/elements/spectrum.css
+234 silly gunzTarPerm extractEntry front-end/extensions/ExtensionAPI.js
+235 silly gunzTarPerm extractEntry front-end/extensions/ExtensionAuditCategory.js
+236 silly gunzTarPerm extractEntry front-end/extensions/ExtensionPanel.js
+237 silly gunzTarPerm extractEntry front-end/extensions/ExtensionRegistryStub.js
+238 silly gunzTarPerm extractEntry front-end/extensions/ExtensionServer.js
+239 silly gunzTarPerm extractEntry front-end/extensions/ExtensionView.js
+240 silly gunzTarPerm extractEntry front-end/extensions/module.json
+241 silly gunzTarPerm extractEntry front-end/UglifyJS/parse-js.js
+242 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/AllocationProfile.js
+243 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/HeapSnapshot.js
+244 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/HeapSnapshotLoader.js
+245 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/HeapSnapshotWorker.js
+246 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/HeapSnapshotWorkerDispatcher.js
+247 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/JSHeapSnapshot.js
+248 silly gunzTarPerm extractEntry front-end/heap_snapshot_worker/module.json
+249 silly gunzTarPerm extractEntry front-end/host/InspectorFrontendHost.js
+250 silly gunzTarPerm extractEntry front-end/host/Platform.js
+251 silly gunzTarPerm extractEntry front-end/host/UserMetrics.js
+252 silly gunzTarPerm extractEntry front-end/host/module.json
+253 silly gunzTarPerm extractEntry front-end/inspector.css
+254 silly gunzTarPerm extractEntry front-end/inspector.html
+255 silly gunzTarPerm extractEntry front-end/audits/AuditCategories.js
+256 silly gunzTarPerm extractEntry front-end/audits/AuditController.js
+257 silly gunzTarPerm extractEntry front-end/audits/AuditExtensionCategory.js
+258 silly gunzTarPerm extractEntry front-end/audits/AuditFormatters.js
+259 silly gunzTarPerm extractEntry front-end/audits/AuditCategory.js
+260 silly gunzTarPerm extractEntry front-end/audits/AuditResultView.js
+261 silly gunzTarPerm extractEntry front-end/audits/AuditRules.js
+262 silly gunzTarPerm extractEntry front-end/audits/AuditsPanel.js
+263 silly gunzTarPerm extractEntry front-end/audits/AuditLauncherView.js
+264 silly gunzTarPerm extractEntry front-end/audits/auditsPanel.css
+265 silly gunzTarPerm extractEntry front-end/audits/module.json
+266 silly gunzTarPerm extractEntry front-end/inspector.json
+267 silly gunzTarPerm extractEntry front-end/inspectorCommon.css
+268 silly gunzTarPerm extractEntry front-end/inspectorStyle.css
+269 silly gunzTarPerm extractEntry front-end/OWNERS
+270 silly gunzTarPerm extractEntry front-end/layers/LayerPaintProfilerView.js
+271 silly gunzTarPerm extractEntry front-end/layers/LayersPanel.js
+272 silly gunzTarPerm extractEntry front-end/layers/module.json
+273 silly gunzTarPerm extractEntry front-end/main/AdvancedApp.js
+274 silly gunzTarPerm extractEntry front-end/main/HelpScreenUntilReload.js
+275 silly gunzTarPerm extractEntry front-end/main/Main.js
+276 silly gunzTarPerm extractEntry front-end/main/OverridesView.js
+277 silly gunzTarPerm extractEntry front-end/main/RenderingOptions.js
+278 silly gunzTarPerm extractEntry front-end/main/App.js
+279 silly gunzTarPerm extractEntry front-end/main/SimpleApp.js
+280 silly gunzTarPerm extractEntry front-end/main/TestController.js
+281 silly gunzTarPerm extractEntry front-end/main/Tests.js
+282 silly gunzTarPerm extractEntry front-end/main/ScreencastApp.js
+283 silly gunzTarPerm extractEntry front-end/main/accelerometer.css
+284 silly gunzTarPerm extractEntry front-end/main/module.json
+285 silly gunzTarPerm extractEntry front-end/main/overrides.css
+286 silly gunzTarPerm extractEntry front-end/network/FilterSuggestionBuilder.js
+287 silly gunzTarPerm extractEntry front-end/network/NetworkPanel.js
+288 silly gunzTarPerm extractEntry front-end/network/NetworkTimeCalculator.js
+289 silly gunzTarPerm extractEntry front-end/network/RequestCookiesView.js
+290 silly gunzTarPerm extractEntry front-end/network/NetworkLogView.js
+291 silly gunzTarPerm extractEntry front-end/network/RequestHeadersView.js
+292 silly gunzTarPerm extractEntry front-end/network/RequestJSONView.js
+293 silly gunzTarPerm extractEntry front-end/network/HARWriter.js
+294 silly gunzTarPerm extractEntry front-end/network/RequestResponseView.js
+295 silly gunzTarPerm extractEntry front-end/network/RequestTimingView.js
+296 silly gunzTarPerm extractEntry front-end/network/NetworkItemView.js
+297 silly gunzTarPerm extractEntry front-end/network/RequestView.js
+298 silly gunzTarPerm extractEntry front-end/network/NetworkDataGridNode.js
+299 silly gunzTarPerm extractEntry front-end/network/ResourceWebSocketFrameView.js
+300 silly gunzTarPerm extractEntry front-end/network/RequestHTMLView.js
+301 silly gunzTarPerm extractEntry front-end/network/RequestPreviewView.js
+302 silly gunzTarPerm extractEntry front-end/network/module.json
+303 silly gunzTarPerm extractEntry front-end/network/networkLogView.css
+304 silly gunzTarPerm extractEntry front-end/network/networkPanel.css
+305 silly gunzTarPerm extractEntry front-end/network/requestCookiesView.css
+306 silly gunzTarPerm extractEntry front-end/network/requestHeadersView.css
+307 silly gunzTarPerm extractEntry front-end/network/webSocketFrameView.css
+308 silly gunzTarPerm extractEntry front-end/platform/DOMExtension.js
+309 silly gunzTarPerm extractEntry front-end/platform/Promise.js
+310 silly gunzTarPerm extractEntry front-end/platform/utilities.js
+311 silly gunzTarPerm extractEntry front-end/platform/module.json
+312 silly gunzTarPerm extractEntry front-end/popover.css
+313 silly gunzTarPerm extractEntry front-end/profiler/CPUProfileBottomUpDataGrid.js
+314 silly gunzTarPerm extractEntry front-end/profiler/CPUProfileView.js
+315 silly gunzTarPerm extractEntry front-end/profiler/CanvasProfileView.js
+316 silly gunzTarPerm extractEntry front-end/profiler/CanvasReplayStateView.js
+317 silly gunzTarPerm extractEntry front-end/profiler/HeapSnapshotCommon.js
+318 silly gunzTarPerm extractEntry front-end/profiler/CPUProfileTopDownDataGrid.js
+319 silly gunzTarPerm extractEntry front-end/profiler/CPUProfileDataGrid.js
+320 silly gunzTarPerm extractEntry front-end/profiler/HeapSnapshotProxy.js
+321 silly gunzTarPerm extractEntry front-end/profiler/HeapSnapshotView.js
+322 silly gunzTarPerm extractEntry front-end/profiler/ProfileLauncherView.js
+323 silly gunzTarPerm extractEntry front-end/profiler/ProfileTypeRegistry.js
+324 silly gunzTarPerm extractEntry front-end/profiler/CPUProfileFlameChart.js
+325 silly gunzTarPerm extractEntry front-end/profiler/ProfilesPanel.js
+326 silly gunzTarPerm extractEntry front-end/profiler/HeapSnapshotDataGrids.js
+327 silly gunzTarPerm extractEntry front-end/profiler/HeapSnapshotGridNodes.js
+328 silly gunzTarPerm extractEntry front-end/profiler/canvasProfiler.css
+329 silly gunzTarPerm extractEntry front-end/profiler/heapProfiler.css
+330 silly gunzTarPerm extractEntry front-end/profiler/module.json
+331 silly gunzTarPerm extractEntry front-end/profiler/profilesPanel.css
+332 silly gunzTarPerm extractEntry front-end/promises/PromisePane.js
+333 silly gunzTarPerm extractEntry front-end/promises/module.json
+334 silly gunzTarPerm extractEntry front-end/promises/promisePane.css
+335 silly gunzTarPerm extractEntry front-end/resources/ApplicationCacheItemsView.js
+336 silly gunzTarPerm extractEntry front-end/resources/DOMStorageItemsView.js
+337 silly gunzTarPerm extractEntry front-end/resources/DatabaseQueryView.js
+338 silly gunzTarPerm extractEntry front-end/resources/DatabaseTableView.js
+339 silly gunzTarPerm extractEntry front-end/resources/DirectoryContentView.js
+340 silly gunzTarPerm extractEntry front-end/resources/CookieItemsView.js
+341 silly gunzTarPerm extractEntry front-end/resources/FileSystemView.js
+342 silly gunzTarPerm extractEntry front-end/resources/IndexedDBViews.js
+343 silly gunzTarPerm extractEntry front-end/resources/ResourcesPanel.js
+344 silly gunzTarPerm extractEntry front-end/resources/FileContentView.js
+345 silly gunzTarPerm extractEntry front-end/resources/indexedDBViews.css
+346 silly gunzTarPerm extractEntry front-end/resources/module.json
+347 silly gunzTarPerm extractEntry front-end/resources/resourcesPanel.css
+348 silly gunzTarPerm extractEntry front-end/screencast/ScreencastView.js
+349 silly gunzTarPerm extractEntry front-end/screencast/module.json
+350 silly gunzTarPerm extractEntry front-end/screencast/screencastView.css
+351 silly gunzTarPerm extractEntry front-end/script_formatter_worker/CSSFormatter.js
+352 silly gunzTarPerm extractEntry front-end/script_formatter_worker/JavaScriptFormatter.js
+353 silly gunzTarPerm extractEntry front-end/script_formatter_worker/ScriptFormatterWorker.js
+354 silly gunzTarPerm extractEntry front-end/script_formatter_worker/module.json
+355 silly gunzTarPerm extractEntry front-end/sdk/AnimationModel.js
+356 silly gunzTarPerm extractEntry front-end/sdk/HAREntry.js
+357 silly gunzTarPerm extractEntry front-end/sdk/HeapProfilerModel.js
+358 silly gunzTarPerm extractEntry front-end/sdk/IndexedDBModel.js
+359 silly gunzTarPerm extractEntry front-end/sdk/FileSystemModel.js
+360 silly gunzTarPerm extractEntry front-end/sdk/LayerTreeModel.js
+361 silly gunzTarPerm extractEntry front-end/sdk/NetworkLog.js
+362 silly gunzTarPerm extractEntry front-end/sdk/NetworkManager.js
+363 silly gunzTarPerm extractEntry front-end/sdk/NetworkRequest.js
+364 silly gunzTarPerm extractEntry front-end/sdk/OverridesSupport.js
+365 silly gunzTarPerm extractEntry front-end/sdk/DebuggerModel.js
+366 silly gunzTarPerm extractEntry front-end/sdk/PaintProfiler.js
+367 silly gunzTarPerm extractEntry front-end/sdk/Database.js
+368 silly gunzTarPerm extractEntry front-end/sdk/PowerProfiler.js
+369 silly gunzTarPerm extractEntry front-end/sdk/DOMStorage.js
+370 silly gunzTarPerm extractEntry front-end/sdk/RemoteObject.js
+371 silly gunzTarPerm extractEntry front-end/sdk/DOMModel.js
+372 silly gunzTarPerm extractEntry front-end/sdk/Resource.js
+373 silly gunzTarPerm extractEntry front-end/sdk/CookieParser.js
+374 silly gunzTarPerm extractEntry front-end/sdk/ResourceTreeModel.js
+375 silly gunzTarPerm extractEntry front-end/sdk/ContentProviders.js
+376 silly gunzTarPerm extractEntry front-end/sdk/RuntimeModel.js
+377 silly gunzTarPerm extractEntry front-end/sdk/ConsoleModel.js
+378 silly gunzTarPerm extractEntry front-end/sdk/Script.js
+379 silly gunzTarPerm extractEntry front-end/sdk/CSSStyleModel.js
+380 silly gunzTarPerm extractEntry front-end/sdk/SnippetStorage.js
+381 silly gunzTarPerm extractEntry front-end/sdk/CSSParser.js
+382 silly gunzTarPerm extractEntry front-end/sdk/SourceMap.js
+383 silly gunzTarPerm extractEntry front-end/sdk/CSSMetadata.js
+384 silly gunzTarPerm extractEntry front-end/sdk/Target.js
+385 silly gunzTarPerm extractEntry front-end/sdk/CPUProfilerModel.js
+386 silly gunzTarPerm extractEntry front-end/sdk/TracingManager.js
+387 silly gunzTarPerm extractEntry front-end/sdk/CPUProfileDataModel.js
+388 silly gunzTarPerm extractEntry front-end/sdk/WorkerManager.js
+389 silly gunzTarPerm extractEntry front-end/sdk/BlackboxSupport.js
+390 silly gunzTarPerm extractEntry front-end/sdk/WorkerTargetManager.js
+391 silly gunzTarPerm extractEntry front-end/sdk/ApplicationCacheModel.js
+392 silly gunzTarPerm extractEntry front-end/sdk/InspectorBackend.js
+393 silly gunzTarPerm extractEntry front-end/sdk/module.json
+394 silly gunzTarPerm extractEntry front-end/settings/EditFileSystemDialog.js
+395 silly gunzTarPerm extractEntry front-end/settings/FrameworkBlackboxDialog.js
+396 silly gunzTarPerm extractEntry front-end/settings/SettingsScreen.js
+397 silly gunzTarPerm extractEntry front-end/settings/module.json
+398 silly gunzTarPerm extractEntry front-end/sidebarPane.css
+399 silly gunzTarPerm extractEntry front-end/source_frame/CodeMirrorTextEditor.js
+400 silly gunzTarPerm extractEntry front-end/source_frame/FontView.js
+401 silly gunzTarPerm extractEntry front-end/source_frame/GoToLineDialog.js
+402 silly gunzTarPerm extractEntry front-end/source_frame/ImageView.js
+403 silly gunzTarPerm extractEntry front-end/source_frame/ResourceSourceFrame.js
+404 silly gunzTarPerm extractEntry front-end/source_frame/CodeMirrorUtils.js
+405 silly gunzTarPerm extractEntry front-end/source_frame/SourceFrame.js
+406 silly gunzTarPerm extractEntry front-end/source_frame/cmdevtools.css
+407 silly gunzTarPerm extractEntry front-end/source_frame/fontView.css
+408 silly gunzTarPerm extractEntry front-end/source_frame/imageView.css
+409 silly gunzTarPerm extractEntry front-end/source_frame/module.json
+410 silly gunzTarPerm extractEntry front-end/source_frame/resourceSourceFrame.css
+411 silly gunzTarPerm extractEntry front-end/sources/AddSourceMapURLDialog.js
+412 silly gunzTarPerm extractEntry front-end/sources/NavigatorView.js
+413 silly gunzTarPerm extractEntry front-end/sources/Placard.js
+414 silly gunzTarPerm extractEntry front-end/sources/RevisionHistoryView.js
+415 silly gunzTarPerm extractEntry front-end/sources/ScopeChainSidebarPane.js
+416 silly gunzTarPerm extractEntry front-end/sources/JavaScriptSourceFrame.js
+417 silly gunzTarPerm extractEntry front-end/sources/ScriptFormatterEditorAction.js
+418 silly gunzTarPerm extractEntry front-end/sources/AdvancedSearchView.js
+419 silly gunzTarPerm extractEntry front-end/sources/SourcesNavigator.js
+420 silly gunzTarPerm extractEntry front-end/sources/SourcesPanel.js
+421 silly gunzTarPerm extractEntry front-end/sources/SourcesSearchScope.js
+422 silly gunzTarPerm extractEntry front-end/sources/InplaceFormatterEditorAction.js
+423 silly gunzTarPerm extractEntry front-end/sources/SourcesView.js
+424 silly gunzTarPerm extractEntry front-end/sources/FilteredItemSelectionDialog.js
+425 silly gunzTarPerm extractEntry front-end/sources/StyleSheetOutlineDialog.js
+426 silly gunzTarPerm extractEntry front-end/sources/FilePathScoreFunction.js
+427 silly gunzTarPerm extractEntry front-end/sources/TabbedEditorContainer.js
+428 silly gunzTarPerm extractEntry front-end/sources/FileBasedSearchResultsPane.js
+429 silly gunzTarPerm extractEntry front-end/sources/ThreadsSidebarPane.js
+430 silly gunzTarPerm extractEntry front-end/sources/EditingLocationHistoryManager.js
+431 silly gunzTarPerm extractEntry front-end/sources/UISourceCodeFrame.js
+432 silly gunzTarPerm extractEntry front-end/sources/CallStackSidebarPane.js
+433 silly gunzTarPerm extractEntry front-end/sources/WatchExpressionsSidebarPane.js
+434 silly gunzTarPerm extractEntry front-end/sources/CSSSourceFrame.js
+435 silly gunzTarPerm extractEntry front-end/sources/WorkspaceMappingTip.js
+436 silly gunzTarPerm extractEntry front-end/sources/BreakpointsSidebarPane.js
+437 silly gunzTarPerm extractEntry front-end/sources/jsdifflib.js
+438 silly gunzTarPerm extractEntry front-end/sources/ScriptFormatter.js
+439 silly gunzTarPerm extractEntry front-end/sources/SimpleHistoryManager.js
+440 silly gunzTarPerm extractEntry front-end/sources/filteredItemSelectionDialog.css
+441 silly gunzTarPerm extractEntry front-end/sources/module.json
+442 silly gunzTarPerm extractEntry front-end/sources/navigatorView.css
+443 silly gunzTarPerm extractEntry front-end/sources/revisionHistory.css
+444 silly gunzTarPerm extractEntry front-end/sources/sourcesPanel.css
+445 silly gunzTarPerm extractEntry front-end/sources/sourcesView.css
+446 silly gunzTarPerm extractEntry front-end/suggestBox.css
+447 silly gunzTarPerm extractEntry front-end/tabbedPane.css
+448 silly gunzTarPerm extractEntry front-end/temp_storage_shared_worker/TempStorageSharedWorker.js
+449 silly gunzTarPerm extractEntry front-end/temp_storage_shared_worker/module.json
+450 silly gunzTarPerm extractEntry front-end/timeline/CountersGraph.js
+451 silly gunzTarPerm extractEntry front-end/timeline/TimelineFrameOverview.js
+452 silly gunzTarPerm extractEntry front-end/timeline/TimelineJSProfile.js
+453 silly gunzTarPerm extractEntry front-end/timeline/TimelineLayersView.js
+454 silly gunzTarPerm extractEntry front-end/timeline/TimelineFrameModel.js
+455 silly gunzTarPerm extractEntry front-end/timeline/LayerDetailsView.js
+456 silly gunzTarPerm extractEntry front-end/timeline/TimelineOverviewPane.js
+457 silly gunzTarPerm extractEntry front-end/timeline/TimelinePaintProfilerView.js
+458 silly gunzTarPerm extractEntry front-end/timeline/TimelinePanel.js
+459 silly gunzTarPerm extractEntry front-end/timeline/TimelinePowerGraph.js
+460 silly gunzTarPerm extractEntry front-end/timeline/TimelineFlameChart.js
+461 silly gunzTarPerm extractEntry front-end/timeline/TimelinePowerOverview.js
+462 silly gunzTarPerm extractEntry front-end/timeline/TimelineEventOverview.js
+463 silly gunzTarPerm extractEntry front-end/timeline/TimelinePresentationModel.js
+464 silly gunzTarPerm extractEntry front-end/timeline/PaintProfilerView.js
+465 silly gunzTarPerm extractEntry front-end/timeline/TimelineUIUtils.js
+466 silly gunzTarPerm extractEntry front-end/timeline/MemoryCountersGraph.js
+467 silly gunzTarPerm extractEntry front-end/timeline/TimelineView.js
+468 silly gunzTarPerm extractEntry front-end/timeline/Layers3DView.js
+469 silly gunzTarPerm extractEntry front-end/timeline/TracingModel.js
+470 silly gunzTarPerm extractEntry front-end/timeline/LayerTreeOutline.js
+471 silly gunzTarPerm extractEntry front-end/timeline/TransformController.js
+472 silly gunzTarPerm extractEntry front-end/timeline/TimelineMemoryOverview.js
+473 silly gunzTarPerm extractEntry front-end/timeline/TimelineModel.js
+474 silly gunzTarPerm extractEntry front-end/timeline/module.json
+475 silly gunzTarPerm extractEntry front-end/timeline/timelinePanel.css
+476 silly gunzTarPerm extractEntry front-end/toolbox/InspectedPagePlaceholder.js
+477 silly gunzTarPerm extractEntry front-end/toolbox/MediaQueryInspector.js
+478 silly gunzTarPerm extractEntry front-end/toolbox/OverridesUI.js
+479 silly gunzTarPerm extractEntry front-end/toolbox/ResponsiveDesignView.js
+480 silly gunzTarPerm extractEntry front-end/toolbox/module.json
+481 silly gunzTarPerm extractEntry front-end/toolbox/responsiveDesignView.css
+482 silly gunzTarPerm extractEntry front-end/toolbox.css
+483 silly gunzTarPerm extractEntry front-end/toolbox.html
+484 silly gunzTarPerm extractEntry front-end/bindings/BreakpointManager.js
+485 silly gunzTarPerm extractEntry front-end/bindings/FileUtils.js
+486 silly gunzTarPerm extractEntry front-end/bindings/Linkifier.js
+487 silly gunzTarPerm extractEntry front-end/bindings/LiveLocation.js
+488 silly gunzTarPerm extractEntry front-end/bindings/DefaultScriptMapping.js
+489 silly gunzTarPerm extractEntry front-end/bindings/NetworkWorkspaceBinding.js
+490 silly gunzTarPerm extractEntry front-end/bindings/PresentationConsoleMessageHelper.js
+491 silly gunzTarPerm extractEntry front-end/bindings/ResourceScriptMapping.js
+492 silly gunzTarPerm extractEntry front-end/bindings/ResourceUtils.js
+493 silly gunzTarPerm extractEntry front-end/bindings/SASSSourceMapping.js
+494 silly gunzTarPerm extractEntry front-end/bindings/DebuggerWorkspaceBinding.js
+495 silly gunzTarPerm extractEntry front-end/bindings/ScriptSnippetModel.js
+496 silly gunzTarPerm extractEntry front-end/bindings/ContentScriptProjectDecorator.js
+497 silly gunzTarPerm extractEntry front-end/bindings/StylesSourceMapping.js
+498 silly gunzTarPerm extractEntry front-end/bindings/ContentProviderBasedProjectDelegate.js
+499 silly gunzTarPerm extractEntry front-end/bindings/TempFile.js
+500 silly gunzTarPerm extractEntry front-end/bindings/CompilerScriptMapping.js
+501 silly gunzTarPerm extractEntry front-end/bindings/WorkspaceController.js
+502 silly gunzTarPerm extractEntry front-end/bindings/CSSWorkspaceBinding.js
+503 silly gunzTarPerm extractEntry front-end/bindings/NetworkUISourceCodeProvider.js
+504 silly gunzTarPerm extractEntry front-end/bindings/module.json
+505 silly gunzTarPerm extractEntry front-end/toolbox.json
+506 silly gunzTarPerm extractEntry front-end/toolbox_bootstrap/Toolbox.js
+507 silly gunzTarPerm extractEntry front-end/toolbox_bootstrap/module.json
+508 silly gunzTarPerm extractEntry front-end/cm/LICENSE
+509 silly gunzTarPerm extractEntry front-end/cm/python.js
+510 silly gunzTarPerm extractEntry front-end/cm/codemirror.js
+511 silly gunzTarPerm extractEntry front-end/cm/coffeescript.js
+512 silly gunzTarPerm extractEntry front-end/cm/comment.js
+513 silly gunzTarPerm extractEntry front-end/cm/closebrackets.js
+514 silly gunzTarPerm extractEntry front-end/cm/php.js
+515 silly gunzTarPerm extractEntry front-end/cm/htmlembedded.js
+516 silly gunzTarPerm extractEntry front-end/cm/htmlmixed.js
+517 silly gunzTarPerm extractEntry front-end/cm/javascript.js
+518 silly gunzTarPerm extractEntry front-end/cm/markselection.js
+519 silly gunzTarPerm extractEntry front-end/cm/clike.js
+520 silly gunzTarPerm extractEntry front-end/cm/matchbrackets.js
+521 silly gunzTarPerm extractEntry front-end/cm/shell.js
+522 silly gunzTarPerm extractEntry front-end/cm/overlay.js
+523 silly gunzTarPerm extractEntry front-end/cm/css.js
+524 silly gunzTarPerm extractEntry front-end/cm/xml.js
+525 silly gunzTarPerm extractEntry front-end/cm/headlesscodemirror.js
+526 silly gunzTarPerm extractEntry front-end/cm/LICENSE_python
+527 silly gunzTarPerm extractEntry front-end/cm/codemirror.css
+528 silly gunzTarPerm extractEntry front-end/cm/PRESUBMIT.py
+529 silly gunzTarPerm extractEntry front-end/ui/ActionRegistry.js
+530 silly gunzTarPerm extractEntry front-end/ui/ProgressIndicator.js
+531 silly gunzTarPerm extractEntry front-end/ui/ResizerWidget.js
+532 silly gunzTarPerm extractEntry front-end/ui/RootView.js
+533 silly gunzTarPerm extractEntry front-end/ui/Popover.js
+534 silly gunzTarPerm extractEntry front-end/ui/Section.js
+535 silly gunzTarPerm extractEntry front-end/ui/SettingsUI.js
+536 silly gunzTarPerm extractEntry front-end/ui/ShortcutRegistry.js
+537 silly gunzTarPerm extractEntry front-end/ui/ShowMoreDataGridNode.js
+538 silly gunzTarPerm extractEntry front-end/ui/SidebarPane.js
+539 silly gunzTarPerm extractEntry front-end/ui/PieChart.js
+540 silly gunzTarPerm extractEntry front-end/ui/CompletionDictionary.js
+541 silly gunzTarPerm extractEntry front-end/ui/Panel.js
+542 silly gunzTarPerm extractEntry front-end/ui/SoftContextMenu.js
+543 silly gunzTarPerm extractEntry front-end/ui/OverviewGrid.js
+544 silly gunzTarPerm extractEntry front-end/ui/SortableDataGrid.js
+545 silly gunzTarPerm extractEntry front-end/ui/KeyboardShortcut.js
+546 silly gunzTarPerm extractEntry front-end/ui/SplitView.js
+547 silly gunzTarPerm extractEntry front-end/ui/InplaceEditor.js
+548 silly gunzTarPerm extractEntry front-end/ui/StackView.js
+549 silly gunzTarPerm extractEntry front-end/ui/HelpScreen.js
+550 silly gunzTarPerm extractEntry front-end/ui/StatusBar.js
+551 silly gunzTarPerm extractEntry front-end/ui/ForwardedInputEventHandler.js
+552 silly gunzTarPerm extractEntry front-end/ui/SuggestBox.js
+553 silly gunzTarPerm extractEntry front-end/ui/FlameChart.js
+554 silly gunzTarPerm extractEntry front-end/ui/TabbedPane.js
+555 silly gunzTarPerm extractEntry front-end/ui/FilterBar.js
+556 silly gunzTarPerm extractEntry front-end/ui/TextEditor.js
+557 silly gunzTarPerm extractEntry front-end/ui/EmptyView.js
+558 silly gunzTarPerm extractEntry front-end/ui/TextPrompt.js
+559 silly gunzTarPerm extractEntry front-end/ui/DropDownMenu.js
+560 silly gunzTarPerm extractEntry front-end/ui/TimelineGrid.js
+561 silly gunzTarPerm extractEntry front-end/ui/Dialog.js
+562 silly gunzTarPerm extractEntry front-end/ui/UIUtils.js
+563 silly gunzTarPerm extractEntry front-end/ui/DataGrid.js
+564 silly gunzTarPerm extractEntry front-end/ui/View.js
+565 silly gunzTarPerm extractEntry front-end/ui/DOMSyntaxHighlighter.js
+566 silly gunzTarPerm extractEntry front-end/ui/ViewportControl.js
+567 silly gunzTarPerm extractEntry front-end/ui/ContextMenu.js
+568 silly gunzTarPerm extractEntry front-end/ui/ViewportDataGrid.js
+569 silly gunzTarPerm extractEntry front-end/ui/Context.js
+570 silly gunzTarPerm extractEntry front-end/ui/ZoomManager.js
+571 silly gunzTarPerm extractEntry front-end/ui/SearchableView.js
+572 silly gunzTarPerm extractEntry front-end/ui/treeoutline.js
+573 silly gunzTarPerm extractEntry front-end/ui/SidebarTreeElement.js
+574 silly gunzTarPerm extractEntry front-end/ui/dataGrid.css
+575 silly gunzTarPerm extractEntry front-end/ui/flameChart.css
+576 silly gunzTarPerm extractEntry front-end/ui/helpScreen.css
+577 silly gunzTarPerm extractEntry front-end/ui/module.json
+578 silly gunzTarPerm extractEntry front-end/ui/overviewGrid.css
+579 silly gunzTarPerm extractEntry front-end/ui/filter.css
+580 silly gunzTarPerm extractEntry front-end/ui/pieChart.css
+581 silly gunzTarPerm extractEntry front-end/ui/progressIndicator.css
+582 silly gunzTarPerm extractEntry front-end/ui/searchableView.css
+583 silly gunzTarPerm extractEntry front-end/ui/splitView.css
+584 silly gunzTarPerm extractEntry front-end/ui/statusBar.css
+585 silly gunzTarPerm extractEntry front-end/ui/panelEnablerView.css
+586 silly gunzTarPerm extractEntry front-end/workspace/FileManager.js
+587 silly gunzTarPerm extractEntry front-end/workspace/FileSystemMapping.js
+588 silly gunzTarPerm extractEntry front-end/workspace/FileSystemWorkspaceBinding.js
+589 silly gunzTarPerm extractEntry front-end/workspace/IsolatedFileSystem.js
+590 silly gunzTarPerm extractEntry front-end/workspace/IsolatedFileSystemManager.js
+591 silly gunzTarPerm extractEntry front-end/workspace/SearchConfig.js
+592 silly gunzTarPerm extractEntry front-end/workspace/UISourceCode.js
+593 silly gunzTarPerm extractEntry front-end/workspace/Workspace.js
+594 silly gunzTarPerm extractEntry front-end/workspace/module.json
+595 silly gunzTarPerm extractEntry front-end-node/NodeInspectorOverrides.js
+596 silly gunzTarPerm extractEntry front-end-node/module.json
+597 silly gunzTarPerm extractEntry front-end-node/console/ConsoleExtentions.js
+598 silly gunzTarPerm extractEntry front-end-node/console/module.json
+599 silly gunzTarPerm extractEntry front-end-node/inspector.json
+600 silly gunzTarPerm extractEntry front-end-node/main/MainOverrides.js
+601 silly gunzTarPerm extractEntry front-end-node/main/module.json
+602 silly gunzTarPerm extractEntry front-end-node/Images/favicon.png
+603 silly gunzTarPerm modified mode [ 'front-end-node/Images/favicon.png', 436, 420 ]
+604 silly gunzTarPerm extractEntry front-end-node/Images/src/favicon.eps
+605 silly gunzTarPerm modified mode [ 'front-end-node/Images/src/favicon.eps', 436, 420 ]
+606 silly gunzTarPerm extractEntry front-end-node/network/NetworkPanel.js
+607 silly gunzTarPerm extractEntry front-end-node/network/module.json
+608 silly gunzTarPerm extractEntry front-end-node/profiler/SaveOverrides.js
+609 silly gunzTarPerm extractEntry front-end-node/profiler/module.json
+610 silly gunzTarPerm extractEntry front-end-node/protocol.json
+611 silly gunzTarPerm extractEntry front-end-node/settings/SettingsScreenOverrides.js
+612 silly gunzTarPerm extractEntry front-end-node/settings/SettingsScreenOverrides.css
+613 silly gunzTarPerm extractEntry front-end-node/settings/module.json
+614 silly gunzTarPerm extractEntry front-end-node/sources/SourcesOverrides.js
+615 silly gunzTarPerm extractEntry front-end-node/sources/module.json
+616 silly gunzTarPerm extractEntry AUTHORS
+617 silly gunzTarPerm modified mode [ 'AUTHORS', 436, 420 ]
+618 silly gunzTarPerm extractEntry lib/BreakEventHandler.js
+619 silly gunzTarPerm extractEntry lib/HeapProfilerClient.js
+620 silly gunzTarPerm extractEntry lib/plugins.js
+621 silly gunzTarPerm extractEntry lib/InjectorClient.js
+622 silly gunzTarPerm extractEntry lib/HeapProfilerAgent.js
+623 silly gunzTarPerm extractEntry lib/CallFramesProvider.js
+624 silly gunzTarPerm extractEntry lib/PageAgent.js
+625 silly gunzTarPerm extractEntry lib/ProfilerAgent.js
+626 silly gunzTarPerm extractEntry lib/RuntimeAgent.js
+627 silly gunzTarPerm extractEntry lib/ScriptFileStorage.js
+628 silly gunzTarPerm extractEntry lib/FrontendCommandHandler.js
+629 silly gunzTarPerm extractEntry lib/ScriptManager.js
+630 silly gunzTarPerm extractEntry lib/FrontendClient.js
+631 silly gunzTarPerm extractEntry lib/callback.js
+632 silly gunzTarPerm extractEntry lib/DebuggerClient.js
+633 silly gunzTarPerm extractEntry lib/config.js
+634 silly gunzTarPerm extractEntry lib/DebuggerAgent.js
+635 silly gunzTarPerm extractEntry lib/convert.js
+636 silly gunzTarPerm extractEntry lib/ConsoleClient.js
+637 silly gunzTarPerm extractEntry lib/debug-server.js
+638 silly gunzTarPerm extractEntry lib/ConsoleAgent.js
+639 silly gunzTarPerm extractEntry lib/debugger.js
+640 silly gunzTarPerm extractEntry lib/InjectorServer.js
+641 silly gunzTarPerm extractEntry lib/session.js
+642 silly gunzTarPerm extractEntry lib/NetworkAgent.js
+643 silly gunzTarPerm extractEntry lib/Injections/ConsoleAgent.js
+644 silly gunzTarPerm extractEntry lib/Injections/HeapProfilerAgent.js
+645 silly gunzTarPerm extractEntry lib/Injections/NetworkAgent.js
+646 silly gunzTarPerm extractEntry lib/Injections/ProfilerAgent.js
+647 silly gunzTarPerm extractEntry CONTRIBUTING.md
+648 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 436, 420 ]
+649 silly gunzTarPerm extractEntry tools/git-changelog.sh
+650 silly gunzTarPerm modified mode [ 'tools/git-changelog.sh', 509, 493 ]
+651 silly gunzTarPerm extractEntry tools/protocol.json
+652 silly gunzTarPerm extractEntry tools/release.sh
+653 silly gunzTarPerm extractEntry tools/update-front-end.sh
+654 silly gunzTarPerm modified mode [ 'tools/update-front-end.sh', 509, 493 ]
+655 verbose read json C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector\package.json
+656 silly lockFile c20c7e69--npm-node-modules-node-inspector C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector
+657 info preinstall node-inspector@0.12.8
+658 verbose from cache C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector\package.json
+659 verbose readDependencies using package.json deps
+660 verbose from cache C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector\package.json
+661 verbose readDependencies using package.json deps
+662 verbose cache add [ 'async@~0.9', null ]
+663 silly cache add name=undefined spec="async@~0.9" args=["async@~0.9",null]
+664 verbose parsed url { pathname: 'async@~0.9',
+664 verbose parsed url   path: 'async@~0.9',
+664 verbose parsed url   href: 'async@~0.9' }
+665 silly cache add name="async" spec="~0.9" args=["async","~0.9"]
+666 verbose parsed url { pathname: '~0.9', path: '~0.9', href: '~0.9' }
+667 verbose addNamed [ 'async', '~0.9' ]
+668 verbose addNamed [ null, '>=0.9.0- <0.10.0-' ]
+669 silly lockFile df5b6f0c-async-0-9 async@~0.9
+670 verbose lock async@~0.9 C:\Users\wanmengj\AppData\Roaming\npm-cache\df5b6f0c-async-0-9.lock
+671 verbose cache add [ 'biased-opener@~0.2.2', null ]
+672 silly cache add name=undefined spec="biased-opener@~0.2.2" args=["biased-opener@~0.2.2",null]
+673 verbose parsed url { pathname: 'biased-opener@~0.2.2',
+673 verbose parsed url   path: 'biased-opener@~0.2.2',
+673 verbose parsed url   href: 'biased-opener@~0.2.2' }
+674 silly cache add name="biased-opener" spec="~0.2.2" args=["biased-opener","~0.2.2"]
+675 verbose parsed url { pathname: '~0.2.2', path: '~0.2.2', href: '~0.2.2' }
+676 verbose addNamed [ 'biased-opener', '~0.2.2' ]
+677 verbose addNamed [ null, '>=0.2.2- <0.3.0-' ]
+678 silly lockFile 8c93e40e-biased-opener-0-2-2 biased-opener@~0.2.2
+679 verbose lock biased-opener@~0.2.2 C:\Users\wanmengj\AppData\Roaming\npm-cache\8c93e40e-biased-opener-0-2-2.lock
+680 verbose cache add [ 'debug@^2.2.0', null ]
+681 silly cache add name=undefined spec="debug@^2.2.0" args=["debug@^2.2.0",null]
+682 verbose parsed url { pathname: 'debug@^2.2.0',
+682 verbose parsed url   path: 'debug@^2.2.0',
+682 verbose parsed url   href: 'debug@^2.2.0' }
+683 silly cache add name="debug" spec="^2.2.0" args=["debug","^2.2.0"]
+684 verbose parsed url { pathname: '^2.2.0', path: '^2.2.0', href: '^2.2.0' }
+685 verbose addNamed [ 'debug', '^2.2.0' ]
+686 verbose addNamed [ null, null ]
+687 silly lockFile 862c00aa-debug-2-2-0 debug@^2.2.0
+688 verbose lock debug@^2.2.0 C:\Users\wanmengj\AppData\Roaming\npm-cache\862c00aa-debug-2-2-0.lock
+689 verbose cache add [ 'express@^4.12.3', null ]
+690 silly cache add name=undefined spec="express@^4.12.3" args=["express@^4.12.3",null]
+691 verbose parsed url { pathname: 'express@^4.12.3',
+691 verbose parsed url   path: 'express@^4.12.3',
+691 verbose parsed url   href: 'express@^4.12.3' }
+692 silly cache add name="express" spec="^4.12.3" args=["express","^4.12.3"]
+693 verbose parsed url { pathname: '^4.12.3', path: '^4.12.3', href: '^4.12.3' }
+694 verbose addNamed [ 'express', '^4.12.3' ]
+695 verbose addNamed [ null, null ]
+696 silly lockFile dbce67be-express-4-12-3 express@^4.12.3
+697 verbose lock express@^4.12.3 C:\Users\wanmengj\AppData\Roaming\npm-cache\dbce67be-express-4-12-3.lock
+698 verbose cache add [ 'glob@^5.0.5', null ]
+699 silly cache add name=undefined spec="glob@^5.0.5" args=["glob@^5.0.5",null]
+700 verbose parsed url { pathname: 'glob@^5.0.5',
+700 verbose parsed url   path: 'glob@^5.0.5',
+700 verbose parsed url   href: 'glob@^5.0.5' }
+701 silly cache add name="glob" spec="^5.0.5" args=["glob","^5.0.5"]
+702 verbose parsed url { pathname: '^5.0.5', path: '^5.0.5', href: '^5.0.5' }
+703 verbose addNamed [ 'glob', '^5.0.5' ]
+704 verbose addNamed [ null, null ]
+705 silly lockFile 771be5f5-glob-5-0-5 glob@^5.0.5
+706 verbose lock glob@^5.0.5 C:\Users\wanmengj\AppData\Roaming\npm-cache\771be5f5-glob-5-0-5.lock
+707 verbose cache add [ 'path-is-absolute@^1.0.0', null ]
+708 silly cache add name=undefined spec="path-is-absolute@^1.0.0" args=["path-is-absolute@^1.0.0",null]
+709 verbose parsed url { pathname: 'path-is-absolute@^1.0.0',
+709 verbose parsed url   path: 'path-is-absolute@^1.0.0',
+709 verbose parsed url   href: 'path-is-absolute@^1.0.0' }
+710 silly cache add name="path-is-absolute" spec="^1.0.0" args=["path-is-absolute","^1.0.0"]
+711 verbose parsed url { pathname: '^1.0.0', path: '^1.0.0', href: '^1.0.0' }
+712 verbose addNamed [ 'path-is-absolute', '^1.0.0' ]
+713 verbose addNamed [ null, null ]
+714 silly lockFile 0add5472-path-is-absolute-1-0-0 path-is-absolute@^1.0.0
+715 verbose lock path-is-absolute@^1.0.0 C:\Users\wanmengj\AppData\Roaming\npm-cache\0add5472-path-is-absolute-1-0-0.lock
+716 verbose cache add [ 'rc@^1.0.1', null ]
+717 silly cache add name=undefined spec="rc@^1.0.1" args=["rc@^1.0.1",null]
+718 verbose parsed url { pathname: 'rc@^1.0.1', path: 'rc@^1.0.1', href: 'rc@^1.0.1' }
+719 silly cache add name="rc" spec="^1.0.1" args=["rc","^1.0.1"]
+720 verbose parsed url { pathname: '^1.0.1', path: '^1.0.1', href: '^1.0.1' }
+721 verbose addNamed [ 'rc', '^1.0.1' ]
+722 verbose addNamed [ null, null ]
+723 silly lockFile f1c7bbed-rc-1-0-1 rc@^1.0.1
+724 verbose lock rc@^1.0.1 C:\Users\wanmengj\AppData\Roaming\npm-cache\f1c7bbed-rc-1-0-1.lock
+725 verbose cache add [ 'semver@^4.3.4', null ]
+726 silly cache add name=undefined spec="semver@^4.3.4" args=["semver@^4.3.4",null]
+727 verbose parsed url { pathname: 'semver@^4.3.4',
+727 verbose parsed url   path: 'semver@^4.3.4',
+727 verbose parsed url   href: 'semver@^4.3.4' }
+728 silly cache add name="semver" spec="^4.3.4" args=["semver","^4.3.4"]
+729 verbose parsed url { pathname: '^4.3.4', path: '^4.3.4', href: '^4.3.4' }
+730 verbose addNamed [ 'semver', '^4.3.4' ]
+731 verbose addNamed [ null, null ]
+732 silly lockFile 9788c818-semver-4-3-4 semver@^4.3.4
+733 verbose lock semver@^4.3.4 C:\Users\wanmengj\AppData\Roaming\npm-cache\9788c818-semver-4-3-4.lock
+734 verbose cache add [ 'serve-favicon@^2.1.1', null ]
+735 silly cache add name=undefined spec="serve-favicon@^2.1.1" args=["serve-favicon@^2.1.1",null]
+736 verbose parsed url { pathname: 'serve-favicon@^2.1.1',
+736 verbose parsed url   path: 'serve-favicon@^2.1.1',
+736 verbose parsed url   href: 'serve-favicon@^2.1.1' }
+737 silly cache add name="serve-favicon" spec="^2.1.1" args=["serve-favicon","^2.1.1"]
+738 verbose parsed url { pathname: '^2.1.1', path: '^2.1.1', href: '^2.1.1' }
+739 verbose addNamed [ 'serve-favicon', '^2.1.1' ]
+740 verbose addNamed [ null, null ]
+741 silly lockFile 39d5d3fe-serve-favicon-2-1-1 serve-favicon@^2.1.1
+742 verbose lock serve-favicon@^2.1.1 C:\Users\wanmengj\AppData\Roaming\npm-cache\39d5d3fe-serve-favicon-2-1-1.lock
+743 verbose cache add [ 'strong-data-uri@^1.0.0', null ]
+744 silly cache add name=undefined spec="strong-data-uri@^1.0.0" args=["strong-data-uri@^1.0.0",null]
+745 verbose parsed url { pathname: 'strong-data-uri@^1.0.0',
+745 verbose parsed url   path: 'strong-data-uri@^1.0.0',
+745 verbose parsed url   href: 'strong-data-uri@^1.0.0' }
+746 silly cache add name="strong-data-uri" spec="^1.0.0" args=["strong-data-uri","^1.0.0"]
+747 verbose parsed url { pathname: '^1.0.0', path: '^1.0.0', href: '^1.0.0' }
+748 verbose addNamed [ 'strong-data-uri', '^1.0.0' ]
+749 verbose addNamed [ null, null ]
+750 silly lockFile c768b03f-strong-data-uri-1-0-0 strong-data-uri@^1.0.0
+751 verbose lock strong-data-uri@^1.0.0 C:\Users\wanmengj\AppData\Roaming\npm-cache\c768b03f-strong-data-uri-1-0-0.lock
+752 verbose cache add [ 'v8-debug@~0.7.1', null ]
+753 silly cache add name=undefined spec="v8-debug@~0.7.1" args=["v8-debug@~0.7.1",null]
+754 verbose parsed url { pathname: 'v8-debug@~0.7.1',
+754 verbose parsed url   path: 'v8-debug@~0.7.1',
+754 verbose parsed url   href: 'v8-debug@~0.7.1' }
+755 silly cache add name="v8-debug" spec="~0.7.1" args=["v8-debug","~0.7.1"]
+756 verbose parsed url { pathname: '~0.7.1', path: '~0.7.1', href: '~0.7.1' }
+757 verbose addNamed [ 'v8-debug', '~0.7.1' ]
+758 verbose addNamed [ null, '>=0.7.1- <0.8.0-' ]
+759 silly lockFile a25aa354-v8-debug-0-7-1 v8-debug@~0.7.1
+760 verbose lock v8-debug@~0.7.1 C:\Users\wanmengj\AppData\Roaming\npm-cache\a25aa354-v8-debug-0-7-1.lock
+761 verbose cache add [ 'v8-profiler@~5.6.0', null ]
+762 silly cache add name=undefined spec="v8-profiler@~5.6.0" args=["v8-profiler@~5.6.0",null]
+763 verbose parsed url { pathname: 'v8-profiler@~5.6.0',
+763 verbose parsed url   path: 'v8-profiler@~5.6.0',
+763 verbose parsed url   href: 'v8-profiler@~5.6.0' }
+764 silly cache add name="v8-profiler" spec="~5.6.0" args=["v8-profiler","~5.6.0"]
+765 verbose parsed url { pathname: '~5.6.0', path: '~5.6.0', href: '~5.6.0' }
+766 verbose addNamed [ 'v8-profiler', '~5.6.0' ]
+767 verbose addNamed [ null, '>=5.6.0- <5.7.0-' ]
+768 silly lockFile 29c99321-v8-profiler-5-6-0 v8-profiler@~5.6.0
+769 verbose lock v8-profiler@~5.6.0 C:\Users\wanmengj\AppData\Roaming\npm-cache\29c99321-v8-profiler-5-6-0.lock
+770 verbose cache add [ 'which@^1.1.1', null ]
+771 silly cache add name=undefined spec="which@^1.1.1" args=["which@^1.1.1",null]
+772 verbose parsed url { pathname: 'which@^1.1.1',
+772 verbose parsed url   path: 'which@^1.1.1',
+772 verbose parsed url   href: 'which@^1.1.1' }
+773 silly cache add name="which" spec="^1.1.1" args=["which","^1.1.1"]
+774 verbose parsed url { pathname: '^1.1.1', path: '^1.1.1', href: '^1.1.1' }
+775 verbose addNamed [ 'which', '^1.1.1' ]
+776 verbose addNamed [ null, null ]
+777 silly lockFile e78b4028-which-1-1-1 which@^1.1.1
+778 verbose lock which@^1.1.1 C:\Users\wanmengj\AppData\Roaming\npm-cache\e78b4028-which-1-1-1.lock
+779 verbose cache add [ 'ws@^1.0.1', null ]
+780 silly cache add name=undefined spec="ws@^1.0.1" args=["ws@^1.0.1",null]
+781 verbose parsed url { pathname: 'ws@^1.0.1', path: 'ws@^1.0.1', href: 'ws@^1.0.1' }
+782 silly cache add name="ws" spec="^1.0.1" args=["ws","^1.0.1"]
+783 verbose parsed url { pathname: '^1.0.1', path: '^1.0.1', href: '^1.0.1' }
+784 verbose addNamed [ 'ws', '^1.0.1' ]
+785 verbose addNamed [ null, null ]
+786 silly lockFile 1fe1a01c-ws-1-0-1 ws@^1.0.1
+787 verbose lock ws@^1.0.1 C:\Users\wanmengj\AppData\Roaming\npm-cache\1fe1a01c-ws-1-0-1.lock
+788 verbose cache add [ 'yargs@^3.9.0', null ]
+789 silly cache add name=undefined spec="yargs@^3.9.0" args=["yargs@^3.9.0",null]
+790 verbose parsed url { pathname: 'yargs@^3.9.0',
+790 verbose parsed url   path: 'yargs@^3.9.0',
+790 verbose parsed url   href: 'yargs@^3.9.0' }
+791 silly cache add name="yargs" spec="^3.9.0" args=["yargs","^3.9.0"]
+792 verbose parsed url { pathname: '^3.9.0', path: '^3.9.0', href: '^3.9.0' }
+793 verbose addNamed [ 'yargs', '^3.9.0' ]
+794 verbose addNamed [ null, null ]
+795 silly lockFile 8902a30a-yargs-3-9-0 yargs@^3.9.0
+796 verbose lock yargs@^3.9.0 C:\Users\wanmengj\AppData\Roaming\npm-cache\8902a30a-yargs-3-9-0.lock
+797 silly addNameRange { name: 'async', range: '>=0.9.0- <0.10.0-', hasData: false }
+798 silly addNameRange { name: 'biased-opener',
+798 silly addNameRange   range: '>=0.2.2- <0.3.0-',
+798 silly addNameRange   hasData: false }
+799 info addNameTag [ 'express', '^4.12.3' ]
+800 info addNameTag [ 'glob', '^5.0.5' ]
+801 info addNameTag [ 'path-is-absolute', '^1.0.0' ]
+802 info addNameTag [ 'rc', '^1.0.1' ]
+803 info addNameTag [ 'semver', '^4.3.4' ]
+804 info addNameTag [ 'strong-data-uri', '^1.0.0' ]
+805 silly addNameRange { name: 'v8-debug', range: '>=0.7.1- <0.8.0-', hasData: false }
+806 info addNameTag [ 'serve-favicon', '^2.1.1' ]
+807 info addNameTag [ 'debug', '^2.2.0' ]
+808 silly addNameRange { name: 'v8-profiler',
+808 silly addNameRange   range: '>=5.6.0- <5.7.0-',
+808 silly addNameRange   hasData: false }
+809 info addNameTag [ 'which', '^1.1.1' ]
+810 info addNameTag [ 'ws', '^1.0.1' ]
+811 info addNameTag [ 'yargs', '^3.9.0' ]
+812 verbose url raw path-is-absolute
+813 verbose url resolving [ 'https://registry.npmjs.org/', './path-is-absolute' ]
+814 verbose url resolved https://registry.npmjs.org/path-is-absolute
+815 info retry registry request attempt 1 at 12:27:17
+816 verbose etag "BN5VZYARJTFIZINEV94ZMOHSE"
+817 http GET https://registry.npmjs.org/path-is-absolute
+818 verbose url raw strong-data-uri
+819 verbose url resolving [ 'https://registry.npmjs.org/', './strong-data-uri' ]
+820 verbose url resolved https://registry.npmjs.org/strong-data-uri
+821 info retry registry request attempt 1 at 12:27:17
+822 verbose etag "DF8UJWAAXWGT43HXJMYJSZK89"
+823 http GET https://registry.npmjs.org/strong-data-uri
+824 verbose url raw yargs
+825 verbose url resolving [ 'https://registry.npmjs.org/', './yargs' ]
+826 verbose url resolved https://registry.npmjs.org/yargs
+827 info retry registry request attempt 1 at 12:27:17
+828 verbose etag "BUHH08GADE4BRTMKMH2R6KV57"
+829 http GET https://registry.npmjs.org/yargs
+830 verbose url raw biased-opener
+831 verbose url resolving [ 'https://registry.npmjs.org/', './biased-opener' ]
+832 verbose url resolved https://registry.npmjs.org/biased-opener
+833 info retry registry request attempt 1 at 12:27:17
+834 verbose etag "3QGTYV8PGUZPM6C52C8MKXAU9"
+835 http GET https://registry.npmjs.org/biased-opener
+836 verbose url raw v8-debug
+837 verbose url resolving [ 'https://registry.npmjs.org/', './v8-debug' ]
+838 verbose url resolved https://registry.npmjs.org/v8-debug
+839 info retry registry request attempt 1 at 12:27:17
+840 verbose etag "CMYURLW8NTUD8UQWKRY04UCFV"
+841 http GET https://registry.npmjs.org/v8-debug
+842 verbose url raw v8-profiler
+843 verbose url resolving [ 'https://registry.npmjs.org/', './v8-profiler' ]
+844 verbose url resolved https://registry.npmjs.org/v8-profiler
+845 info retry registry request attempt 1 at 12:27:17
+846 verbose etag "QMX6S3TKA6KJKWK6IRP2WNPX"
+847 http GET https://registry.npmjs.org/v8-profiler
+848 verbose url raw serve-favicon
+849 verbose url resolving [ 'https://registry.npmjs.org/', './serve-favicon' ]
+850 verbose url resolved https://registry.npmjs.org/serve-favicon
+851 info retry registry request attempt 1 at 12:27:17
+852 verbose etag "47Y50CPQK8RE8EW8SCXGCHN0R"
+853 http GET https://registry.npmjs.org/serve-favicon
+854 verbose url raw debug
+855 verbose url resolving [ 'https://registry.npmjs.org/', './debug' ]
+856 verbose url resolved https://registry.npmjs.org/debug
+857 info retry registry request attempt 1 at 12:27:17
+858 verbose etag "6MV1JJO1Q6H57XIW1UQVTKY29"
+859 http GET https://registry.npmjs.org/debug
+860 verbose url raw express
+861 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+862 verbose url resolved https://registry.npmjs.org/express
+863 info retry registry request attempt 1 at 12:27:17
+864 verbose etag "A92AHNB9O6BEXJUWQC8KNTR4C"
+865 http GET https://registry.npmjs.org/express
+866 verbose url raw async
+867 verbose url resolving [ 'https://registry.npmjs.org/', './async' ]
+868 verbose url resolved https://registry.npmjs.org/async
+869 info retry registry request attempt 1 at 12:27:17
+870 verbose etag "A3IKBVO9DTGJRRZINMBYSGV0U"
+871 http GET https://registry.npmjs.org/async
+872 verbose url raw semver
+873 verbose url resolving [ 'https://registry.npmjs.org/', './semver' ]
+874 verbose url resolved https://registry.npmjs.org/semver
+875 info retry registry request attempt 1 at 12:27:17
+876 verbose etag "DG8M0K8D1VEJFQAH7CNO7OENX"
+877 http GET https://registry.npmjs.org/semver
+878 verbose url raw rc
+879 verbose url resolving [ 'https://registry.npmjs.org/', './rc' ]
+880 verbose url resolved https://registry.npmjs.org/rc
+881 info retry registry request attempt 1 at 12:27:17
+882 verbose etag "A41GD79BSI9OOTV4BDDQXI42E"
+883 http GET https://registry.npmjs.org/rc
+884 verbose url raw glob
+885 verbose url resolving [ 'https://registry.npmjs.org/', './glob' ]
+886 verbose url resolved https://registry.npmjs.org/glob
+887 info retry registry request attempt 1 at 12:27:17
+888 verbose etag "4IFBSDQHBP504AFVZ1IKWCHXO"
+889 http GET https://registry.npmjs.org/glob
+890 verbose url raw which
+891 verbose url resolving [ 'https://registry.npmjs.org/', './which' ]
+892 verbose url resolved https://registry.npmjs.org/which
+893 info retry registry request attempt 1 at 12:27:17
+894 verbose etag "BFNF8J58MQZM8F6P0HW3WJH0J"
+895 http GET https://registry.npmjs.org/which
+896 verbose url raw ws
+897 verbose url resolving [ 'https://registry.npmjs.org/', './ws' ]
+898 verbose url resolved https://registry.npmjs.org/ws
+899 info retry registry request attempt 1 at 12:27:17
+900 verbose etag "2BXUS3MD0VT728BT3JQHB9JDD"
+901 http GET https://registry.npmjs.org/ws
+902 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+903 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+904 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+905 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+906 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+907 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+908 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+909 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+910 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+911 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+912 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+913 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+914 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+915 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+916 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+917 info retry registry request attempt 2 at 12:27:27
+918 verbose etag "BN5VZYARJTFIZINEV94ZMOHSE"
+919 http GET https://registry.npmjs.org/path-is-absolute
+920 info retry registry request attempt 2 at 12:27:27
+921 verbose etag "47Y50CPQK8RE8EW8SCXGCHN0R"
+922 http GET https://registry.npmjs.org/serve-favicon
+923 info retry registry request attempt 2 at 12:27:27
+924 verbose etag "6MV1JJO1Q6H57XIW1UQVTKY29"
+925 http GET https://registry.npmjs.org/debug
+926 info retry registry request attempt 2 at 12:27:27
+927 verbose etag "4IFBSDQHBP504AFVZ1IKWCHXO"
+928 http GET https://registry.npmjs.org/glob
+929 info retry registry request attempt 2 at 12:27:27
+930 verbose etag "A3IKBVO9DTGJRRZINMBYSGV0U"
+931 http GET https://registry.npmjs.org/async
+932 info retry registry request attempt 2 at 12:27:27
+933 verbose etag "2BXUS3MD0VT728BT3JQHB9JDD"
+934 http GET https://registry.npmjs.org/ws
+935 info retry registry request attempt 2 at 12:27:27
+936 verbose etag "A92AHNB9O6BEXJUWQC8KNTR4C"
+937 http GET https://registry.npmjs.org/express
+938 info retry registry request attempt 2 at 12:27:27
+939 verbose etag "CMYURLW8NTUD8UQWKRY04UCFV"
+940 http GET https://registry.npmjs.org/v8-debug
+941 info retry registry request attempt 2 at 12:27:28
+942 verbose etag "BUHH08GADE4BRTMKMH2R6KV57"
+943 http GET https://registry.npmjs.org/yargs
+944 info retry registry request attempt 2 at 12:27:28
+945 verbose etag "QMX6S3TKA6KJKWK6IRP2WNPX"
+946 http GET https://registry.npmjs.org/v8-profiler
+947 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+948 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+949 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+950 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+951 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+952 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+953 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+954 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+955 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+956 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+957 info retry registry request attempt 2 at 12:27:28
+958 verbose etag "A41GD79BSI9OOTV4BDDQXI42E"
+959 http GET https://registry.npmjs.org/rc
+960 info retry registry request attempt 2 at 12:27:28
+961 verbose etag "3QGTYV8PGUZPM6C52C8MKXAU9"
+962 http GET https://registry.npmjs.org/biased-opener
+963 info retry registry request attempt 2 at 12:27:28
+964 verbose etag "BFNF8J58MQZM8F6P0HW3WJH0J"
+965 http GET https://registry.npmjs.org/which
+966 info retry registry request attempt 2 at 12:27:28
+967 verbose etag "DF8UJWAAXWGT43HXJMYJSZK89"
+968 http GET https://registry.npmjs.org/strong-data-uri
+969 info retry registry request attempt 2 at 12:27:28
+970 verbose etag "DG8M0K8D1VEJFQAH7CNO7OENX"
+971 http GET https://registry.npmjs.org/semver
+972 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+973 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+974 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+975 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+976 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+977 info retry registry request attempt 3 at 12:28:28
+978 verbose etag "BN5VZYARJTFIZINEV94ZMOHSE"
+979 http GET https://registry.npmjs.org/path-is-absolute
+980 info retry registry request attempt 3 at 12:28:28
+981 verbose etag "47Y50CPQK8RE8EW8SCXGCHN0R"
+982 http GET https://registry.npmjs.org/serve-favicon
+983 info retry registry request attempt 3 at 12:28:28
+984 verbose etag "6MV1JJO1Q6H57XIW1UQVTKY29"
+985 http GET https://registry.npmjs.org/debug
+986 info retry registry request attempt 3 at 12:28:28
+987 verbose etag "4IFBSDQHBP504AFVZ1IKWCHXO"
+988 http GET https://registry.npmjs.org/glob
+989 info retry registry request attempt 3 at 12:28:28
+990 verbose etag "A3IKBVO9DTGJRRZINMBYSGV0U"
+991 http GET https://registry.npmjs.org/async
+992 info retry registry request attempt 3 at 12:28:28
+993 verbose etag "2BXUS3MD0VT728BT3JQHB9JDD"
+994 http GET https://registry.npmjs.org/ws
+995 info retry registry request attempt 3 at 12:28:28
+996 verbose etag "A92AHNB9O6BEXJUWQC8KNTR4C"
+997 http GET https://registry.npmjs.org/express
+998 info retry registry request attempt 3 at 12:28:28
+999 verbose etag "CMYURLW8NTUD8UQWKRY04UCFV"
+1000 http GET https://registry.npmjs.org/v8-debug
+1001 info retry registry request attempt 3 at 12:28:28
+1002 verbose etag "BUHH08GADE4BRTMKMH2R6KV57"
+1003 http GET https://registry.npmjs.org/yargs
+1004 info retry registry request attempt 3 at 12:28:28
+1005 verbose etag "QMX6S3TKA6KJKWK6IRP2WNPX"
+1006 http GET https://registry.npmjs.org/v8-profiler
+1007 silly registry.get cb [ 304, undefined ]
+1008 verbose etag serve-favicon from cache
+1009 silly registry.get cb [ 304, undefined ]
+1010 verbose etag path-is-absolute from cache
+1011 silly lockFile 39d5d3fe-serve-favicon-2-1-1 serve-favicon@^2.1.1
+1012 silly lockFile 0add5472-path-is-absolute-1-0-0 path-is-absolute@^1.0.0
+1013 verbose about to build C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector
+1014 info C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector unbuild
+1015 verbose from cache C:\Users\wanmengj\AppData\Roaming\npm\node_modules\node-inspector\package.json
+1016 info preuninstall node-inspector@0.12.8
+1017 info uninstall node-inspector@0.12.8
+1018 verbose true,C:\Users\wanmengj\AppData\Roaming\npm\node_modules,C:\Users\wanmengj\AppData\Roaming\npm\node_modules unbuild node-inspector@0.12.8
+1019 verbose C:\Users\wanmengj\AppData\Roaming\npm,[object Object] binRoot
+1020 info postuninstall node-inspector@0.12.8
+1021 silly registry.get cb [ 304, undefined ]
+1022 verbose etag debug from cache
+1023 silly registry.get cb [ 304, undefined ]
+1024 verbose etag glob from cache
+1025 silly registry.get cb [ 304, undefined ]
+1026 verbose etag async from cache
+1027 silly registry.get cb [ 304, undefined ]
+1028 verbose etag ws from cache
+1029 silly registry.get cb [ 304, undefined ]
+1030 verbose etag express from cache
+1031 silly registry.get cb [ 304, undefined ]
+1032 verbose etag v8-debug from cache
+1033 info retry registry request attempt 3 at 12:28:29
+1034 verbose etag "A41GD79BSI9OOTV4BDDQXI42E"
+1035 http GET https://registry.npmjs.org/rc
+1036 silly registry.get cb [ 304, undefined ]
+1037 verbose etag yargs from cache
+1038 silly registry.get cb [ 304, undefined ]
+1039 verbose etag v8-profiler from cache
+1040 info retry registry request attempt 3 at 12:28:29
+1041 verbose etag "3QGTYV8PGUZPM6C52C8MKXAU9"
+1042 http GET https://registry.npmjs.org/biased-opener
+1043 info retry registry request attempt 3 at 12:28:29
+1044 verbose etag "BFNF8J58MQZM8F6P0HW3WJH0J"
+1045 http GET https://registry.npmjs.org/which
+1046 info retry registry request attempt 3 at 12:28:29
+1047 verbose etag "DF8UJWAAXWGT43HXJMYJSZK89"
+1048 http GET https://registry.npmjs.org/strong-data-uri
+1049 info retry registry request attempt 3 at 12:28:29
+1050 verbose etag "DG8M0K8D1VEJFQAH7CNO7OENX"
+1051 http GET https://registry.npmjs.org/semver
+1052 silly lockFile 862c00aa-debug-2-2-0 debug@^2.2.0
+1053 silly lockFile 771be5f5-glob-5-0-5 glob@^5.0.5
+1054 silly addNameRange number 2 { name: 'async', range: '>=0.9.0- <0.10.0-', hasData: true }
+1055 silly addNameRange versions [ 'async',
+1055 silly addNameRange   [ '0.1.0',
+1055 silly addNameRange     '0.1.1',
+1055 silly addNameRange     '0.1.2',
+1055 silly addNameRange     '0.1.3',
+1055 silly addNameRange     '0.1.4',
+1055 silly addNameRange     '0.1.5',
+1055 silly addNameRange     '0.1.6',
+1055 silly addNameRange     '0.1.7',
+1055 silly addNameRange     '0.1.8',
+1055 silly addNameRange     '0.1.9',
+1055 silly addNameRange     '0.1.10',
+1055 silly addNameRange     '0.1.11',
+1055 silly addNameRange     '0.1.12',
+1055 silly addNameRange     '0.1.13',
+1055 silly addNameRange     '0.1.14',
+1055 silly addNameRange     '0.1.15',
+1055 silly addNameRange     '0.1.16',
+1055 silly addNameRange     '0.1.17',
+1055 silly addNameRange     '0.1.18',
+1055 silly addNameRange     '0.1.19',
+1055 silly addNameRange     '0.1.20',
+1055 silly addNameRange     '0.1.21',
+1055 silly addNameRange     '0.1.22',
+1055 silly addNameRange     '0.2.0',
+1055 silly addNameRange     '0.2.1',
+1055 silly addNameRange     '0.2.2',
+1055 silly addNameRange     '0.2.3',
+1055 silly addNameRange     '0.2.4',
+1055 silly addNameRange     '0.2.5',
+1055 silly addNameRange     '0.2.6',
+1055 silly addNameRange     '0.2.7',
+1055 silly addNameRange     '0.2.8',
+1055 silly addNameRange     '0.2.9',
+1055 silly addNameRange     '0.2.10',
+1055 silly addNameRange     '0.3.0',
+1055 silly addNameRange     '0.4.0',
+1055 silly addNameRange     '0.4.1',
+1055 silly addNameRange     '0.5.0',
+1055 silly addNameRange     '0.6.0',
+1055 silly addNameRange     '0.6.1',
+1055 silly addNameRange     '0.6.2',
+1055 silly addNameRange     '0.7.0',
+1055 silly addNameRange     '0.8.0',
+1055 silly addNameRange     '0.9.0',
+1055 silly addNameRange     '0.9.2',
+1055 silly addNameRange     '1.0.0',
+1055 silly addNameRange     '1.1.0',
+1055 silly addNameRange     '1.2.0',
+1055 silly addNameRange     '1.1.1',
+1055 silly addNameRange     '1.2.1',
+1055 silly addNameRange     '1.3.0',
+1055 silly addNameRange     '1.4.0',
+1055 silly addNameRange     '1.4.1',
+1055 silly addNameRange     '1.4.2',
+1055 silly addNameRange     '1.5.0',
+1055 silly addNameRange     '1.5.1',
+1055 silly addNameRange     '1.5.2',
+1055 silly addNameRange     '2.0.0-alpha.0',
+1055 silly addNameRange     '2.0.0-rc.1',
+1055 silly addNameRange     '2.0.0-rc.2',
+1055 silly addNameRange     '2.0.0-rc.3',
+1055 silly addNameRange     '2.0.0-rc.4',
+1055 silly addNameRange     '2.0.0-rc.5' ] ]
+1056 verbose addNamed [ 'async', '0.9.2' ]
+1057 verbose addNamed [ '0.9.2', '0.9.2' ]
+1058 silly lockFile c32a6c4e-async-0-9-2 async@0.9.2
+1059 verbose lock async@0.9.2 C:\Users\wanmengj\AppData\Roaming\npm-cache\c32a6c4e-async-0-9-2.lock
+1060 silly lockFile dbce67be-express-4-12-3 express@^4.12.3
+1061 silly lockFile 1fe1a01c-ws-1-0-1 ws@^1.0.1
+1062 silly addNameRange number 2 { name: 'v8-debug', range: '>=0.7.1- <0.8.0-', hasData: true }
+1063 silly addNameRange versions [ 'v8-debug',
+1063 silly addNameRange   [ '0.1.0',
+1063 silly addNameRange     '0.1.1',
+1063 silly addNameRange     '0.1.2',
+1063 silly addNameRange     '0.1.3',
+1063 silly addNameRange     '0.1.4',
+1063 silly addNameRange     '0.1.5',
+1063 silly addNameRange     '0.2.0',
+1063 silly addNameRange     '0.3.0',
+1063 silly addNameRange     '0.3.1',
+1063 silly addNameRange     '0.3.2',
+1063 silly addNameRange     '0.3.3',
+1063 silly addNameRange     '0.3.4',
+1063 silly addNameRange     '0.3.5',
+1063 silly addNameRange     '0.4.0',
+1063 silly addNameRange     '0.4.1',
+1063 silly addNameRange     '0.4.2',
+1063 silly addNameRange     '0.4.3',
+1063 silly addNameRange     '0.4.4',
+1063 silly addNameRange     '0.4.5',
+1063 silly addNameRange     '0.4.6',
+1063 silly addNameRange     '0.5.0',
+1063 silly addNameRange     '0.5.1',
+1063 silly addNameRange     '0.5.2',
+1063 silly addNameRange     '0.5.3',
+1063 silly addNameRange     '0.5.4',
+1063 silly addNameRange     '0.6.0',
+1063 silly addNameRange     '0.6.1',
+1063 silly addNameRange     '0.6.2',
+1063 silly addNameRange     '0.7.0',
+1063 silly addNameRange     '0.7.1',
+1063 silly addNameRange     '0.7.3',
+1063 silly addNameRange     '0.7.5',
+1063 silly addNameRange     '0.7.6',
+1063 silly addNameRange     '0.7.7' ] ]
+1064 verbose addNamed [ 'v8-debug', '0.7.7' ]
+1065 verbose addNamed [ '0.7.7', '0.7.7' ]
+1066 silly lockFile 8e7441e2-v8-debug-0-7-7 v8-debug@0.7.7
+1067 verbose lock v8-debug@0.7.7 C:\Users\wanmengj\AppData\Roaming\npm-cache\8e7441e2-v8-debug-0-7-7.lock
+1068 silly addNameRange number 2 { name: 'v8-profiler', range: '>=5.6.0- <5.7.0-', hasData: true }
+1069 silly addNameRange versions [ 'v8-profiler',
+1069 silly addNameRange   [ '0.0.1',
+1069 silly addNameRange     '0.0.2',
+1069 silly addNameRange     '0.0.3',
+1069 silly addNameRange     '3.6.2-1',
+1069 silly addNameRange     '4.0.1',
+1069 silly addNameRange     '5.0.0',
+1069 silly addNameRange     '5.1.0',
+1069 silly addNameRange     '5.1.1',
+1069 silly addNameRange     '5.2.0',
+1069 silly addNameRange     '5.2.1',
+1069 silly addNameRange     '5.2.2',
+1069 silly addNameRange     '5.2.3',
+1069 silly addNameRange     '5.2.4',
+1069 silly addNameRange     '5.2.5',
+1069 silly addNameRange     '5.2.6',
+1069 silly addNameRange     '5.2.7',
+1069 silly addNameRange     '5.2.8',
+1069 silly addNameRange     '5.2.9',
+1069 silly addNameRange     '5.2.10',
+1069 silly addNameRange     '5.2.11',
+1069 silly addNameRange     '5.2.12',
+1069 silly addNameRange     '5.3.0',
+1069 silly addNameRange     '5.3.1',
+1069 silly addNameRange     '5.3.2',
+1069 silly addNameRange     '5.4.0',
+1069 silly addNameRange     '5.5.0',
+1069 silly addNameRange     '5.6.0',
+1069 silly addNameRange     '5.6.1',
+1069 silly addNameRange     '5.6.3',
+1069 silly addNameRange     '5.6.4',
+1069 silly addNameRange     '5.6.5',
+1069 silly addNameRange     '3.6.2-beta',
+1069 silly addNameRange     '3.6.2-beta2' ] ]
+1070 verbose addNamed [ 'v8-profiler', '5.6.5' ]
+1071 verbose addNamed [ '5.6.5', '5.6.5' ]
+1072 silly lockFile bb1977f1-v8-profiler-5-6-5 v8-profiler@5.6.5
+1073 verbose lock v8-profiler@5.6.5 C:\Users\wanmengj\AppData\Roaming\npm-cache\bb1977f1-v8-profiler-5-6-5.lock
+1074 silly lockFile 8902a30a-yargs-3-9-0 yargs@^3.9.0
+1075 verbose read json C:\Users\wanmengj\AppData\Roaming\npm-cache\async\0.9.2\package\package.json
+1076 error Error: No compatible version found: serve-favicon@'^2.1.1'
+1076 error Valid install targets:
+1076 error ["2.0.0","2.0.1","2.1.0","2.1.1","2.1.2","2.1.3","2.1.4","2.1.5","2.1.6","2.1.7","2.2.0","2.2.1","2.3.0"]
+1076 error     at installTargetsError (C:\Program Files (x86)\nodejs\node_modules\npm\lib\cache.js:553:10)
+1076 error     at C:\Program Files (x86)\nodejs\node_modules\npm\lib\cache.js:477:15
+1076 error     at saved (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\get.js:138:7)
+1076 error     at C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:220:7
+1076 error     at Object.oncomplete (fs.js:297:15)
+1077 error If you need help, you may report this log at:
+1077 error     <http://github.com/isaacs/npm/issues>
+1077 error or email it to:
+1077 error     <npm-@googlegroups.com>
+1078 error System Windows_NT 6.1.7601
+1079 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "node-inspector"
+1080 error cwd C:\Users\wanmengj\pro\web
+1081 error node -v v0.8.5
+1082 error npm -v 1.1.46
+1083 verbose exit [ 1, true ]
