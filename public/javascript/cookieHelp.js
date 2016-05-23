@@ -71,7 +71,6 @@ function getPostImgFlag(){
  return imgFlag;
 }
 
-
 function createHtml(array,htmlType){
     var inserted="";
     if(htmlType==1){
@@ -82,7 +81,6 @@ function createHtml(array,htmlType){
     return inserted;
 }
 
-
 function createOptions(firstOption,length){
     var options="";
     for(var i=firstOption;i<length;i++){
@@ -90,8 +88,6 @@ function createOptions(firstOption,length){
     }
     return options;
 }
-
-
 
 //这个函数去除数组中的重复元素
 function removeRedundant(o){
@@ -123,6 +119,7 @@ function removeRedundant(o){
 
 
 function getUserNameByUrlQuery(url){
-  var flag=url.indexOf("=");
-  var username=url.substring(flag+1);  return username;
+    var flag=url.indexOf("=");
+    var username=url.substring(flag+1); 
+    return username;
 }

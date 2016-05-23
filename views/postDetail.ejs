@@ -6,423 +6,385 @@
 <script src="/javascript/navi.js"></script>
 <script type="text/javascript">
  $(function(){
-  //如果主贴带有的图片超过一张,则用这个逻辑
-  function displayMultiPic(){
-     var PicStore=JSON.parse($("#multiPicFlag").text());
-	 var imgFlag=$("#imgFlag").text();
-	 if(PicStore){
-	   for(var i=0;i<PicStore.length;i++){
-	   var picUrl="../uploads/postPic/"+imgFlag+"/"+PicStore[i];
-	   var eachImg=$("<img class='postEachImg' src='"+picUrl+"' />");
-	   $(".pOwner").append(eachImg);
-	  }
-	 } 
-  }
-  
-  
-  
- displayMultiPic();
+//如果主贴带有的图片超过一张,则用这个逻辑
+function displayMultiPic(){
+	var PicStore=JSON.parse($("#multiPicFlag").text());
+	var imgFlag=$("#imgFlag").text();
+	if(PicStore){
+		for(var i=0;i<PicStore.length;i++){
+			var picUrl="../uploads/postPic/"+imgFlag+"/"+PicStore[i];
+			var eachImg=$("<img class='postEachImg' src='"+picUrl+"' />");
+			$(".pOwner").append(eachImg);
+		}
+	} 
+}
+displayMultiPic();
 
- 
- 
-  function displayReplies(){
-      var pid=getUrlIndex();
-      $.ajax({
-	    url:"postDetail.ejs",
+function displayReplies(){
+	var pid=getUrlIndex();
+	$.ajax({
+		url:"/forum/postDetail",
 		data:{"requestType":2,"pid":pid},
 		type:"post",
 		success:function(d){
-	     if(d){
-		 var storeAllRepUser=[];
-		 for(var i=0;i<d.length;i++){
-	     var replyBy=decodeURI(d[i]["f"]);
-		 var replyConents=d[i]["c"];
-		 var replyTime=d[i]["t"];
-		 var replyTime2=d[i]["tx"];
-		 var replyByAccount=d[i]["w"];
-		 var eachReplyWrap=$("<div class='eachReplyWrap' id='eachReplyWrap'>"+
-		                     "<div class='replyByWhom' id='replyByWhom'><img src='#' class='userImg' width='100%' height='50' onclick='checkLastLoginTime()' /><a href='#' class='postEachUser'>"+replyBy+"</a></div>"+
-							 "<div class='replyContents' id='replyContents'>"+replyConents+"</div>"+
-							 "<span class='replyTime2' style='display:none;'>"+replyTime2+"</span>"+
-							 "<span class='replyByAccount' style='display:none;'>"+replyByAccount+"</span>"+
-							 "<div class='replyTime' id='replyTime'>"+replyTime+"<a href='#' onclick='replySubLayer(this)'>回复</a></div>"+
-							 "<div class='finalRepHolder'></div>"+
-							 "</div>");
-		    eachReplyWrap.appendTo($("#replyHolder"));
-			if($.inArray(replyBy,storeAllRepUser)==-1){
-			 storeAllRepUser.push(replyBy);
+			if(d){
+				var storeAllRepUser=[];
+				for(var i=0;i<d.length;i++){
+					var replyBy=decodeURI(d[i]["f"]);
+					var replyConents=d[i]["c"];
+					var replyTime=d[i]["t"];
+					var replyTime2=d[i]["tx"];
+					var replyByAccount=d[i]["w"];
+					var eachReplyWrap=$("<div class='eachReplyWrap' id='eachReplyWrap'>"+
+					"<div class='replyByWhom' id='replyByWhom'><img src='#' class='userImg' width='100%' height='50' onclick='checkLastLoginTime()' /><a href='#' class='postEachUser'>"+replyBy+"</a></div>"+
+					"<div class='replyContents' id='replyContents'>"+replyConents+"</div>"+
+					"<span class='replyTime2' style='display:none;'>"+replyTime2+"</span>"+
+					"<span class='replyByAccount' style='display:none;'>"+replyByAccount+"</span>"+
+					"<div class='replyTime' id='replyTime'>"+replyTime+"<a href='#' onclick='replySubLayer(this)'>回复</a></div>"+
+					"<div class='finalRepHolder'></div>"+
+					"</div>");
+					eachReplyWrap.appendTo($("#replyHolder"));
+					if($.inArray(replyBy,storeAllRepUser)==-1){
+						storeAllRepUser.push(replyBy);
+					}
+				}
+				//显示全部直接子回复
+				showFinalSubReplies();
+				showAllIcons(storeAllRepUser);
+				showReplyImgs();
 			}
-	      }
-		  //显示全部直接子回复
-		  showFinalSubReplies();
-		  showAllIcons(storeAllRepUser);
-		  showReplyImgs();
-		 }
 		},
 		error:function(xhr,statusText,error){
-		  if(error){
-		    throw error;
-		  }
+			if(error){
+				throw error;
+			}
 		}
-	  });
-   }
-   displayReplies();
- })
+	});
+}
+displayReplies();
+
+})
  
- 
- 
- function showReplyImgs(){
-    var getReplyInfo=[];
+function showReplyImgs(){
+	var getReplyInfo=[];
 	$.each($(".replyTime2"),function(i,v){
-	      var eachStore={};
-          var time=$(v).text();
-		  eachStore["time"]=time;
-		  eachStore["by"]="";
-		  getReplyInfo.push(eachStore);
-	});
-	
-	$.each($(".replyByAccount"),function(i,v){
-	   var byWhom=$(v).text();
-	   getReplyInfo[i]["by"]=byWhom;
-	});
-	$.ajax({
-	  url:"getReplyPics.ejs",
-	  data:{"storeInfo":getReplyInfo},
-	  type:"post",
-	  success:function(d){
-	    //alert(JSON.stringify(d));
-	      for(var i=0;i<d.length;i++){
-		      var checkImg=d[i]["pic"];
-			  if(!checkImg){
-			    //这个回帖不带图片
-				continue;
-			  }
-			  else{
-			    var path=d[i]["by"];
-				var eachPostImgWrap=$("<div class='eachPostImgWrap'></div>");
-			    for(var i2=0;i2<checkImg.length;i2++){
-				  var picUrl="../uploads/subPostPic/"+path+"/"+checkImg[i2];
-				  var eachPostImg=$("<img class='pImg' src='"+picUrl+"' />");
-				  eachPostImgWrap.append(eachPostImg);
-				  $(".replyContents:eq("+i+")").append(eachPostImgWrap);
-				}
-			  }
-		  } 
-	  },
-	  error:function(xhr,responseText,e){
-	    if(e){
-		 throw e;
-		}
-	  }
+		var eachStore={};
+		var time=$(v).text();
+		eachStore["time"]=time;
+		eachStore["by"]="";
+		getReplyInfo.push(eachStore);
 	});
 
- 
- }
- 
- 
- 
- 
- function showFinalSubReplies(){
-   //这个函数通过ajax获取全部针对子回复的回复
-     var pid=getUrlIndex();
-	 $.ajax({
-	  url:"/WebstormProjects/web/views/getFinalSubReps.ejs?Pid="+pid,
-	  type:"get",
-	  cache:false,
-	  success:function(d){
-	    if(d){
-	    var finalReps=d;
-		for(var i=0;i<finalReps.length;i++){
-	    var replyTo=finalReps[i]["replyWhichSub"];//回复的目标
-		$.each($(".eachReplyWrap"),function(i2,v){
-		  var checkSubOnPage=$(v).find(".replyContents").text();
-		  if(checkSubOnPage==replyTo){
-		     //找到！
-			 var finalRepContents=finalReps[i]["contents"];
-			 var finalRepBy=decodeURI(finalReps[i]["by"]);
-			 var finalRepTime=finalReps[i]["time"];
-			 var finalRepWrap=$("<div class='finalRepWrap' id='finalRepWrap'>"+
-			                    "<span class='finalRep1'><a href='#'>"+finalRepBy+"</a></span>"+
-								"<span class='finalRep2'>"+finalRepContents+"</span>"+
-								"<span class='finalRep3'>"+finalRepTime+"</span>"+
-							    "</div>");
-		    $(v).find(".finalRepHolder").append(finalRepWrap);
-		  }
-		});//$.jquery
-	   }
-	}
-   },
-	  error:function(xhr,statusText,e){
-	    if(e){
-		  throw e;
+	$.each($(".replyByAccount"),function(i,v){
+		var byWhom=$(v).text();
+		getReplyInfo[i]["by"]=byWhom;
+	});
+	$.ajax({
+		url:"getReplyPics.ejs",
+		data:{"storeInfo":getReplyInfo},
+		type:"post",
+		success:function(d){
+			for(var i=0;i<d.length;i++){
+				var checkImg=d[i]["pic"];
+				if(!checkImg){
+					//这个回帖不带图片
+					continue;
+				} else {
+					var path=d[i]["by"];
+					var eachPostImgWrap=$("<div class='eachPostImgWrap'></div>");
+					for(var i2=0;i2<checkImg.length;i2++){
+						var picUrl="../uploads/subPostPic/"+path+"/"+checkImg[i2];
+						var eachPostImg=$("<img class='pImg' src='"+picUrl+"' />");
+						eachPostImgWrap.append(eachPostImg);
+						$(".replyContents:eq("+i+")").append(eachPostImgWrap);
+					}
+				}
+			} 
+		},
+		error:function(xhr,responseText,e){
+			if(e){
+				throw e;
+			}
 		}
-	  }
-	 });
- }
+	});
+}
  
+function showFinalSubReplies(){
+	//这个函数通过ajax获取全部针对子回复的回复
+	var pid=getUrlIndex();
+	$.ajax({
+		url:"/WebstormProjects/web/views/getFinalSubReps.ejs?Pid="+pid,
+		type:"get",
+		cache:false,
+		success:function(d){
+			if(d){
+				var finalReps=d;
+				for(var i=0;i<finalReps.length;i++){
+					var replyTo=finalReps[i]["replyWhichSub"];//回复的目标
+					$.each($(".eachReplyWrap"),function(i2,v){
+						var checkSubOnPage=$(v).find(".replyContents").text();
+						if(checkSubOnPage==replyTo){
+							//找到！
+							var finalRepContents=finalReps[i]["contents"];
+							var finalRepBy=decodeURI(finalReps[i]["by"]);
+							var finalRepTime=finalReps[i]["time"];
+							var finalRepWrap=$("<div class='finalRepWrap' id='finalRepWrap'>"+
+							"<span class='finalRep1'><a href='#'>"+finalRepBy+"</a></span>"+
+							"<span class='finalRep2'>"+finalRepContents+"</span>"+
+							"<span class='finalRep3'>"+finalRepTime+"</span>"+
+							"</div>");
+							$(v).find(".finalRepHolder").append(finalRepWrap);
+						}
+					});//$.jquery
+				}
+			}
+		},
+		error:function(xhr,statusText,e){
+			if(e){
+				throw e;
+			}
+		}
+	});
+}
  
 function showAllIcons(o){
-  $.ajax({
-    url:"/WebstormProjects/web/views/returnIcons.ejs",
-	data:{"allUser":o},
-	type:"post",
-	success:function(d){
-	  var storePic=d["s"];
-	  var storeAccount=d["a"];
-	  $.each($(".postEachUser"),function(i,v){
-	      for(var i2=0;i2<o.length;i2++){
-		     if(o[i2]==$(v).text()){
-			   if(storePic[i2]!="unknown.png"){
-			     var imgUrl="../uploads/pic/"+storeAccount[i2]+"/"+storePic[i2];
-				 $(v).prev().attr("src",imgUrl);
-			   }
-			   else{
-			     var imgUrl="../uploads/pic/default/unknown.png";
-	             $(v).prev().attr("src",imgUrl);
-			   }
-			 }
-		  }
-	  });
-	},
-	error:function(xhr,responseText,e){
-      if(e){
-	    throw e;
-	  }
-	}
-  });
+	$.ajax({
+		url:"/WebstormProjects/web/views/returnIcons.ejs",
+		data:{"allUser":o},
+		type:"post",
+		success:function(d){
+			var storePic=d["s"];
+			var storeAccount=d["a"];
+			$.each($(".postEachUser"),function(i,v){
+				for(var i2=0;i2<o.length;i2++){
+					if(o[i2]==$(v).text()){
+						if(storePic[i2]!="unknown.png"){
+							var imgUrl="../uploads/pic/"+storeAccount[i2]+"/"+storePic[i2];
+							$(v).prev().attr("src",imgUrl);
+						} else {
+							var imgUrl="../uploads/pic/default/unknown.png";
+							$(v).prev().attr("src",imgUrl);
+						}
+					}
+				}
+			});
+		},
+		error:function(xhr,responseText,e){
+			if(e){
+				throw e;
+			}
+		}
+	});
 }
 
 </script>
 <script type="text/javascript">
-  var replyImgIndex=1;
-     //回帖逻辑
-     function replayPost(o){
-	    var replayTextarea=$("<div class='replayWrap' id='replayWrap'>"+
-		                     "<textarea id='replayTextarea' class='replayTextarea'></textarea><br />"+
-							 "<input type='button' value='回复' id='replyPostButton' class='replyPostButton' onclick='replayPost2()' />"+
-							 "</div>");			 				 
-		var fatherLayer=$(o).parent(".eLayer");
-		replayTextarea.appendTo(fatherLayer);
-		$(o).hide();
-	 }
-	 function replayPost2(){
-	   //this function gathers replay contents and send them to server via ajax
-	   var pid=getUrlIndex();
-	   var replayContents=$("#replayTextarea").val();
-	   replayContents=replayContents.replace(/'/g,"`");
-	   replayContents=replayContents.replace(/"/g,'`');
-	   //暂时不验证内容格式
-	    var replayByWhom=getTargetCookie("username");//帐号
-		var falseName=getTargetCookie("falseName");//昵称
-		
-	
-		var currentTime=getCurrentTime();
-		$.ajax({
-		  url:"postDetail.ejs",
-		  type:"post",
-		  data:{
-		   "replayContents":replayContents,
-		   "replayByWhom":replayByWhom,
-		   "id":pid,
-		   "time":currentTime,
-		   "falseName":falseName
-		  },
-		  success:function(d){
-		   if(d=="1"){
-		     //store reply success
-			 window.location.href="postDetail.ejs?pid="+pid;
-		   }
-		  }, 
-		  error:function(xhr,statusText,error){
-		    if(error){
-			  throw error;
-			}
-		  }
-		});
-	 }
-	 
-	 
-	 
-	 function replayPost2b(){
-	 //this function gathers replay contents and send them to server via ajax
-	   var pid=getUrlIndex();
-	   var replayContents=$("#replayTextarea2").val();
-	   replayContents=replayContents.replace(/'/g,"`");
-	   replayContents=replayContents.replace(/"/g,'`');
-	   //暂时不验证内容格式
-	    var replayByWhom=getTargetCookie("username");//帐号
-		var falseName=getTargetCookie("falseName");//昵称
-		var imgFlag=getPostImgFlag();//这个函数返回当前url查询字符串"&imgFlag="后面的值
-		var currentTime=getCurrentTime();
-		var time=(new Date()).getTime(); //到过去的时间轴
-		
-		$.ajax({
-		  url:"postDetail.ejs",
-		  type:"post",
-		  data:{
-		   "replayContents":replayContents,
-		   "replayByWhom":replayByWhom,
-		   "id":pid,
-		   "time":currentTime,
-		   "timeAx":time,
-		   "falseName":falseName
-		  },
-		  success:function(d){
-		   if(d=="1"){
-		     //store reply success
-			 //window.location.href="postDetail.ejs?pid="+pid+"&imgFlag="+imgFlag; 
-			 var replyTextJson={
-			  "replayContents":replayContents,
-			  "replayByWhom":replayByWhom,
-		      "id":pid,
-		      "time":currentTime,
-			  "timeAx":time,
-		      "falseName":falseName,
-			  "url":window.location.href
-			 }; 
-			 submitPic(replyTextJson);
-		   }
-		  }, 
-		  error:function(xhr,statusText,error){
-		    if(error){
-			  throw error;
-			}
-		  }
-		});
-	 }//底部回复框
-	 
-	 
-	 
-	 function submitPic(o){
-	     var replyTextString=JSON.stringify(o);
-		 $("#replyTextDetail").val(replyTextString);
-	     document.getElementById("hiddenForm").submit(); 
-	 }
-	 
+var replyImgIndex=1;
+//回帖逻辑
+function replayPost(o){
+	var replayTextarea=$("<div class='replayWrap' id='replayWrap'>"+
+	"<textarea id='replayTextarea' class='replayTextarea'></textarea><br />"+
+	"<input type='button' value='回复' id='replyPostButton' class='replyPostButton' onclick='replayPost2()' />"+
+	"</div>");			 				 
+	var fatherLayer=$(o).parent(".eLayer");
+	replayTextarea.appendTo(fatherLayer);
+	$(o).hide();
+}
 
-	 
-	function replySubLayer(o){
-	  //前端js制造回帖框
-	  var replayTextarea=$("<div class='replayWrap' id='replayWrap'>"+
-		                     "<textarea id='replayTextareaSub' class='replayTextareaSub'></textarea>"+
-							 "<input type='button' value='回复' id='replyPostButtonSub' onclick='replySubLayer2(this)' />"+
-							 "</div>");
-		var fatherLayer=$(o).parents(".eachReplyWrap");
-		replayTextarea.appendTo(fatherLayer);
-		$(o).hide();
-	}
-	//子回复:回复跟贴的人
-	
-	function replySubLayer2(o){
-	   var pid=getUrlIndex();
-	   var thisTextareaVlaue=$(o).prev().val();//textarea的值,注意每个子回复的textarea的值都不同，所以不能用id直接取值
-	   thisTextareaVlaue=thisTextareaVlaue.replace(/'/g,"`");
-	   thisTextareaVlaue=thisTextareaVlaue.replace(/"/g,'`');
-	   //暂时不验证内容格式
-	   var replayByWhom=getTargetCookie("username");//帐号
-	   var falseName=getTargetCookie("falseName");//昵称
-	   var imgFlag=getPostImgFlag();//这个函数返回当前url查询字符串"&imgFlag="后面的值
-	   var currentTime=getCurrentTime();
-	   var replyToWhom=$(o).parents(".eachReplyWrap").find(".postEachUser").text();//子回复:回复谁(昵称)
-	   var replyWhichSub=$(o).parents(".eachReplyWrap").find(".replyContents").text();//回复哪个子回复(唯一)
-	   $.ajax({
-	     url:"/WebstormProjects/web/views/replySubPost.ejs",
-		 type:"post",
-		 data:{
-		   "replyToWhom":replyToWhom,
-		   "pid":pid,
-		   "replayByWhom":replayByWhom,
-		   "falseName":falseName,
-		   "currentTime":currentTime,
-		   "postContents":thisTextareaVlaue,
-		   "replyWhichSub":replyWhichSub
-		 },
-		 success:function(d){
-	
-		   if(d=="1"){
-		  // window.location.href="postDetail.ejs?pid="+pid;
-		   //  window.location.href="postDetail.ejs?pid="+pid+"&imgFlag="+imgFlag;
-			   window.location.reload();
-		   }
-		 },
-		 error:function(xhr,statusText,error){
-		   if(error){
-		     throw error;
-		   }
-		 }
-	   });
-	}
-	
-	
-	
-	 function addNewReplyPic(){
-	  //添加新的回复图片
-	   var newFormFile=$("<input type='file' onchange='picPre(this)' class='handlePicPreview' name='"+"receivePreviewPic"+replyImgIndex+"'"+"id='"+"receivePreviewPic"+replyImgIndex+"'"+"/>");
-	   $("#hiddenForm").append(newFormFile);
-	   replyImgIndex++;
-	}
-	
-	
-	 //将input type="file"的图片预览在div中显示
-        function picPre(o){
-		 var picValue= $(o).val();
-		 var previewImg=$("<img src='"+picValue+"'"+"/>");
-		 $("#holdPicPreview").append(previewImg);
-	}
-	
-	
-	function checkLastLoginTime(){
-	   //检查该用户是否在线,如果不在线返回上次上线时间
-	   
-	
-	
-	}
-	
-	
-	
-	
-	
-	
+function replayPost2(){
+	//this function gathers replay contents and send them to server via ajax
+	var pid=getUrlIndex();
+	var replayContents=$("#replayTextarea").val();
+	replayContents=replayContents.replace(/'/g,"`");
+	replayContents=replayContents.replace(/"/g,'`');
+	//暂时不验证内容格式
+	var replayByWhom=getTargetCookie("username");//帐号
+	var falseName=getTargetCookie("falseName");//昵称
+	var currentTime=getCurrentTime();
+	$.ajax({
+		url:"postDetail.ejs",
+		type:"post",
+		data:{
+			"replayContents":replayContents,
+			"replayByWhom":replayByWhom,
+			"id":pid,
+			"time":currentTime,
+			"falseName":falseName
+		},
+		success:function(d){
+			if(d=="1"){
+				//store reply success
+				window.location.href="postDetail.ejs?pid="+pid;
+			}
+		}, 
+		error:function(xhr,statusText,error){
+			if(error){
+				throw error;
+			}
+		}
+	});
+}
+
+function replayPost2b(){
+	//this function gathers replay contents and send them to server via ajax
+	var pid=getUrlIndex();
+	var replayContents=$("#replayTextarea2").val();
+	replayContents=replayContents.replace(/'/g,"`");
+	replayContents=replayContents.replace(/"/g,'`');
+	//暂时不验证内容格式
+	var replayByWhom=getTargetCookie("username");//帐号
+	var falseName=getTargetCookie("falseName");//昵称
+	var imgFlag=getPostImgFlag();//这个函数返回当前url查询字符串"&imgFlag="后面的值
+	var currentTime=getCurrentTime();
+	var time=(new Date()).getTime(); //到过去的时间轴
+	$.ajax({
+		url:"/forum/replyPost",
+		type:"post",
+		data:{
+			"replayContents":replayContents,
+			"replayByWhom":replayByWhom,
+			"id":pid,
+			"time":currentTime,
+			"timeAx":time,
+			"falseName":falseName
+		},
+		success:function(d){
+			if(d=="1"){
+				//store reply success
+				//window.location.href="postDetail.ejs?pid="+pid+"&imgFlag="+imgFlag; 
+				var replyTextJson={
+					"replayContents":replayContents,
+					"replayByWhom":replayByWhom,
+					"id":pid,
+					"time":currentTime,
+					"timeAx":time,
+					"falseName":falseName,
+					"url":window.location.href
+				}; 
+				submitPic(replyTextJson);
+			}
+		}, 
+		error:function(xhr,statusText,error){
+			if(error){
+				throw error;
+			}
+		}
+	});
+}
+//底部回复框
+
+function submitPic(o){
+	var replyTextString=JSON.stringify(o);
+	$("#replyTextDetail").val(replyTextString);
+	document.getElementById("hiddenForm").submit(); 
+}
+
+function replySubLayer(o){
+	//前端js制造回帖框
+	var replayTextarea=$("<div class='replayWrap' id='replayWrap'>"+
+	"<textarea id='replayTextareaSub' class='replayTextareaSub'></textarea>"+
+	"<input type='button' value='回复' id='replyPostButtonSub' onclick='replySubLayer2(this)' />"+
+	"</div>");
+	var fatherLayer=$(o).parents(".eachReplyWrap");
+	replayTextarea.appendTo(fatherLayer);
+	$(o).hide();
+}
+//子回复:回复跟贴的人
+
+function replySubLayer2(o){
+	var pid=getUrlIndex();
+	var thisTextareaVlaue=$(o).prev().val();//textarea的值,注意每个子回复的textarea的值都不同，所以不能用id直接取值
+	thisTextareaVlaue=thisTextareaVlaue.replace(/'/g,"`");
+	thisTextareaVlaue=thisTextareaVlaue.replace(/"/g,'`');
+	//暂时不验证内容格式
+	var replayByWhom=getTargetCookie("username");//帐号
+	var falseName=getTargetCookie("falseName");//昵称
+	var imgFlag=getPostImgFlag();//这个函数返回当前url查询字符串"&imgFlag="后面的值
+	var currentTime=getCurrentTime();
+	var replyToWhom=$(o).parents(".eachReplyWrap").find(".postEachUser").text();//子回复:回复谁(昵称)
+	var replyWhichSub=$(o).parents(".eachReplyWrap").find(".replyContents").text();//回复哪个子回复(唯一)
+	$.ajax({
+		url:"/WebstormProjects/web/views/replySubPost.ejs",
+		type:"post",
+		data:{
+			"replyToWhom":replyToWhom,
+			"pid":pid,
+			"replayByWhom":replayByWhom,
+			"falseName":falseName,
+			"currentTime":currentTime,
+			"postContents":thisTextareaVlaue,
+			"replyWhichSub":replyWhichSub
+		},
+		success:function(d){
+			if(d=="1"){
+				// window.location.href="postDetail.ejs?pid="+pid;
+				//  window.location.href="postDetail.ejs?pid="+pid+"&imgFlag="+imgFlag;
+				window.location.reload();
+			}
+		},
+		error:function(xhr,statusText,error){
+			if(error){
+				throw error;
+			}
+		}
+	});
+}
+
+function addNewReplyPic(){
+	//添加新的回复图片
+	var newFormFile=$("<input type='file' onchange='picPre(this)' class='handlePicPreview' name='"+"receivePreviewPic"+replyImgIndex+"'"+"id='"+"receivePreviewPic"+replyImgIndex+"'"+"/>");
+	$("#hiddenForm").append(newFormFile);
+	replyImgIndex++;
+}
+
+
+//将input type="file"的图片预览在div中显示
+function picPre(o){
+	var picValue= $(o).val();
+	var previewImg=$("<img src='"+picValue+"'"+"/>");
+	$("#holdPicPreview").append(previewImg);
+}
+
+function checkLastLoginTime(){
+//检查该用户是否在线,如果不在线返回上次上线时间
+}
 </script>
 
 <script type="text/javascript">
-  $(function(){
-  function postPreviewPic(){
-	   var checkPostOwnerImg=$("#thisPostOwnerImg").attr("src");
-	   if(!checkPostOwnerImg){
-	    $("#thisPostOwnerImg").hide();
-	   }
-	 }
-	 postPreviewPic();
+$(function(){
+	function postPreviewPic(){
+		var checkPostOwnerImg=$("#thisPostOwnerImg").attr("src");
+		if(!checkPostOwnerImg){
+			$("#thisPostOwnerImg").hide();
+		}
+	}
+	postPreviewPic();
 
-	 
-	 
-     function getPostOwnerIcon(){
-	   var postOwner=$("#pOwnerName").text();
-	   $.ajax({
-	     url:"/WebstormProjects/web/views/replyPostOwnerIcon.ejs",
-		 data:{"postOwner":postOwner},
-	     "type":"post",
-		 success:function(d){
-		     var account=d["account"];
-			 var pic=d["pic"];
-			 if(pic!="unknown.png"){
-			   var picUrl="../uploads/pic/"+account+"/"+pic;
-			 }
-			 else{
-			  var picUrl="../uploads/pic/default/unknown.png";
-			 }
-			 $("#postOwnerImg").attr("src",picUrl);
-		 },
-		 error:function(xhr,respText,e){
-		   if(e){
-		     throw e;
-		   }
-		 }
-	   }); 
-	 }
-    getPostOwnerIcon();
-  })
+	function getPostOwnerIcon(){
+		var postOwner=$("#pOwnerName").text();
+		$.ajax({
+			url:"/WebstormProjects/web/views/replyPostOwnerIcon.ejs",
+			data:{"postOwner":postOwner},
+			"type":"post",
+			success:function(d){
+				var account=d["account"];
+				var pic=d["pic"];
+				if(pic!="unknown.png"){
+					var picUrl="../uploads/pic/"+account+"/"+pic;
+				} else {
+					var picUrl="../uploads/pic/default/unknown.png";
+				}
+				$("#postOwnerImg").attr("src",picUrl);
+			},
+			error:function(xhr,respText,e){
+				if(e){
+					throw e;
+				}
+			}
+		}); 
+	}
+	getPostOwnerIcon();
+	})
 </script>
 
 
@@ -456,7 +418,7 @@ function showAllIcons(o){
 	  <div class="replyText">
 	    <a href="javascript:void(0)" onclick="$('#hiddenForm').show();">插入图片</a>
 	   <textarea id='replayTextarea2' class='replayTextarea'></textarea>
-	   <form method="post" id="hiddenForm" action="submitPreviewPic.ejs" enctype="multipart/form-data">
+	   <form method="post" id="hiddenForm" action="/forum/submitPreviewPic.ejs" enctype="multipart/form-data">
 	     <div id="holdPicPreview"></div>
 	     <input type="file" onchange="picPre(this)" name="receivePreviewPic" id="receivePreviewPic" value="" /><input type="button" id="addNewPic" onclick="addNewReplyPic()" value="添加" />
 		 <input type="hidden" name="replyTextDetail" id="replyTextDetail" value="" />
@@ -472,9 +434,7 @@ function showAllIcons(o){
    
    
    
-   
-   
-   
+ 
   <div id="rightContents" class="rightContents">
    right contents here 
   </div><!--右边内容浮动-->

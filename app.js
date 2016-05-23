@@ -387,16 +387,6 @@ app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
 
 
 
-
-
-
-
-
-
-
-
-
-
 app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
 
 
@@ -415,10 +405,10 @@ app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
 
 app.post("/WebstormProjects/web/views/ajaxPost.ejs",routes.ajaxQueryPost);
 app.get("/WebstormProjects/web/views/ajaxShowUserPic.ejs",routes.ajaxShowUserPic);
-app.post("/WebstormProjects/web/views/homePageHelp.ejs",routes.homePageHelp);
-app.get("/WebstormProjects/web/views/editProfile.ejs",routes.editProfile);
+
+
 app.get("/WebstormProjects/web/views/404.ejs",routes.errorPage);
-app.post("/WebstormProjects/web/views/checkProfile",routes.checkProfile);
+
 app.post("/WebstormProjects/web/views/updateProfile",routes.updateProfile);
 app.post("/WebstormProjects/web/views/deletePic",routes.deletePic);
 app.post("/WebstormProjects/web/views/checkSentMsg",routes.checkSentMsgs);
@@ -1174,7 +1164,7 @@ app.get("/WebstormProjects/web/uploads/proofPic/gangao/:username/:pic",function(
         res.sendfile("./uploads/proofPic/gangao/"+username+"/"+pic);
 });
 
-/*===================================修改随配条件=============================*/
+
 
 
 
@@ -1249,290 +1239,9 @@ app.get("/WebstormProjects/web/views/whiteCollar.ejs",function(req,res){
 
 app.post("/WebstormProjects/web/views/postPicPreview.ejs",routes.displayPostPicPreview);
 
-app.post("/WebstormProjects/web/views/submitPreviewPic.ejs",function(req,res){
-  var submitText=JSON.parse(req.body.replyTextDetail);
-  var postContents=req.body.postContents;
-  var username=submitText["replayByWhom"];
-  var url=submitText["url"];
-  var time=submitText["timeAx"];
-  //var replyContents=submitText["replayContents"];//主贴内容
-  var pid=submitText["id"];
-  var picStore=req.files;
-  var picStoreString=JSON.stringify(picStore);
-  for(var i2 in picStore){
-    var size=picStore[i2]["size"];
-    if(!size){
-     continue;
-    }
-    var tepPicUrl=picStore[i2]["path"];//图片临时路径
-    var submitPicName=picStore[i2].name;//图片名
-    if(!(fs.existsSync("./web/uploads/subPostPic/"+username+"_"+time))){
-      //文件夹不存在
-      fs.mkdirSync("./web/uploads/subPostPic/"+username+"_"+time,0755);
-      fs.renameSync(tepPicUrl,"./web/uploads/subPostPic/"+username+"_"+time+"/"+submitPicName);  
-    }
-    else{
-      fs.renameSync(tepPicUrl,"./web/uploads/subPostPic/"+username+"_"+time+"/"+submitPicName); 
-    }
-  }//for
-  res.redirect(url)
-});
 
-app.get("/WebstormProjects/web/views/postDetail.ejs",function(req,res){
-  var pid=req.query.pid;
-  var ifHasPic=req.query.pic;
-  if(ifHasPic==1){
-  //主贴带有图片
-  var imgFlag=req.query.imgFlag;//主帖可能带有的图片所在的文件夹
-  var imgFlagUrl="./web/uploads/postPic/"+imgFlag;  
-  fs.readdir(imgFlagUrl,function(e,files){
-    if(e){
-     throw e;
-    }
-    if(files.length==1){
-    var postImg="../uploads/postPic/"+imgFlag+"/"+files[0];
-    var client=utility.prepareDb();
-    var queryString="select * from `post` where id='"+pid+"'";//唯一
-    client.query(queryString,function(error,r){
-     if(error){
-       throw error;
-     }
-     var contents=r[0]["contents"];
-     var postTitle=(contents.substring(0,12))+"...";//title of post
-     //var byWhom=r[0]["byWhom"];//不显示发帖人的帐号，显示昵称
-     var byWhomeFalseName=r[0]["falseName"];
-     var time=r[0]["time"];
-     res.render("postDetail.ejs",{"contents":contents,"byWhom":byWhomeFalseName,"title":"postTitle","time":time,"imgUrl":postImg,"multiPicFlag":"","imgFlag":""});
-     client.end();
-     });
-    }
-    else{
-      //files是个数组
-      var storeImgName=files//array;
-      var storeImgNameString=JSON.stringify(storeImgName);
-      var client=utility.prepareDb();
-      var queryString="select * from `post` where id='"+pid+"'";//唯一
-      client.query(queryString,function(error,r){
-      if(error){
-       throw error;
-     }
-     var contents=r[0]["contents"];
-     var postTitle=(contents.substring(0,12))+"...";//title of post
-     //var byWhom=r[0]["byWhom"];//不显示发帖人的帐号，显示昵称
-     var byWhomeFalseName=r[0]["falseName"];
-     var time=r[0]["time"];
-     res.render("postDetail.ejs",{"contents":contents,"byWhom":byWhomeFalseName,"title":"postTitle","time":time,"imgUrl":"","multiPicFlag":storeImgNameString,"imgFlag":imgFlag});
-     client.end();
-    });
-    }
-   });
-  }
-  else{
-    //主贴没有图片
-    var client=utility.prepareDb();
-    var queryString="select * from `post` where id='"+pid+"'";//唯一
-    client.query(queryString,function(error,r){
-     if(error){
-       throw error;
-     }
-     var contents=r[0]["contents"];
-     var postTitle=(contents.substring(0,12))+"...";//title of post
-     //var byWhom=r[0]["byWhom"];//不显示发帖人的帐号，显示昵称
-     var byWhomeFalseName=r[0]["falseName"];
-     var time=r[0]["time"];
-     res.render("postDetail.ejs",{"contents":contents,"byWhom":byWhomeFalseName,"title":"postTitle","time":time,"imgUrl":"",multiPicFlag:"","imgFlag":""});
-     client.end();
-     });
-  }
-});
 
-app.post("/WebstormProjects/web/views/getReplyPics.ejs",function(req,res){
-  var time=req.body.storeInfo; //储存每个回帖的数组
-  var storeAllPics=[];
-  for(var i=0;i<time.length;i++){
-    var storeEach={};
-    var postTime=time[i]["time"];
-    var postBy=time[i]["by"];
-    var imgFolderName=postBy+"_"+postTime;
-    if(fs.existsSync("./web/uploads/subPostPic/"+imgFolderName)){
-      var postPics=fs.readdirSync("./web/uploads/subPostPic/"+imgFolderName);
-      storeEach["by"]=imgFolderName;
-      storeEach["pic"]=postPics;
-      storeAllPics.push(storeEach);
-    }
-    else{
-      storeEach["by"]=imgFolderName;
-      storeEach["pic"]=false;
-      storeAllPics.push(storeEach);
-    }
-  }
-  res.send(storeAllPics);
-});
 
-app.post("/WebstormProjects/web/views/postDetail.ejs",function(req,res){
- var checkRequest=req.body.requestType;
- if(checkRequest==2){
-   //返回当前主贴和所有回复
- var pid=req.body.pid;
- var client=utility.prepareDb();
- var queryString="select * from post where id="+pid;
- client.query(queryString,function(error,r){
-    if(error){
-      throw error;
-    }
-    if(!(r[0]["reply"])){ 
-     res.send(null);
-     client.end();
-    }
-    else{
-     var allReplies=JSON.parse(r[0]["reply"]); //array
-     res.send(allReplies);
-     client.end();
-     }
-    });
- }
- else{
- var replayContents=req.body.replayContents;
- var replayByWhom=req.body.replayByWhom;//帐号
- var replayByWhomFalseName=req.body.falseName//昵称
- var postId=req.body.id;
- var replayTime=req.body.time;
- var replyTimeAx=req.body.timeAx;
- var storeEachReply={};
- storeEachReply["w"]=replayByWhom;//replay by whom
- storeEachReply["f"]=replayByWhomFalseName//昵称
- storeEachReply["c"]=replayContents//replay contents
- storeEachReply["t"]=replayTime//replay time
- storeEachReply["tx"]=replyTimeAx//时间轴
- storeEachReply["subReply"]=false;//子回复
- //all values are ok here!
- var Client=require("mysql").Client;
- var client=new Client();
- client.user="root";
- client.password="5611559w";
- client.query("USE user");
- var queryString="select * from `post` where `id`="+postId;
- client.query(queryString,function(error,r){
-     if(error){
-      throw error;
-     } 
-    var currentReplay=r[0]["reply"];
-    if(!currentReplay){
-      //there are no replies for this post
-      var storeAllReplies=[];
-      storeAllReplies.push(storeEachReply);//array
-      var storeAllRepliesString=JSON.stringify(storeAllReplies)//string
-      var queryInert="update post set reply='"+storeAllRepliesString+"'"+"where id="+postId; 
-      //This is important:to store an array or a json in db, it is needed that the array or json must be changed into a string first
-      //use method JSON.stringify
-     var Client=require("mysql").Client;
-     var client=new Client();
-     client.user="root";
-     client.password="5611559w";
-     client.query("USE user");
-     client.query(queryInert,function(error,r){
-        if(error){
-          throw error;
-        }
-      //store reply success here
-      res.send("1");
-      client.end();
-      });
-     //query1
-     var queryString2="select * from sp where id='"+postId+"'";
-     var client2=new Client();
-     client2.user="root";
-     client2.password="5611559w";
-     client2.query("USE user");
-     client2.query(queryString2,function(error,r){
-        if(error){
-          throw error;
-        }
-        var currentSubRep=r[0]["subRep"];
-        if(!currentSubRep){
-          //当前这个主贴没有子回复
-          var storeAllSubRep=[];
-          storeAllSubRep.push(replayContents);
-          var storeAllSubRepString=JSON.stringify(storeAllSubRep);
-          var queryString2="update sp set subRep='"+storeAllSubRepString+"'"+"where id='"+postId+"'";
-          client2.query(queryString2,function(e,r){
-            if(e){
-              throw e;
-            }
-          });
-        }
-        else{
-        //当前这个主贴有子回复
-          return false;
-        }
-      });
-    }
-    else{
-      //这个帖子目前有回复
-      var currentReplay=r[0]["reply"];
-      var currentReplayArray=JSON.parse(currentReplay);
-      currentReplayArray.push(storeEachReply);
-      var currentReplayString=JSON.stringify(currentReplayArray);
-      var Client=require("mysql").Client;
-      var client=new Client();
-      client.user="root";
-      client.password="5611559w";
-      client.query("USE user");
-      var queryInert="update post set reply='"+currentReplayString+"'"+"where id="+postId;
-      client.query(queryInert,function(error,r){
-        if(error){
-          throw error;
-        }
-        //store reply success here
-        res.send("1");
-        client.end();
-      });
-      //逻辑1
-     var queryString2="select * from sp where id='"+postId+"'";
-     var client2=new Client();
-     client2.user="root";
-     client2.password="5611559w";
-     client2.query("USE user");
-     client2.query(queryString2,function(error,r){
-        if(error){
-          throw error;
-        }
-        var currentSubRep=r[0]["subRep"];
-        if(!currentSubRep){
-          //当前这个主贴没有子回复
-          var storeAllSubRep=[];
-          storeAllSubRep.push(replayContents);
-          var storeAllSubRepString=JSON.stringify(storeAllSubRep);
-          var queryString2="update sp set subRep='"+storeAllSubRepString+"'"+"where id='"+postId+"'";
-          client2.query(queryString2,function(e,r){
-            if(e){
-              throw e;
-            }
-            res.send("1");//added 2013-7-3
-            client.end(); //added 2013-7-3
-          });
-        }
-        else{
-        //当前这个主贴有子回复
-        var currentSubRepArray=JSON.parse(currentSubRep);
-        currentSubRepArray.push(replayContents);
-        var currentSubRepString=JSON.stringify(currentSubRepArray);
-        var queryString2="update sp set subRep='"+currentSubRepString+"'"+"where id='"+postId+"'";
-        client2.query(queryString2,function(e,r){
-            if(e){
-              throw e;
-            }
-            res.send("1"); //added 2013-7-3
-            client.end();  //added 2013-7-3
-          });
-        }
-     
-     });
-     //回复子贴逻辑2
-    }
-  });
- }
-});
 
 app.post("/WebstormProjects/web/views/savePost.ejs",function(req,res){
    var title=req.body.title;
@@ -1972,85 +1681,35 @@ app.get("/WebstormProjects/web/views/index.ejs",routes.index);
 
 
 
-
-
-
-
 /* on login */
-
 app.get("/route/login/showUserPic",routerLogin.showUserPic);
 /*
 app.get("/WebstormProjects/web/views/ajax.ejs",routes.ajaxQuery);
 入口页面showUserPic的备用路由，代码稳定后删除
 */
-
 app.post("/login",routerLogin.login);
-
 /* on login */
 
 
-
-
-
-
-
-
-
-
 /* search */
-
 app.get("/search",routes.getSearchTpl);
 app.post("/search",routes.search);
-
 //高级搜索(基本完成)
-
 /* search */
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* register */
-
 app.get("/register",routes.register);
 app.get("/logoff",routes.logoff);
-
-
-
 app.post("/register",routes.registerPost);
-
-
-
-
 /* register */
 
 
 
-
-
-
-
-
-
-
-
 /* self info */
-
 app.get("/info/me",routes.me);
-
-
 /* self info */
-
-
-
 
 
 
@@ -2060,31 +1719,14 @@ app.get("/info/me",routes.me);
 
 
 /* forum */
-app.get("/forum",routes.getForum)
-
-
-/*
-app.post("/WebstormProjects/web/views/displayAllPostImg.ejs",function(req,res){
-   var postID = req.body.postID//Array
-   if(postID){
-     var storeAllPic=[];
-     var fs=require("fs");
-     for(var i=0;i<postID.length;i++){
-        var storeEachImg={};
-        var eachPostImg=fs.readdirSync("./uploads/postPic/"+postID[i]);
-        var key=postID[i];//string
-        storeEachImg[key]=eachPostImg;
-        storeAllPic.push(storeEachImg);
-    }
-    res.send(storeAllPic);
-   } 
-});
-
-app.post("/postDetailImg.ejs",routes.forumPostImage);
-*/
-
-
-
+app.get("/forum", routes.getForum);
+app.post("/forum/getForumImgsOnEntering", routes.getForumImgsOnEntering);
+app.post("/forum/postDetail", routes.postDetail);
+app.post("/forum/replyPost", routes.replyPost);
+app.post("/postDetailImg.ejs", routes.forumPostImage);
+app.post("/forum/submitPreviewPic.ejs", routes.submitPreviewPic);
+app.get("/forum/postDetail.ejs", routes.getPostDetail);
+app.post("/forum/getReplyPics.ejs", routes.getReplyPics);
 /* forum */
 
 
@@ -2092,7 +1734,6 @@ app.post("/postDetailImg.ejs",routes.forumPostImage);
 
 /* map */
 app.get("/mapSearch",routes.mapSearch);
-
 /* map */
 
 
@@ -2124,13 +1765,19 @@ app.get("/user/userPhotoes.ejs",routes.edit);
 app.get("/user/matchCondition.ejs",routes.matchCondition);
 app.post("/user/matchConditionPost",routes.matchConditionPost);
 app.post("/user/fetchCondtion",routes.fetchCondtion);
-
+app.get("/user/editProfile",routes.editProfile);
 /* user */
 
 
-
-
-
-
-
 app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
+
+app.post("/homePageHelp.ejs",routes.homePageHelp);
+
+
+
+/* cp */
+
+app.post("/cp/checkProfile",routes.checkProfile);
+
+
+/* cp */

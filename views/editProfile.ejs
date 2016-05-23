@@ -4,7 +4,7 @@
     function renderProfile(){
 	   var thisUrl=window.location.href;
 	   var username=getUserNameByUrlQuery(thisUrl);
-	   var url="checkProfile";
+	   var url="/cp/checkProfile";
 	   $.ajax({
 	      url:url,
 		  type:"post",
@@ -146,17 +146,21 @@
   }
 
 </script>
-<style type="text/css">
+
+<style type="text/css">
   .hidden{
     display:none;
   }
   
 </style>
-<div>
+
+<div>
 <img src="#" id="profile" />
 </div>
 <hr/>
 <div class="editProfle">
-</div><div id="renderPictures" class="renderPictures hidden">
+</div>
+
+<div id="renderPictures" class="renderPictures hidden">
 <%=profiles%>
 </div>

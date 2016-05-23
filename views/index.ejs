@@ -56,7 +56,7 @@
 			  return false;
 			}
 		     var username=getTargetCookie("username");
-			 var url="homePageHelp.ejs";
+			 var url="/homePageHelp.ejs";
 			 $.ajax({
 			   url:url,
 			   type:"post",
@@ -70,7 +70,7 @@
 				    var profileUrl="../uploads/pic/"+username+"/"+d;
 				  }
 				   $("#myProfile").attr("src",profileUrl);
-				   $("#myProfileLink").attr("href","editProfile.ejs?user="+username);
+				   $("#myProfileLink").attr("href", "/user/editProfile?user="+username);
 			   },
 			   error:function(xhr,textStatus,e){
 			     if(e){
