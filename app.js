@@ -1126,9 +1126,7 @@ app.post("/WebstormProjects/web/backstage/:operationType",function(req,res){
 });
 
 /*===================================提交证件=============================*/
-app.get("/WebstormProjects/web/views/submitProof.ejs",function(req,res){
-res.render("submitProof.ejs",{"title":"提交证件"});
-});
+
 
 app.get("/WebstormProjects/web/views/proofValidation.ejs",function(req,res){
 res.render("proofValidation.ejs",{"title":"证件审核"});
@@ -1781,3 +1779,5 @@ app.post("/cp/checkProfile",routes.checkProfile);
 
 
 /* cp */
+
+app.get("/cp/submitProof",routes.getProofPage);
