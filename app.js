@@ -417,8 +417,8 @@ app.post("/WebstormProjects/web/views/updateProfileLink",routes.updateProfileLin
 
 
 
-app.post("/WebstormProjects/web/views/fetchDailyMatch",routes.fetchDailyMatch);
-app.post("/WebstormProjects/web/views/countNewMsg",routes.countNewMsg);
+
+
 
 app.get("/WebstormProjects/web/views/anguarJsTest.ejs",function(req,res){
 res.render("./anguarJsTest.ejs",{"title":"anguarJsTest"});
@@ -526,7 +526,7 @@ app.post("/WebstormProjects/web/views/expectOtherLogin.ejs",function(req,res){
           if(r.length>0){
                var r=eval("("+r+")"); //array
           r.push(whoExpects);
-          r=removeRedundant(r);//清除重复的值
+          r=utility.removeRedundant(r);//清除重复的值
           r=JSON.stringify(r);
           queryString="update d set whoExpectYouLogin='"+r+"' where falseName='"+expectWhomLogin+"'";
           client.query(queryString,function(e,r){
@@ -1040,7 +1040,7 @@ app.post("/WebstormProjects/web/backstage/:operationType",function(req,res){
             }
             var currentPending= eval("("+r[0]["pending"]+")");
             currentPending.push(approveType);
-            var currentPending=removeRedundant(currentPending);
+            var currentPending=utility.removeRedundant(currentPending);
             var updatedPedning=JSON.stringify(currentPending);
             var queryString="update credits set pending='"+updatedPedning+"'"+"where username='"+approveWhom+"'" ;
             client.query(queryString,function(e,r){
@@ -1441,7 +1441,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
              var findWatch=eachJson["watch"];
              storeNewR.push(findWatch);
          }
-         var newR=removeRedundant(storeNewR);
+         var newR=utility.removeRedundant(storeNewR);
          var storeWatch={};
          dbUtlity.recurQuery(newR,"d","falseName",res);
       });
@@ -1466,7 +1466,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
              var findWatch=eachJson["username"];
              storeNewR.push(findWatch);
          }
-         var newR=removeRedundant(storeNewR);
+         var newR=utility.removeRedundant(storeNewR);
          var storeWatch={};
          dbUtlity.recurQuery(newR,"d","account",res);
       });
@@ -1626,34 +1626,7 @@ app.post("/WebstormProjects/web/views/requireDayMatch.ejs",function(req,res){
 
 
 
-function removeRedundant(o){
-    var storeNewO=[];
-    for(var i=0;i< o.length;i++){
-        if(i!=0){
-            var isIn=detect(o[i]);
-            if(isIn){
-                storeNewO.push(o[i]);
-                continue;
-            }
-            else{
-                continue;
-            }
-        }
-        storeNewO.push(o[i]);
-    }
 
-
-    function detect(item){
-        var legal=true;
-        for(var i=0;i<storeNewO.length;i++){
-            if(storeNewO[i]===item){
-                legal=false;
-            }
-        }
-        return legal;
-    }
-    return storeNewO;
-}
 
 
 
@@ -1672,11 +1645,10 @@ function removeRedundant(o){
 
 
 app.get("/",routes.index);
-/*
-app.get("/WebstormProjects/web/views/index.ejs",routes.index);
-入口的备用路由，代码稳定后删除
-*/
 
+app.get("/requireTest",function(req,res){
+    res.render("requireTest.ejs",{title:"test"});
+});
 
 
 /* on login */
@@ -1691,6 +1663,7 @@ app.post("/login",routerLogin.login);
 
 /* search */
 app.get("/search",routes.getSearchTpl);
+
 app.post("/search",routes.search);
 //高级搜索(基本完成)
 /* search */
@@ -1703,18 +1676,9 @@ app.get("/logoff",routes.logoff);
 app.post("/register",routes.registerPost);
 /* register */
 
-
-
 /* self info */
 app.get("/info/me",routes.me);
 /* self info */
-
-
-
-
-
-
-
 
 /* forum */
 app.get("/forum", routes.getForum);
@@ -1727,16 +1691,9 @@ app.get("/forum/postDetail.ejs", routes.getPostDetail);
 app.post("/forum/getReplyPics.ejs", routes.getReplyPics);
 /* forum */
 
-
-
-
 /* map */
 app.get("/mapSearch",routes.mapSearch);
 /* map */
-
-
-
-
 
 /* user */
 app.get("/user/userDetails.ejs", routes.checkUserDetails);
@@ -1766,18 +1723,55 @@ app.post("/user/fetchCondtion",routes.fetchCondtion);
 app.get("/user/editProfile",routes.editProfile);
 /* user */
 
-
 app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
-
 app.post("/homePageHelp.ejs",routes.homePageHelp);
 
-
-
 /* cp */
-
 app.post("/cp/checkProfile",routes.checkProfile);
-
-
 /* cp */
 
-app.get("/cp/submitProof",routes.getProofPage);
+/* match */
+app.post("/match/dailyMatch",routes.dailyMatch);
+app.post("/match/autoWatch",function(req,res){
+    var username=req.body.d;
+    var queryString="select * from d where account='"+username+"'";
+    var client=utility.prepareDb();
+    client.query(queryString,function(e,r){
+        if(e){
+            throw e;
+        }
+        var falseName=r[0]["falseName"];
+        var dataArray=[falseName];
+        var columnArray=["watch"];
+        var queryString = dbUtlity.createQueryString(dataArray,columnArray,2,"extra2");
+        client.query(queryString,function(e,r){
+        if(e){
+            throw e;
+        }
+        var storeNew=[];
+        for(var j=0;j<r.length;j++){
+            storeNew.push(r[j]["username"]);
+        }
+        storeNew=utility.removeRedundant(storeNew);
+        dbUtlity.recurQuery(storeNew,"d","account",res);
+        });
+    });
+});
+/* match */
+
+/* msg */
+app.post("/msg/newMsg",routes.countNewMsg);
+/* msg */
+
+
+
+
+
+
+
+
+
+
+
+
+app.get("/cp/proof",routes.getProofPage);

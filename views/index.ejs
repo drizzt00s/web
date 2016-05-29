@@ -40,181 +40,18 @@
   <script src="/javascript/angularMain/main.js"></script>
   <script src="/javascript/service/login.js"></script>
   <script src="/javascript/controller/allControllers.js"></script>
-
   <!--angular-->
 
 
 
-  <script type="text/javascript">
-     
 
 
-	 $(function(){
-	     function showProfile(){
-		    //先检查用户是否已经登录
-			if($("#checkLogin").val()==0){
-			  return false;
-			}
-		     var username=getTargetCookie("username");
-			 var url="/homePageHelp.ejs";
-			 $.ajax({
-			   url:url,
-			   type:"post",
-			   data:{"username":username},
-			   success:function(d){
-			      if(d.indexOf("unknown.png")!=-1){
-				   var profileUrl=d;
-				  }
-				  else{
-			
-				    var profileUrl="../uploads/pic/"+username+"/"+d;
-				  }
-				   $("#myProfile").attr("src",profileUrl);
-				   $("#myProfileLink").attr("href", "/user/editProfile?user="+username);
-			   },
-			   error:function(xhr,textStatus,e){
-			     if(e){
-				   throw e;
-				 }
-			   }
-			 });
-		 }
-		showProfile();
-		
-		function fetchDailyMatch(){
-
-		   	if($("#checkLogin").val()==0){
-			  return false;
-			}
-			var url="fetchDailyMatch";
-			var currentTime=(new Date()).getTime();
-			$.ajax({
-			   url:url,
-			   data:{d:currentTime},
-			   cache:false,
-			   type:"post",
-			   success:function(d){
-                   if(d instanceof Object){
-					   for(var i=0;i<d.length;i++){
-					      if(i!=d.length-1){
-						    var dailyMatch="<div class='dailyMatch'>";
-						   if(d[i]["profile"].length==0){
-						     //没有profile
-						      dailyMatch+="<a href='userDetails.ejs?check="+d[i]["username"]+"' >"+"<img src='../uploads/pic/default/unknown.png' />"+"</a>";
-						   }else{
-						     dailyMatch+="<a href='userDetails.ejs?check="+d[i]["username"]+"' >"+"<img src='../uploads/pic/"+d[i]["username"]+"/"+d[i]["profile"]+"' />"+"</a><br />";
-						   }
-						  dailyMatch+="<a href='userDetails.ejs?check="+d[i]["username"]+"' >"+"<span>"+d[i]["falseName"]+"</span>"+"</a><br />";
-						  dailyMatch+="<span>"+d[i]["age"]+"</span>";
-						  dailyMatch+="<span>"+d[i]["location"]+"</span>";
-						  dailyMatch+="<span>"+d[i]["height"]+"</span>";
-						  dailyMatch=$(dailyMatch);
-						  $("#todayMatch").append(dailyMatch);
-						 }
-						 if(i==d.length-1){
-						   var matchString="你的择友要求:";
-						   matchString+=d[i]["conditionString"];
-						   $("#myMatch").text(matchString);
-						 }
-					   }  
-                   }				   
-
-				  else{
-				     alert(d);
-				  }
-			   }
-			});	
-		}
-		//fetchDailyMatch();
-	 })
-	 
-
-  </script>
-  <script type="text/javascript">
-  
-  
-
- 
-  
-    $(function(){
-       //ajax获取用户收件箱里有几条未读信息
-       // InitAjax(1);
-       //突然有问题，先注释掉	 
-	  /*************added on 2013/8/13***********/
-
-	  /*
-	  function requireAutoWatch(){
-        var username=getTargetCookie("username");
-	    if(username){
-		  var newAjax=new Search();
-		  newAjax.ajaxPost("/WebstormProjects/web/views/requireAutoWatch.ejs",username,callBack);
-		  function callBack(o){
-		    for(var i=0;i<o.length;i++){
-			   var falseName=o[i][0]["falseName"];
-			   var username=o[i][0]["account"];
-			   var address=o[i][0]["province"];
-			   var pic=o[i][0]["avatar"];
-			   if(!pic){
-			     pic="../uploads/pic/default/unknown.png";
-			   }
-			   else{
-			     pic="../uploads/pic/"+username+"/"+(eval("("+pic+")")["con"][0]);
-			   }
-			   var wrap=$("<div>"+
-			              "<span class='autoWatchFalseName'>"+falseName+"</span>"+
-						  "<span class='autoWatchAddress'>"+address+"</span>"+
-			              "<a href='userDetails.ejs?check="+username+"'"+"><img class='autoWatchImg' src='"+pic+"' /></a>"+
-						  "</div>");
-			       wrap.appendTo($("#whoWatchMe2"));
-			}
-		  }
-		}
-	  }*/
-	    /*************added on 2013/8/13***********/ //此功能和点击"我关注的人"重复
-	  
+<script src="/javascript/moveInnerJsToOutside/index.js"></script>
 
 
 
 
 
-
-
-	   
-      
-	  
-	  function requireNewMsgLength(){
-	      if($("#checkLogin").val()==0){
-			 return false;
-		  }
-	     var username=getTargetCookie("username");
-		 var data={
-		   "username":username
-		 
-		 }
-	     var url="countNewMsg";
-		 $.ajax({
-		  url:url,
-		  data:data,
-		  cache:false,
-		  type:"post",
-		  success:function(d){
-			$("#remindNewMsg").text(d.newMsg);
-		  } 
-		 });
-	  
-	  
-	  }
-	  
-	  
-	  
-	  
-	
-	 // requireAutoWatch();
-	 // requireNewMsgLength();
-
-	   
-    })
-  </script>
  <div class="wrap" ng-app="indexPage" style="border:solid 1px red;">
 
 
@@ -232,7 +69,6 @@
 
  <input type='button' value='提交' id='submitThis' ng-click='submitLogin();' />
  <input type='hidden' name='checkSubmit'>
-
  </form>
 </div>
 
@@ -256,18 +92,12 @@
  <div class="eachDayMatch" id="eachDayMatch">
  </div>
  
- 
- 
- 
-
-
 
   <div class="left">
   <input type="hidden" value="<%=isSignUp%>" id="checkLogin" />
   
   
-  
-
+ 
     <p class="register">
       <a href="/register">注册
       </a><br />
@@ -334,7 +164,7 @@
          <span>我的黑名单<span class="watch4"></span></span>
          <span><a href="/user/editBasic1.ejs">修改资料</a></span>
          <span>管理照片</span>
-         <span><a href='/cp/submitProof'>提交证件</a></span>
+         <span><a href='/cp/proof'>提交证件</a></span>
 
 
     
@@ -365,35 +195,7 @@
  </div>
 
 
- <script type="text/javascript">
-    $(function(){
-         if(checkLogin()){
-             requireEachDayMatch();
 
-
-             $(".watch").live("click",function(e){
-                 watch(e.target);
-             });
-
-
-            $(".lastLoginTime").live("click",function(e){
-                checkLastLoginTime(e);
-	         });
-
-
-	         $(".loginReminder").live("click",function(e){
-                 loginReminder(e);
-              });
-
-
-
-         }
-         else{
-              // alert("请登录");
-         }
-
-    })
- </script>
 
 
 
