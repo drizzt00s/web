@@ -51,20 +51,6 @@ var routerLogin = require('routerLogin.js');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get("/WebstormProjects/web/views/sendImage.ejs",function(req,res){
        res.render("./sendImage.ejs",{title:"sendImage"});    
 });
@@ -230,11 +216,6 @@ app.get("/WebstormProjects/web/views/searchLove.ejs",function(req,res){
   //if 
 });
 
-
-
-
-
-
 app.post("/WebstormProjects/web/views/deletSynMsg.ejs",function(req,res){
         var storeNewMsgArray=[];
         var data=req.body;//json
@@ -332,8 +313,6 @@ app.post("/WebstormProjects/web/views/changeNewMsgToOld.ejs",function(req,res){
 });
 
 
-
-
 app.get("/WebstormProjects/web/views/posts.ejs",function(req,res){
     res.render("./posts.ejs",{title:"发帖"});
 })
@@ -342,7 +321,6 @@ app.post("/WebstormProjects/web/views/posts.ejs",function(req,res){
     var postTitle=req.body.postTitle;
     var postBody=req.body.postContent; 
 })
-
 
 
 app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
@@ -385,20 +363,7 @@ app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
 });
 
 
-
-
 app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -553,377 +518,9 @@ app.post("/WebstormProjects/web/views/expectOtherLogin.ejs",function(req,res){
 });
 //特定用户登录时提醒
 
-app.post("/WebstormProjects/web/views/checkLastLoginTime.ejs",function(req,res){
-    var checkWhoseLastLogin=req.body.d;
-    var client=utility.prepareDb();
-    var queryString="select lastLogin from d where falseName='"+checkWhoseLastLogin+"'";
-    client.query(queryString,function(e,r){
-      if(e){
-        throw e;
-      }
-      var lastLoginTime=r[0]["lastLogin"];
-      res.send(lastLoginTime);
-      client.end();
-    });
-});
 
-app.post("/WebstormProjects/web/views/Proof.ejs",function(req,res){
- var proofType=req.body.proofType;
- var checkUsername=req.body.checkUsername;
- var checkFile=req.files.uploadFile.path;
- var checkFileName=req.files.uploadFile.name;
- 
- if(proofType==1){
-    fs.exists("./uploads/proofPic/identitycard/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/identitycard/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-          fs.rename(checkFile,"./uploads/proofPic/identitycard/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,identitycard,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set identitycard=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-          });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/identitycard/"+checkUsername+"/"+checkFileName,function(){
-             var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,identitycard,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set identitycard=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-  else if(proofType==2){
-    fs.exists("./uploads/proofPic/income/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/income/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/income/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,income,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set income=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e,r){
-                if(e){
-                 throw e
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-          });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/income/"+checkUsername+"/"+checkFileName,function(){
-           var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,income,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set income=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e,r){
-                if(e){
-                 throw e
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-   else if(proofType==3){
-    fs.exists("./uploads/proofPic/housing/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/housing/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/housing/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,housing,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set housing=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-          });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/housing/"+checkUsername+"/"+checkFileName,function(){       
-          var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,housing,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set housing=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-   else if(proofType==4){
-    fs.exists("./uploads/proofPic/gangao/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/gangao/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/gangao/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,gangao,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set gangao=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-           });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/gangao/"+checkUsername+"/"+checkFileName,function(){
-         var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,gangao,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set gangao=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-   else if(proofType==5){
-    fs.exists("./uploads/proofPic/drive/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/drive/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/drive/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,drive,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set drive=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-               res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-           });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/drive/"+checkUsername+"/"+checkFileName,function(){
-           var client = utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,drive,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set drive=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-               res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-});
+
+
 
 app.get("/WebstormProjects/web/views/loadProof.ejs",function(req,res){
  //查询credits表,返回数据给业务人员操作
@@ -1764,20 +1361,408 @@ app.get("/user/matchCondition.ejs",routes.matchCondition);
 app.post("/user/matchConditionPost",routes.matchConditionPost);
 app.post("/user/fetchCondtion",routes.fetchCondtion);
 app.get("/user/editProfile",routes.editProfile);
+app.post("/user/userLoginTime",routes.userLoginTime);
 /* user */
 
 
-app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
 
+
+
+
+
+
+/* cp */
+app.post("/cp/checkProfile",routes.checkProfile);
+
+app.get("/cp/submitProof",routes.getProofPage);
+
+app.post("/cp/proof",function(req,res){
+ var proofType=req.body.proofType;
+ var checkUsername=req.body.checkUsername;
+ var checkFile=req.files.uploadFile.path;
+ var checkFileName=req.files.uploadFile.name;
+ 
+ if(proofType==1){
+    fs.exists("/uploads/proofPic/identitycard/"+checkUsername,function(exists){
+    if(!exists){
+      //不存在
+         fs.mkdir("/uploads/proofPic/identitycard/"+checkUsername,function(e){
+            if(e){
+             throw e;
+            }
+          fs.rename(checkFile,"/uploads/proofPic/identitycard/"+checkUsername+"/"+checkFileName,function(){
+            var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,identitycard,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            else{
+             var querystring="update credits set identitycard=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                 throw e;
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+             });
+            }
+           });
+          });
+         });
+    }
+    else{
+        //如果图片同名则不做处理,文件夹中不会出现同名的图片
+        fs.rename(checkFile,"/uploads/proofPic/identitycard/"+checkUsername+"/"+checkFileName,function(){
+             var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,identitycard,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            else{
+             var querystring="update credits set identitycard=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                 throw e;
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+             });
+            }
+           });
+        });
+        res.render("submitProof.ejs",{"title":"提交证件"});
+     }
+    });
+   }
+  else if(proofType==2){
+    fs.exists("/uploads/proofPic/income/"+checkUsername, function(exists){
+    if(!exists){
+      //不存在
+         fs.mkdir("/uploads/proofPic/income/"+checkUsername, function(e){
+            if(e){
+             throw e;
+            }
+           fs.rename(checkFile,"/uploads/proofPic/income/"+checkUsername+"/"+checkFileName,function(){
+            var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,income,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            else{
+             var querystring="update credits set income=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e,r){
+                if(e){
+                 throw e
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+             });
+            }
+           });
+          });
+         });
+    }
+    else{
+        //如果图片同名则不做处理,文件夹中不会出现同名的图片
+        fs.rename(checkFile,"/uploads/proofPic/income/"+checkUsername+"/"+checkFileName,function(){
+           var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,income,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            else{
+             var querystring="update credits set income=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e,r){
+                if(e){
+                 throw e
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+             });
+            }
+           });
+        });
+        res.render("submitProof.ejs",{"title":"提交证件"});
+     }
+    });
+   }
+   else if(proofType==3){
+    fs.exists("/uploads/proofPic/housing/"+checkUsername,function(exists){
+    if(!exists){
+      //不存在
+         fs.mkdir("/uploads/proofPic/housing/"+checkUsername,function(e){
+            if(e){
+             throw e;
+            }
+           fs.rename(checkFile,"/uploads/proofPic/housing/"+checkUsername+"/"+checkFileName,function(){
+            var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,housing,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            else{
+             var querystring="update credits set housing=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                 throw e;
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+             });
+            }
+           });
+          });
+         });
+    }
+    else{
+        //如果图片同名则不做处理,文件夹中不会出现同名的图片
+        fs.rename(checkFile,"/uploads/proofPic/housing/"+checkUsername+"/"+checkFileName,function(){       
+          var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,housing,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            else{
+             var querystring="update credits set housing=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                 throw e;
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+             });
+            }
+           });
+        });
+        res.render("submitProof.ejs",{"title":"提交证件"});
+     }
+    });
+   }
+   else if(proofType==4){
+    fs.exists("/uploads/proofPic/gangao/"+checkUsername,function(exists){
+    if(!exists){
+      //不存在
+         fs.mkdir("/uploads/proofPic/gangao/"+checkUsername,function(e){
+            if(e){
+             throw e;
+            }
+           fs.rename(checkFile,"/uploads/proofPic/gangao/"+checkUsername+"/"+checkFileName,function(){
+            var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,gangao,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+             }
+             else{
+             var querystring="update credits set gangao=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                throw e;
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            });
+           });
+         });
+    }
+    else{
+        //如果图片同名则不做处理,文件夹中不会出现同名的图片
+        fs.rename(checkFile,"/uploads/proofPic/gangao/"+checkUsername+"/"+checkFileName,function(){
+         var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,gangao,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+             }
+             else{
+             var querystring="update credits set gangao=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                throw e;
+                }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            });
+        });
+        res.render("submitProof.ejs",{"title":"提交证件"});
+     }
+    });
+   }
+   else if(proofType==5){
+    fs.exists("/uploads/proofPic/drive/"+checkUsername,function(exists){
+    if(!exists){
+      //不存在
+         fs.mkdir("/uploads/proofPic/drive/"+checkUsername,function(e){
+            if(e){
+             throw e;
+            }
+           fs.rename(checkFile,"/uploads/proofPic/drive/"+checkUsername+"/"+checkFileName,function(){
+            var client=utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,drive,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+             }
+             else{
+             var querystring="update credits set drive=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                 throw e;
+                }
+               res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            });
+           });
+         });
+    }
+    else{
+        //如果图片同名则不做处理,文件夹中不会出现同名的图片
+        fs.rename(checkFile,"/uploads/proofPic/drive/"+checkUsername+"/"+checkFileName,function(){
+           var client = utility.prepareDb();
+            var queryString="select uploaded from credits where username='"+checkUsername+"'";
+            client.query(queryString,function(e,r){
+            if(e){
+             throw e;
+            }
+            if(r.length===0){
+              var querystring="insert into credits (uploaded,drive,username) values(1,0,'"+checkUsername+"')";
+              client.query(querystring,function(e,r){
+                if(e){
+                throw e;
+               }
+                res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+             }
+             else{
+             var querystring="update credits set drive=0 where username='"+checkUsername+"'";
+             client.query(querystring,function(e){
+                if(e){
+                 throw e;
+                }
+               res.render("submitProof.ejs",{"title":"提交证件"});
+              });
+            }
+            });
+        });
+        res.render("submitProof.ejs",{"title":"提交证件"});
+     }
+    });
+   }
+});
+/* cp */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
 app.post("/homePageHelp.ejs",routes.homePageHelp);
 
 
 
-/* cp */
-
-app.post("/cp/checkProfile",routes.checkProfile);
 
 
-/* cp */
 
-app.get("/cp/submitProof",routes.getProofPage);
