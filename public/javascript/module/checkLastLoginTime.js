@@ -1,6 +1,6 @@
 //查看最后登录时间
 function checkLastLoginTime(e){
-	var checkLastLoginTime="checkLastLoginTime.ejs";
+	var checkLastLoginTime = "/check/last_login";
 		var checkWhom= $(e.target).parents(".eachUserWrap").find(".userFalseName").text();
 		$.ajax({
 		  url:checkLastLoginTime,

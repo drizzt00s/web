@@ -553,377 +553,9 @@ app.post("/WebstormProjects/web/views/expectOtherLogin.ejs",function(req,res){
 });
 //特定用户登录时提醒
 
-app.post("/WebstormProjects/web/views/checkLastLoginTime.ejs",function(req,res){
-    var checkWhoseLastLogin=req.body.d;
-    var client=utility.prepareDb();
-    var queryString="select lastLogin from d where falseName='"+checkWhoseLastLogin+"'";
-    client.query(queryString,function(e,r){
-      if(e){
-        throw e;
-      }
-      var lastLoginTime=r[0]["lastLogin"];
-      res.send(lastLoginTime);
-      client.end();
-    });
-});
 
-app.post("/WebstormProjects/web/views/Proof.ejs",function(req,res){
- var proofType=req.body.proofType;
- var checkUsername=req.body.checkUsername;
- var checkFile=req.files.uploadFile.path;
- var checkFileName=req.files.uploadFile.name;
- 
- if(proofType==1){
-    fs.exists("./uploads/proofPic/identitycard/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/identitycard/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-          fs.rename(checkFile,"./uploads/proofPic/identitycard/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,identitycard,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set identitycard=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-          });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/identitycard/"+checkUsername+"/"+checkFileName,function(){
-             var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,identitycard,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set identitycard=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-  else if(proofType==2){
-    fs.exists("./uploads/proofPic/income/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/income/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/income/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,income,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set income=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e,r){
-                if(e){
-                 throw e
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-          });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/income/"+checkUsername+"/"+checkFileName,function(){
-           var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,income,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set income=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e,r){
-                if(e){
-                 throw e
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-   else if(proofType==3){
-    fs.exists("./uploads/proofPic/housing/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/housing/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/housing/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,housing,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set housing=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-          });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/housing/"+checkUsername+"/"+checkFileName,function(){       
-          var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,housing,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            else{
-             var querystring="update credits set housing=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-             });
-            }
-           });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-   else if(proofType==4){
-    fs.exists("./uploads/proofPic/gangao/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/gangao/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/gangao/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,gangao,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set gangao=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-           });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/gangao/"+checkUsername+"/"+checkFileName,function(){
-         var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,gangao,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set gangao=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                throw e;
-                }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-   else if(proofType==5){
-    fs.exists("./uploads/proofPic/drive/"+checkUsername,function(exists){
-    if(!exists){
-      //不存在
-         fs.mkdir("./uploads/proofPic/drive/"+checkUsername,function(e){
-            if(e){
-             throw e;
-            }
-           fs.rename(checkFile,"./uploads/proofPic/drive/"+checkUsername+"/"+checkFileName,function(){
-            var client=utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,drive,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set drive=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-               res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-           });
-         });
-    }
-    else{
-        //如果图片同名则不做处理,文件夹中不会出现同名的图片
-        fs.rename(checkFile,"./uploads/proofPic/drive/"+checkUsername+"/"+checkFileName,function(){
-           var client = utility.prepareDb();
-            var queryString="select uploaded from credits where username='"+checkUsername+"'";
-            client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            if(r.length===0){
-              var querystring="insert into credits (uploaded,drive,username) values(1,0,'"+checkUsername+"')";
-              client.query(querystring,function(e,r){
-                if(e){
-                throw e;
-               }
-                res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-             }
-             else{
-             var querystring="update credits set drive=0 where username='"+checkUsername+"'";
-             client.query(querystring,function(e){
-                if(e){
-                 throw e;
-                }
-               res.render("submitProof.ejs",{"title":"提交证件"});
-              });
-            }
-            });
-        });
-        res.render("submitProof.ejs",{"title":"提交证件"});
-     }
-    });
-   }
-});
+
+
 
 app.get("/WebstormProjects/web/views/loadProof.ejs",function(req,res){
  //查询credits表,返回数据给业务人员操作
@@ -1178,53 +810,7 @@ res.render("displayRights.ejs",{"title":"特权"});
 
 
 /*===================================加入黑名单==========================*/
-app.post("/WebstormProjects/web/views/addToBlackList.ejs",function(req,res){
- var blackWhom=req.body.d.blackWhom;
- var whoBlacks=req.body.d.whoBlacks;
- var querySting = dbUtlity.createQueryString([whoBlacks],["username"],2,"blacklist");
- var client=utility.prepareDb();
- client.query(querySting,function(e,r){
-     if(e){
-       throw e;
-     }
-     if(r.length===0){
-       var store=[];
-       store.push(blackWhom);
-       store=JSON.stringify(store);
-       var dataArray=[store,whoBlacks];
-       var column=["blacklist","username"];
-       var queryString = dbUtlity.createQueryString(dataArray,column,1,"blacklist");
-       client.query(queryString,function(e,r){
-        if(e){
-         throw e;
-         }
-         client.end();
-         res.send("1");
-       });
-     }
-     else{
-        var result= eval("("+r[0]["blacklist"]+")");
-        for(var i=0;i<result.length;i++){
-          if(result[i]==blackWhom){
-          //该人已经在黑名单中
-            client.end();
-            res.send(blackWhom+"已经在你的黑名单中");
-            return false;
-          }
-        }
-        result.push(blackWhom);
-        result=JSON.stringify(result);
-        var queryString="update blacklist set blacklist='"+result+"'"+"where username='"+whoBlacks+"'";
-        client.query(queryString,function(e,r){
-          if(e){
-            throw e;
-          }
-          client.end();
-          res.send("1");
-        });
-     }
- });
-});
+
 
 /*=======================论坛=============================*/
 app.get("/WebstormProjects/web/views/postPicPreview.ejs",function(req,res){
@@ -1507,107 +1093,7 @@ app.post("/WebstormProjects/web/views/displayWhoOnline.ejs",function(req,res){
 });
 
 /*===================================每日速配=============================*/
-var storeAll=[];
-app.post("/WebstormProjects/web/views/requireDayMatch.ejs",function(req,res){
-  var username=req.body.d.username;
-/*
 
-  for(var i=0;i<storeAll.length;i++){
-    if(storeAll[i]["username"]===username){
-      var checkRequestTime=((new Date()).getTime())/1000;
-      if(checkRequestTime-storeAll[i]["requestTime"]<86400){
-        return false;
-      }
-    }
-  }*/
-  var requestTime=((new Date()).getTime())/1000;
-  var storeEachUser={};
-  storeEachUser.requestTime=requestTime;
-  storeEachUser.username=username;
-  storeAll.push(storeEachUser);
-  var queryString="select * from dd where username='"+username+"'";
-  var client=utility.prepareDb();
-  client.query(queryString,function(e,r){
-    if(e){
-      throw e;
-    }
-    if(r.length!==0){
-    var queryString="select * from d where gender='"+r[0].gender+"'"+" and ";
-    if(r[0].ageFrom===r[0].ageTo){
-        queryString=queryString+"age="+r[0].ageFrom+" and ";
-    }
-    else{
-       queryString=queryString+"age between "+r[0].ageFrom+" and "+r[0].ageTo+" and ";
-    }
-    if(r[0].area1!=="任意"&&r[0].area2==="任意"){
-       queryString=queryString+"province like '"+r[0].area1+"%'"+" and ";
-    }
-    else if(r[0].area1!=="任意"&&r[0].area2!=="任意"){
-      queryString=queryString+"province like '"+r[0].area1+" "+r[0].area2+"%'"+" and ";
-    }
-    if(r[0].height1===r[0].height2){
-       queryString=queryString+"intHeight="+r[0].height1+" and ";
-    }
-    else{
-       queryString=queryString+"intHeight between "+r[0].height1+" and "+r[0].height2+" and " ;
-    }
-    var education=r[0]["education"];
-    if(education==="高中及以上"){
-       queryString=queryString+"intEducation>=2 and ";
-    }
-    else if(education==="大专及以上"){
-       queryString=queryString+"intEducation>=3 and ";
-    }
-    else if(education==="本科及以上"){
-       queryString=queryString+"intEducation>=4 and ";
-    }
-    else if(education==="硕士及以上"){
-       queryString=queryString+"intEducation>=5 and ";
-    }
-    else if(education==="博士及以上"){
-       queryString=queryString+"intEducation=6 and ";
-    }
-    if(r[0].marrige!=="任意"&&r[0].marrige!=="不限"){
-       queryString=queryString+"marriageStatus='"+r[0].marrige+"'"+" and ";
-    }
-    if(r[0].monthIncome!=="任意"&&r[0].monthIncome!=="不限"){
-      queryString=queryString+"monthincome='"+r[0].monthIncome+"'"+" and ";
-    }
-    if(r[0].housing!=="任意"&&r[0].housing!=="不限"){
-      queryString=queryString+"housingcondition='"+r[0].housing+"'"+" and ";
-    }
-    if(r[0].race!=="任意"&&r[0].race!=="不限"){
-      queryString=queryString+"race='"+r[0].race+"'"+" and ";
-    }
-    if(r[0].xz!=="任意"&&r[0].xz!=="不限"){
-      queryString=queryString+"sign='"+r[0].xz+"'"+" and ";
-    }
-    if(r[0].sx!=="任意"&&r[0].sx!=="不限"){
-      queryString=queryString+"horoscope='"+r[0].sx+"'"+" and ";
-    }
-    if(r[0].bloodType!=="任意"&&r[0].bloodType!=="不限"){
-      queryString=queryString+"bloodType='"+r[0].bloodType+"'"+" and ";
-    }
-    if(r[0].ifSmoking!=="任意"&&r[0].ifSmoking!=="不限"){
-      queryString=queryString+"ifSmoking='"+r[0].ifSmoking+"'"+" and ";
-    }
-    if(r[0].ifDrinking!=="任意"&&r[0].ifDrinking!=="不限"){
-      queryString=queryString+"ifDrinking='"+r[0].ifDrinking+"'"+" and ";
-    }
-    var queryString=queryString.substring(0,queryString.length-5);
-     client.query(queryString,function(e,r){
-        if(e){
-          throw e;
-        }
-    console.log(r);
-        res.send(r);
-     });
-    
-    }
-    else{
-    }
-  });
-})
 
 
 
@@ -1728,35 +1214,14 @@ app.post("/homePageHelp.ejs",routes.homePageHelp);
 
 /* cp */
 app.post("/cp/checkProfile",routes.checkProfile);
+app.get("/cp/proof",routes.getProofPage);
+app.post("/cp/proof",routes.submitProof);
 /* cp */
 
 /* match */
 app.post("/match/dailyMatch",routes.dailyMatch);
-app.post("/match/autoWatch",function(req,res){
-    var username=req.body.d;
-    var queryString="select * from d where account='"+username+"'";
-    var client=utility.prepareDb();
-    client.query(queryString,function(e,r){
-        if(e){
-            throw e;
-        }
-        var falseName=r[0]["falseName"];
-        var dataArray=[falseName];
-        var columnArray=["watch"];
-        var queryString = dbUtlity.createQueryString(dataArray,columnArray,2,"extra2");
-        client.query(queryString,function(e,r){
-        if(e){
-            throw e;
-        }
-        var storeNew=[];
-        for(var j=0;j<r.length;j++){
-            storeNew.push(r[j]["username"]);
-        }
-        storeNew=utility.removeRedundant(storeNew);
-        dbUtlity.recurQuery(storeNew,"d","account",res);
-        });
-    });
-});
+app.post("/match/autoWatch",routes.autoWatch);
+
 /* match */
 
 /* msg */
@@ -1764,6 +1229,11 @@ app.post("/msg/newMsg",routes.countNewMsg);
 /* msg */
 
 
+/* check */
+app.post("/check/last_login", routes.getLastLoginTime);
+
+app.post("/check/backlist", routes.addBlackList);
+/* check */
 
 
 
@@ -1774,4 +1244,7 @@ app.post("/msg/newMsg",routes.countNewMsg);
 
 
 
-app.get("/cp/proof",routes.getProofPage);
+
+
+
+

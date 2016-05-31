@@ -121,7 +121,7 @@ $("#oldMsg").bind("click",function(){
     }
 function sendAjaxMsg(e){
    //前端收件箱逻辑   
-    var url="ajaxPost.ejs";
+    var url="/WebstormProjects/web/views/ajaxPost.ejs";
     var catchUserName=getTargetCookie("username");//己方用户名
     var catchFalseName=$("#userFalseName").text();//己方昵称
     var msgBody=$("#msgContents").val();

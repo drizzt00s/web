@@ -1,13 +1,9 @@
 alter table user_movement_log drop Gatewayid
 
-
-
-
 Æô¶¯mysql:mysql -u root -p
 
 mysql pass:5225541a
 
-
-
-
 ÂÒÂë:set names gbk;
+
+d:Ö÷±í

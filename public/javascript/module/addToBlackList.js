@@ -7,7 +7,7 @@
 		 "whoBlacks":whoBlacks
 		 };
 		 var newSearch=new Search();
-		 newSearch.ajaxPost("/WebstormProjects/web/views/addToBlackList.ejs",d,callBack);
+		 newSearch.ajaxPost("/check/backlist",d,callBack);
 		 function callBack(){
 		     alert(blackWhom+"已成功添加进黑名单");
 		 } 
