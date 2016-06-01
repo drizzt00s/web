@@ -1,4 +1,5 @@
-﻿<style type="text/css">
+﻿<script src="/javascript/moveInnerJsToOutside/editBasic1.js"></script>
+<style type="text/css">
  .fixedInfo{
 position:relative;
 }
@@ -137,33 +138,6 @@ position:absolute;
   </form>
   <div>填写完整，资料完整度增长30%（审核不通过则还原）</div>
 </div>
-<script type="text/javascript">
-   $(function(){
-      $("#editBasic1").bind("submit",function(e){
-	     var checkEmpty=$("#editOffspring").val();
-		 if(checkEmpty.indexOf("请选择")!=-1){
-		    alert("请选择有无孩子");
-			return false;
-		 }
-		 
-		 var checkProvince=$("#birthPlaceProvince").val();
-		 var checkCity=$("#birthPlaceCity").val();
-		 if(checkProvince.indexOf("请选择")!=-1||checkCity.indexOf("请选择")!=-1){
-		    alert("请填写城市和省份");
-		    return false;
-		 }
-		 
-		 
-	  
-	  });
-   
-   
-   
 
-	
-	
-   
-   })
-</script>
 
 

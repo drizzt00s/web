@@ -27,36 +27,18 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
+http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
+});
 
 //用户昵称不可以重复
 //页面有时候会出现死锁的情况 原因不明 需要解决
 //isonline有bug 0表示不在线 1表示在线 可能是用户退出登录的时候字段没有更新
 
-
-
-
-
-
-
-
-
-
-
-
-
 require('socketAll.js').startSocket();
 var utility = require('utlity.js');
 var dbUtlity = require('dbUtlity.js');
 var routerLogin = require('routerLogin.js');
-
-
-
-
-
-
-
-
-
 
 
 
@@ -147,88 +129,7 @@ app.get("/WebstormProjects/web/views/checkOffLineMsg.ejs",function(req,res){
      //query
 });
 
-app.get("/WebstormProjects/web/views/searchLove.ejs",function(req,res){
-   var Client =require("mysql").Client;
-   var client =new Client();
-   client.user="root";
-   client.password="5611559w";
-   client.query("USE user");
-   //准备数据库
-  var isSimpleSearch=req.query.simpleSearch;
-  //这个变量用于判断是否是复杂搜索,值为1表示简单搜索,值为0表示复杂搜索
-  if(isSimpleSearch==1){
-   var searchResult=null;
-   var searchCondition=null;
-   var searchGender=req.query.searchGender;
-   if(searchGender=="女朋友"){
-     searchGender="女性";
-   }
-   else{
-     searchGender="男性";
-   }
-   var searchAge=req.query.searchAge1;
-   var searchAge2=req.query.searchAge2;
-   var searchAgeRange=searchAge+" "+"-"+" "+searchAge2+"岁";
-   var searchLocation=req.query.searchLocation+req.query.searchLocation2;
-   var pic="";
-   var isPicRequired=req.query.hasPic;
-   
-   //console.log(isPicRequired);
-   
-   if(isPicRequired){
-      pic="有照片";
-   }
-   else{
-      pic="无照片";
-   }
-   //searchGender,searchAgeRange,searchLocation,pic这几个变量用于提示字符串供用户浏览,接下来还要几个变量供数据库查询使用,这
-   //几个变量应该在searchGender,searchAgeRange,searchLocation,pic的基础上生成
-   if(searchGender=="女性"){
-    var searchGenderQuery="女";
-   }
-   else{
-    var searchGenderQuery="男";
-   }
-   searchGenderQuery=searchGenderQuery;
-   searchYearQuery1=(new Date().getFullYear())-searchAge;
-   searchYearQuery2=(new Date().getFullYear())-searchAge2;
-   //搜索目标的年龄必须大于等于searchYearQuery1且小于等于searchYearQuery2
-   searchProvinceQuery=req.query.searchLocation;
-   searchCityQuery=req.query.searchLocation2;
-   var searchHasPictureQuery;
-   if(pic=="有照片"){
-     searchHasPictureQuery="not null";
-   }
-   else{
-     searchHasPictureQuery="null";
-   }
 
-   var queryStringJson={
-      searchGenderQuery:searchGenderQuery,
-      searchYearQuery1:searchYearQuery1,
-      searchYearQuery2:searchYearQuery2,
-      searchProvinceQuery:searchProvinceQuery,
-      searchCityQuery:searchCityQuery,
-      searchHasPictureQuery:searchHasPictureQuery
-   }
-   
-
-   
-   var loverQuery = utility.searchLoverQuery(1,queryStringJson);
-      
-   client.query(loverQuery,function(error,result){
-      if(error){
-        throw error;
-      }
- 
-    client.end();
-    //搜索结果
-    res.render("searchLove.ejs",{"title":"找二奶","searchConditionGender":searchGender,"searchConditionAgeRange":searchAgeRange,
-                                 "searchConditionLocation":searchLocation,"searchConditionIfHasPic":pic,"searchContents":JSON.stringify(result)});
-   });
-  }
-  //if 
-});
 
 
 
@@ -334,14 +235,7 @@ app.post("/WebstormProjects/web/views/changeNewMsgToOld.ejs",function(req,res){
 
 
 
-app.get("/WebstormProjects/web/views/posts.ejs",function(req,res){
-    res.render("./posts.ejs",{title:"发帖"});
-})
 
-app.post("/WebstormProjects/web/views/posts.ejs",function(req,res){
-    var postTitle=req.body.postTitle;
-    var postBody=req.body.postContent; 
-})
 
 
 
@@ -384,56 +278,23 @@ app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
       }
 });
 
-
-
-
 app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.post("/WebstormProjects/web/views/ajaxPost.ejs",routes.ajaxQueryPost);
 app.get("/WebstormProjects/web/views/ajaxShowUserPic.ejs",routes.ajaxShowUserPic);
 
-
 app.get("/WebstormProjects/web/views/404.ejs",routes.errorPage);
 
-app.post("/WebstormProjects/web/views/updateProfile",routes.updateProfile);
-app.post("/WebstormProjects/web/views/deletePic",routes.deletePic);
 app.post("/WebstormProjects/web/views/checkSentMsg",routes.checkSentMsgs);
 app.post("/WebstormProjects/web/views/fetchReadProfile",routes.fetchReadProfile);
 app.post("/WebstormProjects/web/views/updateProfileLink",routes.updateProfileLink);
 
 
 
-
-
-
-app.get("/WebstormProjects/web/views/anguarJsTest.ejs",function(req,res){
-res.render("./anguarJsTest.ejs",{"title":"anguarJsTest"});
-});
-
-app.get("/WebstormProjects/web/views/Angular/index.ejs",function(req,res){
-res.render("./Angular/index.ejs",{"title":"anguarJsTest"});
-});
-
 app.get("/WebstormProjects/web/views/save.ejs",function(req,res){
  console.log("receiveGet!!!!!!!!!!!!!!!!!!");
  console.log(req);
 });
-
-
 
 app.post("/WebstormProjects/web/views/save.ejs",function(req,res){
  console.log(req.body.name);
@@ -764,35 +625,6 @@ app.get("/WebstormProjects/web/views/proofValidation.ejs",function(req,res){
 res.render("proofValidation.ejs",{"title":"证件审核"});
 });
 
-app.get("/WebstormProjects/web/uploads/proofPic/identitycard/:username/:pic",function(req,res){
-        var username=req.params.username;
-        var pic=req.params.pic;
-        res.sendfile("./uploads/proofPic/identitycard/"+username+"/"+pic);
-});
-
-app.get("/WebstormProjects/web/uploads/proofPic/income/:username/:pic",function(req,res){
-        var username=req.params.username;
-        var pic=req.params.pic;
-        res.sendfile("./uploads/proofPic/income/"+username+"/"+pic);
-});
-
-app.get("/WebstormProjects/web/uploads/proofPic/housing/:username/:pic",function(req,res){
-        var username=req.params.username;
-        var pic=req.params.pic;
-        res.sendfile("./uploads/proofPic/housing/"+username+"/"+pic);
-});
-
-app.get("/WebstormProjects/web/uploads/proofPic/drive/:username/:pic",function(req,res){
-        var username=req.params.username;
-        var pic=req.params.pic;
-        res.sendfile("./uploads/proofPic/drive/"+username+"/"+pic);
-});
-
-app.get("/WebstormProjects/web/uploads/proofPic/gangao/:username/:pic",function(req,res){
-        var username=req.params.username;
-        var pic=req.params.pic;
-        res.sendfile("./uploads/proofPic/gangao/"+username+"/"+pic);
-});
 
 
 
@@ -802,208 +634,13 @@ app.get("/WebstormProjects/web/uploads/proofPic/gangao/:username/:pic",function(
 
 
 
-/*===================================证件认证=============================*/
-app.get("/payment",function(req,res){
-res.render("displayRights.ejs",{"title":"特权"});
-});
-
-
-
-/*===================================加入黑名单==========================*/
-
-
-/*=======================论坛=============================*/
-app.get("/WebstormProjects/web/views/postPicPreview.ejs",function(req,res){
-  res.render("postPicPreview.ejs",{"title":"","picFlag":""});
-});
-
-app.get("/WebstormProjects/web/views/whiteCollar.ejs",function(req,res){
-  res.render("whiteCollar.ejs",{"title":"白领交友","postImgWarning":"","postImgWarningFlag":"0"});
-});
-
-app.post("/WebstormProjects/web/views/postPicPreview.ejs",routes.displayPostPicPreview);
 
 
 
 
 
-app.post("/WebstormProjects/web/views/savePost.ejs",function(req,res){
-   var title=req.body.title;
-   var contents=req.body.contents;
-   var time=req.body.time;
-   var byWhom=req.body.byWhom;
-   var byWhomFalse=req.body.byWhomFalseName;
-   var postId=req.body.postId;
-   var Client=require("mysql").Client;
-   var client=new Client();
-   client.user="root";
-   client.password="5611559w";
-   client.query("USE user");
-   //准备数据库
-   var queryString="insert into `post`(`byWhom`,`time`,`title`,`contents`,`falseName`,`postId`) values('"+byWhom+"'"+","+"'"+time+"'"+","+"'"+title+"'"+","+"'"+contents+"'"+","+"'"+byWhomFalse+"'"+","+"'"+postId+"'"+")";
-   client.query(queryString,function(error,result){
-     if(error){
-      throw error;
-     }
-    res.send("1");
-    client.end();
-   });
-   //表sp:子回复的逻辑
-   var queryString2="insert into sp (owner) values('"+byWhomFalse+"')";
-   client.query(queryString2,function(error,result){
-     if(error){
-       throw error;
-     }
-     client.end();
-    });
-});
 
-app.get("/WebstormProjects/web/views/displayAllPost.ejs",function(req,res){
-  var Client=require("mysql").Client;
-  var client=new Client();
-  client.user="root";
-  client.password="5611559w";
-  client.query("USE user");
-  var queryString="select * from `post`";
-  client.query(queryString,function(error,result){
-     if(error){
-        throw error;
-     }
-    res.send(result);
-    client.end();
-  });
-});
 
-app.post("/WebstormProjects/web/views/replySubPost.ejs",function(req,res){
-   var pid=req.body.pid;//唯一
-   //能进到这边，也就是说能回复子回复(非楼主的话),说明pid这个值一定存在
-   var replyToWhom=req.body.replyToWhom;
-   var replayByWhom=req.body.replayByWhom;
-   var falseName=req.body.falseName;
-   var currentTime=req.body.currentTime;
-   var postContents=req.body.postContents;
-   var replyWhichSub=req.body.replyWhichSub;//唯一 回复哪个子回复
-   var Client=require("mysql").Client;
-   var client=new Client();
-   client.user="root";
-   client.password="5611559w";
-   client.query("USE user");
-   var queryString="select * from sp where id='"+pid+"'";
-   client.query(queryString,function(e,r){
-     if(e){
-      throw e;
-     }
-     var currentSubRep=r[0]["subRep2"];//String
-     if(!currentSubRep){
-       //没有针对子回复的回复
-       var storeFinalRep=[];
-       var storeEachFinalRep={};
-       storeEachFinalRep["replyWhichSub"]=replyWhichSub
-       storeEachFinalRep["contents"]=postContents;
-       storeEachFinalRep["by"]=falseName;
-       storeEachFinalRep["time"]=currentTime;
-       storeFinalRep.push(storeEachFinalRep);
-       var storeFinalRepString=JSON.stringify(storeFinalRep);
-       var queryString="update sp set subRep2='"+storeFinalRepString+"'"+"where id='"+pid+"'";
-       client.query(queryString,function(e,r){
-        if(e){
-          throw e;
-        }
-        res.send("1");
-        client.end();
-       });
-     }
-     else{
-     //有针对子回复的回复
-        var currentSubRepArray=JSON.parse(currentSubRep);
-        var storeEachFinalRep={};
-        storeEachFinalRep["replyWhichSub"]=replyWhichSub
-        storeEachFinalRep["contents"]=postContents;
-        storeEachFinalRep["by"]=falseName;
-        storeEachFinalRep["time"]=currentTime;
-        currentSubRepArray.push(storeEachFinalRep);
-        var currentSubRep=JSON.stringify(currentSubRepArray);
-        var queryString="update sp set subRep2='"+currentSubRep+"'"+"where id='"+pid+"'";
-        client.query(queryString,function(e,r){
-        if(e){
-          throw e;
-        }
-         res.send("1");
-        client.end();
-       });
-     }
-   });
-});
-//回复子贴
-
-app.get("/WebstormProjects/web/views/getFinalSubReps.ejs",function(req,res){
-   var pid=req.query.Pid;
-   var Client=require("mysql").Client;
-   var client=new Client();
-   client.user="root";
-   client.password="5611559w";
-   client.query("USE user");
-   var queryString="select * from sp where id='"+pid+"'";
-   client.query(queryString,function(e,r){
-     if(e){
-       throw e;
-     }
-     var finalReps=JSON.parse(r[0]["subRep2"])//Arrays
-     res.send(finalReps);
-     client.end();
-   });
-});
-
-app.post("/WebstormProjects/web/views/returnIcons.ejs",function(req,res){
-    var allUSer=req.body.allUser;//array
-    var storePicUrl=[];
-    var storeAccount=[];
-    var client=utility.prepareDb();
-    var queryString='select * from d';
-    client.query(queryString,function(e,r){
-      if(e){
-        throw e;
-      }
-      for(var i=0;i<r.length;i++){
-        var eachUser=r[i]["falseName"];
-        for(var c=0;c<allUSer.length;c++){
-          var eachUser2=allUSer[c];
-          if(eachUser2==eachUser){
-            var account=eval("("+r[i]["account"]+")");
-            storeAccount.push(account);
-            if(eval("("+r[i]["avatar"]+")")){
-                var pic=(eval("("+r[i]["avatar"]+")"))["con"];
-                var pic=pic[0];
-                storePicUrl.push(pic);
-            }
-            else{
-               var pic="unknown.png";
-               storePicUrl.push(pic);
-            }
-          }
-        }
-      }
-      res.send({"s":storePicUrl,"a":storeAccount});
-      client.end();
-    });
-});
-//postDetail.ejs页面返回所有回帖人的头像
-
-app.post("/WebstormProjects/web/views/replyPostOwnerIcon.ejs",function(req,res){
-  var postOwner=req.body.postOwner;
-  var client=utility.prepareDb();
-  var queryString="select * from d where falseName='"+postOwner+"'";
-  client.query(queryString,function(e,r){
-    if(e){
-      throw e;
-    }
-     var pic=(eval("("+r[0]["avatar"]+")"))["con"];
-     var pic=pic[0];
-     var account=eval("("+r[0]["account"]+")");
-     res.send({"pic":pic,"account":account});
-     client.end();
-  });
-});
 
 
 
@@ -1074,44 +711,6 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
     });
 });
 
-/*=================爱情搜索================*/
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
-
-
-
-app.post("/WebstormProjects/web/views/displayWhoOnline.ejs",function(req,res){
-   var whoIsOnline=req.body.d;
-   if(whoIsOnline){
-     var whoIsOnlineArray=JSON.parse(whoIsOnline);
-     utility.loopQuery(whoIsOnlineArray,res);//json,包含目前在线用户的信息,但是不包含图片
-   }
-   else{
-    throw new Error("没传值过来");
-   }
-});
-
-/*===================================每日速配=============================*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1139,21 +738,20 @@ app.get("/requireTest",function(req,res){
 
 /* on login */
 app.get("/route/login/showUserPic",routerLogin.showUserPic);
-/*
-app.get("/WebstormProjects/web/views/ajax.ejs",routes.ajaxQuery);
-入口页面showUserPic的备用路由，代码稳定后删除
-*/
+
+app.get("/ajax.ejs",routes.ajaxQuery);
+//入口页面showUserPic的备用路由，代码稳定后删除
+
 app.post("/login",routerLogin.login);
 /* on login */
 
 
 /* search */
+app.get("/search/searchLove",routes.searchLove);
 app.get("/search",routes.getSearchTpl);
-
 app.post("/search",routes.search);
 //高级搜索(基本完成)
 /* search */
-
 
 
 /* register */
@@ -1175,7 +773,30 @@ app.post("/postDetailImg.ejs", routes.forumPostImage);
 app.post("/forum/submitPreviewPic.ejs", routes.submitPreviewPic);
 app.get("/forum/postDetail.ejs", routes.getPostDetail);
 app.post("/forum/getReplyPics.ejs", routes.getReplyPics);
+app.get("/WebstormProjects/web/views/postPicPreview.ejs", routes.postPicPreview);
+app.get("/WebstormProjects/web/views/whiteCollar.ejs", routes.whiteCollar);
+app.post("/WebstormProjects/web/views/postPicPreview.ejs",routes.displayPostPicPreview);
+app.post("/WebstormProjects/web/views/savePost.ejs", routes.savePost);
+app.get("/WebstormProjects/web/views/displayAllPost.ejs", routes.displayAllPost);
+app.post("/WebstormProjects/web/views/replySubPost.ejs", routes.replySubPost);
+//回复子
+app.get("/WebstormProjects/web/views/getFinalSubReps.ejs",routes.getFinalSubReps);
+app.post("/WebstormProjects/web/views/returnIcons.ejs", routes.returnIcons);
+//postDetail.ejs页面返回所有回帖人的头像
+app.post("/WebstormProjects/web/views/replyPostOwnerIcon.ejs", routes.replyPostOwnerIcon);
+
+app.get("/WebstormProjects/web/views/posts.ejs",function(req,res){
+    res.render("./posts.ejs",{title:"发帖"});
+})
+
+app.post("/WebstormProjects/web/views/posts.ejs",function(req,res){
+    var postTitle=req.body.postTitle;
+    var postBody=req.body.postContent; 
+})
 /* forum */
+
+
+
 
 /* map */
 app.get("/mapSearch",routes.mapSearch);
@@ -1207,6 +828,9 @@ app.get("/user/matchCondition.ejs",routes.matchCondition);
 app.post("/user/matchConditionPost",routes.matchConditionPost);
 app.post("/user/fetchCondtion",routes.fetchCondtion);
 app.get("/user/editProfile",routes.editProfile);
+app.post("/user/whoOnline",routes.who_online);
+
+
 /* user */
 
 app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
@@ -1216,6 +840,13 @@ app.post("/homePageHelp.ejs",routes.homePageHelp);
 app.post("/cp/checkProfile",routes.checkProfile);
 app.get("/cp/proof",routes.getProofPage);
 app.post("/cp/proof",routes.submitProof);
+app.post("/cp/profile",routes.updateProfile);
+app.post("/cp/profile_deletion",routes.deleteProfile);
+app.get("/WebstormProjects/web/uploads/proofPic/identitycard/:username/:pic", routes.identitycard);
+app.get("/WebstormProjects/web/uploads/proofPic/income/:username/:pic", routes.income);
+app.get("/WebstormProjects/web/uploads/proofPic/housing/:username/:pic", routes.housing);
+app.get("/WebstormProjects/web/uploads/proofPic/drive/:username/:pic", routes.drive);
+app.get("/WebstormProjects/web/uploads/proofPic/gangao/:username/:pic", routes.gangao);
 /* cp */
 
 /* match */
@@ -1237,6 +868,9 @@ app.post("/check/backlist", routes.addBlackList);
 
 
 
+/* payment */
+app.get("/payment",routes.payemnt);
+/* payment */
 
 
 

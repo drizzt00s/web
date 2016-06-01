@@ -169,7 +169,7 @@ function sendAjaxMsg(e){
           return false;
       }
        var catchUserName=getTargetCookie("username");//己方用户名
-       var url="ajax.ejs";
+       var url="/ajax.ejs";
        $.ajax({
            url:url+"?isShowPic=getMsg&username="+catchUserName,
            cache:false,

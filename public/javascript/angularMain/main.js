@@ -1,6 +1,6 @@
-var registerModle=angular.module("register",[]);
+var registerModle = angular.module("register",[]);
 
-var forgetPassModule=angular.module("forgetPass",["ngResource"]);
+var forgetPassModule = angular.module("forgetPass",["ngResource"]);
 
-var indexPage=angular.module("indexPage",["ngResource"])
+var indexPage = angular.module("indexPage",["ngResource"])
 

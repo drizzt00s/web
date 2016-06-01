@@ -17,7 +17,7 @@
 	  var onlineArray=$("#onlineMember").text();
 	  if(onlineArray){
 	     $.ajax({
-		  url:"displayWhoOnline.ejs",
+		  url:"/user/whoOnline",
 		  data:{"d":onlineArray},
 		  type:"post",
 		  success:function(d){

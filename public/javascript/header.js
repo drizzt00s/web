@@ -67,7 +67,7 @@ function setCity(){
 
 
 document.write("<div class='search'>"+
-"<form action='searchLove.ejs' method='get' id='searchForm'>"+
+"<form action='/search/searchLove' method='get' id='searchForm'>"+
 "<span>我要找</span>"+
 "<select id='searchGender' name='searchGender'>"+
 "<option>男朋友</option>"+
