@@ -369,261 +369,12 @@ app.post("/forgetPass",function(req,res){
 
 
 
-app.post("/WebstormProjects/web/views/expectOtherLogin.ejs",function(req,res){
-    var expectWhomLogin=req.body.expectWhomLogin; //希望谁登录时提醒(昵称)
-    var whoExpects=req.body.whoExpects; //谁希望(帐号)
-    var client=utility.prepareDb();
-    var queryString="select whoExpectYouLogin from d where falseName='"+expectWhomLogin+"'";
-    
-     console.log(queryString);
-    
-    client.query(queryString,function(e,r){
-       if(e){
-         throw e;
-       }
-       console.log(r);
-          if(r.length!=0){ 
-          var r=r[0]["whoExpectYouLogin"];
-          if(r.length>0){
-               var r=eval("("+r+")"); //array
-          r.push(whoExpects);
-          r=utility.removeRedundant(r);//清除重复的值
-          r=JSON.stringify(r);
-          queryString="update d set whoExpectYouLogin='"+r+"' where falseName='"+expectWhomLogin+"'";
-          client.query(queryString,function(e,r){
-               if(e){
-                  throw e;
-                }
-                res.send("1");
-          });
-          }
-         else if(r.length==0){
-             var r=[];
-             r.push(whoExpects);
-             r=JSON.stringify(r);
-             queryString="update d set whoExpectYouLogin='"+r+"' where falseName='"+expectWhomLogin+"'";
-               client.query(queryString,function(e,r){
-               if(e){
-                  throw e;
-                }
-                res.send("1");
-          });
-         }
-         }
-    });
-});
-//特定用户登录时提醒
 
 
 
 
 
-app.get("/WebstormProjects/web/views/loadProof.ejs",function(req,res){
- //查询credits表,返回数据给业务人员操作
- var queryString="select username,identitycard,income,drive,gangao,housing from credits";
- var client=utility.prepareDb();
- client.query(queryString,function(e,r){
-    if(e){
-     throw e;
-    }
-    var storeAll=[];
-    for(var i=0;i<r.length;i++){
-      var store={};
-      for(var j in r[i]){
-        if(r[i][j]!==-1&&r[i][j]!==1){
-          store[j]=r[i][j];
-        }
-      }
-      storeAll.push(store);
-    }
-    var storePicUrl=[];
-    for(var l=0;l<storeAll.length;l++){
-      for(var k in storeAll[l]){
-        if(k=="username"){
-           var username=storeAll[l][k];
-        }
-        else{
-         var picUrl="./uploads/proofPic/"+k+"/"+username;
-         var picArray=fs.readdirSync(picUrl); //此处逻辑有问题
-         var picProof=picArray[0]
-         storeAll[l][k]="../uploads/proofPic/"+k+"/"+username+"/"+picProof;
-        }
-      }
-    }
-    res.send(storeAll);
- });
-});
 
-app.post("/WebstormProjects/web/backstage/:operationType",function(req,res){
- var operation=req.params.operationType;
- if(operation=="approveProof"){
-    var approveWhom=req.body.d.approveWhom;
-    var approveType=req.body.d.approveType;
-    var client=utility.prepareDb();
-    if(approveType=="identitycard"){
-    var queryString="select pending from credits where username='"+approveWhom+"'";
-    client.query(queryString,function(e,r){
-     if(e){
-       throw e;
-     }
-     var currentPending= eval("("+r[0]["pending"]+")");
-     if(currentPending.length===0){
-         var queryString="update credits set "+approveType+"=1,level=1,identity=1"+" where username='"+approveWhom+"'";
-      client.query(queryString,function(e,r){
-      if(e){
-        throw e;
-       }
-      res.send("1");
-      });
-     }
-     else{
-        var indexFlag=0;
-        recurUpdate(res);
-        function recurUpdate(resObject){
-          if(indexFlag===currentPending.length){
-            //这里要改变用户认证等级字段credits.level
-            var pendingLength=currentPending.length;
-            var level=pendingLength+1;
-            var queryString="update credits set pending='[]',"+approveType+"=1,level="+level+",identity=1 where username='"+approveWhom+"'";
-            client.query(queryString,function(e){
-              if(e){
-                throw e;
-              }
-              resObject.send("1");
-            });
-            return false;
-          }
-          var queryString="update credits set "+currentPending[indexFlag]+"=1";
-          client.query(queryString,function(e){
-            if(e){
-              throw e;
-            }
-            indexFlag++;
-            recurUpdate(res);
-          });
-        }//recurUpdate
-      }
-     });
-    }
-    else{
-     var queryString="select level from credits where username='"+approveWhom+"'";
-     var client=utility.prepareDb();
-     client.query(queryString,function(e,r){
-        if(e){
-          throw e;
-        }
-        var level=r[0]["level"];
-        if(level>=1){
-        //用户的身份证已经经过认证
-          level+=1;
-          var queryString="update credits set "+approveType+"=1"+",level="+level+" where username='"+approveWhom+"'";
-          client.query(queryString,function(e){
-            if(e){
-              throw e;
-            }
-            res.send("1");
-          });
-        }
-        else{
-         //用户的身份证没有经过认证,这种情况要跟新credits.pending字段
-         var queryString="select pending from credits where username='"+approveWhom+"'";
-         client.query(queryString,function(e,r){
-            if(e){
-             throw e;
-            }
-            var currentPending= eval("("+r[0]["pending"]+")");
-            currentPending.push(approveType);
-            var currentPending=utility.removeRedundant(currentPending);
-            var updatedPedning=JSON.stringify(currentPending);
-            var queryString="update credits set pending='"+updatedPedning+"'"+"where username='"+approveWhom+"'" ;
-            client.query(queryString,function(e,r){
-              if(e){
-                throw e;
-              }
-              res.send("1");
-            //credits.pending字段字段更新完毕,但是身份证还没有验证
-            });
-         });
-        }
-     });
-    }
-   //else
- }
-  else if(operation=="denyProof"){
-    var approveWhom=req.body.d.approveWhom;
-    var approveType=req.body.d.approveType;
-    var approveImgName=req.body.d.approveImgName;
-    var client=utility.prepareDb();
-  if(approveType=="identitycard"){
-     //身份证
-       var queryString="update credits set "+approveType+"=-1,level=0,identity=0"+" where username='"+approveWhom+"'";
-     //var queryString="update credits set "+approveType+"=-1 where username='"+approveWhom+"'";
-      client.query(queryString,function(e,r){
-      if(e){
-        throw e;
-       }
-      // var fsUrl="C:\Users\357570\WebstormProjects\web\uploads\proofPic\"                  +approveType+        "\"+approveWhom+"\";
-         var fsUrl="./uploads/proofPic/"+approveType+"/"+approveWhom+"/"+approveImgName;
-       fs.unlink(fsUrl,function(e){
-         if(e){
-            throw e;
-         }
-       });
-        res.send("1");
-        client.end();
-      });
-    }
-    else{
-    //非身份证
-    var queryString="update credits set "+approveType+"=-1 where username='"+approveWhom+"'";
-    client.query(queryString,function(e,r){
-      if(e){
-        throw e;
-      }
-      var queryString="select pending from credits where username='"+approveWhom+"'";
-      client.query(queryString,function(e,r){
-        if(e){
-         throw e;
-        }
-        //var fsUrl="./uploads/proofPic/"+approveType+"/"+approveWhom+"/car.jpg";
-        //var fsUrl="./uploads/proofPic/"+approveType+"/"+approveWhom+"/";
-        var fsUrl="./uploads/proofPic/"+approveType+"/"+approveWhom+"/"+approveImgName;
-        fs.unlink(fsUrl,function(e){
-          if(e){
-            throw e;
-          }
-        });
-        var pending=r[0]["pending"];
-        pending=eval("("+pending+")");
-        if(pending.length!==0){
-          for(var i=0;i<pending.length;i++){
-           if(pending[i]===approveType){
-              pending.splice(i,1);
-              pending=JSON.stringify(pending);
-              var queryString="update credits set pending='"+pending+"where username='"+approveWhom+"'";
-              console.log(queryString);
-              client.query(queryString,function(e){
-                if(e){
-                  throw e;
-                  client.end();
-                }
-              });
-           }
-         }
-        }
-           res.send("1");
-      });
-     });
-    }
-  }
-});
-
-/*===================================提交证件=============================*/
-
-
-app.get("/WebstormProjects/web/views/proofValidation.ejs",function(req,res){
-res.render("proofValidation.ejs",{"title":"证件审核"});
-});
 
 
 
@@ -836,18 +587,6 @@ app.post("/user/whoOnline",routes.who_online);
 app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
 app.post("/homePageHelp.ejs",routes.homePageHelp);
 
-/* cp */
-app.post("/cp/checkProfile",routes.checkProfile);
-app.get("/cp/proof",routes.getProofPage);
-app.post("/cp/proof",routes.submitProof);
-app.post("/cp/profile",routes.updateProfile);
-app.post("/cp/profile_deletion",routes.deleteProfile);
-app.get("/WebstormProjects/web/uploads/proofPic/identitycard/:username/:pic", routes.identitycard);
-app.get("/WebstormProjects/web/uploads/proofPic/income/:username/:pic", routes.income);
-app.get("/WebstormProjects/web/uploads/proofPic/housing/:username/:pic", routes.housing);
-app.get("/WebstormProjects/web/uploads/proofPic/drive/:username/:pic", routes.drive);
-app.get("/WebstormProjects/web/uploads/proofPic/gangao/:username/:pic", routes.gangao);
-/* cp */
 
 /* match */
 app.post("/match/dailyMatch",routes.dailyMatch);
@@ -864,6 +603,13 @@ app.post("/msg/newMsg",routes.countNewMsg);
 app.post("/check/last_login", routes.getLastLoginTime);
 
 app.post("/check/backlist", routes.addBlackList);
+
+
+app.post("/check/other_login",routes.expectOtherLogin);
+//特定用户登录时提醒
+
+
+
 /* check */
 
 
@@ -871,6 +617,37 @@ app.post("/check/backlist", routes.addBlackList);
 /* payment */
 app.get("/payment",routes.payemnt);
 /* payment */
+
+
+
+
+/* backstage supporter */
+
+app.get("/backstageSupporter/proofs", routes.loadProof);
+
+app.post("/backstageSupporter/proofs/:operationType", routes.vlidateProofs);
+
+app.get("/backstageSupporter/proof_validation", routes.getProofValidationPage);
+
+/* backstage supporter */
+
+
+
+/* cp */
+app.post("/cp/checkProfile",routes.checkProfile);
+app.get("/cp/proof",routes.getProofPage);
+app.post("/cp/proof",routes.submitProof);
+app.post("/cp/profile",routes.updateProfile);
+app.post("/cp/profile_deletion",routes.deleteProfile);
+app.get("/uploads/proofPic/identitycard/:username/:pic", routes.identitycard);
+app.get("/uploads/proofPic/income/:username/:pic", routes.income);
+app.get("/uploads/proofPic/housing/:username/:pic", routes.housing);
+app.get("/uploads/proofPic/drive/:username/:pic", routes.drive);
+app.get("/uploads/proofPic/gangao/:username/:pic", routes.gangao);
+/* cp */
+
+
+
 
 
 
