@@ -652,6 +652,17 @@ app.get("/uploads/proofPic/gangao/:username/:pic", routes.gangao);
 
 
 
+app.get("/cp/angularjs2",function(req, res){
+  res.render("angularjs2.ejs",{title:"sendImage"}); 
+});
+
+
+
+
+
+
+
+
 
 
 
