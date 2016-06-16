@@ -12,7 +12,7 @@ template: `
 class t {
 	name:Array<string>;
 	constructor(){
-		this.names = ["bishop","Tyson","Holyfield"]
+		this.names = ["lili","Tyson","Holyfield"]
 	}
 }
 

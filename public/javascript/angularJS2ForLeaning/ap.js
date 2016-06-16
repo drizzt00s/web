@@ -9,12 +9,12 @@ var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
 var core_1 = require("@angular/core");
 var t = (function () {
     function t() {
-        this.names = ["Ali", "Tyson", "Holyfield"];
+        this.names = ["lili", "Tyson", "Holyfield"];
     }
     t = __decorate([
         core_1.Component({
             selector: 'hello-world',
-            template: "\n<ul>\n<li *ngFor=\"let name of names\">hello {{name}}</li>\n</ul>\n"
+            template: "\n<ul>\n<li *ngFor=\"let name of names\" style=\"border:solid 1px red;list-style-type:none;\">hello {{name}}</li>\n</ul>\n"
         })
     ], t);
     return t;
