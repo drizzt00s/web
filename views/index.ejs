@@ -35,30 +35,85 @@
   
 
 
-  <!--angular-->
- 
-  <script src="/javascript/service/login.js"></script>
-  <script src="/javascript/controller/allControllers.js"></script>
-  <!--angular-->
-
 
   <script src="/javascript/moveInnerJsToOutside/index.js"></script>
   <script src="/javascript/header.js"></script>
+<script>
 
+$(function(){
+    function checkIfLogined(){
+    return parseInt($("#checkLogin").val());
+  }
+
+  function show(){
+    var isLogin = checkIfLogined();
+    alert(isLogin);
+    if(isLogin){
+      $('.loginArea').hide();
+    } else{
+      $('.loginArea').show();
+    }
+  }
+
+  show();
+})
+
+
+</script>
+
+<script>
+
+
+
+
+
+
+  function submitLogin(){
+           var username=$("#account").val();
+           var pass=$("#pass").val();
+           var url = "/login";
+           var data = {username:username,pass:pass}
+           $.ajax({
+             url:url,
+             data: data,
+             type:'post',
+             success:function(d){
+             $("#accErrorMsg").text(d.accResult);
+             $("#passErrorMsg").text(d.passResult);
+             if(!d.accResult&&!d.passResult){
+                var userFalseName=getTargetCookie("falseName");
+                var username=getTargetCookie("username");
+                socket = io.connect('http://localhost:8080');
+                socket.on("connect",function(){
+            socket.emit("watchOtherLogin2",{"username":username,"falseName":userFalseName},function(){
+            window.location.reload();
+          });
+         });
+            }
+             }
+
+           });
+
+
+  }
+
+
+
+</script>
 
 
 
  <div id="wrap" class="wrap" style="border:solid 1px red;">
 
-<div class="loginArea"  ng-controller="loginAreaController" ng-hide="data.showLoginArea">
+<div class="loginArea"  style='border:solid 1px red;'>
 <form action='#' method='post' id='loginForm'>
- <label for='account'>账号:</label><input type='text' id='account' name='account' autocomplete='on' ng-model='data.account'   />
-   <span id='accErrorMsg'>{{data.accErrorMsg}}</span>
+ <label for='account'>账号:</label><input type='text' id='account' name='account' autocomplete='on'    />
+   <span id='accErrorMsg'></span>
 
- <label for='pass'>密码:</label><input type='password' id='pass' name='password' autocomplete='on' ng-model='data.pass' />
- <span id='passErrorMsg'>{{data.passErrorMsg}}</span>
+ <label for='pass'>密码:</label><input type='password' id='pass' name='password' autocomplete='on'  />
+ <span id='passErrorMsg'></span>
 
- <input type='button' value='提交' id='submitThis' ng-click='submitLogin();' />
+ <input type='button' value='提交' id='submitThis' onclick ='submitLogin();' />
  <input type='hidden' name='checkSubmit'>
  </form>
 </div>
@@ -79,14 +134,14 @@
  
 
   <div class="left">
-  <input type="hidden" value="<%=isSignUp%>" id="checkLogin" />
+  <input type="hidden" value="<%=isSignUp%>" id="checkLogin" style='border:solid 1px green;'/>
   
   
  
     <p class="register">
       <a href="/register">注册
       </a><br />
-      <!-- <a href="#" id="login" ng-controller="loginController" ng-click="poplogin();">登录</a>-->
+      <!-- <a href="#" id="login">登录</a>-->
     </p>
     <div class="userInfo">
       <p>欢迎:<span id="userFalseName"><%=userName%></span><a href="/logoff" id="mySignOut">注销</a></p>

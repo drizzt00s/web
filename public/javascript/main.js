@@ -1,6 +1,53 @@
-/*
-home page controllers
-*/
+requirejs.config({
+	baseUrl:'/javascript/libs',
+	paths: {
+		modules:'../modules'
+	},
+	shim: {
+		'jquery': {
+			exports: '$'
+		},
+		'angular':{
+			exports: 'angular',
+		},
+		'angular-resource':{
+			deps:['angular'],
+			exports:'angular-resource'
+		},
+		'modules/agMain':{
+			deps:['angular']
+		}
+	
+
+	}
+});
+
+var modules = [
+'jquery', 
+'angular',
+'angular-resource',
+'modules/userEdit', 
+'modules/Compents', 
+'modules/cookieHelp', 
+'modules/socket', 
+'modules/message',
+'modules/index',
+'modules/moveoutIndex',
+'modules/header',
+'modules/agMain'
+];
+
+
+
+require(modules, function ($, angular) {  
+	
+
+var main = angular.module("main",[]);
+
+
+main.factory("login",["$resource",function($resource){
+    return $resource("/login");
+}]);
 
 
 main.controller("loginAreaController",function($scope, login){
@@ -42,9 +89,11 @@ main.controller("loginAreaController",function($scope, login){
           });
            
       }
-
-
 });
 
 
 
+
+
+
+});

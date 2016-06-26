@@ -10,15 +10,15 @@
   <script src="/javascript/operation.js"></script>
 
 
-  <script src="/javascript/angularMain/main.js"></script>
-  <script src="/javascript/service/emailReg.js"></script>
-  <script src="/javascript/controller/emailRegController.js"></script>
+
+
+ 
 
   
   <title><%= title %></title>
 
  <div id="registerMain">
-  <div class="register" id="register" ng-controller="registerController" >
+  <div class="register" id="register"  >
     <form id="submitForm" method="post" action="/register">
       <p class='regSuccess'><%=successMsg%></p>
 
@@ -174,7 +174,7 @@
    <!-- 改为angularjs提交 原来submitRegister 对应的提交逻辑对应于javascript/validation.js 下的$("#submitRegister").live-->
      
 
-    <input type="button" value="提交" ng-click="registetSubmit(e);"/>
+    <input type="button" value="提交" onclick=" document.getElementById('submitForm').submit();"/>
 
     </form>
     <a href="index.ejs">回首页</a>
