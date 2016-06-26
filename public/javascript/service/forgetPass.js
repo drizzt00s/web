@@ -1,15 +1,9 @@
 
-
-
-forgetPassModule.factory("getPass",["$resource",function($resource){
+main.factory("getPass",["$resource",function($resource){
      // return $resource("/forgetPass/:username",{username:"@username"});
       return $resource("/forgetPass");
 }]);
 
 
-/*
-forgetPassModule.factory("getPass",function(){
-      return {};
 
-});*/
 

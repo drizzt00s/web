@@ -1,80 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-     <title><%= title %></title>
-     <link rel='stylesheet' href='/stylesheets/style.css' />
-     
-
-   
-     <script src="/javascript/jquery-1.4.2.js"></script>
-     <script src="/javascript/Compents.js"></script>
-     <script src="/javascript/xmlHttpRequest.js"></script>
-     <script src="/javascript/userEdit.js"></script>
-     <script src="/javascript/json.js"></script>
-     <script src="/javascript/cookieHelp.js"></script>
-     <script src="/javascript/angular.js"></script>
-     <script src="/javascript/angularLibrary/angular-resource.js"></script>
-     <script src="/javascript/angularLibrary/angular-route.min.js"></script>
+<head>
+<title></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
 
 
-     <!--<script src="javascript/sea.js"></script>-->
-     <!--
-     <script src="javascript/require.js"></script>
- -->
-     <script>
-     /*
-     require.config({
-          paths: {
-            jquery: '/javascript/jquery-1.12.4'
-        }
-     });
-
-    var c=0;
-
-     require(['jquery'], function($){
-
-        alert($ === jQuery);
-        
-
-     });
-
-    seajs.config({
-        alias: { 'jquery': 'jquery-1.12.4.js' }
-    });
+<script src="/javascript/jquery-1.4.2.js"></script>
+<script src="/javascript/angular.js"></script>
+<script src="/javascript/angularLibrary/angular-resource.js"></script>
+<script src="/javascript/angularLibrary/angular-route.min.js"></script>
+<script src="/javascript/angularMain/main.js"></script>
+<script src="/javascript/directive/breadcrumb.js"></script>
 
 
-seajs.config({
-    'base':'javascript/',
-    'alias':{
-        'jquery':'jquery.js'
-    }
-});
+<script src="/javascript/require.js"></script>
 
+<script src="/javascript/Compents.js"></script>
+<script src="/javascript/xmlHttpRequest.js"></script>
+<script src="/javascript/userEdit.js"></script>
+<script src="/javascript/json.js"></script>
+<script src="/javascript/cookieHelp.js"></script>
 
-seajs.use(['jquery'],function($){
-    alert($);
-});
-*/
-
-
-     </script>
+<!-- <script src="/javascript/initAjax.js"></script>-->
 
 
 
 
-    <!-- <script src="/javascript/initAjax.js"></script>-->
-
-
- 
-
-
-
+</head>
+<body ng-app="main">
+    <div>
+        <breadcrumb></breadcrumb>
+    </div>
 
 
 
-  </head>
-  <body>
-<%- body %>
-
+    <%- body %>
 </body>
 </html>

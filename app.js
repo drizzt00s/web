@@ -292,13 +292,12 @@ app.post("/WebstormProjects/web/views/updateProfileLink",routes.updateProfileLin
 
 
 app.get("/WebstormProjects/web/views/save.ejs",function(req,res){
- console.log("receiveGet!!!!!!!!!!!!!!!!!!");
- console.log(req);
+
+
 });
 
 app.post("/WebstormProjects/web/views/save.ejs",function(req,res){
- console.log(req.body.name);
- console.log(req.body.age);
+
 });
 
 app.get("/uploads/pic/:name/:pic",function(req,res){
@@ -656,6 +655,20 @@ app.get("/uploads/proofPic/gangao/:username/:pic", routes.gangao);
 app.get("/cp/angularjs2",function(req, res){
   res.render("angularjs2.ejs",{title:"sendImage"}); 
 });
+
+
+app.get("/breadcrumb",function(req, res){
+    fs.readFile("./views/dirViews/breadcrumb.ejs",function(err, data){
+    if(err){
+        throw err;
+    }
+    res.writeHead(200, {'Content-type' : 'text/html'});
+    res.end(data);
+    });
+});
+
+
+
 
 
 

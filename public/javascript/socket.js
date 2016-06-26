@@ -354,7 +354,6 @@ $(function(){
 			
 			socket.on("updateNewMsgTo",function(d){
 			   $("#remindNewMsg").text(d.newMsg);
-			
 			});
 			
 			

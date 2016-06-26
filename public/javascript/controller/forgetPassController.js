@@ -1,4 +1,4 @@
-forgetPassModule.controller("myForgetPass",function($scope,getPass){
+main.controller("myForgetPass",function($scope,getPass){
    $scope.data={
    	   mail:""
    };
@@ -13,10 +13,3 @@ forgetPassModule.controller("myForgetPass",function($scope,getPass){
 });
 
 
-/*
-forgetPassModule.controller("forgetPass",function($scope){
-   $scope.data={};
-   $scope.getPassBackRequest=function(){
-   	 alert($scope.data.mail);
-   }
-});*/

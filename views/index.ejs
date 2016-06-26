@@ -30,13 +30,13 @@
   <!--js models-->
 
   <!--<script src="/javascript/startDb.js"></script>-->
-   <script src="http://localhost:8080/socket.io/socket.io.js"></script>
-  <!--<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>-->
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+
   
 
 
   <!--angular-->
-  <script src="/javascript/angularMain/main.js"></script>
+ 
   <script src="/javascript/service/login.js"></script>
   <script src="/javascript/controller/allControllers.js"></script>
   <!--angular-->
@@ -48,7 +48,7 @@
 
 
 
- <div class="wrap" ng-app="indexPage" style="border:solid 1px red;">
+ <div id="wrap" class="wrap" style="border:solid 1px red;">
 
 <div class="loginArea"  ng-controller="loginAreaController" ng-hide="data.showLoginArea">
 <form action='#' method='post' id='loginForm'>
@@ -121,7 +121,7 @@
 			<a href="#" class="oldMsg" id="oldMsg" onclick="$(document.getElementById('newMsgContainer')).hide();$(document.getElementById('oldMsgContainer')).show();">已读信息</a>
 		</div>
 
-		<div class="newMsgContainer" id="newMsgContainer"></div>
+		<div class="newMsgContainer" id="newMsgContainer" style='border:solid 1px green;'></div>
 		<div class="oldMsgContainer" id="oldMsgContainer"></div>
 		
 		
@@ -160,6 +160,8 @@
 	 <p id="myMatch"></p>
   </div><!--todayMatch-->
  </div>
+
+
 
 
 

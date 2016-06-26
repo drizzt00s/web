@@ -3,7 +3,7 @@ home page controllers
 */
 
 
-indexPage.controller("loginAreaController",function($scope,login){
+main.controller("loginAreaController",function($scope, login){
      $scope.checkIfLogined=function(){
          return parseInt(jQuery("#checkLogin").val());
      }
@@ -47,24 +47,4 @@ indexPage.controller("loginAreaController",function($scope,login){
 });
 
 
-indexPage.controller("loginController",function($scope){
 
-
-     /*
-      $scope.poplogin=function(){
-      	    var newCompents=new phDisplay();
-            var loginContents="<form action='#' method='post' id='loginForm'>"+
-                                   "<p><label for='account'>账号:</label><input type='text' id='account' name='account' autocomplete='on' /><span id='accErrorMsg'><%=accErrMsg%></span></p>"+
-                                   "<p><label for='pass'>密码:</label><input type='password' id='pass' name='password' autocomplete='on' /><span id='passErrorMsg'><%=passwordErrMsg%></span></p>"+
-                                   "<input type='button' value='提交' id='submitThis'><br />"+
-                                   "<input type='hidden' name='checkSubmit'>"+
-                                   "</form>";
-                 newCompents.popDiv("popDiv",true,loginContents);
-                 $("#accErrorMsg").css("display","none");
-                 $("#passErrorMsg").css("display","none");
-      };
-*/
-    
-
-
-});
