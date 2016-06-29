@@ -1,20 +1,4 @@
-﻿/*ËùÓÐÊµÀý¶¼ÓÐ¸öË½ÓÐÊôÐÔerrorMsg
- * errorMsg.errorInfo=0ÎªÕý³£
- * ÆäËûÔ­ÐÍÊôÐÔ»¹Ã»¶¨Òå
- * 
- * 
- *
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
+﻿
 if(!window.PH){
 	  function PH(){
 	  }
@@ -487,7 +471,6 @@ Others.prototype.jsTrim=function(targetString){
    var newString=newStringArray.join("");
    return newString;
 }
-//É¾³ý×Ö·û´®ÖÐµÄËùÓÐ¿Õ¸ñ
-/*===============================================================Others===========================================================================*/
+
 
 

@@ -1,7 +1,6 @@
-if(!frontCommon){
+
     var frontCommon={};
 	frontCommon.string=(function(){
-	   //µßµ¹Ò»¸ö×Ö·û´®
 	   function _reverseString(s){
 	   var readNewArray=[];
 	   var index=(s.length)-1;
@@ -72,20 +71,18 @@ if(!frontCommon){
 	   }
      };
 	})();
-}
-else{
-    throw new error("name space in use");
-}
+
+
 
 
 
 
 
 function moveBroadcast(){
-      var movingWidth=(window.screen.width)+50;
-      $("#broadcastWrap").animate({
-	     right: "+="+movingWidth
-	  },3000,function(){
-	  $("#broadcastWrap").remove();
-	 });
-   }
+	var movingWidth=(window.screen.width)+50;
+	$("#broadcastWrap").animate({
+		right: "+="+movingWidth
+	}, 3000, function(){
+		$("#broadcastWrap").remove();
+	});
+}
