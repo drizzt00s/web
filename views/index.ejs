@@ -1,11 +1,7 @@
 ﻿ <title><%= title %></title>
   <link rel='stylesheet' href='/stylesheets/index.css' />
   <link rel='stylesheet' href='/stylesheets/rights.css' />
-  
-  <!--new added-->
   <link rel='stylesheet' href='/stylesheets/main.css' />
-  <!--new added-->
-
 
   <script src="/javascript/common.js"></script>
   <script src="/javascript/libraries.js"></script>
@@ -13,10 +9,6 @@
   <script src="/javascript/message.js"></script>
 
 
-
-
-
-  <!--js models-->
   <script src="/javascript/module/requireDailyMatch.js"></script>   
   <script src="/javascript/module/checkLogin.js"></script>
   <script src="/javascript/module/watch.js"></script>
@@ -25,7 +17,7 @@
   <script src="/javascript/module/checkLastLoginTime.js"></script>
   <script src="/javascript/module/loginReminder.js"></script>
   <script src="/javascript/module/addToBlackList.js"></script>
-  <!--js models-->
+
 
   <!--<script src="/javascript/startDb.js"></script>-->
   <script src="http://localhost:8080/socket.io/socket.io.js"></script>
@@ -134,8 +126,9 @@ $(function(){
   <div class="left">
   <input type="hidden" value="<%=isSignUp%>" id="checkLogin" style='border:solid 1px green;'/>
   
-  
- 
+
+
+
     <p class="register">
       <a href="/register">注册
       </a><br />
@@ -150,7 +143,7 @@ $(function(){
 
 
 	  
-    <div class="indexTitle">
+    <div class="indexTitle" style="border:solid 1px red;">
       <span>佳缘首页</span>
       <span><a href="/info/me">我的佳缘</a></span>
       <span><a href="search.ejs">爱情搜索</a></span>
@@ -163,7 +156,6 @@ $(function(){
 	  <div id="sendRead"></div>
 	  <div id="sendUnread"></div>
 	</div><!--sendBoxContents-->
-	
 	
 	
 	
@@ -181,7 +173,7 @@ $(function(){
 		
 	</div><!--msg3-->
     </div><!--msg-->
-    <div class="secret">
+    <div class="secret" style="border:solid 1px green">
        <div class="userFunction">
          <span>收件箱<span class='newMsgRemain" style='color:red;'></span></span>
          <span>发件箱</span>
@@ -205,14 +197,27 @@ $(function(){
        <div class="others"></div>
     </div><!--secret-->
   </div><!--left-->
-  <div id="showingPic">
+  <div id="showingPic" style="border:solid 1px green;">
   </div><!--showingPic--><!--首页主体-->
   
-  <div id="todayMatch" class="todayMatch" style="display:none;">
-     <p>每日懂你</p>
+<div id="todayMatch" class="todayMatch" style="display:none;">
+    <p>每日懂你</p>
 	 <p id="myMatch"></p>
   </div><!--todayMatch-->
- </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ <profile></profile>
 
 
 

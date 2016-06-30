@@ -648,6 +648,13 @@ app.get("/uploads/proofPic/gangao/:username/:pic", routes.gangao);
 
 
 
+/* directive template */
+app.get("/breadcrumb",routes.breadcrumb);
+app.get("/spotlight",routes.spotlight);
+app.get("/profile",routes.dirProfile);
+
+/* directive template */
+
 
 
 
@@ -657,15 +664,8 @@ app.get("/cp/angularjs2",function(req, res){
 });
 
 
-app.get("/breadcrumb",function(req, res){
-    fs.readFile("./views/dirViews/breadcrumb.ejs",function(err, data){
-    if(err){
-        throw err;
-    }
-    res.writeHead(200, {'Content-type' : 'text/html'});
-    res.end(data);
-    });
-});
+
+
 
 
 

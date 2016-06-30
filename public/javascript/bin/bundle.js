@@ -48,6 +48,9 @@
 	libs
 	**/
 	var $ = __webpack_require__(1);
+	console.log($);
+	window.$ = $;
+	window.jQuery = $;
 	var angular = __webpack_require__(2);
 	var ngResource = __webpack_require__(4);
 	var ngRouter = __webpack_require__(6);
@@ -62,17 +65,11 @@
 	directives
 	**/
 	var createBreadcrumb = __webpack_require__(9);
+	var spotlight = __webpack_require__(10);
+	var profile = __webpack_require__(11);
 	createBreadcrumb(agMain);
-
-
-
-
-
-
-
-
-
-
+	spotlight(agMain);
+	profile(agMain);
 
 
 
@@ -41392,12 +41389,41 @@
 			};
 		});
 	}
-
 	module.exports = addBreadcrumb;
 
 
 
 
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	function spotlight(agMain){
+		agMain.directive('spotlight', function(){
+			return {
+				restrict:"E",
+				templateUrl:'/spotlight'
+			}
+		})
+	}
+
+	module.exports = spotlight;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	function profile(agMain){
+		agMain.directive('profile', function(){
+			return {
+				restrict:"E",
+				templateUrl:'/profile'
+			}
+		})
+	}
+
+	module.exports = profile;
 
 /***/ }
 /******/ ]);
