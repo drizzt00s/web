@@ -67,9 +67,12 @@
 	var createBreadcrumb = __webpack_require__(9);
 	var spotlight = __webpack_require__(10);
 	var profile = __webpack_require__(11);
+	var cpPreview = __webpack_require__(12);
+
 	createBreadcrumb(agMain);
 	spotlight(agMain);
 	profile(agMain);
+	cpPreview(agMain);
 
 
 
@@ -41424,6 +41427,20 @@
 	}
 
 	module.exports = profile;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	function cpPreview(agMain){
+		agMain.directive('cppreview', function(){
+			return {
+				restrict:"E",
+				templateUrl:"/cpPreview"
+			};
+		});
+	}
+	module.exports = cpPreview;
 
 /***/ }
 /******/ ]);

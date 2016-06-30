@@ -487,11 +487,9 @@ app.get("/requireTest",function(req,res){
 
 
 /* on login */
-app.get("/route/login/showUserPic",routerLogin.showUserPic);
-
+app.post("/allUsers",routerLogin.showAllUsers);
 app.get("/ajax.ejs",routes.ajaxQuery);
 //入口页面showUserPic的备用路由，代码稳定后删除
-
 app.post("/login",routerLogin.login);
 /* on login */
 
@@ -652,9 +650,11 @@ app.get("/uploads/proofPic/gangao/:username/:pic", routes.gangao);
 app.get("/breadcrumb",routes.breadcrumb);
 app.get("/spotlight",routes.spotlight);
 app.get("/profile",routes.dirProfile);
-
+app.get("/cpPreview",routes.cpPreview);
 /* directive template */
 
+app.get("/all_user",routes.showAllUser);
+//show all register users in another page, not in index page
 
 
 
