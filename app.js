@@ -653,15 +653,13 @@ app.get("/profile",routes.dirProfile);
 app.get("/cpPreview",routes.cpPreview);
 /* directive template */
 
-app.get("/all_user",routes.showAllUser);
+app.get("/landing",routes.landing);
 //show all register users in another page, not in index page
 
 
 
 
-app.get("/cp/angularjs2",function(req, res){
-  res.render("angularjs2.ejs",{title:"sendImage"}); 
-});
+
 
 
 

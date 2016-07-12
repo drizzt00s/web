@@ -1,1 +1,1 @@
-require(../)
+var agMain = angular.module('main', []);
