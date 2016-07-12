@@ -486,8 +486,14 @@ app.get("/requireTest",function(req,res){
 });
 
 
-/* on login */
+
+/* landing */
 app.post("/allUsers",routerLogin.showAllUsers);
+/* landing */
+
+
+/* on login */
+
 app.get("/ajax.ejs",routes.ajaxQuery);
 //入口页面showUserPic的备用路由，代码稳定后删除
 app.post("/login",routerLogin.login);
@@ -655,6 +661,9 @@ app.get("/cpPreview",routes.cpPreview);
 
 app.get("/landing",routes.landing);
 //show all register users in another page, not in index page
+
+
+
 
 
 

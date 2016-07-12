@@ -1,0 +1,12 @@
+.cp_preview{
+	border:solid 1px red;
+	
+}
+
+.identityCard{
+	background-image:url('/images/default/icons/icons.png');
+	background-position: -222px 0px;
+	display:inline-block;
+	width:20px;
+	height:30px;
+}
