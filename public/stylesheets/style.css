@@ -46,3 +46,9 @@ display:none;
 .errorsHolder{
 	color:red;
 }
+.float-right{
+    float:right;
+}
+.float-left{
+     float:left;
+}

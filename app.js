@@ -661,6 +661,10 @@ app.get("/breadcrumb",routes.breadcrumb);
 app.get("/spotlight",routes.spotlight);
 app.get("/profile",routes.dirProfile);
 app.get("/cpPreview",routes.cpPreview);
+app.get("/mainSideMenu",routes.mainSideMenu);
+
+
+
 /* directive template */
 
 app.get("/landing",routes.landing);
