@@ -7,7 +7,7 @@ agMain.controller('landing', function($scope, $http){
 			method:'POST',
 			url:url
 		}).success(function(data){
-			//console.log(JSON.stringify(data)); 
+			console.log(JSON.stringify(data)); 
 			$scope.allUsers = data.allUserInfo;
 
 		}).error(function(data){

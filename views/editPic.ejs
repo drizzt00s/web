@@ -1,19 +1,21 @@
 ﻿<script type="text/javascript">
  $(function(){
-  function checkUploadedPicStatus(){
-   var url="/route/login/showUserPic";
-   $.ajax({
-     url:url,
-     type:"GET",
-     cache:false,
-     success:function(data, textStatus, jqXHR){
-       leftPicLength = data.remainingPic;
-     },
-     error:function(jqXHR, textStatus, errorThrown){
-     }
-   })
-  }
-checkUploadedPicStatus();
+    function checkUploadedPicStatus(){
+        var url="/route/login/showUserPic";
+        $.ajax({
+            url:url,
+            type:"GET",
+            cache:false,
+            success:function(data, textStatus, jqXHR){
+                leftPicLength = data.remainingPic;
+            },
+            error:function(jqXHR, textStatus, errorThrown){
+                alert('function checkUploadedPicStatus error!');
+            }
+        })
+    }
+
+    checkUploadedPicStatus();
   
  
  
