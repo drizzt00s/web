@@ -1,39 +1,38 @@
 ﻿<script type="text/javascript">
 $(function(){
-  function getUserPhoto(){
-  var getUsername=$("#hiddenUsername").val();
-  var url="/route/login/showUserPic";
-  $.ajax({
-    url:url+"?username="+getUsername+"&isShowPic=1",
-    cache:false,
-    success:function(data, textStatus, jqXHR){
-    if(data=="none"){
-      $("<span>系统中暂无您的照片!</span>").appendTo($("#containPic"));
+    function getUserPhoto(){
+        var getUsername=$("#hiddenUsername").val();
+        var url="/route/login/showUserPic";
+        $.ajax({
+            url:url+"?username="+getUsername+"&isShowPic=1",
+            cache:false,
+            success:function(data, textStatus, jqXHR){
+                if(data == "none"){
+                    $("<span>系统中暂无您的照片!</span>").appendTo($("#containPic"));
+                } else {
+                    $("#containPic").empty();
+                    var picJson1=eval("("+data.userStoredPic+")");
+                    var picJson2=picJson1["con"];
+                    for(var i=0;i<picJson2.length;i++){
+                        var picUrl="../uploads/pic/"+getUsername+"/"+picJson2[i];
+                        var img=$("<img/>").attr("src",picUrl);
+                        $("#containPic").append(img);
+                    }
+                }
+            },
+            error:function(jqXHR, textStatus, errorThrown){
+                alert(textStatus);
+            },
+            complete:function(jqXHR, textStatus){
+            }
+        })
     }
-    else{
-     $("#containPic").empty();
-     var picJson1=eval("("+data.userStoredPic+")");
-        var picJson2=picJson1["con"];
-        for(var i=0;i<picJson2.length;i++){
-          var picUrl="../uploads/pic/"+getUsername+"/"+picJson2[i];
-          var img=$("<img/>").attr("src",picUrl);
-          $("#containPic").append(img);
-        }
-    }
-  },
-    error:function(jqXHR, textStatus, errorThrown){
-      alert(textStatus);
-    },
-    complete:function(jqXHR, textStatus){
-    }
-  })
-  }
-getUserPhoto();
+    getUserPhoto();
 })
 </script>
 <div class="userPhoto">
- <h3>您的影集</h3><a href="editPic.ejs">上传普通照片</a>
- <input type="hidden" value="<%=checkUser%>" id="hiddenUsername" />
- <div id="containPic">
- </div><!--contains all pics loaded from server-->
+  <h3>您的影集</h3><a href="editPic.ejs">上传普通照片</a>
+  <input type="hidden" value="<%=checkUser%>" id="hiddenUsername" />
+  <div id="containPic">
+  </div><!--contains all pics loaded from server-->
 </div>

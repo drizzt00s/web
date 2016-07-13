@@ -1,14 +1,26 @@
 <script src="/javascript/directive/cpPreview.js"></script>
 <script src="/javascript/landing/landing.js"></script>
-
 <link rel='stylesheet' href='/stylesheets/directive/directive_cppreview.css' />
-
-
-<cppreview></cppreview>
-
-
-<div id="showingPic" ng-controller='landing'>
-
-
+<div class="main">
+	<div class="main_left">
+		<cppreview></cppreview>
+	</div>
+	<div class="main_right">
+		<div id="showingPic" ng-controller='landing'>
+			<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
+				<div class="thumbnail">
+					<a href="#"><img src="{{::user.profile}}"></a>
+					<div class="caption text-center">
+						<h5>{{::user.falseName}}</h5>
+						<p>{{::user.age}}</p>
+						<p>{{::user.address}}</p>
+						<p><a href="#" class="btn btn-primary" role="button">打招呼</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 

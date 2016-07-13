@@ -1,4 +1,4 @@
-agMain.controller('landing', function($scope, $http){
+agMain.controller('landing', function($scope, $http, utility){
 	$scope.allUsers = null;
 
 	function fetchAllUser(){
@@ -7,8 +7,10 @@ agMain.controller('landing', function($scope, $http){
 			method:'POST',
 			url:url
 		}).success(function(data){
-			console.log(JSON.stringify(data)); 
-			$scope.allUsers = data.allUserInfo;
+			var data =  utility.trimAge(data.allUserInfo);
+			data =  utility.trimProfileUrl(data);
+			//console.log(data);
+			$scope.allUsers = data;
 
 		}).error(function(data){
 

@@ -304,35 +304,35 @@ app.get("/uploads/pic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
        // res.sendfile("./web/uploads/pic/"+username+"/"+pic);
-        res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
         
 });
 app.get("/uploads/pic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
       //  res.sendfile("./web/uploads/pic/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
 app.get("/uploads/postPic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
       //  res.sendfile("./web/uploads/postPic/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
 app.get("/uploads/postPicPreview/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
       //  res.sendfile("./web/uploads/postPicPreview/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
 app.get("/uploads/subPostPic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
       //  res.sendfile("./web/uploads/subPostPic/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
 
@@ -492,8 +492,11 @@ app.post("/allUsers",routerLogin.showAllUsers);
 /* landing */
 
 
-/* on login */
 
+
+
+
+/* on login */
 app.get("/ajax.ejs",routes.ajaxQuery);
 //入口页面showUserPic的备用路由，代码稳定后删除
 app.post("/login",routerLogin.login);
@@ -584,6 +587,7 @@ app.post("/user/fetchCondtion",routes.fetchCondtion);
 app.get("/user/editProfile",routes.editProfile);
 app.post("/user/whoOnline",routes.who_online);
 
+app.get("/route/login/showUserPic",routerLogin.showUserPic);
 
 /* user */
 
