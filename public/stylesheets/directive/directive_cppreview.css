@@ -1,5 +1,5 @@
 .cp_preview{
-	border:solid 1px red;
+	text-align:center;
 }
 .identityCard{
 	background-image:url('/images/default/icons/icons.png');
@@ -8,9 +8,48 @@
 	width:20px;
 	height:30px;
 }
+.income{
+	background-image:url('/images/default/icons/icons.png');
+	background-position: -222px 85px;
+	display:inline-block;
+	width:20px;
+	height:30px;
+}
+.housing{
+	background-image:url('/images/default/icons/icons.png');
+	background-position: -221px 157px;
+	display:inline-block;
+	width:20px;
+	height:30px;
+}
+.drive{
+	background-image:url('/images/default/icons/icons.png');
+	background-position: -221px 226px;
+	display:inline-block;
+	width:20px;
+	height:30px;
+}
+.gangao{
+	background-image:url('/images/default/icons/icons.png');
+	background-position: -221px 192px;
+	display:inline-block;
+	width:20px;
+	height:30px;
+}
+.editCp{
+	width:20px;
+	height:30px;
+	background-image:url('/images/default/icons/icons.png');
+	background-position: -187px -25px;
+	display:inline-block;
+}
+.previewCp{
+	position:relative;
+	bottom:4px;
+}
 .main{
 	overflow:hidden;
-	margin-top: 100px;
+	margin-top:100px;
 }
 .main_left{
 	width:20%;
@@ -20,5 +59,14 @@
 .main_right{
 	width:80%;
 	float:right;
-
 }
+.list-group-item{
+	border:none;
+}
+
+.cp_preview_charge{
+	background-color:#dfdfdf;
+	overflow:hidden;
+	padding:15px;
+}
+
