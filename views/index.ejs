@@ -29,15 +29,14 @@
   <script src="/javascript/moveInnerJsToOutside/index.js"></script>
   <script src="/javascript/header.js"></script>
 <script>
-
 $(function(){
-    function checkIfLogined(){
+  function checkIfLogined(){
     return parseInt($("#checkLogin").val());
   }
 
   function show(){
     var isLogin = checkIfLogined();
-    alert(isLogin);
+      alert(isLogin);
     if(isLogin){
       $('.loginArea').hide();
     } else{
@@ -47,47 +46,34 @@ $(function(){
 
   show();
 })
-
-
 </script>
 
 <script>
-
-
-
-
-
-
-  function submitLogin(){
-           var username=$("#account").val();
-           var pass=$("#pass").val();
-           var url = "/login";
-           var data = {username:username,pass:pass}
-           $.ajax({
-             url:url,
-             data: data,
-             type:'post',
-             success:function(d){
-             $("#accErrorMsg").text(d.accResult);
-             $("#passErrorMsg").text(d.passResult);
-             if(!d.accResult&&!d.passResult){
-                var userFalseName=getTargetCookie("falseName");
-                var username=getTargetCookie("username");
-                socket = io.connect('http://localhost:8080');
-                socket.on("connect",function(){
-            socket.emit("watchOtherLogin2",{"username":username,"falseName":userFalseName},function(){
-            window.location.reload();
-          });
-         });
+    function submitLogin(){
+        var username=$("#account").val();
+        var pass=$("#pass").val();
+        var url = "/login";
+        var data = {username:username,pass:pass}
+        $.ajax({
+            url:url,
+            data: data, 
+            type:'post',
+            success:function(d){
+                $("#accErrorMsg").text(d.accResult);
+                $("#passErrorMsg").text(d.passResult);
+                if(!d.accResult&&!d.passResult){
+                    var userFalseName=getTargetCookie("falseName");
+                    var username=getTargetCookie("username");
+                    socket = io.connect('http://localhost:8080');
+                    socket.on("connect",function(){
+                        socket.emit("watchOtherLogin2",{"username":username,"falseName":userFalseName},function(){
+                            window.location.reload();
+                        });
+                    });
+                }
             }
-             }
-
-           });
-
-
-  }
-
-
+        });
+    }
 
 </script>
 
