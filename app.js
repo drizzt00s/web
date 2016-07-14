@@ -136,7 +136,7 @@ app.get("/WebstormProjects/web/views/checkOffLineMsg.ejs",function(req,res){
 
 
 
-app.post("/WebstormProjects/web/views/deletSynMsg.ejs",function(req,res){
+app.post("/deletSynMsg",function(req,res){
         var storeNewMsgArray=[];
         var data=req.body;//json
         var dataArray=data["con"];//array
@@ -193,7 +193,7 @@ app.post("/WebstormProjects/web/views/deletSynMsg.ejs",function(req,res){
 })
 //删除收件箱信息
 
-app.post("/WebstormProjects/web/views/changeNewMsgToOld.ejs",function(req,res){
+app.post("/oldMsg",function(req,res){
         var data=req.body;//json
         var dataArray=data["con"];//array
         var user=dataArray["user"];
@@ -479,17 +479,7 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
 
 
 
-app.get("/",routes.index);
 
-app.get("/requireTest",function(req,res){
-    res.render("requireTest.ejs",{title:"test"});
-});
-
-
-
-/* landing */
-app.post("/allUsers",routerLogin.showAllUsers);
-/* landing */
 
 
 
@@ -667,8 +657,18 @@ app.get("/mainSideMenu",routes.mainSideMenu);
 
 /* directive template */
 
+
+app.get("/",routes.index);
 app.get("/landing",routes.landing);
 //show all register users in another page, not in index page
+
+app.get("/home",routes.home);
+//new index page
+
+
+/* landing */
+app.post("/allUsers",routerLogin.showAllUsers);
+/* landing */
 
 
 

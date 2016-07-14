@@ -1,96 +1,89 @@
-﻿  function displayAsyMsg(o){
-     $(o).parents(".insertMsg").find(".contents").show();
-     var store={"con":null};
-     var store2={};
-     var storeInfo={};
-     var user=getTargetCookie("username");//己方用户名
-     var whoSent=$(o).parents(".insertMsg").find(".msgFromWhom2").text();//信息是谁发的
-     var msgContent=$(o).parents(".insertMsg").find(".contents").text();//信息的内容
-     store2["user"]=user;
-     store2["msgContent"]=msgContent;
-     store2["whoSent"]=whoSent;
-     store["con"]=store2;
-     $.ajax({
-       url:"changeNewMsgToOld.ejs",
-       data:store,
-       cache:false,
-       type:"POST",
-       success:function(returnedData){
-       },
-       complete:function(){
-       }
-     }); 
-  }
+﻿function displayAsyMsg(o){
+    $(o).parents(".insertMsg").find(".contents").show();
+    var store={"con":null};
+    var store2={};
+    var storeInfo={};
+    var user=getTargetCookie("username");//己方用户名
+    var whoSent=$(o).parents(".insertMsg").find(".msgFromWhom2").text();//信息是谁发的
+    var msgContent=$(o).parents(".insertMsg").find(".contents").text();//信息的内容
+    store2["user"]=user;
+    store2["msgContent"]=msgContent;
+    store2["whoSent"]=whoSent;
+    store["con"]=store2;
+    $.ajax({
+        url:"/oldMsg",
+        data:store,
+        cache:false,
+        type:"POST",
+        success:function(returnedData){
+        },
+        complete:function(){
+        }
+    }); 
+}
 
 
 
 
 
-  function dAll(o){
-      if($(o).attr("checked")){
-         $.each($(".confirmDelete"),function(i,v){
-             v.checked=true;
-         });
-      }
-      else{
-           $.each($(".confirmDelete"),function(i,v){
-             v.checked=false;
-         });
-      }
-  }
-   function deleteMsg(o){
-          //循环所有的checkbox,取出打勾的
-          var storeDeleteWrap={"con":null};
-          var storeDelete=[];
-          $.each($(".confirmDelete"),function(i,v){
-              var isChecked=$(v).attr("checked");
-              if(isChecked){
-                 var storeDeleteJson={};
-                 var thisCheckbox=v;
-                 var deleteWhoseMsg=$(thisCheckbox).parents(".insertMsg").find(".msgFromWhom2").text();//谁发的消息(帐号);
-                 var msgDeleted=$(thisCheckbox).parents(".insertMsg").find(".contents").text();//要删除的消息的内容
-                 var url="deletSynMsg.ejs";
-                 var targetUser=getTargetCookie("username");
-                 storeDeleteJson["deleteWhoseMsg"]=deleteWhoseMsg;
-                 storeDeleteJson["msgToBeDelete"]=msgDeleted;
-                 storeDeleteJson["targetUser"]=targetUser;
-                 storeDelete.push(storeDeleteJson);
-              }
-          }); 
-         
-  
-          storeDeleteWrap["con"]=storeDelete;
-          $.ajax({
-            url:"deletSynMsg.ejs",
-            cache:false,
-            type:"POST",
-            data:storeDeleteWrap,
-            success:function(returnedData){
-                 alert("删除成功!");
-                 window.location.href="index.ejs";
-            },
-            complete:function(){
-            }
+function dAll(o){
+    if($(o).attr("checked")){
+        $.each($(".confirmDelete"),function(i,v){
+            v.checked=true;
         });
-     }
+    } else {
+        $.each($(".confirmDelete"),function(i,v){
+            v.checked=false;
+        });
+    }
+}
 
-
+function deleteMsg(o){
+    //循环所有的checkbox,取出打勾的
+    var storeDeleteWrap={"con":null};
+    var storeDelete=[];
+    $.each($(".confirmDelete"),function(i,v){
+        var isChecked=$(v).attr("checked");
+        if(isChecked){
+            var storeDeleteJson={};
+            var thisCheckbox=v;
+            var deleteWhoseMsg=$(thisCheckbox).parents(".insertMsg").find(".msgFromWhom2").text();//谁发的消息(帐号);
+            var msgDeleted=$(thisCheckbox).parents(".insertMsg").find(".contents").text();//要删除的消息的内容
+            var url="deletSynMsg.ejs";
+            var targetUser=getTargetCookie("username");
+            storeDeleteJson["deleteWhoseMsg"]=deleteWhoseMsg;
+            storeDeleteJson["msgToBeDelete"]=msgDeleted;
+            storeDeleteJson["targetUser"]=targetUser;
+            storeDelete.push(storeDeleteJson);
+        }
+    }); 
+    storeDeleteWrap["con"]=storeDelete;
+    $.ajax({
+        url:"/deletSynMsg",
+        cache:false,
+        type:"POST",
+        data:storeDeleteWrap,
+        success:function(returnedData){
+            alert("删除成功!");
+            window.location.href = '/';
+        },
+        complete:function(){
+        }
+    });
+}
 
 
 $("#oldMsg").bind("click",function(){
-
-        if($(".msg3").css("display")=="none"){
-            $(".msg3").show();
-        }
-        else{
-            $(".msg3").hide();
-            $("#newMsgContainer").empty();
-            $("#oldMsgContainer").empty();
-            return false;
-        }
-
-
+    if($(".msg3").css("display")=="none"){
+        $(".msg3").show();
+    } else {
+        $(".msg3").hide();
+        $("#newMsgContainer").empty();
+        $("#oldMsgContainer").empty();
+        return false;
     }
+}
+
 )
 
 
@@ -157,6 +150,7 @@ function sendAjaxMsg(e){
     })
 }
    function receiveMsg(){
+
     //点击首页"收件箱"触发
       if($(".msg3").css("display")=="none"){
           $(".msg3").show();
