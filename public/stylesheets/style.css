@@ -52,3 +52,7 @@ display:none;
 .float-left{
      float:left;
 }
+.alignedCenter{
+    width:80%;
+    margin:0 auto;
+}

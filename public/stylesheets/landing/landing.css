@@ -1,0 +1,12 @@
+.header{
+	overflow:hidden;
+}
+.landingScroll{
+	width:60%;
+	border:solid 1px red;
+
+}
+.login{
+	width:39%;
+	border:solid 1px green;
+}

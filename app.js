@@ -652,7 +652,7 @@ app.get("/spotlight",routes.spotlight);
 app.get("/profile",routes.dirProfile);
 app.get("/cpPreview",routes.cpPreview);
 app.get("/mainSideMenu",routes.mainSideMenu);
-
+app.get("/registerpanel",routes.registerpanel);
 
 
 /* directive template */
