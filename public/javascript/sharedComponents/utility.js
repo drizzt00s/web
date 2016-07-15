@@ -21,6 +21,17 @@ agMain.factory('utility', function(){
 				return d;
 			}
 
+		},
+		trimeProfileUrlObject:function(d){
+			if(d){
+				if(!(d.profile)){
+					d.profile = '/uploads/pic/default/unknown.png';
+				} else {
+					var falseName = d.falseName;
+					d.profile = '/uploads/pic/' + falseName + '/' + d['profile'];
+				}
+				return d;
+			}
 		}
 	}
 });

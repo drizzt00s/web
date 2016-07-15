@@ -56,3 +56,9 @@ display:none;
     width:80%;
     margin:0 auto;
 }
+.noRound{
+     border-radius: 0;
+}
+.buttonWidth1{
+    width:60px;
+}
