@@ -1,5 +1,7 @@
 agMain.controller('landing', function($scope, $http, utility){
+
 	$scope.allUsers = null;
+
 	function fetchAllUser(){
 		var url = '/allUsers';
 		$http({
@@ -17,5 +19,11 @@ agMain.controller('landing', function($scope, $http, utility){
 	}
 
 	fetchAllUser();
+
+	function startSlide(){
+		$('#slideBox').slideBox();
+	}
+
+	startSlide();
 
 });

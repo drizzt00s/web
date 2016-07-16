@@ -2,6 +2,7 @@
     padding:0;
     margin:0;
     font-family:宋体,​Arial,​sans-serif;
+    font-size:12px;
 }
 
 .birthplaceInfo{
@@ -62,3 +63,21 @@ display:none;
 .buttonWidth1{
     width:60px;
 }
+.main{
+    width:970px;
+}
+.sigleRadio{
+    float:left;
+    position:relative;
+    bottom:2px;
+    bottom:0px\9;
+    top:1px\9;
+    
+
+
+}
+.radioLabel{
+    float:left
+}
+
+

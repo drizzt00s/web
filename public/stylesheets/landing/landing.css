@@ -3,10 +3,22 @@
 }
 .landingScroll{
 	width:60%;
-	border:solid 1px red;
+
 
 }
 .login{
 	width:39%;
-	border:solid 1px green;
+
+}
+
+.indexMemberWrap{
+	text-align:center;
+	background-color:#f9f9f9;
+}
+.indexMember{
+	text-decoration:underline;
+	font-size:14px;
+}
+.indexMemberHolder{
+	margin-top:15px;
 }
