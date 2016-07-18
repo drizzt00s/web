@@ -39,6 +39,8 @@ require('socketAll.js').startSocket();
 var utility = require('utlity.js');
 var dbUtlity = require('dbUtlity.js');
 var routerLogin = require('routerLogin.js');
+var register = require('register/register.js');
+var tools = require('tools/tools.js');
 
 
 
@@ -505,6 +507,10 @@ app.post("/search",routes.search);
 app.get("/register",routes.register);
 app.get("/logoff",routes.logoff);
 app.post("/register",routes.registerPost);
+
+app.get("/regist", register.register);
+
+
 /* register */
 
 /* self info */
@@ -669,6 +675,11 @@ app.get("/home",routes.home);
 /* landing */
 app.post("/allUsers",routerLogin.showAllUsers);
 /* landing */
+
+
+/* tools*/
+app.get("/pickAddress",tools.pickAddress);
+/* tools*/
 
 
 
