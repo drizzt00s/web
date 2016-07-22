@@ -8,8 +8,6 @@ agMain.directive('pickaddress', function($modal){
 		},
 		link:function(scope){
 			var pickAddressPanel = null;
-
-
 			scope.popUpAddress = function(){
 				pickAddressPanel = $modal({
 					scope:scope,
@@ -19,7 +17,6 @@ agMain.directive('pickaddress', function($modal){
 					keyboard:false,
 					backdrop:'static',
 					templateUrl:'/pickaddresspanel'
-
 				});
 			}
 
