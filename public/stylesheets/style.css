@@ -75,5 +75,16 @@ display:none;
 .radioLabel{
     float:left
 }
-
+.positionRelative{
+    position:relative;
+}
+.positionAbsolute{
+    position:absolute;
+}
+.positionFixed{
+    position:fixed;
+}
+.zIndexMax{
+    z-index:9999;
+}
 

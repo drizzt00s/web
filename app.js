@@ -659,10 +659,13 @@ app.get("/profile",routes.dirProfile);
 app.get("/cpPreview",routes.cpPreview);
 app.get("/mainSideMenu",routes.mainSideMenu);
 app.get("/registerpanel",routes.registerpanel);
-
-
 /* directive template */
 
+
+
+/* angularstrap modal template */
+app.get('/pickaddresspanel', routes.pickAddressPanel);    
+/* angularstrap modal template */
 
 app.get("/",routes.index);
 app.get("/landing",routes.landing);
@@ -680,6 +683,25 @@ app.post("/allUsers",routerLogin.showAllUsers);
 /* tools*/
 app.get("/pickAddress",tools.pickAddress);
 /* tools*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* for test */
+
+app.get("/test",function(req, res){
+  res.render("./test.ejs",{title:"test"});
+
+});
+
 
 
 
