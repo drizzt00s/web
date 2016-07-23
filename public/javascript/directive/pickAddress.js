@@ -20,10 +20,6 @@ agMain.directive('pickaddress', function($modal){
 				});
 			},
 
-			scope.hide = function(o){
-				o.hide();
-			},
-
 			pickCity = function(e){
 				scope.cities = scope.selCity[$(e).attr('data')];
 				scope.adress = $(e).text();
@@ -42,7 +38,37 @@ agMain.directive('pickaddress', function($modal){
 			    scope.hide(pickCityPanel);
 				scope.adress = scope.adress + ' ' + $(e).text();
 				scope.$apply();
+
+			},
+
+			scope.hide = function(o){
+				o.hide();
+			},
+
+			scope.globalHide = function(){
+				if(pickAddressPanel){
+					pickAddressPanel.hide();
+				
+
+				}
+				if(pickCityPanel){
+					pickCityPanel.hide();
+
+				}
 			}
+
+			bindHide = function(){
+				$(".container-fluid").live('click', function(event){
+					scope.globalHide();
+				});
+				$(".modal-content").live('click', function(event){
+					return false;
+				});
+			};
+			bindHide();
+
+
+
 		}
 	}
 });
