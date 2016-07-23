@@ -700,7 +700,10 @@ app.get("/pickAddress",tools.pickAddress);
 app.get("/test",function(req, res){
   res.render("./test.ejs",{title:"test"});
 
+
 });
+
+console.log('test');
 
 
 
