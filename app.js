@@ -664,7 +664,9 @@ app.get("/registerpanel",routes.registerpanel);
 
 
 /* angularstrap modal template */
-app.get('/pickaddresspanel', routes.pickAddressPanel);    
+app.get('/pickaddresspanel', routes.pickAddressPanel);   
+app.get('/pickcity', routes.pickCity);  
+
 /* angularstrap modal template */
 
 app.get("/",routes.index);
@@ -694,13 +696,6 @@ app.get("/pickAddress",tools.pickAddress);
 
 
 
-
-/* for test */
-
-app.get("/test",function(req, res){
-  res.render("./test.ejs",{title:"test"});
-
-});
 
 
 
