@@ -8,7 +8,7 @@
 <div ng-controller="register">
 	<div class="subMain centered">
 
-		<div>我是: <input type="radio" name="gender" /> <label>男</label>   <input type="radio" name="gender" /> <label>女</label>  </div>
+		<div>我是: <input type="radio" name="gender" /> <label>男</label>   <input type="radio" name="gender" /> <label>女</label></div>
 
 		<div style="display:none;">
 			<input type="radio" name="isLunar" onclick="changeType()" title="显示公历"/>公历
@@ -17,6 +17,12 @@
 
 		<div class='positionRelative'>
 			<pickaddress></pickaddress>
+		</div>
+
+		<div>
+			婚姻状况:<input type='radio' name='marriageStatus' value='未婚' /><label>未婚</label>
+			<input type='radio' name='marriageStatus' value='离异' /><label>离异</label>
+			<input type='radio' name='marriageStatus' value='丧偶' /><label>丧偶</label>
 		</div>
 		
 

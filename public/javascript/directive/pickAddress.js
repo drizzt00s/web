@@ -48,8 +48,6 @@ agMain.directive('pickaddress', function($modal){
 			scope.globalHide = function(){
 				if(pickAddressPanel){
 					pickAddressPanel.hide();
-				
-
 				}
 				if(pickCityPanel){
 					pickCityPanel.hide();
@@ -67,6 +65,12 @@ agMain.directive('pickaddress', function($modal){
 			};
 			bindHide();
 
+			$(".sel-detail a").live('mouseover', function(){
+				$(this).css('color','#fff').css('background-color','#009ad6');
+			});
+			$(".sel-detail a").live('mouseout', function(){
+				$(this).css('color','#666').css('background-color','');
+			});
 
 
 		}

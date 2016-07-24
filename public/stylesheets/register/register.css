@@ -6,6 +6,21 @@
 .sel-g{
 	margin-top:10px;
 }
+.sel-detail a{
+	text-decoration:underline;
+	color:#666;
+	padding:5px;
+}
+
+.sel-c{
+	overflow:hidden;
+}
+.sel-c a{
+	float:left;
+	margin-left:3px;
+	margin-top:7px;
+
+}
 .modal-content{
 	top:18px;
 	left:6px;
@@ -14,4 +29,14 @@
 }
 .container-fluid{
 
+}
+.fCity{
+	color:#b3b3b3;
+}
+.selProvince{
+	color:#b3b3b3;
+}
+.sel-info{
+	font-weight:800;
+	color:#666;
 }
