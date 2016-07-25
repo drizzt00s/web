@@ -11,7 +11,11 @@
 	color:#666;
 	padding:5px;
 }
-
+.sel-c a{
+	text-decoration:underline;
+	color:#666;
+	padding:5px;
+}
 .sel-c{
 	overflow:hidden;
 }
@@ -40,3 +44,35 @@
 	font-weight:800;
 	color:#666;
 }
+.pickEducationPanel,.pickHeightPanel{
+	width:278px;
+}
+.pickHeightPanel_c{
+
+}
+.modal-body li{
+	list-style-type:none;
+	color:#666;
+}
+.modal-body-pickheight{
+	height:377px;
+	overflow:auto;
+}
+.pickheight-li{
+	line-height:30px;
+	cursor:pointer;
+	width:105%;
+}
+
+.pickEducation-li{
+	line-height:30px;
+	width:105%;
+	color:#666;
+	cursor:pointer;
+}
+
+.modal-content-pickEducation{
+	left:-167px;
+	top:86px;
+}
+

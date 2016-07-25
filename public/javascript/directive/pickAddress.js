@@ -71,7 +71,12 @@ agMain.directive('pickaddress', function($modal){
 			$(".sel-detail a").live('mouseout', function(){
 				$(this).css('color','#666').css('background-color','');
 			});
-
+			$(".sel-c a").live('mouseover', function(){
+				$(this).css('color','#fff').css('background-color','#009ad6');
+			});
+			$(".sel-c a").live('mouseout', function(){
+				$(this).css('color','#666').css('background-color','');
+			});
 
 		}
 	}

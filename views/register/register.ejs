@@ -1,9 +1,11 @@
 <script src="/javascript/register/register.js"></script>
 <script src="/javascript/directive/pickAddress.js"></script>
+<script src="/javascript/directive/pickHeight.js"></script>
+<script src="/javascript/directive/pickEducation.js"></script>
+
+
+
 <link rel='stylesheet' href='/stylesheets/register/register.css' />
-
-
-
 
 <div ng-controller="register">
 	<div class="subMain centered">
@@ -15,7 +17,7 @@
 			<input type="radio" name="isLunar" onclick="changeType()" title="显示农历"/>农历<br />
 		</div> 
 
-		<div class='positionRelative'>
+		<div>
 			<pickaddress></pickaddress>
 		</div>
 
@@ -24,8 +26,17 @@
 			<input type='radio' name='marriageStatus' value='离异' /><label>离异</label>
 			<input type='radio' name='marriageStatus' value='丧偶' /><label>丧偶</label>
 		</div>
-		
 
+		<div>
+			<pickheight></pickheight>
+		</div>
+
+		<div>
+			<pickeducation></pickeducation>
+		</div>
+
+
+		
 
 
 

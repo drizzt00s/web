@@ -85,6 +85,17 @@ agMain.factory('Constant', function(){
 			      '楚雄', '红河', '文山', '西双版纳', '大理', '德宏', '怒江傈', '迪庆'],
 
 			'34':['杭州', '宁波', '温州', '嘉兴', '湖州', '绍兴', '金华', '衢州', '舟山', '台州', '丽水']
+			},
+
+		Educations:['博士','硕士','本科','大专','高中','初中','小学'],
+
+		generateHeightList:function(){
+			var storeHeight = [];
+			for(var i = 130 ; i<227; i++){
+				var eachList = i+'厘米';
+				storeHeight.push(eachList);
 			}
+			return storeHeight;
+		}
 	}
 });

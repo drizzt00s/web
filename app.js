@@ -659,6 +659,13 @@ app.get("/profile",routes.dirProfile);
 app.get("/cpPreview",routes.cpPreview);
 app.get("/mainSideMenu",routes.mainSideMenu);
 app.get("/registerpanel",routes.registerpanel);
+app.get("/pickAddress",tools.pickAddress);
+app.get('/pickHeight', routes.pickHeight);
+app.get('/pickEducation', routes.pickEducation);
+
+
+
+
 /* directive template */
 
 
@@ -666,6 +673,9 @@ app.get("/registerpanel",routes.registerpanel);
 /* angularstrap modal template */
 app.get('/pickaddresspanel', routes.pickAddressPanel);   
 app.get('/pickcity', routes.pickCity);  
+app.get('/pickheightpanel', routes.pickheightpanel); 
+app.get('/pickeducationpanel', routes.pickeducationpanel); 
+
 
 /* angularstrap modal template */
 
@@ -682,9 +692,12 @@ app.post("/allUsers",routerLogin.showAllUsers);
 /* landing */
 
 
-/* tools*/
-app.get("/pickAddress",tools.pickAddress);
-/* tools*/
+
+
+
+
+
+
 
 
 
