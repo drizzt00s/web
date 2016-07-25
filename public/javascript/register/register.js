@@ -5,8 +5,9 @@ agMain.controller('register', function($scope, Constant){
 	$scope.selCity = Constant.addressMap;
 	$scope.heights = Constant.generateHeightList();
 	$scope.educations = Constant.Educations;
-
-
+	$scope.incomes = Constant.Incomes;
+	$scope.mobile = '';
+	$scope.password = '';
 
 	//window.showCalendar1();
 })

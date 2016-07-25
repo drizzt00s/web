@@ -89,6 +89,8 @@ agMain.factory('Constant', function(){
 
 		Educations:['博士','硕士','本科','大专','高中','初中','小学'],
 
+		Incomes:['<2000','2000-5000','5000-10000','10000-15000','15000-20000','20000-30000','50000以上'],
+
 		generateHeightList:function(){
 			var storeHeight = [];
 			for(var i = 130 ; i<227; i++){

@@ -44,7 +44,7 @@
 	font-weight:800;
 	color:#666;
 }
-.pickEducationPanel,.pickHeightPanel{
+.pickEducationPanel,.pickHeightPanel,.pickIncomePanel{
 	width:278px;
 }
 .pickHeightPanel_c{
@@ -75,4 +75,15 @@
 	left:-167px;
 	top:86px;
 }
+.modal-content-income{
+	left:-167px;
+	top:108px;
+}
+.pickincome-li{
+	line-height:30px;
+	width:105%;
+	color:#666;
+	cursor:pointer;
+}
+
 

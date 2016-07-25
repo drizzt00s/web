@@ -662,6 +662,7 @@ app.get("/registerpanel",routes.registerpanel);
 app.get("/pickAddress",tools.pickAddress);
 app.get('/pickHeight', routes.pickHeight);
 app.get('/pickEducation', routes.pickEducation);
+app.get('/pickIncome', routes.pickIncome);
 
 
 
@@ -675,7 +676,7 @@ app.get('/pickaddresspanel', routes.pickAddressPanel);
 app.get('/pickcity', routes.pickCity);  
 app.get('/pickheightpanel', routes.pickheightpanel); 
 app.get('/pickeducationpanel', routes.pickeducationpanel); 
-
+app.get('/pickincomepanel', routes.pickincomepanel); 
 
 /* angularstrap modal template */
 
