@@ -659,12 +659,25 @@ app.get("/profile",routes.dirProfile);
 app.get("/cpPreview",routes.cpPreview);
 app.get("/mainSideMenu",routes.mainSideMenu);
 app.get("/registerpanel",routes.registerpanel);
+app.get("/pickAddress",tools.pickAddress);
+app.get('/pickHeight', routes.pickHeight);
+app.get('/pickEducation', routes.pickEducation);
+app.get('/pickIncome', routes.pickIncome);
+
+
+
+
 /* directive template */
 
 
 
 /* angularstrap modal template */
-app.get('/pickaddresspanel', routes.pickAddressPanel);    
+app.get('/pickaddresspanel', routes.pickAddressPanel);   
+app.get('/pickcity', routes.pickCity);  
+app.get('/pickheightpanel', routes.pickheightpanel); 
+app.get('/pickeducationpanel', routes.pickeducationpanel); 
+app.get('/pickincomepanel', routes.pickincomepanel); 
+
 /* angularstrap modal template */
 
 app.get("/",routes.index);
@@ -680,9 +693,6 @@ app.post("/allUsers",routerLogin.showAllUsers);
 /* landing */
 
 
-/* tools*/
-app.get("/pickAddress",tools.pickAddress);
-/* tools*/
 
 
 
@@ -695,15 +705,17 @@ app.get("/pickAddress",tools.pickAddress);
 
 
 
-/* for test */
 
-app.get("/test",function(req, res){
-  res.render("./test.ejs",{title:"test"});
+
 
 
 });
 
-console.log('test');
+
+
+
+
+
 
 
 

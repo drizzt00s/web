@@ -1,25 +1,58 @@
 <script src="/javascript/register/register.js"></script>
 <script src="/javascript/directive/pickAddress.js"></script>
+<script src="/javascript/directive/pickHeight.js"></script>
+<script src="/javascript/directive/pickEducation.js"></script>
+<script src="/javascript/directive/pickIncome.js"></script>
+
+
 <link rel='stylesheet' href='/stylesheets/register/register.css' />
-
-
-
 
 <div ng-controller="register">
 	<div class="subMain centered">
 
-		<div>我是: <input type="radio" name="gender" /> <label>男</label>   <input type="radio" name="gender" /> <label>女</label>  </div>
+		<div>我是: <input type="radio" name="gender" /> <label>男</label>   <input type="radio" name="gender" /> <label>女</label></div>
 
 		<div style="display:none;">
 			<input type="radio" name="isLunar" onclick="changeType()" title="显示公历"/>公历
 			<input type="radio" name="isLunar" onclick="changeType()" title="显示农历"/>农历<br />
 		</div> 
 
-		<div class='positionRelative'>
+		<div>
 			<pickaddress></pickaddress>
 		</div>
-		
 
+		<div>
+			婚姻状况:<input type='radio' name='marriageStatus' value='未婚' /><label>未婚</label>
+			<input type='radio' name='marriageStatus' value='离异' /><label>离异</label>
+			<input type='radio' name='marriageStatus' value='丧偶' /><label>丧偶</label>
+		</div>
+
+		<div>
+			<pickheight></pickheight>
+		</div>
+
+		<div>
+			<pickeducation></pickeducation>
+		</div>
+
+		<div>
+			<pickincome></pickincome>
+		</div>
+
+		<div>
+			手机号:<input type='text' ng-model='mobile' />
+		</div>
+
+		<div>
+			创建密码:<input type='password' ng-model='password' />
+		</div>
+
+		<div>
+			昵称:<input type='text' ng-model='falseName' />
+		</div>
+
+
+		
 
 
 

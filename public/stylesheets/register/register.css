@@ -3,3 +3,87 @@
 	top:0px;
 	left:0px;
 }
+.sel-g{
+	margin-top:10px;
+}
+.sel-detail a{
+	text-decoration:underline;
+	color:#666;
+	padding:5px;
+}
+.sel-c a{
+	text-decoration:underline;
+	color:#666;
+	padding:5px;
+}
+.sel-c{
+	overflow:hidden;
+}
+.sel-c a{
+	float:left;
+	margin-left:3px;
+	margin-top:7px;
+
+}
+.modal-content{
+	top:18px;
+	left:6px;
+	z-index:9999;
+
+}
+.container-fluid{
+
+}
+.fCity{
+	color:#b3b3b3;
+}
+.selProvince{
+	color:#b3b3b3;
+}
+.sel-info{
+	font-weight:800;
+	color:#666;
+}
+.pickEducationPanel,.pickHeightPanel,.pickIncomePanel{
+	width:278px;
+}
+.pickHeightPanel_c{
+
+}
+.modal-body li{
+	list-style-type:none;
+	color:#666;
+}
+.modal-body-pickheight{
+	height:377px;
+	overflow:auto;
+}
+.pickheight-li{
+	line-height:30px;
+	cursor:pointer;
+	width:105%;
+}
+
+.pickEducation-li{
+	line-height:30px;
+	width:105%;
+	color:#666;
+	cursor:pointer;
+}
+
+.modal-content-pickEducation{
+	left:-167px;
+	top:86px;
+}
+.modal-content-income{
+	left:-167px;
+	top:108px;
+}
+.pickincome-li{
+	line-height:30px;
+	width:105%;
+	color:#666;
+	cursor:pointer;
+}
+
+
