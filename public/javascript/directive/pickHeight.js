@@ -2,7 +2,7 @@ agMain.directive('pickheight', function($modal){
 	return {
 		restrict:'E',
 		templateUrl:'/pickHeight',
-		scope:true,
+		scope:false,
 		link:function(scope){
 			var pickHeightPanel = null;
 			scope.selectedHeight = '';

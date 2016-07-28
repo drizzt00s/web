@@ -37,6 +37,21 @@ agMain.factory('utility', function(){
 
 		isLeapYear:function (year){
 			return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+		},
+
+		formString:function(str,format){
+			var strArr = str.split(' ');
+			var str = '';
+			for(var i = 0; i<strArr.length; i++){
+				str += strArr[i];
+				if(i != (strArr.length)-1){
+					str += format;
+				}
+			}
+			return str;
 		}
+
+
+
 	}
 });

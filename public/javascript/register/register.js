@@ -1,5 +1,7 @@
-agMain.controller('register', function($scope, $http, Constant){
+agMain.controller('register', function($scope, $http, Constant, utility){
 	$scope.gender = '';
+	$scope.marriageStatus = '';
+
 
 
 
@@ -32,7 +34,29 @@ agMain.controller('register', function($scope, $http, Constant){
 	};
 	$scope.collectData = function(){
 		var data = {};
+		
 		data.gender = $scope.gender;
+
+		var storeBirthday = [];
+		storeBirthday.push($scope.selectedYear);
+		storeBirthday.push($scope.selectedMonth);
+		storeBirthday.push($scope.selectedDay);
+		data.birthday = storeBirthday;
+
+		data.address = utility.formString($scope.adress, ',');
+		data.marriageStatus = $scope.marriageStatus;
+		data.userHeight = parseInt($scope.selectedHeight);
+		data.education = $scope.selectedEducation;
+
+		
+		
+
+
+	
+
+
+
+
 	};
 
 

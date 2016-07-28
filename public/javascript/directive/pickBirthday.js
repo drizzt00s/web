@@ -1,7 +1,7 @@
 agMain.directive('pickbirthday', function($modal, Constant){
 	return {
 		restrict:'E',
-		scope:true,
+		scope:false,
 		templateUrl:'/pickBirthday',
 		link:function(scope){
 			scope.days = null;
