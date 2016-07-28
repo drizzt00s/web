@@ -1,4 +1,10 @@
 agMain.controller('register', function($scope, $http, Constant){
+	$scope.gender = '';
+
+
+
+
+
 	$scope.selCity = Constant.addressMap;
 	$scope.heights = Constant.generateHeightList();
 	$scope.educations = Constant.Educations;
@@ -9,16 +15,25 @@ agMain.controller('register', function($scope, $http, Constant){
 
 
 
+
+
 	$scope.submitRegister = function(){
+		$scope.collectData();
+
+		/*
 		$http({
 			url:Constant.register,
 			method:'post'
 	
-		})
-	}
-	$scope.collectData = function(){
+		})*/
 
-	}
+
+
+	};
+	$scope.collectData = function(){
+		var data = {};
+		data.gender = $scope.gender;
+	};
 
 
 
