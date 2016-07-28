@@ -1,7 +1,7 @@
 agMain.directive('pickeducation', function($modal){
 	return {
 		restrict:'E',
-		scope:false,
+		scope:true,
 		templateUrl:'/pickEducation',
 		link:function(scope){
 			var pickEducationPanel = null;

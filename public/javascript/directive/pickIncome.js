@@ -5,7 +5,7 @@ agMain.directive('pickincome', function($modal){
 		templateUrl:'/pickIncome',
 		link:function(scope){
 			scope.selectedIncome = '';
-			var pickIncomePanel
+			var pickIncomePanel = null;
 			scope.popUpIncome = function(){
 				pickIncomePanel = $modal({
 					scope:scope,

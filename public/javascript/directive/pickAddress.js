@@ -2,7 +2,7 @@ agMain.directive('pickaddress', function($modal){
 	return {
 		restrict:"E",
 		templateUrl:'/pickAddress',
-		scope:false,
+		scope:true,
 		link:function(scope){
 			var pickAddressPanel = null;
 			var pickCityPanel = null;
