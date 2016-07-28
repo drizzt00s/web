@@ -32,6 +32,11 @@ agMain.factory('utility', function(){
 				}
 				return d;
 			}
+		},
+
+
+		isLeapYear:function (year){
+			return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 		}
 	}
 });

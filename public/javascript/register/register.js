@@ -1,13 +1,25 @@
-agMain.controller('register', function($scope, Constant){
-	$scope.defaultYearVal = '请选择年';
-	$scope.defaultMonthVal = '请选择月';
-	$scope.defaultDayVal = '请选择日';
+agMain.controller('register', function($scope, $http, Constant){
 	$scope.selCity = Constant.addressMap;
 	$scope.heights = Constant.generateHeightList();
 	$scope.educations = Constant.Educations;
 	$scope.incomes = Constant.Incomes;
+	$scope.months = Constant.Months;
 	$scope.mobile = '';
 	$scope.password = '';
 
-	//window.showCalendar1();
+
+
+	$scope.submitRegister = function(){
+		$http({
+			url:Constant.register,
+			method:'post'
+	
+		})
+	}
+	$scope.collectData = function(){
+
+	}
+
+
+
 })

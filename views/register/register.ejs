@@ -3,6 +3,7 @@
 <script src="/javascript/directive/pickHeight.js"></script>
 <script src="/javascript/directive/pickEducation.js"></script>
 <script src="/javascript/directive/pickIncome.js"></script>
+<script src="/javascript/directive/pickBirthday.js"></script>
 
 
 <link rel='stylesheet' href='/stylesheets/register/register.css' />
@@ -12,10 +13,10 @@
 
 		<div>我是: <input type="radio" name="gender" /> <label>男</label>   <input type="radio" name="gender" /> <label>女</label></div>
 
-		<div style="display:none;">
-			<input type="radio" name="isLunar" onclick="changeType()" title="显示公历"/>公历
-			<input type="radio" name="isLunar" onclick="changeType()" title="显示农历"/>农历<br />
-		</div> 
+
+		<div>
+			生日:<pickbirthday></pickbirthday>
+		</div>
 
 		<div>
 			<pickaddress></pickaddress>
@@ -50,6 +51,8 @@
 		<div>
 			昵称:<input type='text' ng-model='falseName' />
 		</div>
+
+		<button ng-click='submitRegister()'>提交</button>
 
 
 		

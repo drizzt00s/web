@@ -1,4 +1,4 @@
-agMain.factory('Constant', function(){
+agMain.factory('Constant', function(utility){
 	return {
 		addressMap:{
 			'01':['东城','西城','崇文','宣武','朝阳','丰台','石景山','海淀',
@@ -91,6 +91,24 @@ agMain.factory('Constant', function(){
 
 		Incomes:['<2000','2000-5000','5000-10000','10000-15000','15000-20000','20000-30000','50000以上'],
 
+		Months:['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+
+
+
+
+
+
+		register:'/register',
+
+
+
+
+
+
+
+
+
+		
 		generateHeightList:function(){
 			var storeHeight = [];
 			for(var i = 130 ; i<227; i++){
@@ -98,6 +116,27 @@ agMain.factory('Constant', function(){
 				storeHeight.push(eachList);
 			}
 			return storeHeight;
+		},
+
+		daysPerMonth:function(year, month){
+			var days = [];
+			if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ){
+				var monthDays = 31;
+			} else if(month == 4 || month == 6 || month == 9 || month == 11){
+				var monthDays = 30;
+			} else if(month == 2){
+				var isLeapYear = utility.isLeapYear(year);
+				if(isLeapYear){
+					var monthDays = 29;
+				} else {
+					var monthDays = 28;
+				}
+			}
+			for(var i = 1; i <= monthDays; i++ ){
+				days.push(i);
+			}
+			return days;
 		}
+
 	}
 });

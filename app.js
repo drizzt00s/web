@@ -663,6 +663,7 @@ app.get("/pickAddress",tools.pickAddress);
 app.get('/pickHeight', routes.pickHeight);
 app.get('/pickEducation', routes.pickEducation);
 app.get('/pickIncome', routes.pickIncome);
+app.get('/pickBirthday', routes.pickBirthday);
 
 
 
@@ -677,6 +678,10 @@ app.get('/pickcity', routes.pickCity);
 app.get('/pickheightpanel', routes.pickheightpanel); 
 app.get('/pickeducationpanel', routes.pickeducationpanel); 
 app.get('/pickincomepanel', routes.pickincomepanel); 
+app.get('/selyearpanel', routes.selyearpanel);
+app.get('/selmonthpanel', routes.selmonthpanel);
+app.get('/seldaypanel', routes.seldaypanel);
+
 
 /* angularstrap modal template */
 
@@ -704,12 +709,32 @@ app.post("/allUsers",routerLogin.showAllUsers);
 
 
 
+/* for test angular */
 
 
-
-
-
+app.get("/test",function(req,res){
+       res.render("./test.ejs",{title:"sendImage"});    
 });
+
+/* for test angular  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

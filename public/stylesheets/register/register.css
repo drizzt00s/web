@@ -86,4 +86,40 @@
 	cursor:pointer;
 }
 
+.selYearPanel{
+	position:absolute!important;
+	top:2px;
+	left:-7px;
+	margin:0!important;
+
+
+}
+.modal{
+	position:static;
+}
+.selBirthdayWrap{
+	overflow:hidden;
+}
+.selBirthdayWrap div{
+	float:left;
+}
+#selYearP{
+	position:relative;
+}
+#selYearPanel{
+	position:relative;
+}
+#selMonthPanel{
+	position:relative;
+}
+#selDayPanel{
+	position:relative;
+}
+
+
+
+
+#selYearPanel,#selMonthPanel,#selDayPanel{
+	display:inline-block;
+}
 
