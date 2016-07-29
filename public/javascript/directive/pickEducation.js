@@ -6,6 +6,7 @@ agMain.directive('pickeducation', function($modal){
 		link:function(scope){
 			var pickEducationPanel = null;
 			scope.selectedEducation = '';
+			scope.$parent.selectedEducation = scope.selectedEducation;
 			scope.popUpEducation = function(){
 					pickEducationPanel = $modal({
 					scope:scope,
@@ -29,6 +30,7 @@ agMain.directive('pickeducation', function($modal){
 			$(".pickEducation-li").live('click', function(e){
 				var education = $(e.target).text();
 				scope.selectedEducation = education;
+				scope.$parent.selectedEducation = scope.selectedEducation;
 				scope.$apply();
 				scope.hide();
 			});

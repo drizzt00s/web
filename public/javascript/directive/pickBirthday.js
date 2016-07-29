@@ -12,7 +12,9 @@ agMain.directive('pickbirthday', function($modal, Constant){
 			scope.selectedYear = '请选择年';
 			scope.selectedMonth = '请选择月';
 			scope.selectedDay = '请选择日';
-
+			scope.$parent.selectedYear = scope.selectedYear;
+			scope.$parent.selectedMonth = scope.selectedMonth;
+			scope.$parent.selectedDay = scope.selectedDay;
 			scope.hide = function(o){
 				o.hide();
 			};
@@ -54,17 +56,20 @@ agMain.directive('pickbirthday', function($modal, Constant){
 			};
 			scope.pickYear = function(e){
 				scope.selectedYear = $(e.target).text();
+				scope.$parent.selectedYear = scope.selectedYear;
 				scope.hide(pickYearPanel);
 				scope.selMonth();
 			}
 			scope.pickMonth = function(e){
 				scope.selectedMonth = $(e.target).text();
+				scope.$parent.selectedMonth = scope.selectedMonth;
 				scope.hide(pickMonthPanel);
 				scope.days = Constant.daysPerMonth(parseInt(scope.selectedYear), parseInt(scope.selectedMonth));
 				scope.selDay();
 			};
 			scope.pickDay = function(e){
 				scope.selectedDay = $(e.target).text();
+				scope.$parent.selectedDay = scope.selectedDay;
 				scope.hide(pickDayPanel);
 			};
 		}

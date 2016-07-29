@@ -2,12 +2,6 @@ agMain.controller('register', function($scope, $http, Constant, utility){
 	$scope.gender = '';
 	$scope.marriageStatus = '';
 	$scope.falseName = '';
-
-
-
-
-
-
 	$scope.selCity = Constant.addressMap;
 	$scope.heights = Constant.generateHeightList();
 	$scope.educations = Constant.Educations;
@@ -15,24 +9,23 @@ agMain.controller('register', function($scope, $http, Constant, utility){
 	$scope.months = Constant.Months;
 	$scope.mobile = '';
 	$scope.password = '';
-
-
-
-
+	$scope.checkPassword = '';
+	$scope.username = '';
 
 	$scope.submitRegister = function(){
 		var data = $scope.collectData();
-		alert(d);
-		return false;
+
 		$http({
 			url:Constant.register,
 			method:'post',
 			data:data
 	
 		}).success(function(d){
-			alert(d);
+			if(d){
+				window.location.reload();
+			}
 		}).error(function(d){
-
+			alert('error');
 		});
 
 	};
@@ -54,7 +47,9 @@ agMain.controller('register', function($scope, $http, Constant, utility){
 		data.monthIncome = $scope.selectedIncome;
 		data.mobile = $scope.mobile;
 		data.password = $scope.password;
+		data.checkPassword = $scope.checkPassword;
 		data.falseName = $scope.falseName;
+		data.username = $scope.username;
 
 		return data;
 

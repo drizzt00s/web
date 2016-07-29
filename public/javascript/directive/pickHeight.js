@@ -6,6 +6,7 @@ agMain.directive('pickheight', function($modal){
 		link:function(scope){
 			var pickHeightPanel = null;
 			scope.selectedHeight = '';
+			scope.$parent.selectedHeight = scope.selectedHeight;
 			scope.popUpHeight = function(){
 				pickHeightPanel = $modal({
 					scope:scope,
@@ -30,6 +31,7 @@ agMain.directive('pickheight', function($modal){
 			$(".pickheight-li").live('click', function(e){
 				var height = $(e.target).text();
 				scope.selectedHeight = height;
+				scope.$parent.selectedHeight = scope.selectedHeight;
 				scope.$apply();
 				scope.hide();
 			});

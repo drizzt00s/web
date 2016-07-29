@@ -8,6 +8,10 @@ agMain.directive('pickaddress', function($modal){
 			var pickCityPanel = null;
 			scope.cities = null;
 			scope.adress = '';
+			scope.$parent.adress = scope.adress;
+
+
+
 			scope.popUpAddress = function(){
 				pickAddressPanel = $modal({
 					scope:scope,
@@ -23,6 +27,10 @@ agMain.directive('pickaddress', function($modal){
 			pickCity = function(e){
 				scope.cities = scope.selCity[$(e).attr('data')];
 				scope.adress = $(e).text();
+				scope.$parent.adress = scope.adress;
+			
+
+
 				scope.hide(pickAddressPanel);
 				pickCityPanel = $modal({
 					scope:scope,
@@ -37,6 +45,11 @@ agMain.directive('pickaddress', function($modal){
 			selAddress = function(e){
 			    scope.hide(pickCityPanel);
 				scope.adress = scope.adress + ' ' + $(e).text();
+				scope.$parent.adress = scope.adress;
+
+			
+
+				
 				scope.$apply();
 
 			},

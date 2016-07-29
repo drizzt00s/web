@@ -5,6 +5,7 @@ agMain.directive('pickincome', function($modal){
 		templateUrl:'/pickIncome',
 		link:function(scope){
 			scope.selectedIncome = '';
+			scope.$parent.selectedIncome = scope.selectedIncome;
 			var pickIncomePanel = null;
 			scope.popUpIncome = function(){
 				pickIncomePanel = $modal({
@@ -29,6 +30,7 @@ agMain.directive('pickincome', function($modal){
 			$(".pickincome-li").live('click', function(e){
 				var income = $(e.target).text();
 				scope.selectedIncome = income;
+				scope.$parent.selectedIncome = scope.selectedIncome;
 				scope.$apply();
 				scope.hide();
 			});
