@@ -1,4 +1,4 @@
-agMain.controller('register', function($scope, $http, Constant, utility){
+agMain.controller('register', function($scope, $http, Constant, utility, api){
 	$scope.gender = '';
 	$scope.marriageStatus = '';
 	$scope.falseName = '';
@@ -16,7 +16,7 @@ agMain.controller('register', function($scope, $http, Constant, utility){
 		var data = $scope.collectData();
 
 		$http({
-			url:Constant.register,
+			url:api.register,
 			method:'post',
 			data:data
 	

@@ -92,22 +92,6 @@ agMain.factory('Constant', function(utility){
 		Incomes:['<2000','2000-5000','5000-10000','10000-15000','15000-20000','20000-30000','50000以上'],
 
 		Months:['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-
-
-
-
-
-
-		register:'/register',
-
-
-
-
-
-
-
-
-
 		
 		generateHeightList:function(){
 			var storeHeight = [];
