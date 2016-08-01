@@ -11,66 +11,56 @@
 <div ng-controller="register">
 	<div class="subMain centered">
 
-		<div>我是: <input type="radio" name="xb" value='男' ng-model='gender' /> <label>男</label>   <input type="radio" value='女' ng-model='gender' name="xb" /> <label>女</label></div>
+		<div class='register_list'>我是: <input type="radio" name="xb" value='男' ng-model='gender' /> <label>男</label>   <input type="radio" value='女' ng-model='gender' name="xb" /> <label>女</label></div>
 
-
-		<div>
+		<div class='register_list birthdayWrap'>
 			生日:<pickbirthday></pickbirthday>
 		</div>
 
-		<div>
+		<div class='register_list addressWrap'>
 			<pickaddress></pickaddress>
 		</div>
 
-		<div>
+		<div class='register_list'>
 			婚姻状况:<input type='radio' name='marriageStatu' value='未婚' ng-model='marriageStatus' /><label>未婚</label>
 			<input type='radio' name='marriageStatu' value='离异' ng-model='marriageStatus' /><label>离异</label>
 			<input type='radio' name='marriageStatu' value='丧偶' ng-model='marriageStatus' /><label>丧偶</label>
 		</div>
 
-		<div>
+		<div class='register_list heightWrap'>
 			<pickheight></pickheight>
 		</div>
 
-		<div>
+		<div class='register_list educationWrap'>
 			<pickeducation></pickeducation>
 		</div>
 
-		<div>
+		<div class='register_list incomeWrap'>
 			<pickincome></pickincome>
 		</div>
 
-		<div>
+		<div class='register_list'>
 			手机号:<input type='text' ng-model='mobile' />
 		</div>
 
-		<div>
+		<div class='register_list'>
 			创建密码:<input type='password' ng-model='password' />
 		</div>
 
-		<div>
+		<div class='register_list'>
 			再次输入密码:<input type='password' ng-model='checkPassword' />
 		</div>
 
 
-		<div>
+		<div class='register_list'>
 			昵称:<input type='text' ng-model='falseName' />
 		</div>
 
-		<div>
+		<div class='register_list'>
 			用户名:<input type='text' ng-model='username' />
 		</div>
 
-
-
-
-
 		<button ng-click='submitRegister()'>提交</button>
-
-
-
-
-
 
 	</div>
 </div>

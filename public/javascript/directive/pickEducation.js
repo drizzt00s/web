@@ -15,7 +15,8 @@ agMain.directive('pickeducation', function($modal){
 					show:true,
 					keyboard:false,
 					backdrop:true,
-					templateUrl:'/pickeducationpanel'
+					templateUrl:'/pickeducationpanel',
+					container:'.educationWrap'
 				});
 			}
 			scope.hide = function(){

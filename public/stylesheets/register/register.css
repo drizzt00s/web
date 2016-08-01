@@ -71,14 +71,6 @@
 	cursor:pointer;
 }
 
-.modal-content-pickEducation{
-	left:-167px;
-	top:86px;
-}
-.modal-content-income{
-	left:-167px;
-	top:108px;
-}
 .pickincome-li{
 	line-height:30px;
 	width:105%;
@@ -86,14 +78,6 @@
 	cursor:pointer;
 }
 
-.selYearPanel{
-	position:absolute!important;
-	top:2px;
-	left:-7px;
-	margin:0!important;
-
-
-}
 .modal{
 	position:static;
 }
@@ -116,10 +100,66 @@
 	position:relative;
 }
 
-
-
-
 #selYearPanel,#selMonthPanel,#selDayPanel{
 	display:inline-block;
 }
+
+
+.register_list{
+	margin-top:20px;
+}
+
+.modal-content-income{
+	/*
+	left:-167px;
+	top:108px;
+	*/
+}
+
+.modal{
+	position:relative;
+}
+
+.pickIncomePanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+.pickEducationPanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+.pickHeightPanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+.pickProvincePanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+.pickCityPanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+
+.selYearPanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+.selMonthPanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+.selDayPanel{
+	left: -3px;
+    top: -28px;
+    float:left;
+}
+
 

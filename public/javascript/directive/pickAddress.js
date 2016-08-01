@@ -19,8 +19,9 @@ agMain.directive('pickaddress', function($modal){
 					content:'select address',
 					show:true,
 					keyboard:false,
-					backdrop:'static',
-					templateUrl:'/pickaddresspanel'
+					backdrop:true,
+					templateUrl:'/pickaddresspanel',
+					container:'.addressWrap'
 				});
 			},
 
@@ -39,7 +40,8 @@ agMain.directive('pickaddress', function($modal){
 					show:true,
 					keyboard:false,
 					backdrop:'static',
-					templateUrl:'/pickcity'
+					templateUrl:'/pickcity',
+					container:'.addressWrap'
 				});
 			},
 			selAddress = function(e){

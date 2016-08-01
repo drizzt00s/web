@@ -27,7 +27,7 @@ agMain.directive('pickbirthday', function($modal, Constant){
 					keyboard:false,
 					backdrop:true,
 					templateUrl:'/selyearpanel',
-					container:'#selYearPanel'
+					container:'.birthdayWrap'
 				});
 			};
 			scope.selMonth = function(){
@@ -39,7 +39,7 @@ agMain.directive('pickbirthday', function($modal, Constant){
 					keyboard:false,
 					backdrop:true,
 					templateUrl:'/selmonthpanel',
-					container:'#selMonthPanel'
+					container:'.birthdayWrap'
 				});
 			};
 			scope.selDay = function(){
@@ -51,7 +51,7 @@ agMain.directive('pickbirthday', function($modal, Constant){
 					keyboard:false,
 					backdrop:true,
 					templateUrl:'/seldaypanel',
-					container:'#selDayPanel'
+					container:'.birthdayWrap'
 				});
 			};
 			scope.pickYear = function(e){

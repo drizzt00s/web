@@ -15,7 +15,8 @@ agMain.directive('pickincome', function($modal){
 					show:true,
 					keyboard:false,
 					backdrop:true,
-					templateUrl:'/pickincomepanel'
+					templateUrl:'/pickincomepanel',
+					container:'.incomeWrap'
 				});
 			};
 			scope.hide = function(){

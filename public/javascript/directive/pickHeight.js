@@ -15,7 +15,8 @@ agMain.directive('pickheight', function($modal){
 					show:true,
 					keyboard:false,
 					backdrop:true,
-					templateUrl:'/pickheightpanel'
+					templateUrl:'/pickheightpanel',
+					container:'.heightWrap'
 				});
 			};
 			scope.hide = function(){
