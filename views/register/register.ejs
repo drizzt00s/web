@@ -11,10 +11,15 @@
 <div ng-controller="register">
 	<div class="subMain centered">
 
-		<div class='register_list'>我是: <input type="radio" name="xb" value='男' ng-model='gender' /> <label>男</label>   <input type="radio" value='女' ng-model='gender' name="xb" /> <label>女</label></div>
+		<div class='register_list'>
+			<span>我是:</span> 
+			<span class='chooseMale' ><input type="radio" name="xb" value='男' ng-model='gender' class='chooseMale' /><label class='male'>男</label></span>
+			<span class='chooseFemale'><input type="radio" value='女' ng-model='gender' name="xb"  /><label class='female'>女</label></span>
+		</div>
 
 		<div class='register_list birthdayWrap'>
-			生日:<pickbirthday></pickbirthday>
+			<span>生日:</span>
+			<pickbirthday></pickbirthday>
 		</div>
 
 		<div class='register_list addressWrap'>
@@ -22,9 +27,10 @@
 		</div>
 
 		<div class='register_list'>
-			婚姻状况:<input type='radio' name='marriageStatu' value='未婚' ng-model='marriageStatus' /><label>未婚</label>
-			<input type='radio' name='marriageStatu' value='离异' ng-model='marriageStatus' /><label>离异</label>
-			<input type='radio' name='marriageStatu' value='丧偶' ng-model='marriageStatus' /><label>丧偶</label>
+			婚姻状况:
+			<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='未婚' ng-model='marriageStatus' /><label>未婚</label></span>
+			<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='离异' ng-model='marriageStatus' /><label>离异</label></span>
+			<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='丧偶' ng-model='marriageStatus' /><label>丧偶</label></span>
 		</div>
 
 		<div class='register_list heightWrap'>
@@ -60,7 +66,8 @@
 			用户名:<input type='text' ng-model='username' />
 		</div>
 
-		<button ng-click='submitRegister()'>提交</button>
+
+		<button class='register btn btn-primary btn-lg'ng-click='submitRegister()'>免费注册</button>
 
 	</div>
 </div>

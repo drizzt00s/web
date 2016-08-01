@@ -152,7 +152,7 @@
     float:left;
 }
 .selMonthPanel{
-	left: -3px;
+	left: 135px;
     top: -28px;
     float:left;
 }
@@ -161,5 +161,55 @@
     top: -28px;
     float:left;
 }
+.modal-body-selYear td{
+	font:12px/1.5 tahoma,arial,\5b8b\4f53;
+}
+
+.modal-body-selYear td a{
+	color:#666;
+}
+
+.eachMonth{
+	font:12px/1.5 tahoma,arial,\5b8b\4f53;
+	margin-left:10px;
+	color:#666;
+}
+.eachDay{
+	font:12px/1.5 tahoma,arial,\5b8b\4f53;
+	margin-left:6px;
+	color:#666;
+}
+.male{
+	padding-left:21px;
+	margin-left:5px;
+	background-image:url('/images/default/icons/sex.jpg');
+	background-repeat:no-repeat;
+}
+.female{
+	padding-left:21px;
+	margin-left:5px;
+	background-image:url('/images/default/icons/sex.jpg');
+	background-repeat:no-repeat;
+	background-position:0 -33px;
+}
+.chooseFemale{
+	margin-left:10px;
+}
+
+.register{
+	margin:0 auto;
+	display:block;
+	margin-top:30px;
+	width:300px;
+}
+.marriageStatus{
+	margin-left:5px;
+}
+.chooseMarriage{
+	position:relative;
+	top:2px;
+}
+
+
 
 

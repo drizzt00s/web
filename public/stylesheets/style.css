@@ -5,6 +5,18 @@
     font-size:12px;
 }
 
+body, button, input, select, textarea{
+    font:12px/1.5 tahoma,arial,\5b8b\4f53;
+}
+
+input{
+    padding:3px;
+    border: 1px solid #666;
+    -moz-border-radius: 2px;      /* Gecko browsers */
+    -webkit-border-radius: 2px;   /* Webkit browsers */
+    border-radius:2px;            /* W3C syntax */
+}
+
 .birthplaceInfo{
     position:relative;
 }

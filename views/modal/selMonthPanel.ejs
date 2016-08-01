@@ -1,8 +1,8 @@
 <div class="modal container-fluid" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog selMonthPanel" draggable-popup id="emailmodald">
+    <div class="modal-dialog selMonthPanel" draggable-popup id="emailmodald" style='width:300px;'>
         <div class="modal-content modal-content-selMonth">
             <div class="modal-body modal-body-selMonth">
-             	<a href='#' ng-click='pickMonth($event)' ng-repeat='month in months'>{{month}}</a>
+             	<a class='eachMonth' href='#' ng-click='pickMonth($event)' ng-repeat='month in months'>{{month}}</a>
             </div>
         </div>
     </div>
