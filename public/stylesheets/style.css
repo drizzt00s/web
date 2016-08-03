@@ -79,7 +79,7 @@ display:none;
     width:970px;
 }
 .subMain{
-    width:670px;
+    width:630px;
 }
 .centered{
     margin:0 auto;
@@ -98,5 +98,8 @@ display:none;
 }
 .zIndexMax{
     z-index:9999;
+}
+.roundBorder{
+    border-radius:3px;
 }
 

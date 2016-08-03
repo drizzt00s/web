@@ -33,6 +33,8 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 
 		}
 
+		return false;
+
 		var data = $scope.collectData();
 		$http({
 			url:api.register,

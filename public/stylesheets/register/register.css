@@ -107,6 +107,15 @@
 
 .register_list{
 	margin-top:20px;
+	position:relative;
+
+}
+
+.register_list .error{
+	position:absolute;
+	bottom:0;
+	right:0;
+
 }
 
 .modal-content-income{
