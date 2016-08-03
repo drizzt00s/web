@@ -701,14 +701,6 @@ app.post("/allUsers",routerLogin.showAllUsers);
 
 
 
-
-
-
-
-
-
-
-
 /* for test angular */
 
 

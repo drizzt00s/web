@@ -7,7 +7,7 @@ agMain.directive('pickaddress', function($modal){
 			var pickAddressPanel = null;
 			var pickCityPanel = null;
 			scope.cities = null;
-			scope.adress = '';
+	
 			scope.$parent.adress = scope.adress;
 
 

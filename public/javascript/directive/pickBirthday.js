@@ -8,10 +8,6 @@ agMain.directive('pickbirthday', function($modal, Constant){
 			var pickYearPanel = null;
 			var pickMonthPanel = null;
 			var pickDayPanel = null;
-
-			scope.selectedYear = '请选择年';
-			scope.selectedMonth = '请选择月';
-			scope.selectedDay = '请选择日';
 			scope.$parent.selectedYear = scope.selectedYear;
 			scope.$parent.selectedMonth = scope.selectedMonth;
 			scope.$parent.selectedDay = scope.selectedDay;

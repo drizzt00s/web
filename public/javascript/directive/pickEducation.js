@@ -5,7 +5,7 @@ agMain.directive('pickeducation', function($modal){
 		templateUrl:'/pickEducation',
 		link:function(scope){
 			var pickEducationPanel = null;
-			scope.selectedEducation = '';
+			
 			scope.$parent.selectedEducation = scope.selectedEducation;
 			scope.popUpEducation = function(){
 					pickEducationPanel = $modal({

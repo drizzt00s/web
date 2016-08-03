@@ -1,20 +1,39 @@
-agMain.controller('register', function($scope, $http, Constant, utility, api, validation){
-	$scope.gender = '';
+agMain.controller('register', function($scope, $http, Constant, utility, api, validation, showError){
+	$scope.selectedYear = '请选择年';
+	$scope.selectedMonth = '请选择月';
+	$scope.selectedDay = '请选择日';
+	$scope.adress = '';
 	$scope.marriageStatus = '';
+	$scope.selectedHeight = '';
+	$scope.selectedEducation = '';
+	$scope.selectedIncome = '';
+
+	$scope.gender = '';
 	$scope.falseName = '';
-	$scope.selCity = Constant.addressMap;
-	$scope.heights = Constant.generateHeightList();
-	$scope.educations = Constant.Educations;
-	$scope.incomes = Constant.Incomes;
-	$scope.months = Constant.Months;
 	$scope.mobile = '';
 	$scope.password = '';
 	$scope.checkPassword = '';
 	$scope.username = '';
 
-	$scope.submitRegister = function(){
-		var data = $scope.collectData();
+	$scope.selCity = Constant.addressMap;
+	$scope.heights = Constant.generateHeightList();
+	$scope.educations = Constant.Educations;
+	$scope.incomes = Constant.Incomes;
+	$scope.months = Constant.Months;
+	//create meta data for sub directives
 
+
+	$scope.submitRegister = function(){
+
+
+		var emptyFileds = $scope.validate();
+		if(emptyFileds.length > 0){
+			//has empty fileds
+			showError.displayError(emptyFileds);
+
+		}
+
+		var data = $scope.collectData();
 		$http({
 			url:api.register,
 			method:'post',
@@ -32,9 +51,6 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 	$scope.collectData = function(){
 		var data = {};
 		
-	
-
-
 		data.gender = $scope.gender;
 
 		var storeBirthday = [];
@@ -56,6 +72,27 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 
 		return data;
 
+	};
+
+	$scope.validate = function(){
+		var checkErrorObject = {
+			gender : $scope.gender,
+			selectedYear : $scope.selectedYear,
+			selectedMonth : $scope.selectedMonth,
+			selectedDay : $scope.selectedDay,
+			address : $scope.adress,
+			marriageStatus : $scope.marriageStatus,
+			selectedHeight: $scope.selectedHeight,
+			selectedEducation : $scope.selectedEducation,
+			selectedIncome : $scope.selectedIncome,
+			mobile : $scope.mobile,
+			password : $scope.password,
+			checkPassword : $scope.checkPassword,
+			falseName : $scope.falseName,
+			username : $scope.username
+		};
+	    var emptyFileds = validation.checkEmpty(checkErrorObject);
+	    return emptyFileds;
 	};
 
 
