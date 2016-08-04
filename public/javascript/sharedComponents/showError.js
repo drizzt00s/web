@@ -12,7 +12,15 @@ agMain.factory('showError', function(){
 			for(var key in eachErrorObj){
 				errBubble.text(eachErrorObj[key]);
 				var errContainer = $('.' + key).find('span.error');
-				errContainer.append(errBubble);
+
+				//查看是否有其他的错误
+
+				if(errContainer.find('.vlidationError').length == 0){
+					errContainer.append(errBubble);
+				}
+				
+
+
 			}
 
 		},
