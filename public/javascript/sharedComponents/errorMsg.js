@@ -14,10 +14,6 @@ agMain.factory('errorMsg', function(){
 				'username' : '请填写用户名'
 			},
 
-			defaultErrors:{},
-
-	
-
 			getError : function(error, errorType){
 				var err = '';
 				if(errorType === 'empty'){
@@ -29,6 +25,8 @@ agMain.factory('errorMsg', function(){
 					}
 				} else if(errorType === 'invalidMobile'){
 					err = '请输入正确的手机号码';
+				} else if(errorType === 'passNotSame'){
+					err = '二次密码输入不一致';
 				}
 				return err;
 			}

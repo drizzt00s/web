@@ -63,11 +63,18 @@ agMain.factory('validation', function(errorMsg){
 			} 
 			
 			return storeMobieError;
+		},
+
+		checkPasswordIdentity:function(pass, rePass){
+			var storePasswordIdentity = [];
+			var passNotSame = {};
+			var ifPassSame = pass === rePass;
+			if(!ifPassSame){
+				passNotSame['checkPassword'] = errorMsg.getError('checkPassword', 'passNotSame');
+				storePasswordIdentity.push(passNotSame);
+			}
+			return storePasswordIdentity;
 		}
-
-
-
-
 
 
 	};

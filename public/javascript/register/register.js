@@ -42,6 +42,11 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 			showError.displayError(checkInvalidMobile);
 		}
 
+		var checkPasswordIdentity = $scope.checkPasswordIdentity();
+		if(checkPasswordIdentity.length > 0){
+			showError.displayError(checkPasswordIdentity);
+		}
+
 		return false;
 
 		var data = $scope.collectData();
@@ -114,11 +119,25 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 
 	$scope.validateMobile = function(){
 		return validation.checkMobileValidation($scope.mobile);
-	}
+	};
+
+	$scope.checkPasswordIdentity = function(){
+		return validation.checkPasswordIdentity($scope.password, $scope.checkPassword);
+	};
+
+
+
+
+
+
+
+
+
+
 
 	$scope.resetValidation = function(){
 		showError.reset();
-	}
+	};
 
 
 
