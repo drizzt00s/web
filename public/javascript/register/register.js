@@ -25,35 +25,15 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 
 	$scope.submitRegister = function(){
 		$scope.resetValidation();
-
-		var emptyFileds = $scope.checkEmpty();
-		if(emptyFileds.length > 0){
-			//has empty fileds
-			showError.displayError(emptyFileds);
+		var isFilterValidate = $scope.validate();
+		if(!isFilterValidate){
+			return false;
 		}
-		var defaultBirthday = $scope.checkBirthday();
-			//birthday inputs are not complete
-		if(defaultBirthday.length > 0){
-			showError.displayError(defaultBirthday);
-		}
-
-		var checkInvalidMobile = $scope.validateMobile();
-		if(checkInvalidMobile.length > 0){
-			showError.displayError(checkInvalidMobile);
-		}
-
-		var checkPasswordIdentity = $scope.checkPasswordIdentity();
-		if(checkPasswordIdentity.length > 0){
-			showError.displayError(checkPasswordIdentity);
-		}
-
-		return false;
-
 		var data = $scope.collectData();
 		$http({
 			url:api.register,
 			method:'post',
-			data:dataw
+			data:data
 	
 		}).success(function(d){
 			if(d){
@@ -91,48 +71,68 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 
 	};
 
-	$scope.checkEmpty = function(){
-		var checkEmptyObject = {
-			gender : $scope.gender,
-			address : $scope.adress,
-			marriageStatus : $scope.marriageStatus,
-			selectedHeight: $scope.selectedHeight,
-			selectedEducation : $scope.selectedEducation,
-			selectedIncome : $scope.selectedIncome,
-			mobile : $scope.mobile,
-			password : $scope.password,
-			checkPassword : $scope.checkPassword,
-			falseName : $scope.falseName,
-			username : $scope.username
-		};
-	    return validation.checkEmpty(checkEmptyObject);
+	$scope.validate = function(){
+		var isValidate = true;
+		var emptyFileds = checkEmpty();
+		if(emptyFileds.length > 0){
+			//has empty fileds
+			showError.displayError(emptyFileds);
+		}
+		var defaultBirthday = checkBirthday();
+		
+		if(defaultBirthday.length > 0){
+				//birthday inputs are not complete
+			showError.displayError(defaultBirthday);
+		}
+
+		var checkInvalidMobile = validateMobile();
+		if(checkInvalidMobile.length > 0){
+			//mobile phone number is not in a valid format
+			showError.displayError(checkInvalidMobile);
+		}
+
+		var checkPasswordIdentity = checkPasswordIdentity();
+		if(checkPasswordIdentity.length > 0){
+			//password and checkpassword is not the same
+			showError.displayError(checkPasswordIdentity);
+		}
+
+		if(emptyFileds.length > 0 || defaultBirthday.length > 0 || checkInvalidMobile.length > 0 || checkPasswordIdentity.length > 0){
+			isValidate = false;
+		}
+		function checkEmpty(){
+			var checkEmptyObject = {
+				gender : $scope.gender,
+				address : $scope.adress,
+				marriageStatus : $scope.marriageStatus,
+				selectedHeight: $scope.selectedHeight,
+				selectedEducation : $scope.selectedEducation,
+				selectedIncome : $scope.selectedIncome,
+				mobile : $scope.mobile,
+				password : $scope.password,
+				checkPassword : $scope.checkPassword,
+				falseName : $scope.falseName,
+				username : $scope.username
+			};
+			return validation.checkEmpty(checkEmptyObject);
+		}
+		function checkBirthday(){
+			var birthdayValue = {
+				selectedYear : $scope.selectedYear,
+				selectedMonth : $scope.selectedMonth,
+				selectedDay : $scope.selectedDay
+			};
+			return  validation.checkBirthday(birthdayValue);
+		}
+		function validateMobile(){
+			return validation.checkMobileValidation($scope.mobile);
+		}
+
+		function checkPasswordIdentity(){
+			return validation.checkPasswordIdentity($scope.password, $scope.checkPassword);
+		}
+		return isValidate;
 	};
-
-	$scope.checkBirthday = function(){
-		var birthdayValue = {
-			selectedYear : $scope.selectedYear,
-			selectedMonth : $scope.selectedMonth,
-			selectedDay : $scope.selectedDay
-		};
-		return  validation.checkBirthday(birthdayValue);
-	};
-
-	$scope.validateMobile = function(){
-		return validation.checkMobileValidation($scope.mobile);
-	};
-
-	$scope.checkPasswordIdentity = function(){
-		return validation.checkPasswordIdentity($scope.password, $scope.checkPassword);
-	};
-
-
-
-
-
-
-
-
-
 
 
 	$scope.resetValidation = function(){

@@ -41,15 +41,15 @@ agMain.factory('validation', function(errorMsg){
 		checkBirthday:function(birthdayObj){
 			var storeBirthday = [];
 			var birthdayErrorObj = {};
-			var birthdayError = '';
 			for(var key in birthdayObj){
 				if(birthdayObj[key] === '请选择日' || birthdayObj[key] === '请选择月' || birthdayObj[key] === '请选择日'){
-					birthdayError = '请选择完整的生日';
+					var birthdayError = '请选择完整的生日';
+					birthdayErrorObj.birthday = birthdayError;
+					storeBirthday.push(birthdayErrorObj);
 					break;
 				}
 			}
-			birthdayErrorObj.birthday = birthdayError;
-			storeBirthday.push(birthdayErrorObj);
+
 			return storeBirthday;
 		},
 
