@@ -7,8 +7,8 @@ agMain.factory('errorMsg', function(){
 			'selectedHeight' : '请选择身高',
 			'selectedEducation' : '请选择学历',
 			'selectedIncome' : '请选择月薪',
-			'mobile' : '请填写手机号码',
-			'password' : '请填写密码',
+			'mobile' : '请填写有效的手机号码',
+			'password' : '密码不能为空',
 			'checkPassword' : '请确认密码',
 			'falseName' : '请填写昵称',
 			'username' : '请填写用户名'

@@ -25,12 +25,11 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 
 	$scope.submitRegister = function(){
 
-
+		$scope.resetValidation();
 		var emptyFileds = $scope.validate();
 		if(emptyFileds.length > 0){
 			//has empty fileds
 			showError.displayError(emptyFileds);
-
 		}
 
 		return false;
@@ -96,6 +95,10 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 	    var emptyFileds = validation.checkEmpty(checkErrorObject);
 	    return emptyFileds;
 	};
+
+	$scope.resetValidation = function(){
+		showError.reset();
+	}
 
 
 
