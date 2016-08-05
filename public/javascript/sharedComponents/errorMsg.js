@@ -27,6 +27,9 @@ agMain.factory('errorMsg', function(){
 					err = '请输入正确的手机号码';
 				} else if(errorType === 'passNotSame'){
 					err = '二次密码输入不一致';
+				} else if(errorType === 'passNotComplicated'){
+					err = '密码必须包含数字和字母,且6-10位'
+
 				}
 				return err;
 			}

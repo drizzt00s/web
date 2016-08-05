@@ -4,8 +4,9 @@ agMain.factory('validation', function(errorMsg){
 			return (value === null) || (value === undefined) || (angular.isArray(value) && value.length === 0) || ((value + "") === "") || (typeof value === "object" && !hasProperty(value));
 		},
 
-		isDefault:function(value){
-			
+		checkPasswordComplex:function (pwd){
+			return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/.test(pwd);
+			//必须且只含有数字和字母，6-10位
 		},
 
 		validateMobile:function(mobileNumber){
@@ -74,6 +75,16 @@ agMain.factory('validation', function(errorMsg){
 				storePasswordIdentity.push(passNotSame);
 			}
 			return storePasswordIdentity;
+		},
+
+		checkPasswordComplexcity:function(pass){
+			var storePasswordComplexcity = [];
+			var isPassComplicated = this.checkPasswordComplex(pass);
+			if(!isPassComplicated){
+				storePasswordComplexcity.push({});
+				storePasswordComplexcity[0]['password'] = errorMsg.getError('password', 'passNotComplicated');
+			}
+			return storePasswordComplexcity;
 		}
 
 

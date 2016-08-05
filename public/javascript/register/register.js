@@ -29,6 +29,7 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 		if(!isFilterValidate){
 			return false;
 		}
+		return false;
 		var data = $scope.collectData();
 		$http({
 			url:api.register,
@@ -40,7 +41,7 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 				window.location.reload();
 			}
 		}).error(function(d){
-			alert('error');
+			throw 'error';
 		});
 
 	};
@@ -79,24 +80,24 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 			showError.displayError(emptyFileds);
 		}
 		var defaultBirthday = checkBirthday();
-		
 		if(defaultBirthday.length > 0){
 				//birthday inputs are not complete
 			showError.displayError(defaultBirthday);
 		}
-
 		var checkInvalidMobile = validateMobile();
 		if(checkInvalidMobile.length > 0){
 			//mobile phone number is not in a valid format
 			showError.displayError(checkInvalidMobile);
 		}
-
 		var checkPasswordIdentity = checkPasswordIdentity();
 		if(checkPasswordIdentity.length > 0){
 			//password and checkpassword is not the same
 			showError.displayError(checkPasswordIdentity);
 		}
-
+		var checkPasswordComplex = checkPasswordComplexcity();
+		if(checkPasswordComplex.length > 0){
+			showError.displayError(checkPasswordComplex);
+		}
 		if(emptyFileds.length > 0 || defaultBirthday.length > 0 || checkInvalidMobile.length > 0 || checkPasswordIdentity.length > 0){
 			isValidate = false;
 		}
@@ -131,6 +132,14 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 		function checkPasswordIdentity(){
 			return validation.checkPasswordIdentity($scope.password, $scope.checkPassword);
 		}
+
+		function checkPasswordComplexcity(){
+			return validation.checkPasswordComplexcity($scope.password);
+		}
+
+
+
+
 		return isValidate;
 	};
 
