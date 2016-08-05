@@ -29,7 +29,7 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 		if(!isFilterValidate){
 			return false;
 		}
-		return false;
+		
 		var data = $scope.collectData();
 		$http({
 			url:api.register,
@@ -37,8 +37,12 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 			data:data
 	
 		}).success(function(d){
-			if(d){
-				window.location.reload();
+			if(!(d.success)){
+				//用户名已经存在或者其他错误
+				alert(d.errorMsg);
+				//showError.displayError();
+			} else{
+
 			}
 		}).error(function(d){
 			throw 'error';
