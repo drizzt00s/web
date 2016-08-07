@@ -49,9 +49,16 @@ agMain.factory('utility', function(){
 				}
 			}
 			return str;
+		},
+
+		createErrorArray:function(errType, errMsg){
+			var arr = [];
+			var obj = {};
+			obj[errType] = errMsg;
+			arr.push(obj);
+			return arr;
+
 		}
-
-
 
 	}
 });

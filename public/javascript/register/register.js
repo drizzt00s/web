@@ -37,13 +37,15 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 			data:data
 	
 		}).success(function(d){
-			if(!(d.success)){
-				//用户名已经存在或者其他错误
-				alert(d.errorMsg);
-				//showError.displayError();
-			} else{
-
-			}
+			if(d){
+				//alert(d.errorMsg);
+				if(!(d.success)){
+					var errArr = utility.createErrorArray(d.errorType, d.errorMsg);
+					showError.displayError(errArr);
+				} else {
+					alert(d.errorMsg);
+				}
+			} 
 		}).error(function(d){
 			throw 'error';
 		});
