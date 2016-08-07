@@ -220,6 +220,31 @@
 	top:2px;
 }
 
+.left .leftLabel{
+	float:right;
+	position:relative;
+	top:7px;
+	z-index:9999;
+}
+
+.register_list .left{
+	width:18%;
+	display:inline-block;
+	_zoom:1;
+	padding-bottom:2px;
+}
+
+.register_list .right{
+	width:71%;
+	display:inline-block;
+}
+
+
+
+
+
+
+
 
 
 

@@ -12,72 +12,127 @@
 	<div class="subMain centered">
 
 		<div class='register_list gender'>
-			<span>我是:</span> 
-			<span class='chooseMale' ><input type="radio" name="xb" value='男' ng-model='gender' class='chooseMale' /><label class='male'>男</label></span>
-			<span class='chooseFemale'><input type="radio" value='女' ng-model='gender' name="xb"  /><label class='female'>女</label></span>
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>我是:</span> 
+			</div>
+			<div class='right'>
+				<span class='chooseMale' ><input type="radio" name="xb" value='男' ng-model='gender' class='chooseMale' /><label class='male'>男</label></span>
+				<span class='chooseFemale'><input type="radio" value='女' ng-model='gender' name="xb"  /><label class='female'>女</label></span>
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list birthdayWrap birthday'>
-			<span>生日:</span>
-			<pickbirthday></pickbirthday>
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>生日:</span>
+			</div>
+			<div class='right'>
+				<pickbirthday></pickbirthday>
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list addressWrap address'>
-			<pickaddress></pickaddress>
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>常住地:</span>
+			</div>
+			<div class='right'>
+				<pickaddress></pickaddress>
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list marriageStatus'>
-			婚姻状况:
-			<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='未婚' ng-model='marriageStatus' /><label>未婚</label></span>
-			<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='离异' ng-model='marriageStatus' /><label>离异</label></span>
-			<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='丧偶' ng-model='marriageStatus' /><label>丧偶</label></span>
+			<div class= 'left'>
+				<span class='leftLabel'>婚姻状况:</span>
+			</div>
+			<div class='right'>
+				<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='未婚' ng-model='marriageStatus' /><label>未婚</label></span>
+				<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='离异' ng-model='marriageStatus' /><label>离异</label></span>
+				<span class='marriageStatus'><input type='radio' class='chooseMarriage' name='marriageStatu' value='丧偶' ng-model='marriageStatus' /><label>丧偶</label></span>
 			<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list heightWrap selectedHeight'>
-			<pickheight></pickheight>
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>身高:<span>
+			</div>
+			<div class='right'>
+				<pickheight></pickheight>
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list educationWrap selectedEducation'>
-			<pickeducation></pickeducation>
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>学历:</span>
+			</div>
+			<div class='right'>
+				<pickeducation></pickeducation>
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list incomeWrap selectedIncome'>
-			<pickincome></pickincome>
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>月薪:</span>
+			</div>
+			<div class='right'>
+				<pickincome></pickincome>
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list mobile'>
-			手机号:<input type='text' ng-model='mobile' />
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>手机号:</span>
+			</div>
+			<div class='right'>
+				<input type='text' ng-model='mobile' />
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list password'>
-			创建密码:<input type='password' ng-model='password' />
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>创建密码:</span>
+			</div>
+			<div class='right'>
+				<input type='password' ng-model='password' />
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list checkPassword'>
-			再次输入密码:<input type='password' ng-model='checkPassword' />
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>再次输入密码:</span>
+			</div>
+			<div class='right'>
+				<input type='password' ng-model='checkPassword' />
+				<span class='error'></span>
+			</div>
 		</div>
 
-
 		<div class='register_list falseName'>
-			昵称:<input type='text' ng-model='falseName' />
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>昵称:</span>
+			</div>
+			<div class='right'>
+				<input type='text' ng-model='falseName' />
+				<span class='error'></span>
+			</div>
 		</div>
 
 		<div class='register_list username'>
-			用户名:<input type='text' ng-model='username' />
-			<span class='error'></span>
+			<div class= 'left'>
+				<span class='leftLabel'>用户名:</span>
+			</div>
+			<div class='right'>
+				<input type='text' ng-model='username' />
+				<span class='error'></span>
+			</div>
 		</div>
-
 
 		<button class='register btn btn-primary btn-lg'ng-click='submitRegister()'>免费注册</button>
 
