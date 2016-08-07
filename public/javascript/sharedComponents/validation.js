@@ -44,7 +44,7 @@ agMain.factory('validation', function(errorMsg){
 			var birthdayErrorObj = {};
 			for(var key in birthdayObj){
 				if(birthdayObj[key] === '请选择日' || birthdayObj[key] === '请选择月' || birthdayObj[key] === '请选择日'){
-					var birthdayError = '请选择完整的生日';
+					var birthdayError = '请完整填写生日';
 					birthdayErrorObj.birthday = birthdayError;
 					storeBirthday.push(birthdayErrorObj);
 					break;

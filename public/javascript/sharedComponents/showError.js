@@ -7,10 +7,14 @@ agMain.factory('showError', function(){
 		},
 
 		InsertError:function(eachErrorObj){
-			var errBubble = $("<span></span>");
+			var errBubble = $("<div></div>");
 			errBubble.addClass('roundBorder').addClass('vlidationError');
 			for(var key in eachErrorObj){
 				errBubble.text(eachErrorObj[key]);
+
+				var arrow = $("<div></div>").addClass('errorArrow');
+				arrow.prependTo(errBubble);
+
 				var errContainer = $('.' + key).find('span.error');
 				if(errContainer.find('.vlidationError').length == 0){
 					errContainer.append(errBubble);
