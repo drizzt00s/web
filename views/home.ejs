@@ -1,53 +1,60 @@
 <script src="/javascript/index/home.js"></script>
-
 <script src="/javascript/directive/breadcrumb.js"></script>
 <script src="/javascript/directive/cpPreview.js"></script>
 <script src="/javascript/directive/mainSideMenu.js"></script>
 <script src="/javascript/directive/registerAndLogin.js"></script>
 <script src="/javascript/directive/userStatusBanner.js"></script>
 
-
-
-
 <link rel='stylesheet' href='/stylesheets/home.css' />
 
-
-
-
-
 <div class='main' ng-controller='home'>
-
 	<div class='userstatusWrap' ng-if='isLogin'>
 		<userstatus></userstatus>
 	</div>
 
 	<div class='main_left'>
-
-
 		<div class='cpPreview login'>
-
 			<div ng-if='isLogin' style='border:solid 1px red;'>
 				<cppreview></cppreview>
 			</div>
-
 			<div ng-if='!isLogin'  style='border:solid 1px green;'>
 				<register></register>
 			</div>
-			
-
 		</div>
-
-
 
 		<div class='toolList'>
 			<toolist></toolist>
 		</div>
-
 	</div>
-
-
 
 	<div class='main_right'>
-2
+		
+
+	
+				<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
+					<div class="thumbnail">
+						<a href="/user/userDetails.ejs?check={{::user.account}}"><img src="{{::user.profile}}"></a>
+						<div class="caption text-center">
+							<h5>{{::user.falseName}}</h5>
+							<p>{{::user.age}}</p>
+							<p>{{::user.address}}</p>
+							<p><a href="/user/userDetails.ejs?check={{::user.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
+						</div>
+					</div>
+				</div>
+		
+
+	
 	</div>
+
+
+
+
+
+
+
+
+
+
+
 </div>
