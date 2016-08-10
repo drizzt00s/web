@@ -1,0 +1,9 @@
+.main{
+	background-color:#f6f6f6;
+
+}
+.loginPanel{
+	width:300px;
+	height:300px;
+	border:solid 1px red;
+}

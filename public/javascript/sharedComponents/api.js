@@ -1,5 +1,6 @@
 agMain.factory('api', function(){
 	return {
-		register:'/register'
+		register:'/register',
+		login:'/login'
 	}
 });

@@ -491,7 +491,8 @@ app.post("/WebstormProjects/web/ajax",function(req,res){
 /* on login */
 app.get("/ajax.ejs",routes.ajaxQuery);
 //入口页面showUserPic的备用路由，代码稳定后删除
-app.post("/login",routerLogin.login);
+app.post("/login", routerLogin.login);
+app.get("/login", routerLogin.getLogin)
 /* on login */
 
 
@@ -505,9 +506,9 @@ app.post("/search",routes.search);
 
 /* register */
 app.get("/register",routes.register);
+//old register page
 app.get("/logoff",routes.logoff);
 app.post("/register",routes.registerPost);
-
 app.get("/regist", register.register);
 
 

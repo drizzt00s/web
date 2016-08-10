@@ -57,7 +57,19 @@ agMain.factory('utility', function(){
 			obj[errType] = errMsg;
 			arr.push(obj);
 			return arr;
+		},
 
+		getTargetCookie:function(cookieName){
+			var userCookies=document.cookie;
+			var userCookiesArray=userCookies.split(";");
+			for(var i=0;i<userCookiesArray.length;i++){
+				var checkCookie=userCookiesArray[i].indexOf(cookieName);
+				if(checkCookie!=-1){
+					var targetCookie=userCookiesArray[i];
+					var targetValue=(targetCookie.split("="))[1];
+				}
+			}
+			return targetValue;
 		}
 
 	}

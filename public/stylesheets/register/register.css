@@ -1,12 +1,15 @@
 body{
 	background-color:#f6f6f6;
+	/*
 	background-image:url('/images/default/register/reg_back.png');
+	*/
 	background-repeat:no-repeat;
 	background-position:0px -100px;
 }
 .registerMain{
 	background-color:#fff;
-	margin-top:70px;
+	padding-top:50px;
+	padding-bottom:50px;
 }
 
 .selPanel{
@@ -38,7 +41,7 @@ body{
 }
 .modal-content{
 	top:18px;
-	left:6px;
+	left:88px;
 	z-index:9999;
 
 }

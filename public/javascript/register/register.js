@@ -38,12 +38,12 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 	
 		}).success(function(d){
 			if(d){
-				//alert(d.errorMsg);
 				if(!(d.success)){
 					var errArr = utility.createErrorArray(d.errorType, d.errorMsg);
 					showError.displayError(errArr);
 				} else {
-					alert(d.errorMsg);
+					//alert(d.errorMsg);
+					window.location.href='/home';
 				}
 			} 
 		}).error(function(d){

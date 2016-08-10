@@ -1,0 +1,14 @@
+.main{
+	overflow:hidden;
+	margin:0 auto;
+}
+.main_left{
+	width:20%;
+	float:left;
+
+}
+.main_right{
+	width:79%;
+	float:right;
+
+}
