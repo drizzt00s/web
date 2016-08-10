@@ -21,10 +21,38 @@ agMain.controller("userDetail", function($scope, utility){
     	$scope.race = $scope.data.race;
     	$scope.horoscope = $scope.data.horoscope;//属相
     	$scope.bloodType = $scope.data.bloodType;
+    	//userProfile
 
-    	$scope.avatar = eval("("+ $scope.data.avatar+")")['con'];// array of images
-    					
-    	$scope.avatarLength = $scope.avatar.length;
+    	if($scope.data.avatar){
+			$scope.avatars = eval("("+ $scope.data.avatar+")")['con'];// array of images
+			$scope.avatars = utility.createCompleteUserImageList($scope.avatars, $scope.data.account);
+			$scope.avatarLength = $scope.avatars.length;
+    	}
+    	//image slides
+
+    	$scope.selfIntr = $scope.data.selfintri;
+
+
+
     }
     $scope.populateData();
+
+    $scope.alignMainImg = function(){
+    	$('.mainImg')[0].onload = function(){
+    		var mainImgWidth = $('.mainImg').width();
+    		var mainImgHeight = $('.mainImg').height();
+    		var marginLeft = '-' + (mainImgWidth/2) + 'px';
+    		var marginTop = '-' + (mainImgHeight/2) + 'px';
+    		$('.mainImg').css('position','absolute').css('top','50%').css('left','50%').css('marginTop',marginTop).css('marginLeft',marginLeft);
+    		
+    	};
+
+    	
+
+
+    
+    }
+
+    $scope.alignMainImg();
+
 })

@@ -70,6 +70,17 @@ agMain.factory('utility', function(){
 				}
 			}
 			return targetValue;
+		},
+
+		createCompleteUserImageList:function(imageList, userAccount){
+			if(imageList.length > 0 && userAccount ){
+				var data = [];
+				for(var i = 0 ; i < imageList.length; i++ ){
+					var newImageUrl = '/uploads/pic/' + userAccount +'/'+imageList[i];
+					data.push(newImageUrl);
+				}
+				return data;
+			}
 		}
 
 	}
