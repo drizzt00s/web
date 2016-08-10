@@ -1,7 +1,8 @@
-agMain.controller('login', function($scope, api, $http){
+agMain.controller('login', function($scope, $http, api, showError, utility){
 	$scope.username = '';
 	$scope.pass = ''; 
 	$scope.login = function (){
+		showError.reset();
 		var data = {};
 		data.username = $scope.username;
 		data.pass = $scope.pass;
@@ -13,7 +14,8 @@ agMain.controller('login', function($scope, api, $http){
 			if(d.success){
 				window.location.href='/home';
 			} else{
-				alert(d.msg);
+				var errArray = utility.createErrorArray(d.errorColumn, d.msg);
+				showError.displayError(errArray);
 			}
 		})
 

@@ -4,10 +4,10 @@
 <div ng-controller='login' class="main">
 	<div class='loginPanel'>
 		<div class='username'>
-			<label>登录账号:</label><input type='text' ng-model='username' />
+			<label>登录账号:</label><input type='text' ng-model='username' /><span class='error'></span>
 		</div>
 		<div class='password'>
-			<label>密码:</label><input type='password' ng-model='pass'/>
+			<label>密码:</label><input type='password' ng-model='pass'/><span class='error'></span>
 		</div>
 		<button ng-click='login()'>登录</button>
 	</div>
