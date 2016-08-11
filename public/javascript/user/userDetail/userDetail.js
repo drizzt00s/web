@@ -60,7 +60,9 @@ agMain.controller("userDetail", function($scope, utility){
         $scope.locationloved = $scope.data.locationloved || '未填';
         //生活方式
 
-
+        $scope.monthincome = $scope.data.monthincome || '未填';
+        $scope.housingcondition = $scope.data.housingcondition || '未填';
+        $scope.ifHasCar = $scope.data.ifHasCar || '未填';
 
 
 
