@@ -63,6 +63,14 @@ agMain.controller("userDetail", function($scope, utility){
         $scope.monthincome = $scope.data.monthincome || '未填';
         $scope.housingcondition = $scope.data.housingcondition || '未填';
         $scope.ifHasCar = $scope.data.ifHasCar || '未填';
+        $scope.saving = $scope.data.saving || '未填';
+        //经济实力
+
+        $scope.companyinfo = $scope.data.companyinfo || '未填';
+        $scope.professionType = $scope.data.jobinfo || '未填';
+        $scope.duty = $scope.data.jobinfo1 || '未填';
+        $scope.dutyOverview = $scope.data.joboverview || '未填';
+        
 
 
 
