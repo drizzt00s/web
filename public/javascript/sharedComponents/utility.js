@@ -81,6 +81,37 @@ agMain.factory('utility', function(){
 				}
 				return data;
 			}
+		},
+
+		createReadableMatchCondition:function(matchConditionObj){
+			var data = {};
+
+			var age = matchConditionObj.ageFrom + '-' + matchConditionObj.ageTo + '之间';
+			var height = matchConditionObj.heightFrom + '-' + matchConditionObj.heightTo + '厘米';
+			var race = matchConditionObj.race;
+			var education = matchConditionObj.education;
+			var ifHasPic = matchConditionObj.ifHasPic === 1 ? '有照片' : '不限';
+			var marriageStatus = (matchConditionObj.storeMarriageStatus).join(',');
+			var area = matchConditionObj.areaProvince + ' ' + matchConditionObj.areaCity;
+
+			data.age = age;
+			data.height = height;
+			data.race = race;
+			data.education = education;
+			data.ifHasPic = ifHasPic;
+			data.marriageStatus = marriageStatus;
+			data.area = area;
+
+			return data;
+		},
+
+		transferStringUndefined:function(obj){
+			for(var i in obj){
+				if(obj[i] === 'undefined'){
+					obj[i] = undefined;
+				}
+			}
+			return obj;
 		}
 
 	}

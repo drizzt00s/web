@@ -70,7 +70,66 @@
 			<p>{{selfIntr}}<p>			
 		</div>
 
-		<div class=''>
+		<div class='marriageRequirement'>
+			<h3>择偶要求</h3>
+
+			<p class='marriageRequirementNotFilled' ng-if='matchCondtionNotFilled'>
+				{{matchCondtion}}
+			</p>
+
+			<table class='marriageRequirementFilled' ng-if='matchCondtionFilled'>
+				<tr>
+					<td><span>年龄:</span>{{matchCondtion.age}}</td>
+					<td><span>身高:</span>{{matchCondtion.height}}</td>
+				</tr>
+				<tr>
+					<td><span>民族:</span>{{matchCondtion.race}}</td>
+					<td><span>学历:</span>{{matchCondtion.education}}</td>
+				</tr>
+				<tr>
+					<td><span>相册:</span>{{matchCondtion.ifHasPic}}</td>
+					<td><span>婚姻状况:</span>{{matchCondtion.marriageStatus}}</td>
+				</tr>
+				<tr>
+					<td><span>居住地:</span>{{matchCondtion.area}}</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class='lifeStyle'>
+			<h3>生活方式</h3>
+			<h5>习惯</h5>
+			<table>
+				<tr>
+					<td><span>吸烟:</span>{{ifSmoking}}</td>
+					<td><span>饮酒:</span>{{ifDrinking}}</td>
+				</tr>
+				<tr>
+					<td><span>宗教信仰:</span>{{religion}}</td>
+					<td><span>最大消费:</span>{{mainCosts}}</td>
+				</tr>
+				<tr>
+					<td><span>喜爱的运动:</span>{{sportsloved}}</td>
+					<td><span>喜爱的音乐:</span>{{musicloved}}</td>
+				</tr>
+				<tr>
+					<td><span>喜爱的电影:</span>{{movieloved}}</td>
+					<td><span>喜爱的约会方式:</span>{{mainDateType}}</td>
+				</tr>
+
+				<tr>
+					<td><span>喜爱的食物:</span>{{foodloved}}</td>
+					<td><span>喜爱的运动:</span>{{eventloved}}</td>
+				</tr>
+				<tr>
+					<td><span>喜爱的宠物:</span>{{petloved}}</td>
+					<td><span>喜爱的旅游地点:</span>{{locationloved}}</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class='economicPower'>
+
 
 		</div>
 
