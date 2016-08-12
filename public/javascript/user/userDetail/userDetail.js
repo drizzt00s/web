@@ -58,6 +58,12 @@ agMain.controller("userDetail", function($scope, utility){
         $scope.eventloved = $scope.data.eventloved || '未填';
         $scope.petloved = $scope.data.petloved || '未填';
         $scope.locationloved = $scope.data.locationloved || '未填';
+
+        $scope.cooks = $scope.data.cooks || '未填';
+        $scope.hobby = $scope.data.hobby || '未填';
+
+
+
         //生活方式
 
         $scope.monthincome = $scope.data.monthincome || '未填';
@@ -70,12 +76,16 @@ agMain.controller("userDetail", function($scope, utility){
         $scope.professionType = $scope.data.jobinfo || '未填';
         $scope.duty = $scope.data.jobinfo1 || '未填';
         $scope.dutyOverview = $scope.data.joboverview || '未填';
-        
+        //工作
 
-
-
-
-
+        $scope.ifWantChild = $scope.data.whenHasChild || '未填';
+        $scope.whenGetMarried = $scope.data.whenToMarrige || '未填';
+        $scope.siblingsstatus = $scope.data.siblingsstatus || '未填';
+        $scope.parentstatus = $scope.data.parentstatus || '未填';
+        $scope.liveWithParents = $scope.data.liveWithParents || '未填';
+        $scope.ifhaschildren = $scope.data.ifhaschildren || '未填';
+        $scope.houseKeeping = $scope.data.houseKeeping || '未填';
+        //婚姻观念
 
 
 
