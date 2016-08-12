@@ -1,37 +1,40 @@
 agMain.controller("userDetail", function($scope, utility){
-    $scope.getUserData = function(){
-    	$scope.data = utility.trimeProfileUrlObject(JSON.parse($("#myStoreData").text()));
-        $scope.data = utility.transferStringUndefined($scope.data);
-    }
-    $scope.getUserData();
+    $scope.setUserOnlineStatus = function(){
+        $scope.userTitle =  $scope.data.gender === '男' ? '他' : '她';
+        if($scope.data.isonline === 0){
+             $scope.userStatus = $scope.userTitle + '不在线';
+        } else if($scope.data.isonline ===1){
+            $scope.userStatus = $scope.userTitle +'目前在线, 快和' + $scope.userTitle +'聊天吧';
+        }
+    };
 
     $scope.populateData = function(){
-    	$scope.profile = $scope.data.profile;
-    	$scope.falseName =  $scope.data.falseName || '未填';
-    	$scope.address = $scope.data.address || '未填';
-    	$scope.isonline = $scope.data.isonline || '未填';
-    	$scope.education = $scope.data.education || '未填';
-    	$scope.marriageStatus = $scope.data.marriageStatus || '未填';
-    	$scope.age = $scope.data.age || '未填';
-    	$scope.height = $scope.data.height || '未填';
-    	$scope.ifHasCar = $scope.data.ifHasCar || '未填';
-    	$scope.monthincome = $scope.data.monthincome;
-    	$scope.housingcondition = $scope.data.housingcondition || '未填';
-    	$scope.weight = ($scope.data.weight) + '公斤' || '未填';
-    	$scope.sign = $scope.data.sign || '未填'; //星座
-    	$scope.race = $scope.data.race || '未填';
-    	$scope.horoscope = $scope.data.horoscope || '未填';//属相
-    	$scope.bloodType = $scope.data.bloodType || '未填';
-    	//userProfile
+        $scope.profile = $scope.data.profile;
+        $scope.falseName =  $scope.data.falseName || '未填';
+        $scope.address = $scope.data.address || '未填';
+        $scope.isonline = $scope.data.isonline || '未填';
+        $scope.education = $scope.data.education || '未填';
+        $scope.marriageStatus = $scope.data.marriageStatus || '未填';
+        $scope.age = $scope.data.age || '未填';
+        $scope.height = $scope.data.height || '未填';
+        $scope.ifHasCar = $scope.data.ifHasCar || '未填';
+        $scope.monthincome = $scope.data.monthincome;
+        $scope.housingcondition = $scope.data.housingcondition || '未填';
+        $scope.weight = ($scope.data.weight) + '公斤' || '未填';
+        $scope.sign = $scope.data.sign || '未填'; //星座
+        $scope.race = $scope.data.race || '未填';
+        $scope.horoscope = $scope.data.horoscope || '未填';//属相
+        $scope.bloodType = $scope.data.bloodType || '未填';
+        //userProfile
 
-    	if($scope.data.avatar){
-			$scope.avatars = eval("("+ $scope.data.avatar+")")['con'];// array of images
-			$scope.avatars = utility.createCompleteUserImageList($scope.avatars, $scope.data.account);
-			$scope.avatarLength = $scope.avatars.length;
-    	}
-    	//image slides
+        if($scope.data.avatar){
+            $scope.avatars = eval("("+ $scope.data.avatar+")")['con'];// array of images
+            $scope.avatars = utility.createCompleteUserImageList($scope.avatars, $scope.data.account);
+            $scope.avatarLength = $scope.avatars.length;
+        }
+        //image slides
 
-    	$scope.selfIntr = $scope.data.selfintri || '未填';
+        $scope.selfIntr = $scope.data.selfintri || '未填';
         //selft intro
 
         if(!$scope.data.matchCondtion){
@@ -61,9 +64,6 @@ agMain.controller("userDetail", function($scope, utility){
 
         $scope.cooks = $scope.data.cooks || '未填';
         $scope.hobby = $scope.data.hobby || '未填';
-
-
-
         //生活方式
 
         $scope.monthincome = $scope.data.monthincome || '未填';
@@ -86,11 +86,15 @@ agMain.controller("userDetail", function($scope, utility){
         $scope.ifhaschildren = $scope.data.ifhaschildren || '未填';
         $scope.houseKeeping = $scope.data.houseKeeping || '未填';
         //婚姻观念
+    };
 
-
-
-    }
-    $scope.populateData();
+    $scope.getUserData = function(){
+    	$scope.data = utility.trimeProfileUrlObject(JSON.parse($("#myStoreData").text()));
+        $scope.data = utility.transferStringUndefined($scope.data);
+        $scope.populateData();
+        $scope.setUserOnlineStatus();
+    };
+    $scope.getUserData();
 
     $scope.alignMainImg = function(){
     	$('.mainImg')[0].onload = function(){
@@ -99,15 +103,12 @@ agMain.controller("userDetail", function($scope, utility){
     		var marginLeft = '-' + (mainImgWidth/2) + 'px';
     		var marginTop = '-' + (mainImgHeight/2) + 'px';
     		$('.mainImg').css('position','absolute').css('top','50%').css('left','50%').css('marginTop',marginTop).css('marginLeft',marginLeft);
-    		
     	};
-
-    	
-
-
-    
-    }
-
+    };
     $scope.alignMainImg();
+
+    $scope.popOnlineTalk = function(){
+
+    };
 
 })
