@@ -1,6 +1,12 @@
 <script src="/javascript/user/userDetail/userDetail.js"></script>
+<script src="/javascript/user/userDetail/userDetail.js"></script>
+<script src="/javascript/directive/onlineTalk.js"></script>
+
 <link rel='stylesheet' href='/stylesheets/style.css' />
 <link rel='stylesheet' href='/stylesheets/userDetail/userDetail.css' />
+<link rel='stylesheet' href='/stylesheets/directive/directive_onlineTalk.css' />
+
+
 
 
 
@@ -25,8 +31,13 @@
 						</div>
 					</div>
 					<div class='onlineStatus'>
-						<span class='popOnlineTalk' ng-click='popOnlineTalk();'>{{userStatus}}<span>
+						<span class='popOnlineTalk' ng-click='popOnlineTalk($event);'>{{userStatus}}<span>
 					</div>
+
+					<div class='showOnlineTalk' ng-if='showOnlineTalk'>
+						<onlinetalk></onlinetalk>
+					</div>
+
 				</div>
 
 				<div class='col-md-8'>
@@ -66,6 +77,7 @@
 				</div>
 
 			</div>
+
 		</div>
 
 		<div class='selfInfo'>

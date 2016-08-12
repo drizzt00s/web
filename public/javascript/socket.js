@@ -1,4 +1,6 @@
 $(function(){
+
+/*
   $(".onlinePrivateSend").live("click",function(e){
     var findIframeFrom= ($(e.target).siblings("#iframeImage"))[0].contentDocument.getElementById("sendFile");
      //iframe中的表格
@@ -22,7 +24,7 @@ $(function(){
       });
    }
 })
-
+*/
 
 
 
@@ -297,8 +299,11 @@ $(function(){
             
             socket.on("connect",function(){
                 getFalseName=$("#userFalseName").text();
+                alert(getFalseName);
                 setTimeout("socket.emit('sendFalseName',getFalseName)",1000);
                 socket.on("returnPrivateChatting",function(data){
+
+                    alert("reveive returnPrivateChatting !!");
                     //查看发送消息的用户的聊天界面是否打开!!!!!!!
                     $.each($(".eachUserWrap"),function(i,v){
                         var whenSent=data.whenSent;
@@ -389,6 +394,9 @@ $(function(){
         
             
         $(this).parents(".eachUserWrap").append(onlineTalkInterface);
+
+
+        
         //先检查该用户是否有没读的离线消息
          var rOffLineMsg=$(this).hasClass("remindOfflineImg");
          if(rOffLineMsg){
@@ -415,7 +423,7 @@ $(function(){
         socket.emit("getUnreadImg",{from:questFromWhomB,whoseMsg:msgFromWhomB});
         //发送一个事件向服务器询问是否有没读的图片
         //当发送消息的界面生成后，为界面中的按钮添加发送消息的单击事件句柄
-        $(e.target).parents(".eachUserWrap").find (".onlinePrivateSend").bind("click",getMsg)
+        $(e.target).parents(".eachUserWrap").find (".onlinePrivateSend").bind("click",getMsg);
  
         
     }
@@ -425,6 +433,7 @@ $(function(){
     
     
     function getMsg(e){
+        alert(111111);
 //取得该用户要发送的消息
         var getMsg= $(e.target).parents(".onlineTalkInterface").find("#onlinePrivateMyMsg").val();
         var getImage;

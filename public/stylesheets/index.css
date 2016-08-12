@@ -73,18 +73,16 @@
 }
 
 
-
+    /*
       .onlineTalkInterface{
-
           position:absolute;
           bottom:0;
           right:0;
           width:500px;
           border:solid 1px #000;
+      }*/
 
 
-
-      }
       .remindMsg{
           font-weight:bolder;
           color:red;

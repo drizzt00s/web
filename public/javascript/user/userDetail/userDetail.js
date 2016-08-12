@@ -1,4 +1,6 @@
-agMain.controller("userDetail", function($scope, utility){
+agMain.controller("userDetail", function($scope, utility, $modal){
+    $scope.showOnlineTalk = false;
+
     $scope.setUserOnlineStatus = function(){
         $scope.userTitle =  $scope.data.gender === '男' ? '他' : '她';
         if($scope.data.isonline === 0){
@@ -107,7 +109,21 @@ agMain.controller("userDetail", function($scope, utility){
     };
     $scope.alignMainImg();
 
-    $scope.popOnlineTalk = function(){
+    $scope.popOnlineTalk = function(e){
+        $scope.showOnlineTalk = true;
+        var r1=$(this).hasClass("remindMsg");
+
+        if(r1){
+            //用户有消息没有读
+            var questFromWhom = utility.getTargetCookie("username");
+            var msgFromWhom = $(e.target).parents(".userProfile").find("div.falseNameWrap").text();
+            socket.emit("getUnreadMsg",{from:questFromWhom,whoseMsg:msgFromWhom});
+           $(this).removeClass("remindMsg");
+        }
+
+      //  var questFromWhomB = utility.getTargetCookie('falseName'); //用户昵称
+        
+
 
     };
 

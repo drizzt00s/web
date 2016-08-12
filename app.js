@@ -682,6 +682,9 @@ app.get('/pickincomepanel', routes.pickincomepanel);
 app.get('/selyearpanel', routes.selyearpanel);
 app.get('/selmonthpanel', routes.selmonthpanel);
 app.get('/seldaypanel', routes.seldaypanel);
+app.get('/onlineTalk', routes.onlineTalk);
+
+
 
 
 /* angularstrap modal template */

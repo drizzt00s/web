@@ -211,7 +211,7 @@ $(function(){
                     }
                     //取得数据库中该用户的第一张图片
                     //取得该用户数据完毕,这些数据只是很少一部分，放在首页供人稍微浏览下
-                    var eachUserWrap=$("<div class='eachUserWrap'><span class='eachUserWrap1'>"+"<a href='#' class='userFalseName'>"+falseName+"</a>"+"</span>"+
+                    var eachUserWrap=$("<div class='eachUserWrap' style='border:solid 1px red;'><span class='eachUserWrap1'>"+"<a href='#' class='userFalseName'>"+falseName+"</a>"+"</span>"+
                         "<img src='"+picUrl+"'"+" />"+
                         "<span class='eachUserWrap2'>"+ageProcessed+"</span>"+
                         "<span class='eachUserWrap3'>"+locationProcessed+"</span>"+

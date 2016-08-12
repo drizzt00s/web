@@ -1,0 +1,15 @@
+.onlineTalk{
+	position:absolute!important;
+	top:0!important;
+	left:0!important;
+	z-index:9999!important;
+}
+
+
+#onlinePrivateMyMsg{
+	height:70px;
+	width:494px;
+	border:solid 3px #000;
+	border-top:none;
+	border-right:1px;
+}
