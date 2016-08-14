@@ -26,14 +26,6 @@ $(function(){
 })
 */
 
-
-
-
-
-
-
-   
-    
 })
 //首页进来的时候从db中查询所有注册用户的资料,并且显示在页面中
 
@@ -45,6 +37,7 @@ $(function(){
     initSocket();
     //只有在用户登录状态下才实例化socket!而且在用户登录情况下，如果用户刷新页面，不能生成新的socket实例!!!
     function initSocket(){
+     
 	    var isUserLogin=$("#checkLogin").val();
        // var isUserSignUp=$("#checkLogin").val();
 		var isUserSignUp=getTargetCookie("username");
@@ -54,6 +47,8 @@ $(function(){
             return false;
         }
         else{ 
+
+          
             socket = io.connect('http://localhost:8080');
 			socket.on("connect",function(){
 		    socket.emit("noticeLogin",{"username":getTargetCookie("username"),"falseName":getTargetCookie("falseName")});
@@ -298,9 +293,15 @@ $(function(){
             
             
             socket.on("connect",function(){
-                getFalseName=$("#userFalseName").text();
-                alert(getFalseName);
+
+                //getFalseName = $("#userFalseName").text(); //for old
+
+                getFalseName = getTargetCookie('falseName'); //for new
+              
+                alert("getFalseName:" + getFalseName);
+               
                 setTimeout("socket.emit('sendFalseName',getFalseName)",1000);
+
                 socket.on("returnPrivateChatting",function(data){
 
                     alert("reveive returnPrivateChatting !!");
@@ -433,7 +434,7 @@ $(function(){
     
     
     function getMsg(e){
-        alert(111111);
+        
 //取得该用户要发送的消息
         var getMsg= $(e.target).parents(".onlineTalkInterface").find("#onlinePrivateMyMsg").val();
         var getImage;
@@ -482,6 +483,9 @@ $(function(){
   
   
 })
+
+
+
 
 
 
