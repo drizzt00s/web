@@ -58,16 +58,12 @@
 	
 	
 	
-      .msgMain{
-          height:170px;
-          border:solid 3px #000;
-          background-color:#fff;
-          font-size:11px;
-         
-         
-
-
-      }
+.msgMain{
+height:170px;
+border:solid 1px #000;
+background-color:#fff;
+font-size:11px;
+}
        #msgMain{
     overflow:auto;
 }

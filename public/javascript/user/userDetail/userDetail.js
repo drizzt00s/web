@@ -1,5 +1,6 @@
 agMain.controller("userDetail", function($scope, utility, $modal){
     $scope.showOnlineTalk = false;
+    $scope.isChatPanelOpen = 'closed';
 
     $scope.setUserOnlineStatus = function(){
         $scope.userTitle =  $scope.data.gender === '男' ? '他' : '她';
@@ -111,20 +112,8 @@ agMain.controller("userDetail", function($scope, utility, $modal){
 
     $scope.popOnlineTalk = function(e){
         $scope.showOnlineTalk = true;
-        var r1=$(this).hasClass("remindMsg");
-
-        if(r1){
-            //用户有消息没有读
-            var questFromWhom = utility.getTargetCookie("username");
-            var msgFromWhom = $(e.target).parents(".userProfile").find("div.falseNameWrap").text();
-            socket.emit("getUnreadMsg",{from:questFromWhom,whoseMsg:msgFromWhom});
-           $(this).removeClass("remindMsg");
-        }
-
-      //  var questFromWhomB = utility.getTargetCookie('falseName'); //用户昵称
-        
-
-
+        $scope.isChatPanelOpen = 'opened'
+        $(".onlineTalk").show();
     };
 
 })

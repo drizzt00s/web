@@ -4,10 +4,10 @@
             <div class='sel-onlineTalk'>
                 
 	            <div class='onlineTalkInterface'>
-		            <a href='#' id='closeTalk' class='closeTalk' onclick='closeTalk(this)'></a>
+		            <a href='#' id='closeTalk' class='closeTalk' ng-click='closeTalk()'></a>
 		            <div class='msgMain' id='msgMain'></div>
-		            <div><input type='text' name='sendMsg' id='onlinePrivateMyMsg' /></div>
-		            <input type='button' value='发送' class='onlinePrivateSend' ng-click='getUserMsg($event);'/>
+		            <div><input type='text' name='sendMsg' id='onlinePrivateMyMsg' width='100%'/></div>
+		            <input type='button' value='发送' class='onlinePrivateSend btn btn-primary' ng-click='getUserMsg($event);'/>
 	            </div>
 
             </div>

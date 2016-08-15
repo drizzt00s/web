@@ -292,60 +292,62 @@ $(function(){
 			
             
             
-            socket.on("connect",function(){
+socket.on("connect",function(){
+    //getFalseName = $("#userFalseName").text(); //for old
+    getFalseName = getTargetCookie('falseName'); //for new
+    setTimeout("socket.emit('sendFalseName',getFalseName)",100);
+    socket.on("returnPrivateChatting",function(data){
+       
+        //查看发送消息的用户的聊天界面是否打开
 
-                //getFalseName = $("#userFalseName").text(); //for old
+        alert($("#checkChatPanelOpen").text());
 
-                getFalseName = getTargetCookie('falseName'); //for new
-              
-                alert("getFalseName:" + getFalseName);
-               
-                setTimeout("socket.emit('sendFalseName',getFalseName)",1000);
 
-                socket.on("returnPrivateChatting",function(data){
+        var whenSent = data.whenSent;
+        var msgFrom = data.from;//谁发的信息，值是用户的昵称
+        var myUnreadMsg = data.msgContents;//消息体string
+        var whenSent = data.whenSent;//消息是什么时候发的
+        var msgWrapEnd = $("<div class='msgWrapFrom'></div>");
+        var msgWrapEndSpan2 = $("<span class='msgWrapEndSpan2'></span>");
+        msgWrapEndSpan2.text(whenSent);
+        var msgWrapEndSpan3 = $("<p class='msgWrapEndSpan3'></p>");
+        msgWrapEndSpan3.text(myUnreadMsg);
+        msgWrapEndSpan2.appendTo(msgWrapEnd);
+        msgWrapEndSpan3.appendTo(msgWrapEnd);
+        $('.msgMain').append(msgWrapEnd);
 
-                    alert("reveive returnPrivateChatting !!");
-                    //查看发送消息的用户的聊天界面是否打开!!!!!!!
-                    $.each($(".eachUserWrap"),function(i,v){
-                        var whenSent=data.whenSent;
-                        var msgFrom=data.from;//谁发的信息，值是用户的昵称
-                        var myUnreadMsg=data.msgContents;//消息体string
-                        var checkEachFalse=$(v).find(".userFalseName").text();
-                        if(checkEachFalse==msgFrom){
-                            var checkWhoSentInterface=$(v).find(".onlineTalkInterface");
-                            if(!checkWhoSentInterface[0]){
-                                //接受消息的用户没有打开发送消息用户相应的聊天界面
-                                var thisUser=getTargetCookie("username");
-                                noticeUserOfMsg2(msgFrom);
-                                //调用这个纯前端函数提醒用户有新消息到达
-                                document.cookie=msgFrom+"="+"1";
-                                //在cookie里加一个flag:hasUnreadMsg,标志用户有没读的消息,这个flag的值如果是1的话说明特定用户(msgFrom)
-                                //有没读的值
-                                socket.emit("receiveMsgNotReady",{from:msgFrom,msgDetil:myUnreadMsg,account:thisUser,whenSent:whenSent});
-                                //将消息传回服务器并准备存在数据库中，因为客户端的聊天界面没打开，这个没读的消息不能存在前端，因为当
-                                //用户关闭浏览器后，这些消息会丢失
-                            }
-                            else{
-                                //接受消息的用户打开了发送消息用户相应的聊天界面
-                                var myUnreadMsg=data.msgContents;//信息内容
-                                var msgFrom=data.from;//谁发的信息，值是用户的昵称
-                                var whenSent=data.whenSent;//消息是什么时候发的
-                                var msgWrapEnd=$("<div class='msgWrapFrom'></div>");
-                                var msgWrapEndSpan2=$("<span class='msgWrapEndSpan2'></span>");
-                                msgWrapEndSpan2.text(whenSent);
-                                var msgWrapEndSpan3=$("<p class='msgWrapEndSpan3'></p>");
-                                var getMsg=myUnreadMsg;
-                                msgWrapEndSpan3.text(getMsg);
-                                msgWrapEndSpan2.appendTo(msgWrapEnd);
-                                msgWrapEndSpan3.appendTo(msgWrapEnd);
-                                $(v).find(".msgMain").append(msgWrapEnd);
-                            }
-                        }
-                    })
-                })
-                //returnPrivateChatting
-            })
-            //实例化socket对象
+/*
+        $.each($(".eachUserWrap"),function(i,v){
+            var checkEachFalse = $(v).find(".userFalseName").text();
+            if(checkEachFalse == msgFrom){
+                var checkWhoSentInterface = $(v).find(".onlineTalkInterface");
+                if(!checkWhoSentInterface[0]){
+                    //接受消息的用户没有打开发送消息用户相应的聊天界面
+                    var thisUser = getTargetCookie("username");
+                    noticeUserOfMsg2(msgFrom);
+                    //调用这个纯前端函数提醒用户有新消息到达
+                    document.cookie = msgFrom + "=" + "1";
+                    //在cookie里加一个flag:hasUnreadMsg,标志用户有没读的消息,这个flag的值如果是1的话说明特定用户(msgFrom)
+                    //有没读的值
+                    socket.emit("receiveMsgNotReady",{from:msgFrom,msgDetil:myUnreadMsg,account:thisUser,whenSent:whenSent});
+                    //将消息传回服务器并准备存在数据库中，因为客户端的聊天界面没打开，这个没读的消息不能存在前端，因为当
+                    //用户关闭浏览器后，这些消息会丢失
+                } 
+            }
+        })*/
+
+
+
+
+
+    })
+    //returnPrivateChatting
+
+    socket.on('userLeftCurrentPage', function(data){
+        alert(data.msg);
+    });
+})
+//实例化socket对象
 			
 			
 			

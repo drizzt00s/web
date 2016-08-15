@@ -4,7 +4,9 @@ agMain.controller('home', function($scope, $http, utility, api){
 	$scope.allUsers = null;
 
 	$scope.checkCookie = function(){
+		alert(utility.getTargetCookie('username'));
 		if(utility.getTargetCookie('username')){
+
 			$scope.falseName = utility.getTargetCookie('username');
 			$scope.isLogin = true;
 		} 
@@ -22,4 +24,6 @@ agMain.controller('home', function($scope, $http, utility, api){
 		})
 	}
 	$scope.fetchAllUser();
+
+	
 });

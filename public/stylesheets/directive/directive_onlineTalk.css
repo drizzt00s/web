@@ -3,13 +3,27 @@
 	top:0!important;
 	left:0!important;
 	z-index:9999!important;
-}
+	left:50%!important;
+	margin-left:-300px!important;
 
+}
 
 #onlinePrivateMyMsg{
 	height:70px;
-	width:494px;
-	border:solid 3px #000;
+	width:100%;
+
+	border:solid 1px #003366;
+
 	border-top:none;
-	border-right:1px;
+}
+#msgMain{
+	border:solid 1px #003366;
+}
+.onlinePrivateSend{
+	display:block;
+	margin:0 auto;
+	margin-top:5px;
+}
+.modal-content{
+	background-color:#99CCCC;
 }

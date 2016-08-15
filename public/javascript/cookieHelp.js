@@ -53,10 +53,6 @@ function getImageName(imageUrl){
    return imageUrlArrayLastElement;
 }
 
-function closeTalk(o){
-  var r=$(o).parent(".onlineTalkInterface");
-  r.remove();
-}
 
 function getUrlIndex(){
    var index=(window.location.href).indexOf("?pid=");
