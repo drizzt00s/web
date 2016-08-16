@@ -352,8 +352,8 @@ socket.on("updateNewMsgTo",function(d){
 			
 			
 	
-        }
-    }
+     }
+}
     
    
 
