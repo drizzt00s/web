@@ -15,16 +15,13 @@
 
 <div class='main centered' ng-controller="userDetail">
 
-
 		<div class="userProfile">
 			<div class="row">
-
 				<div class="col-md-4">
 					<div class="thumbnail">
 						<div class='imageShow'>
 							<img src={{profile}} class='mainImg'>
 						</div>
-
 						<div class="imageSlides">
 							<ul class='imageSlidesUl'>
 								<li ng-repeat='img in avatars'><img src={{img}}/></li>
@@ -39,9 +36,7 @@
 					<div class='showOnlineTalk' ng-show='showOnlineTalk'>
 						<onlinetalk></onlinetalk>
 					</div>
-
 				</div>
-
 				<div class='col-md-8'>
 					<div class='falseNameWrap'>{{falseName}}</div>
 					<div>
@@ -71,15 +66,12 @@
 							<td>血型:{{bloodType}}</td>
 						</tr>
 					</table>
-
 					<p>
-						<a href="#" class="btn btn-primary btn-sm noRound buttonWidth1" role="button">发信</a>
+						<a href="/msg/sendMsg?uid={{uid}}" class="btn btn-primary btn-sm noRound buttonWidth1" role="button">发信</a>
 						<a href="#" class="btn btn-default btn-sm noRound buttonWidth1" role="button">关注</a>
 					</p>
 				</div>
-
 			</div>
-
 		</div>
 
 		<div class='selfInfo'>

@@ -1,0 +1,34 @@
+<script src="/javascript/msg/sendMsg.js"></script>
+
+<div class="userProfile" ng-controller='sendMsg'>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<div class='imageShow'>
+					<span><img src='<%- data[0].profile %>'</span>
+				</div>
+			</div>
+		</div>
+
+		<div class='col-md-8'>
+			<div class='falseNameWrap'><%- data[0].falseName %></div>
+			<div>
+				<span><%- data[0].age %></span>
+				<span><%- data[0].marriageStatus %></span> 
+				<span><%- data[0].address %></span>
+			</div>
+			<table>
+				<tr>
+					<td><%- data[0].education %></td>
+					<td><%- data[0].height %></td>
+				</tr>
+				<tr>
+					<td><%- data[0].isonline %></td>
+					<td><%- data[0].monthincome %></td>
+				</tr>
+
+				<span>照片:<%- data[0].avatar %></span>
+			</table>
+		</div>
+	</div>
+</div>

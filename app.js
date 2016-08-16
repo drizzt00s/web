@@ -39,6 +39,7 @@ require('socketAll.js').startSocket();
 var utility = require('utlity.js');
 var dbUtlity = require('dbUtlity.js');
 var routerLogin = require('routerLogin.js');
+var routeMsg = require('routerMsg.js');
 var register = require('register/register.js');
 var tools = require('tools/tools.js');
 
@@ -599,7 +600,11 @@ app.post("/match/autoWatch",routes.autoWatch);
 /* match */
 
 /* msg */
-app.post("/msg/newMsg",routes.countNewMsg);
+app.post("/msg/newMsg",routeMsg.countNewMsg);
+app.get('/msg/sendMsg',routeMsg.sendMsg);
+
+
+
 /* msg */
 
 

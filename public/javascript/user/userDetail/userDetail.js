@@ -12,6 +12,7 @@ agMain.controller("userDetail", function($scope, utility, $modal){
     };
 
     $scope.populateData = function(){
+        $scope.uid = $scope.data.personid;
         $scope.profile = $scope.data.profile;
         $scope.falseName =  $scope.data.falseName || '未填';
         $scope.address = $scope.data.address || '未填';
