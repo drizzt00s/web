@@ -1,6 +1,6 @@
 agMain.controller("userDetail", function($scope, utility, $modal){
     $scope.showOnlineTalk = false;
-    $scope.isChatPanelOpen = 'closed';
+
 
     $scope.setUserOnlineStatus = function(){
         $scope.userTitle =  $scope.data.gender === '男' ? '他' : '她';
@@ -112,8 +112,10 @@ agMain.controller("userDetail", function($scope, utility, $modal){
 
     $scope.popOnlineTalk = function(e){
         $scope.showOnlineTalk = true;
-        $scope.isChatPanelOpen = 'opened'
+  
+        $scope.test = '11234';
         $(".onlineTalk").show();
+        $('.newMsg').hide();
     };
 
 })

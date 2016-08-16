@@ -251,7 +251,7 @@ $(function(){
 
 	requireAutoWatch();
 
-	requireNewMsgLength();
+	//requireNewMsgLength();
 	//ajax获取用户收件箱里有几条未读信息
     //InitAjax(1);
 

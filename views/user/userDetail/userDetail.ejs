@@ -33,9 +33,10 @@
 					</div>
 					<div class='onlineStatus'>
 						<span class='popOnlineTalk' ng-click='popOnlineTalk($event);'>{{userStatus}}<span>
+						<span class='newMsg'>您有新消息</span>
 					</div>
 
-					<div class='showOnlineTalk' ng-if='showOnlineTalk'>
+					<div class='showOnlineTalk' ng-show='showOnlineTalk'>
 						<onlinetalk></onlinetalk>
 					</div>
 
@@ -207,7 +208,7 @@
 
 
 	<div id="myStoreData" style="display:none;"><%= storeData %></div>
-	<div id='checkChatPanelOpen' style="display:none;">{{isChatPanelOpen}}</div>
+	
 
 
 	</div>

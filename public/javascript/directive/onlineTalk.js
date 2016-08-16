@@ -5,8 +5,9 @@ agMain.directive('onlinetalk', function(utility){
 		link:function(scope){
 
 			scope.closeTalk = function(){
-				$(".onlineTalk").hide();
-				scope.$parent.isChatPanelOpen = 'closed';
+				//$(".onlineTalk").hide();
+				 scope.showOnlineTalk = false;
+
 			}
 
 			scope.getUserMsg = function(){
@@ -16,43 +17,24 @@ agMain.directive('onlinetalk', function(utility){
 					alert("发送的信息不能为空");
 					return false;
 				}
+
 				var whoSent = utility.getTargetCookie('falseName');
 				//谁发的信息 昵称
 				var currentTime = utility.getCurrentTime();
 				//当前时间
-
-
-				var msgWrapTo = $("<div class='msgWrapTo'></div>");
-				var msgWrapToSpan2 = $("<span class='msgWrapToSpan2'></span>");
-				msgWrapToSpan2.text(currentTime);
-				var msgWrapToSpan3 = $("<p class='msgWrapToSpan3'></p>");
 				var getMsg = whoSent + ":" + getMsg;
-				msgWrapToSpan3.text(getMsg);
-				msgWrapToSpan2.appendTo(msgWrapTo);
-				msgWrapToSpan3.appendTo(msgWrapTo);
-
-				var findThisInterface = $(".msgMain");
-				// class = msgMain directive
-				msgWrapTo.appendTo(findThisInterface);
-
-
-				var msgFromWhom = utility.getTargetCookie('falseName');
-				//谁发的信息 昵称 这个值同 whoSent
-
+				//完整的消息
+				utility.constructPrivateMsg(currentTime, getMsg);
 				var msgTo = $(".falseNameWrap ").text();
 				//信息发给谁 昵称
-
 				var msgJson = {
 					msg:getMsg,
-					fromWhom:msgFromWhom,
+					fromWhom:whoSent,
 					toWhom:msgTo
 				};
-
 				$("#onlinePrivateMyMsg").val("");
 				//清空发消息的框
-				socket.emit("privateChat",{eachMsg:msgJson,user:msgFromWhom,whenSent:currentTime});
-
-
+				socket.emit("privateChat",{eachMsg:msgJson,user:whoSent,whenSent:currentTime});
 			}
 
 			

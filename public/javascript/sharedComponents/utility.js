@@ -126,7 +126,23 @@ agMain.factory('utility', function(){
 			var getDay = newDate.getDate();
 			var currentTimeF = getYear + "-" + getMonth + "-"+getDay + " " + currentTime;
 			return currentTimeF;
+		},
+
+		constructPrivateMsg:function(currentTime, getMsg){
+				var msgWrapTo = $("<div class='msgWrapTo'></div>");
+				var msgWrapToSpan = $("<span class='msgWrapToSpan2'></span>");
+				msgWrapToSpan.text(currentTime);
+				var msgWrapToSpanMsg = $("<p class='msgWrapToSpan3'></p>");
+				
+				msgWrapToSpanMsg.text(getMsg);
+				msgWrapToSpan.appendTo(msgWrapTo);
+				msgWrapToSpanMsg.appendTo(msgWrapTo);
+
+				var findThisInterface = $(".msgMain");
+				// class = msgMain directive
+				msgWrapTo.appendTo(findThisInterface);
 		}
+
 
 	}
 });
