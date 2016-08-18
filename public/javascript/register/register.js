@@ -42,7 +42,11 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 					var errArr = utility.createErrorArray(d.errorType, d.errorMsg);
 					showError.displayError(errArr);
 				} else {
-					//alert(d.errorMsg);
+					if(typeof Storage !== "undefined"){
+						//支持本地存储
+						localStorage.setItem('username',d.username);
+						localStorage.setItem('falseName',d.falseName);
+					}
 					window.location.href='/home';
 				}
 			} 

@@ -23,9 +23,6 @@
 }
 
 
-
-
-
 function dAll(o){
     if($(o).attr("checked")){
         $.each($(".confirmDelete"),function(i,v){
@@ -114,7 +111,8 @@ $("#oldMsg").bind("click",function(){
     }
 function sendAjaxMsg(e){
    //前端收件箱逻辑   
-    var url="/WebstormProjects/web/views/ajaxPost.ejs";
+    var url="/msg/msgsent";
+
     var catchUserName=getTargetCookie("username");//己方用户名
     var catchFalseName=$("#userFalseName").text();//己方昵称
     var msgBody=$("#msgContents").val();

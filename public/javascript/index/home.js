@@ -3,14 +3,14 @@ agMain.controller('home', function($scope, $http, utility, api){
 	$scope.falseName = '';
 	$scope.allUsers = null;
 
-	$scope.checkCookie = function(){
-		alert(utility.getTargetCookie('username'));
-		if(utility.getTargetCookie('username')){
+	alert(document.cookie);
 
+	$scope.checkCookie = function(){
+		if(utility.getTargetCookie('username')){
 			$scope.falseName = utility.getTargetCookie('username');
 			$scope.isLogin = true;
 		} 
-	}
+	};
 	$scope.checkCookie();
 
 	$scope.fetchAllUser = function(){
@@ -22,8 +22,27 @@ agMain.controller('home', function($scope, $http, utility, api){
 			data =  utility.trimProfileUrl(data);
 			$scope.allUsers = data;
 		})
-	}
+	};
 	$scope.fetchAllUser();
 
-	
+
+	$scope.setUid = function(){
+		$.ajax({
+			url:'/global/uid',
+			type:'post',
+			data:{data:utility.getTargetCookie('username')},
+			success:function(d){
+				if(typeof Storage !== "undefined"){
+					//支持本地存储
+					localStorage.setItem('uid',d.data);
+				}
+			}
+		});
+
+	};
+
+	if($scope.isLogin){
+		$scope.setUid();
+	}
+
 });

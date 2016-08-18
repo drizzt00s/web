@@ -27,8 +27,8 @@ agMain.factory('utility', function(){
 				if(!(d.profile)){
 					d.profile = '/uploads/pic/default/unknown.png';
 				} else {
-					var falseName = d.falseName;
-					d.profile = '/uploads/pic/' + falseName + '/' + d['profile'];
+					var account = d.account;
+					d.profile = '/uploads/pic/' + account + '/' + d['profile'];
 				}
 				return d;
 			}
@@ -141,6 +141,16 @@ agMain.factory('utility', function(){
 				var findThisInterface = $(".msgMain");
 				// class = msgMain directive
 				msgWrapTo.appendTo(findThisInterface);
+		},
+
+		getUidFromUrl:function(url){
+			if(url.indexOf('uid') == -1){
+				return false;
+			} else {
+				var index = url.indexOf('uid=');
+				var uid = url.substring(index + 4);
+				return uid;
+			}
 		}
 
 

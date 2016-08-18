@@ -283,7 +283,7 @@ app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
 
 app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
 
-app.post("/WebstormProjects/web/views/ajaxPost.ejs",routes.ajaxQueryPost);
+
 app.get("/WebstormProjects/web/views/ajaxShowUserPic.ejs",routes.ajaxShowUserPic);
 
 app.get("/WebstormProjects/web/views/404.ejs",routes.errorPage);
@@ -602,6 +602,10 @@ app.post("/match/autoWatch",routes.autoWatch);
 /* msg */
 app.post("/msg/newMsg",routeMsg.countNewMsg);
 app.get('/msg/sendMsg',routeMsg.sendMsg);
+app.post("/msg/msgsent",routeMsg.msgsent);
+app.get('/msg/inboxUnread',routeMsg.inboxUnread);
+
+app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);
 
 
 
@@ -705,6 +709,34 @@ app.get("/home",routes.home);
 /* landing */
 app.post("/allUsers",routerLogin.showAllUsers);
 /* landing */
+
+
+
+
+
+
+
+
+
+
+app.post("/global/uid",function(req, res){
+    var userName = req.body.data;
+    var queryString = "select personid from d where account='" + userName + "'";
+    var client = utility.prepareDb();
+
+    client.query(queryString, function(error, d){
+        if(error){
+            throw error;
+        }
+        console.log( 'result:' +JSON.stringify(d) );
+        var uid = d[0]['personid'];
+        res.send({data:uid});
+        client.end();
+
+    });
+});
+
+
 
 
 

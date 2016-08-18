@@ -1,34 +1,47 @@
 <script src="/javascript/msg/sendMsg.js"></script>
 
-<div class="userProfile" ng-controller='sendMsg'>
-	<div class="row">
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<div class='imageShow'>
-					<span><img src='<%- data[0].profile %>'</span>
+<link rel='stylesheet' href='/stylesheets/msg/sendMsg.css' />
+
+<div ng-controller='sendMsg'>
+	<div class="userProfile">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<div class='imageShow'>
+						<span><img src='<%- data[0].profile %>'</span>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class='col-md-8'>
-			<div class='falseNameWrap'><%- data[0].falseName %></div>
-			<div>
-				<span><%- data[0].age %></span>
-				<span><%- data[0].marriageStatus %></span> 
-				<span><%- data[0].address %></span>
+			<div class='col-md-8'>
+				<div class='falseNameWrap' id='falseNameWrap'><%- data[0].falseName %></div>
+				<div>
+					<span><%- data[0].age %></span>
+					<span><%- data[0].marriageStatus %></span> 
+					<span><%- data[0].address %></span>
+				</div>
+				<table>
+					<tr>
+						<td><%- data[0].education %></td>
+						<td><%- data[0].height %></td>
+					</tr>
+					<tr>
+						<td>是否在线<%- data[0].isonline %></td>
+						<td><%- data[0].monthincome %></td>
+					</tr>
+
+					<span>照片:<%- data[0].avatar %></span>
+				</table>
 			</div>
-			<table>
-				<tr>
-					<td><%- data[0].education %></td>
-					<td><%- data[0].height %></td>
-				</tr>
-				<tr>
-					<td><%- data[0].isonline %></td>
-					<td><%- data[0].monthincome %></td>
-				</tr>
-
-				<span>照片:<%- data[0].avatar %></span>
-			</table>
 		</div>
 	</div>
+
+	<div class='sendMsgWrap'>
+		<div class='msgBox'>
+			<p>发送给:<span class='msTo'></span></p>
+			<p><textarea id='msgContents' ng-model='msgContents'></textarea></p>
+			<input type='button' value='发送' id='sendMsgButton' ng-click='sendAjaxMsg()'/>
+		</div>
+	</div>
+
 </div>
