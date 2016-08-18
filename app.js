@@ -578,6 +578,10 @@ app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);
 app.get('/msg/outbox',routeMsg.outbox);
 
 
+app.get('/msg/detail',routeMsg.msgDetail);
+
+
+
 /* msg */
 
 

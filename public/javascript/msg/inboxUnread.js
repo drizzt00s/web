@@ -1,9 +1,10 @@
 agMain.controller('inboxUnread', function($scope, $http, utility, api){
 
+	$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
+
 	$scope.filterUnreadMsg = function(totalMsg){
 
 	};
-
 
 	function displayAsyMsg(o){
 		var store = {"con":null};
@@ -28,7 +29,6 @@ agMain.controller('inboxUnread', function($scope, $http, utility, api){
 	}
 
 
-
 	$scope.receiveAsynMsg = function(){
        var catchUserName = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
 
@@ -39,6 +39,7 @@ agMain.controller('inboxUnread', function($scope, $http, utility, api){
 			url:url + "?username=" + catchUserName,
 		}).success(function(dataBack){
 			if(dataBack.dataServer){
+				//已经包含消息的全部属性
 				var data = dataBack.dataServer.con
 				for(var i = 0; i < data.length; i++){
 					var msg = data[i]['data'];
