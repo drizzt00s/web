@@ -4,6 +4,9 @@ agMain.factory('api', function(){
 		login:'/login',
 		getAllUsers:'/allUsers',
 		sendOutboxMsg:'/msg/msgsent',
-		returnUid:'/global/uid'
+		returnUid:'/global/uid',
+		outboxMsg: '/msg/msgAsyn',
+		outboxAllMsg:'/msg/outboxAllMsg',
+		outbox:'/msg/outbox'
 	}
 });

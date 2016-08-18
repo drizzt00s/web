@@ -273,6 +273,8 @@ $("#sendBoxlink").live("click",function(e){
 	  });
     });
 	
+
+    
 	$("#mySendRead").bind("click",function(e){
 	    var storeFalseName=[];
 		$.each($(".checkReadMsg"),function(i,v){
@@ -280,7 +282,7 @@ $("#sendBoxlink").live("click",function(e){
 		  storeFalseName.push(falseName);
 		})
 		storeFalseName=removeRedundant(storeFalseName);
-        var url="fetchReadProfile";
+        var url="/WebstormProjects/web/views/fetchReadProfile";
 		$.ajax({
 		  url:url,
 		  type:"post",

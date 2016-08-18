@@ -196,44 +196,7 @@ app.post("/deletSynMsg",function(req,res){
 })
 //删除收件箱信息
 
-app.post("/oldMsg",function(req,res){
-        var data=req.body;//json
-        var dataArray=data["con"];//array
-        var user=dataArray["user"];
-        var msgContent=dataArray["msgContent"];
-        var whoSent=dataArray["whoSent"];
-        var Client =require("mysql").Client;
-        client =new Client();
-        client.user="root";
-        client.password="5611559w";
-        client.query("USE user");
-        //准备数据库
-        var queryString="SELECT * FROM d WHERE account='"+user+"'";
-        client.query(queryString,function(error,data){
-           if(error){
-             throw error;
-           }
-           var dataProcessed0=eval("("+ data[0].msgAsyn+")");//json
-           var dataProcessed1=dataProcessed0['con'];//array
-           //dataProcessed1 is the output from db
-            for(var i=0;i<dataProcessed1.length;i++){
-               if(dataProcessed1[i]["fromFalseName"]===whoSent&&dataProcessed1[i]["data"]===msgContent){
-                    dataProcessed1[i]["isTheMsgNew"]=0;
-               }
-            }
-            //for
-              dataProcessed0.con=dataProcessed1;
-              var dataProcessed0Processed=JSON.stringify(dataProcessed0);//string
-              var queryString2="UPDATE d SET msgAsyn='"+dataProcessed0Processed+"' WHERE account='"+user+"'";
-              client.query(queryString2,function(error){
-                   if(error){
-                      throw error;
-                   }
-                 client.end();
-              });
-        });
-        //query
-});
+
 
 
 
@@ -289,7 +252,7 @@ app.get("/WebstormProjects/web/views/ajaxShowUserPic.ejs",routes.ajaxShowUserPic
 app.get("/WebstormProjects/web/views/404.ejs",routes.errorPage);
 
 app.post("/WebstormProjects/web/views/checkSentMsg",routes.checkSentMsgs);
-app.post("/WebstormProjects/web/views/fetchReadProfile",routes.fetchReadProfile);
+
 app.post("/WebstormProjects/web/views/updateProfileLink",routes.updateProfileLink);
 
 
@@ -601,12 +564,18 @@ app.post("/match/autoWatch",routes.autoWatch);
 
 /* msg */
 app.post("/msg/newMsg",routeMsg.countNewMsg);
-app.get('/msg/sendMsg',routeMsg.sendMsg);
 app.post("/msg/msgsent",routeMsg.msgsent);
+app.post("/msg/outboxAllMsg",routeMsg.returnAllSentMsg);
+
+
+
+
+
+
+app.get('/msg/sendMsg',routeMsg.sendMsg);
 app.get('/msg/inboxUnread',routeMsg.inboxUnread);
-
 app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);
-
+app.get('/msg/outbox',routeMsg.outbox);
 
 
 /* msg */
@@ -711,14 +680,6 @@ app.post("/allUsers",routerLogin.showAllUsers);
 /* landing */
 
 
-
-
-
-
-
-
-
-
 app.post("/global/uid",function(req, res){
     var userName = req.body.data;
     var queryString = "select personid from d where account='" + userName + "'";
@@ -735,6 +696,68 @@ app.post("/global/uid",function(req, res){
 
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.post("/WebstormProjects/web/views/fetchReadProfile",routes.fetchReadProfile);
+
+
+
+
+
+app.post("/oldMsg",function(req,res){
+        var data = req.body;//json
+        var dataArray = data["con"];//array
+        var user = dataArray["user"];
+        var msgContent = dataArray["msgContent"];
+        var whoSent = dataArray["whoSent"];
+        var Client = require("mysql").Client;
+        client = new Client();
+        client.user = "root";
+        client.password ="5611559w";
+        client.query("USE user");
+        //准备数据库
+        var queryString = "SELECT * FROM d WHERE account='" + user + "'";
+        client.query(queryString,function(error,data){
+           if(error){
+             throw error;
+           }
+           var dataProcessed0 = eval("("+ data[0].msgAsyn+")");//json
+           var dataProcessed1 = dataProcessed0['con'];//array
+           //dataProcessed1 is the output from db
+            for(var i = 0; i < dataProcessed1.length; i++){
+               if(dataProcessed1[i]["fromFalseName"] === whoSent && dataProcessed1[i]["data"] === msgContent){
+                    dataProcessed1[i]["isTheMsgNew"] = 0;
+               }
+            }
+            //for
+              dataProcessed0.con = dataProcessed1;
+              var dataProcessed0Processed = JSON.stringify(dataProcessed0);//string
+              var queryString2 = "UPDATE d SET msgAsyn='" + dataProcessed0Processed + "' WHERE account='" + user + "'";
+              client.query(queryString2,function(error){
+                   if(error){
+                      throw error;
+                   }
+                 client.end();
+              });
+        });
+        //query
+});
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@
 		<li ng-repeat='asynMessage in asynMessages'>
 			<span>发信人：</span>  <img src={{asynMessage.profile}} /> <span> {{asynMessage.fromFalseName}}</span>
 
-			<span style='margin-left:25px;'>内容:</span><span>{{asynMessage.data}}</span>
+			<a href='#'><span style='margin-left:25px;'>内容:</span><span>{{asynMessage.data}}</span></a>
 			<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
 		</li>
 	</ul>

@@ -35,7 +35,6 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 			url:api.register,
 			method:'post',
 			data:data
-	
 		}).success(function(d){
 			if(d){
 				if(!(d.success)){
@@ -146,8 +145,6 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 		function checkPasswordComplexcity(){
 			return validation.checkPasswordComplexcity($scope.password);
 		}
-
-
 
 
 		return isValidate;
