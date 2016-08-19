@@ -6,27 +6,7 @@ agMain.controller('inboxUnread', function($scope, $http, utility, api){
 
 	};
 
-	function displayAsyMsg(o){
-		var store = {"con":null};
-		var store2 = {};
-		var storeInfo = {};
-		var user = getTargetCookie("username");//己方用户名
-		var whoSent = $(o).parents(".insertMsg").find(".msgFromWhom2").text();//信息是谁发的
-		var msgContent = $(o).parents(".insertMsg").find(".contents").text();//信息的内容
-		store2["user"] = user;
-		store2["msgContent"] = msgContent;
-		store2["whoSent"] = whoSent;
-		store["con"] = store2;
-		$.ajax({
-				url:"/oldMsg",
-				data:store,
-				cache:false,
-				type:"POST",
-			success:function(returnedData){
-				
-			}
-		}); 
-	}
+
 
 
 	$scope.receiveAsynMsg = function(){
@@ -36,6 +16,7 @@ agMain.controller('inboxUnread', function($scope, $http, utility, api){
 
        	$http({
 			method:'GET',
+			cache:false,
 			url:url + "?username=" + catchUserName,
 		}).success(function(dataBack){
 			if(dataBack.dataServer){
@@ -56,6 +37,30 @@ agMain.controller('inboxUnread', function($scope, $http, utility, api){
 
 
 
+
+
+			/*
+			function displayAsyMsg(o){
+				var store = {"con":null};
+				var store2 = {};
+				var storeInfo = {};
+				var user = getTargetCookie("username");//己方用户名
+				var whoSent = $(o).parents(".insertMsg").find(".msgFromWhom2").text();//信息是谁发的
+				var msgContent = $(o).parents(".insertMsg").find(".contents").text();//信息的内容
+				store2["user"] = user;
+				store2["msgContent"] = msgContent;
+				store2["whoSent"] = whoSent;
+				store["con"] = store2;
+				$.ajax({
+						url:"/oldMsg",
+						data:store,
+						cache:false,
+						type:"POST",
+					success:function(returnedData){
+						
+					}
+				}); 
+			}*/
 
 			//必须通过属性isTheMessageNew 判断是否已读还是未读 1为未读 0为已读
 
