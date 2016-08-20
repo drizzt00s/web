@@ -27,8 +27,8 @@ agMain.controller('sendMsg', function($scope, utility, api){
 	        targetProfileUrl:targetProfileUrl,//收件人的头像profile url
 	        whenSent:(new Date()).toLocaleString(),//发送时间
 	        msgTag:msgTag,//这条消息的唯一标识,
-
 	        msgType:'init',
+	        msgTimestamp:(new Date()).getTime(),
 
 	        isTheMsgNew:1
 	    };

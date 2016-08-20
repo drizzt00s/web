@@ -2,9 +2,28 @@
 
 <div ng-controller='msgDetail'>
 
-	<div><span>信息:</span>{{msgData}} </div>
-	<div>来自: <span id='falseNameWrap'>{{fromFalseName}}  </span> <img id='targetProfile' src={{profile}} /></div>
-	<div><span>时间:</span>{{whenSent}}</div>
+
+	<div class='hidden'>
+		<div><span>信息:</span>{{msgData}} </div>
+		<div>来自: <span id='falseNameWrap'>{{fromFalseName}}  </span> <img id='targetProfile' src={{profile}} /></div>
+		<div><span>时间:</span>{{whenSent}}</div>
+	</div>
+
+	<div class='msgTree'>
+		<ul>
+			<li ng-repeat='eachMsg in MsgTree'>
+				<div><span>信息:</span>{{eachMsg.data}} </div>
+				<div>来自: <span id='falseNameWrap'>{{eachMsg.fromFalseName}}  </span> <img id='targetProfile' src={{eachMsg.profile}} /></div>
+				<div><span>时间:</span>{{eachMsg.whenSent}}</div>
+			</li>
+		</ul>
+
+
+	</div>
+
+
+
+
 
 
 	<div class='replayArea'>
@@ -12,8 +31,10 @@
 		<button ng-click='replayDetail()'>回复</button>
 	</div>
 
-	<div id='storeMsgTag' class=''>{{msgTag}}</div>
 
-	<div id='storeAll' class=''> <%-	 msgFound %> </div>
+
+
+	<div id='storeMsgTag' class='hidden'></div>
+	<div id='storeAll' class='hidden'> <%-msgFound %> </div>
 </div>
 

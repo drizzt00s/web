@@ -1,8 +1,11 @@
 agMain.controller('msgDetail', function($scope, $http, utility, api){
 
+
+
+	$scope.MsgTree = null;
+
 	$scope.replyMsg = '';
 	$scope.msgTag = '';
-
 
 	$scope.msgData = '';
 	$scope.fromFalseName = '';
@@ -11,6 +14,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	$scope.msgTag = '';
 
 	var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
+	var username = localStorage.getItem('username') || utility.getTargetCookie('username');
 
 	$scope.replayDetail = function(){
 		var url = api.sendOutboxMsg;
@@ -24,9 +28,10 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	        to:$("#falseNameWrap").text(),//收件人昵称
 	        targetProfileUrl:targetProfileUrl,//收件人的头像profile url
 	        whenSent:(new Date()).toLocaleString(),//发送时间
-	        msgTag:$scope.msgTag,//这条消息的唯一标识
+	        msgTag:$("#storeMsgTag").text(),//这条消息的唯一标识
 
 	   		msgType:'replay',
+	   		msgTimestamp:(new Date()).getTime(),
 
 
 	        isTheMsgNew:1
@@ -52,7 +57,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	$scope.changeUnreadMsgToReadMsg = function(){
 		var url = '/turnOldMsg';
 		var data = {
-			msgTag:$scope.msgTag,
+			msgTag:$("#storeMsgTag").text(),
 			uid:uid
 		}
 
@@ -67,15 +72,114 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 		}).error(function(){
 			alert('change msg to old error!');
 		})
-
 	};
 
 
-	$scope.getMsgTag = function(){
-		$scope.msgTag  = $("#storeMsgTag").text();
-		$scope.changeUnreadMsgToReadMsg();
+
+
+
+	$scope.buildMsgTree = function(){
+		var url = '/msg/mySentMsg';
+		var msgTag = $("#storeMsgTag").text();
+
+
+		$http({
+			method:'post',
+			url:url,
+			data:{
+				username:username,
+				msgTag:msgTag
+			}
+		}).success(function(d){
+			var receivedMsg = $("#storeAll").text();
+			receivedMsg = eval("(" + receivedMsg + ")");
+			var sentMsg = d;
+			var dataAll = buildData(receivedMsg, sentMsg);
+			$scope.MsgTree = sortData(dataAll);
+
+		
+		});
+
+		function buildData(receivedMsg, sentMsg){
+			var dataAll = [];
+		
+			for(var i = 0 ; i < receivedMsg.length; i++){
+				var obj = {};
+				for(var q in receivedMsg[i]){
+					if(q === 'fromFalseName'){
+						obj['fromFalseName'] = receivedMsg[i][q];
+					}
+					if(q === 'data'){
+						obj['data'] = receivedMsg[i][q];
+					}
+					if(q === 'whenSent'){
+						obj['whenSent'] = receivedMsg[i][q];
+					}
+					if(q === 'msgTimestamp'){
+						obj['msgTimestamp'] = receivedMsg[i][q];
+					}
+					if(q === 'profile'){
+						obj['profile'] = receivedMsg[i][q];
+					}
+				}
+				dataAll.push(obj);
+			}
+
+			for(var c = 0 ; c < sentMsg.length; c++){
+				var obj = {};
+				for(var m in sentMsg[c]){
+					if(m === 'selfFasleName'){
+						obj['fromFalseName'] = sentMsg[c][m];
+					}
+					if(m === 'sentmsg'){
+						obj['data'] = sentMsg[c][m];
+					}
+					if(m === 'time'){
+						obj['whenSent'] = sentMsg[c][m];
+					}
+					if(m === 'msgTimestamp'){
+						obj['msgTimestamp'] = sentMsg[c][m];
+					}
+					if(m === 'selfProfile'){
+						obj['profile'] = sentMsg[c][m];
+					}
+				}
+				dataAll.push(obj);
+			}
+
+			return dataAll;
+		}
+
+		function sortData(data){
+			var sortedData = [];
+			var arr = [];
+			for(var i = 0; i < data.length; i++){
+				for(var q in data[i]){
+					if(q === 'msgTimestamp'){
+						arr.push(data[i][q]);
+					}
+
+				}
+			}
+			arr.sort(sortNumber);
+			for(var c = 0; c < arr.length; c++){
+				for(var x = 0; x < data.length; x++){
+					if(data[x]['msgTimestamp'] === arr[c] ){
+						sortedData.push(data[x]);
+					}
+				}
+			}
+			return sortedData;
+		}
 	};
-	$scope.getMsgTag();
+
+
+
+	var sortNumber = function(a,b){
+		return a - b;
+	};
+
+
 
 
 	$scope.populateData = function(){
@@ -84,19 +188,24 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 		data = eval("(" + data + ")");
 		data = data[0];
 
-
-
 		$scope.msgData = data.data;
 
 		$scope.fromFalseName = data.fromFalseName;
 		$scope.profile = data.profile;
 		$scope.whenSent = data.whenSent;
-		$scope.msgTag = data.msgTag;
 
+		$("#storeMsgTag").text(data.msgTag);
+		$scope.changeUnreadMsgToReadMsg();
+		$scope.buildMsgTree();
 	}
 
-
 	$scope.populateData();
+
+
+
+
+
+	
 
 
 

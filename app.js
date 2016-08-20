@@ -567,7 +567,7 @@ app.post("/msg/newMsg",routeMsg.countNewMsg);
 app.post("/msg/msgsent",routeMsg.msgsent);
 app.post("/msg/outboxAllMsg",routeMsg.returnAllSentMsg);
 app.post("/msg/msgDetail",routeMsg.replayMsgDetail);
-
+app.post("/msg/mySentMsg",routeMsg.getAllSentMsg);
 
 
 
@@ -576,7 +576,6 @@ app.get('/msg/sendMsg',routeMsg.sendMsg);
 app.get('/msg/inboxUnread',routeMsg.inboxUnread);
 app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);
 app.get('/msg/outbox',routeMsg.outbox);
-
 
 app.get('/msg/detail',routeMsg.msgDetail);
 
@@ -687,6 +686,10 @@ app.post("/allUsers",routerLogin.showAllUsers);
 app.post("/global/uid",function(req, res){
     var userName = req.body.data;
     var queryString = "select personid from d where account='" + userName + "'";
+
+
+    console.log(queryString);
+
     var client = utility.prepareDb();
 
     client.query(queryString, function(error, d){
