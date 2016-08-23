@@ -36,6 +36,9 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 				$scope.unreadAsynMsg.push(data[i]);
 			}
 		}
+
+		console.log($scope.readedAsynMsg);
+		console.log($scope.unreadAsynMsg);
 	};
 
 	$scope.receiveAsynMsg = function(){
