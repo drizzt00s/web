@@ -151,6 +151,34 @@ agMain.factory('utility', function(){
 				var uid = url.substring(index + 4);
 				return uid;
 			}
+		},
+
+		sortDataByTimestamp:function (data){
+
+			var sortNumber = function(a,b){
+				return a - b;
+			};
+
+			var sortedData = [];
+			var arr = [];
+			for(var i = 0; i < data.length; i++){
+				for(var q in data[i]){
+					if(q === 'msgTimestamp'){
+						arr.push(data[i][q]);
+					}
+
+				}
+			}
+			arr.sort(sortNumber);
+			
+			for(var c = 0; c < arr.length; c++){
+				for(var x = 0; x < data.length; x++){
+					if(data[x]['msgTimestamp'] === arr[c] ){
+						sortedData.push(data[x]);
+					}
+				}
+			}
+			return sortedData;
 		}
 
 

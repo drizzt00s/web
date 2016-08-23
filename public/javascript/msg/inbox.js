@@ -1,13 +1,42 @@
-agMain.controller('inboxUnread', function($scope, $http, utility, api){
+agMain.controller('inbox', function($scope, $http, utility, api){
 
 	$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
+	$scope.readedAsynMsg = [];//全部已读来信
+	$scope.unreadAsynMsg = []; //全部未读来信
+	$scope.asynMsgMulitple = [];//多次来信
 
-	$scope.filterUnreadMsg = function(totalMsg){
+	$scope.readedMsg = true;
+	$scope.unreadMsg = false;
 
+	$scope.showReadedMsg = function(){
+		$scope.readedMsg = true;
+		$scope.unreadMsg = false;
 	};
 
+	$scope.showUnreadedMsg = function(){
+		$scope.readedMsg = false;
+		$scope.unreadMsg = true;
+	};
 
+	$scope.asynMsgMulitpleComes = function(data){
+		
+	};
 
+	$scope.sortByTime = function(type){
+		if(type === 'readedMsg'){
+			var sortedData = utility.sortDataByTimestamp($scope.readedAsynMsg);
+		}
+	};
+
+	$scope.filterMsg = function(data){
+		for(var i = 0; i < data.length; i++){
+			if(data[i]['isTheMsgNew'] == 0){
+				$scope.readedAsynMsg.push(data[i]);
+			} else if(data[i]['isTheMsgNew'] == 1){
+				$scope.unreadAsynMsg.push(data[i]);
+			}
+		}
+	};
 
 	$scope.receiveAsynMsg = function(){
        var catchUserName = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
@@ -30,7 +59,9 @@ agMain.controller('inboxUnread', function($scope, $http, utility, api){
 				}
 				//将消息内容缩略化 只显示前三个字符，后面加省略号
 
-				$scope.asynMessages = data;
+				$scope.filterMsg(data);
+				$scope.asynMsgMulitpleComes(data);
+
 			} else {
 				alert("您目前暂无新消息");
 			}

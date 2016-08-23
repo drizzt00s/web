@@ -562,26 +562,7 @@ app.post("/match/autoWatch",routes.autoWatch);
 
 /* match */
 
-/* msg */
-app.post("/msg/newMsg",routeMsg.countNewMsg);
-app.post("/msg/msgsent",routeMsg.msgsent);
-app.post("/msg/outboxAllMsg",routeMsg.returnAllSentMsg);
-app.post("/msg/msgDetail",routeMsg.replayMsgDetail);
-app.post("/msg/mySentMsg",routeMsg.getAllSentMsg);
 
-
-
-
-app.get('/msg/sendMsg',routeMsg.sendMsg);
-app.get('/msg/inboxUnread',routeMsg.inboxUnread);
-app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);
-app.get('/msg/outbox',routeMsg.outbox);
-
-app.get('/msg/detail',routeMsg.msgDetail);
-
-
-
-/* msg */
 
 
 /* check */
@@ -624,6 +605,14 @@ app.get("/cp/proof",routes.getProofPage);
 app.post("/cp/proof",routes.submitProof);
 app.post("/cp/profile",routes.updateProfile);
 app.post("/cp/profile_deletion",routes.deleteProfile);
+
+
+
+
+
+
+
+
 app.get("/uploads/proofPic/identitycard/:username/:pic", routes.identitycard);
 app.get("/uploads/proofPic/income/:username/:pic", routes.income);
 app.get("/uploads/proofPic/housing/:username/:pic", routes.housing);
@@ -671,16 +660,7 @@ app.get('/onlineTalk', routes.onlineTalk);
 /* angularstrap modal template */
 
 app.get("/",routes.index);
-app.get("/landing",routes.landing);
-//show all register users in another page, not in index page
 
-app.get("/home",routes.home);
-//new index page
-
-
-/* landing */
-app.post("/allUsers",routerLogin.showAllUsers);
-/* landing */
 
 
 app.post("/global/uid",function(req, res){
@@ -801,14 +781,6 @@ app.post("/turnOldMsg",function(req,res){
 
 
 
-
-
-
-
-
-
-
-
 /* for test angular */
 
 
@@ -817,6 +789,56 @@ app.get("/test",function(req,res){
 });
 
 /* for test angular  */
+
+
+
+
+
+/************************************************************* remade*****************************/
+
+
+
+app.get("/home",routes.home);
+//new index page
+
+
+
+
+/* landing */
+app.post("/allUsers",routerLogin.showAllUsers);
+app.get("/landing",routes.landing);
+//show all register users in another page, not in index page
+/* landing */
+
+
+
+
+
+/* msg */
+app.post("/msg/newMsg",routeMsg.countNewMsg);
+app.post("/msg/msgsent",routeMsg.msgsent);
+app.post("/msg/outboxAllMsg",routeMsg.returnAllSentMsg);//全部发送的消息
+app.post("/msg/msgDetail",routeMsg.replayMsgDetail);
+app.post("/msg/mySentMsg",routeMsg.getAllSentMsg);
+
+app.get('/msg/sendMsg',routeMsg.sendMsg);
+app.get('/msg/inbox',routeMsg.inbox);
+app.get('/msg/outbox',routeMsg.outbox);
+app.get('/msg/detail',routeMsg.msgDetail);
+
+app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);//所有信息
+/* msg */
+
+
+
+/* cp */
+app.get("/cp/matchCondition",routes.newMatchCondition);
+/* cp */
+
+
+
+
+
 
 
 
