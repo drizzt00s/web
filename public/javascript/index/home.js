@@ -1,4 +1,7 @@
-agMain.controller('home', function($scope, $http, utility, api){
+agMain.controller('home', function($scope, $http, utility, api, loginHelp){
+
+	loginHelp.checkIfLogined()//如果没登录 转到登录页面
+
 	$scope.isLogin = false;
 	$scope.falseName = '';
 	$scope.allUsers = null;
