@@ -3,10 +3,16 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 	$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
 	$scope.readedAsynMsg = [];//全部已读来信
 	$scope.unreadAsynMsg = []; //全部未读来信
+
 	$scope.asynMsgMulitple = [];//多次来信
 
-	$scope.readedMsg = true;
-	$scope.unreadMsg = false;
+	$scope.readedMsg = false;
+	$scope.unreadMsg = true;
+
+	$scope.readedMsgTotal = true;
+	$scope.readedMsgMutliple = false;
+	$scope.readedMsgtimeSort = false;
+
 
 	$scope.showReadedMsg = function(){
 		$scope.readedMsg = true;
@@ -18,15 +24,55 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 		$scope.unreadMsg = true;
 	};
 
-	$scope.asynMsgMulitpleComes = function(data){
-		
+
+	$scope.showAll = function(){
+		$scope.readedMsgTotal = true;
+		$scope.readedMsgMutliple = false;
+		$scope.readedMsgtimeSort = false;
+	};
+
+
+	$scope.asynMsgMulti = function(){
+		$scope.readedMsgTotal = false;
+		$scope.readedMsgMutliple = true;
+		$scope.readedMsgtimeSort = false;
+
 	};
 
 	$scope.sortByTime = function(type){
-		if(type === 'readedMsg'){
-			var sortedData = utility.sortDataByTimestamp($scope.readedAsynMsg);
-		}
+		$scope.readedMsgTotal = false;
+		$scope.readedMsgMutliple = false;
+		$scope.readedMsgtimeSort = true;
 	};
+
+
+	$scope.asynMsgMulitpleComes = function(data){
+		var arr = [];
+		for(var i = 0 ; i < data.length; i++){
+			arr.push(data[i]['uid']);
+		}
+		var repeatedArr = [];
+
+		for(var i = 0; i < arr.length; i++){
+			for(var q = (i+1); q < arr.length; q++){
+				if(arr[i] === arr[q]){
+					repeatedArr.push(arr[i]);
+				}
+			}
+		}
+		var mutipleComesUids = utility.removeRedundant(repeatedArr);
+		var finalData = []; //多次来信的所有信息
+		for(var i = 0; i < mutipleComesUids.length; i++){
+			for(var q = 0; q < data.length; q++){
+				if(mutipleComesUids[i] === data[q]['uid']){
+					finalData.push(data[q]);
+				}
+			}
+		}
+		//console.log(finalData);
+		$scope.asynMsgMulitple = finalData;
+	};
+
 
 	$scope.filterMsg = function(data){
 		for(var i = 0; i < data.length; i++){
@@ -36,10 +82,10 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 				$scope.unreadAsynMsg.push(data[i]);
 			}
 		}
-
-		console.log($scope.readedAsynMsg);
-		console.log($scope.unreadAsynMsg);
+		$scope.readedAsynMsg = utility.sortDataByTimestamp($scope.readedAsynMsg);
+		$scope.unreadAsynMsg = utility.sortDataByTimestamp($scope.unreadAsynMsg);
 	};
+
 
 	$scope.receiveAsynMsg = function(){
        var catchUserName = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
@@ -68,9 +114,6 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 			} else {
 				alert("您目前暂无新消息");
 			}
-
-
-
 
 
 			/*

@@ -744,37 +744,7 @@ app.post("/oldMsg",function(req,res){
 
 
 
-app.post("/turnOldMsg",function(req,res){
-    var uid = req.body.uid;
-    var msgTag = req.body.msgTag;
-    var client = utility.prepareDb();
-    var queryString = "select msgAsyn from d where personid='" + uid +"'";
-    client.query(queryString, function(error, d){
-        if(error){
-            throw error;
-        }
-        var msgAsynJson = eval("("+ d[0].msgAsyn+")");//json
-        msgAsynArray = msgAsynJson['con'];//array
-        for(var i = 0; i < msgAsynArray.length; i++ ){
-            if(msgAsynArray[i]['msgTag'] === msgTag){
-                msgAsynArray[i]['isTheMsgNew'] = 0;
-                break;
 
-            }
-        }
-        msgAsynJson.con = msgAsynArray;
-        var newMsgAsynStr = JSON.stringify(msgAsynJson);
-        var queryString = "UPDATE d SET msgAsyn='" + newMsgAsynStr + "' WHERE personid='" + uid + "'";
-        client.query(queryString, function(error, d){
-            if(error){
-                throw error
-            }
-            res.send({data:'ok'});
-            client.end();
-
-        });
-    });
-});
 
 
 
@@ -820,6 +790,9 @@ app.post("/msg/msgsent",routeMsg.msgsent);
 app.post("/msg/outboxAllMsg",routeMsg.returnAllSentMsg);//全部发送的消息
 app.post("/msg/msgDetail",routeMsg.replayMsgDetail);
 app.post("/msg/mySentMsg",routeMsg.getAllSentMsg);
+app.post("/msg/turnOldMsg",routeMsg.changeNewMsgToOld);
+
+
 
 app.get('/msg/sendMsg',routeMsg.sendMsg);
 app.get('/msg/inbox',routeMsg.inbox);

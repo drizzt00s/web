@@ -179,6 +179,33 @@ agMain.factory('utility', function(){
 				}
 			}
 			return sortedData;
+		},
+
+		removeRedundant:function(o){
+		    var storeNewO=[];
+		    for(var i=0;i< o.length;i++){
+		        if(i!=0){
+		            var isIn=detect(o[i]);
+		            if(isIn){
+		                storeNewO.push(o[i]);
+		                continue;
+		            }
+		            else{
+		                continue;
+		            }
+		        }
+		        storeNewO.push(o[i]);
+		    }
+		    function detect(item){
+		        var legal=true;
+		        for(var i=0;i<storeNewO.length;i++){
+		            if(storeNewO[i]===item){
+		                legal=false;
+		            }
+		        }
+		        return legal;
+		    }
+		    return storeNewO;
 		}
 
 

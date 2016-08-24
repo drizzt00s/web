@@ -4,20 +4,10 @@ agMain.controller('sendMsg', function($scope, utility, api){
 
 	var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
 	
-
-
 	$scope.sendAjaxMsg = function(){   
 	    var url = api.sendOutboxMsg;
 	    var msgTag = (new Date()).getTime() + '_' + Math.random() + '_' + uid;
-
-
-	
-
-
 	    var targetProfileUrl = $("#targetProfile").attr("src");
-
-
-
 	    var msgJson = {
 	        from:utility.getTargetCookie('username'), //发件人用户名
 	        fromFalseName:utility.getTargetCookie('falseName'),//发件人昵称
@@ -29,7 +19,6 @@ agMain.controller('sendMsg', function($scope, utility, api){
 	        msgTag:msgTag,//这条消息的唯一标识,
 	        msgType:'init',
 	        msgTimestamp:(new Date()).getTime(),
-
 	        isTheMsgNew:1
 	    };
 

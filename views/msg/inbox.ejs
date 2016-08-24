@@ -2,24 +2,7 @@
 
 <div ng-controller='inbox'>
 
-	<span ng-click='showReadedMsg()'>已读信</span><span ng-click='showUnreadedMsg()'>未读信</span>
-
-	<div class='readedMsg' ng-show='readedMsg'>
-		<span>全部</span>
-		<span ng-click='asynMsgMulitpleComes()'>多次来信</span>
-		<span ng-click="sortByTime('readedMsg')">按时间</span>
-		<ul>
-			<li ng-repeat='asynMessage in readedAsynMsg'>
-				<span>发信人：</span><img src={{asynMessage.profile}} /><span>{{asynMessage.fromFalseName}}</span>
-				<span style='margin-left:25px;'>内容:</span>
-				<span>
-					<a href='/msg/detail?tag={{asynMessage.msgTag}}&isnew={{asynMessage.isTheMsgNew}}&uid={{asynMessage.uid}}&cp_uid={{cp_uid}}&msgType={{asynMessage.msgType}}'>{{asynMessage.data}}</a>
-				</span>
-				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
-			</li>
-		</ul>
-	</div>
-
+	<span ng-click='showUnreadedMsg()'>未读信</span><span ng-click='showReadedMsg()'>已读信</span>
 
 	<div class='unreadMsg' ng-show='unreadMsg'>
 		<ul>
@@ -34,5 +17,45 @@
 		</ul>
 	</div>
 
+	<div class='readedMsg' ng-show='readedMsg'>
+		<span ng-click='showAll()'>全部</span>
+		<span ng-click='asynMsgMulti()'>多次来信</span>
+		<span ng-click="sortByTime()">按时间</span>
 
+
+
+		<ul ng-show='readedMsgTotal'>
+			<li ng-repeat='asynMessage in readedAsynMsg'>
+				<span>发信人：</span><img src={{asynMessage.profile}} /><span>{{asynMessage.fromFalseName}}</span>
+				<span style='margin-left:25px;'>内容:</span>
+				<span>
+					<a href='/msg/detail?tag={{asynMessage.msgTag}}&isnew={{asynMessage.isTheMsgNew}}&uid={{asynMessage.uid}}&cp_uid={{cp_uid}}&msgType={{asynMessage.msgType}}'>{{asynMessage.data}}</a>
+				</span>
+				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
+			</li>
+		</ul>
+
+
+		<ul ng-show='readedMsgMutliple'>
+			<li ng-repeat='asynMessage in asynMsgMulitple'>
+				<span>发信人：</span><img src={{asynMessage.profile}} /><span>{{asynMessage.fromFalseName}}</span>
+				<span style='margin-left:25px;'>内容:</span>
+				<span>
+					<a href='/msg/detail?tag={{asynMessage.msgTag}}&isnew={{asynMessage.isTheMsgNew}}&uid={{asynMessage.uid}}&cp_uid={{cp_uid}}&msgType={{asynMessage.msgType}}'>{{asynMessage.data}}</a>
+				</span>
+				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
+			</li>
+		</ul>
+
+		<ul ng-show='readedMsgtimeSort'>
+			<li ng-repeat='asynMessage in readedAsynMsg'>
+				<span>发信人：</span><img src={{asynMessage.profile}} /><span>{{asynMessage.fromFalseName}}</span>
+				<span style='margin-left:25px;'>内容:</span>
+				<span>
+					<a href='/msg/detail?tag={{asynMessage.msgTag}}&isnew={{asynMessage.isTheMsgNew}}&uid={{asynMessage.uid}}&cp_uid={{cp_uid}}&msgType={{asynMessage.msgType}}'>{{asynMessage.data}}</a>
+				</span>
+				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
+			</li>
+		</ul>
+	</div>
 </div>

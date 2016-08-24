@@ -7,6 +7,7 @@ agMain.factory('api', function(){
 		returnUid:'/global/uid',
 		outboxMsg: '/msg/msgAsyn',
 		outboxAllMsg:'/msg/outboxAllMsg',
-		outbox:'/msg/outbox'
+		outbox:'/msg/outbox',
+		changeNewMsgToOld: '/msg/turnOldMsg'
 	}
 });

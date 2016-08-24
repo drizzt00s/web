@@ -1,7 +1,4 @@
 agMain.controller('msgDetail', function($scope, $http, utility, api){
-
-
-
 	$scope.MsgTree = null;
 
 	$scope.replyMsg = '';
@@ -55,7 +52,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 
 
 	$scope.changeUnreadMsgToReadMsg = function(){
-		var url = '/turnOldMsg';
+		var url = api.changeNewMsgToOld;
 		var data = {
 			msgTag:$("#storeMsgTag").text(),
 			uid:uid
