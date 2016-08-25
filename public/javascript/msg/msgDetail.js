@@ -31,7 +31,6 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	   		msgType:'replay',
 	   		msgTimestamp:(new Date()).getTime(),
 
-
 	        isTheMsgNew:1
 	        
 	    };
@@ -42,7 +41,8 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 			data:msgJson
 
 		}).success(function(d){
-			alert(d);
+			//alert(d);
+			alert('replay success!');
 		}).error(function(){
 			alert('replay error!!');
 		});
@@ -51,11 +51,12 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 
 
 
-	$scope.changeUnreadMsgToReadMsg = function(){
+	$scope.changeUnreadMsgToReadMsg = function(msgTag, msgTimestamp){
 		var url = api.changeNewMsgToOld;
 		var data = {
 			msgTag:$("#storeMsgTag").text(),
-			uid:uid
+			uid:uid,
+			msgTimestamp:msgTimestamp
 		}
 
 		$http({
@@ -89,9 +90,19 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 			var sentMsg = d;
 			var dataAll = buildData(receivedMsg, sentMsg);
 			$scope.MsgTree = sortData(dataAll);
-
+			$scope.getThisMsg(receivedMsg);
 		
 		});
+
+	$scope.getThisMsg = function(receivedMsg){
+		var thisMsg = receivedMsg[receivedMsg.length - 1]
+		//alert(thisMsg);
+		var msgTag = thisMsg.msgTag;
+		var msgTimestamp = thisMsg.msgTimestamp;
+		$scope.changeUnreadMsgToReadMsg(msgTag, msgTimestamp);
+	};
+	//实际的信息
+
 
 		function buildData(receivedMsg, sentMsg){
 			var dataAll = [];
@@ -168,7 +179,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 
 
 
-	var sortNumber = function(a,b){
+	var sortNumber = function(a, b){
 		return a - b;
 	};
 
@@ -188,11 +199,13 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 		$scope.whenSent = data.whenSent;
 
 		$("#storeMsgTag").text(data.msgTag);
-		$scope.changeUnreadMsgToReadMsg();
+		
 		$scope.buildMsgTree();
 	}
 
 	$scope.populateData();
+
+	
 
 
 

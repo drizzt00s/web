@@ -802,6 +802,27 @@ app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);//所有信息
 
 app.get('/msg/outboxDetail',routeMsg.outboxDetail);//get发件箱的详细页面
 
+
+app.get("/msg/allSentMsg", function(req, res){
+    var username = req.query.username;
+    var queryString = "select * from message where username='" + username + "'";
+    var client = utility.prepareDb();
+    client.query(queryString, function(error, d){
+        if(error){
+            throw error;
+        }
+
+       // console.log(typeof d);
+
+        res.send(d);
+        client.end();
+
+    });
+
+
+});
+
+
 /* msg */
 
 

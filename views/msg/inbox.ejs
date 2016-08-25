@@ -49,6 +49,8 @@
 	<div class='readedMsg' ng-show='readedMsg'>
 		<span ng-click='showAllReaded()'>全部</span>
 		<span ng-click='asynMsgMultiReaded()'>多次来信</span>
+		<span>我未回信</span>
+		<span ng-click='readReturned();'>我已回信</span>
 		<span ng-click="sortByTimeReaded()">按时间</span>
 
 
@@ -57,7 +59,9 @@
 			<li ng-repeat='asynMessage in readedAsynMsg'>
 				<span>发信人：</span><img src={{asynMessage.profile}} /><span>{{asynMessage.fromFalseName}}</span>
 				<span style='margin-left:25px;'>内容:</span>
-				<span>
+				<span class='eachMsg'>
+					<span class='hidden msgTagInfo'>{{asynMessage.msgTag}}</span>
+					<span class='hidden msgTimestampinfo'>{{asynMessage.msgTimestamp}}</span>
 					<a href='/msg/detail?tag={{asynMessage.msgTag}}&isnew={{asynMessage.isTheMsgNew}}&uid={{asynMessage.uid}}&cp_uid={{cp_uid}}&msgType={{asynMessage.msgType}}'>{{asynMessage.data}}</a>
 				</span>
 				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
@@ -86,5 +90,19 @@
 				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
 			</li>
 		</ul>
+
+
+		<ul ng-show='msgReturned' style='border:solid 1px red'>
+			<li ng-repeat='asynMessage in asynMsgReturned'>
+				<span>发信人：</span><img src={{asynMessage.profile}} /><span>{{asynMessage.fromFalseName}}</span>
+				<span style='margin-left:25px;'>内容:</span>
+				<span>
+					<a href='/msg/detail?tag={{asynMessage.msgTag}}&isnew={{asynMessage.isTheMsgNew}}&uid={{asynMessage.uid}}&cp_uid={{cp_uid}}&msgType={{asynMessage.msgType}}'>{{asynMessage.data}}</a>
+				</span>
+				<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.whenSent}}</span>
+			</li>
+		</ul>
+
+
 	</div>
 </div>
