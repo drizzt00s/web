@@ -4,10 +4,8 @@
 	<ul>
 		<li ng-repeat='asynMessage in allSentMsg'>
 			<span>收信人：</span>  <img src={{asynMessage.targetProfile}} /> <span> {{asynMessage.towhom}}</span>
-
-			<span style='margin-left:25px;'>内容:</span><span><a href='#'>{{asynMessage.sentmsg}}</a></span>
+			<span style='margin-left:25px;'>内容:</span><span><a href='/msg/outboxDetail?msgTag={{asynMessage.msgTag}}&toWhomAccount={{asynMessage.toWhomAccount}}'>{{asynMessage.sentmsg}}</a></span>
 			<span style='margin-left:25px;'>时间:</span><span>{{asynMessage.time}}</span>
-			<span style='margin-left:25px;'><span>{{asynMessage.viewdInfo}}</span>:</span><span>{{asynMessage.viewd}}</span>
 		</li>
 	</ul>
 </div>

@@ -2,7 +2,6 @@
 
 <div ng-controller='msgDetail'>
 
-
 	<div class='hidden'>
 		<div><span>信息:</span>{{msgData}} </div>
 		<div>来自: <span id='falseNameWrap'>{{fromFalseName}}  </span> <img id='targetProfile' src={{profile}} /></div>
@@ -17,13 +16,7 @@
 				<div><span>时间:</span>{{eachMsg.whenSent}}</div>
 			</li>
 		</ul>
-
-
 	</div>
-
-
-
-
 
 
 	<div class='replayArea'>
@@ -32,9 +25,8 @@
 	</div>
 
 
-
-
 	<div id='storeMsgTag' class='hidden'></div>
 	<div id='storeAll' class='hidden'> <%-msgFound %> </div>
+	<div id='storeTargetAccount' class='hidden'><%-targetAccount %></div>
 </div>
 

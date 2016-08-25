@@ -12,6 +12,16 @@ agMain.controller('outbox', function($scope, $http, utility, api){
 			method:'POST',
 			data:msgJson
 		}).success(function(data){
+
+
+			for(var i = 0; i < data.length; i++){
+				var msg = data[i]['sentmsg'];
+				msg = msg.substring(0, 3);
+				msg += '...';
+				data[i]['sentmsg'] = msg;
+			}
+
+
 			$scope.allSentMsg = data;
 		})
 	};

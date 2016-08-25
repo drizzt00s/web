@@ -23,6 +23,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	       	uid:uid, //发件人uid
 	        data:$scope.replyMsg,//发送的信息
 	        to:$("#falseNameWrap").text(),//收件人昵称
+	        toAccount:$("#storeTargetAccount").text(),//收件人用户名
 	        targetProfileUrl:targetProfileUrl,//收件人的头像profile url
 	        whenSent:(new Date()).toLocaleString(),//发送时间
 	        msgTag:$("#storeMsgTag").text(),//这条消息的唯一标识
@@ -34,7 +35,6 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	        isTheMsgNew:1
 	        
 	    };
-
 
 		$http({
 			method:'post',
@@ -72,13 +72,9 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	};
 
 
-
-
-
 	$scope.buildMsgTree = function(){
 		var url = '/msg/mySentMsg';
 		var msgTag = $("#storeMsgTag").text();
-
 
 		$http({
 			method:'post',

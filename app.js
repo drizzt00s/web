@@ -798,8 +798,10 @@ app.get('/msg/sendMsg',routeMsg.sendMsg);
 app.get('/msg/inbox',routeMsg.inbox);
 app.get('/msg/outbox',routeMsg.outbox);
 app.get('/msg/detail',routeMsg.msgDetail);
-
 app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);//所有信息
+
+app.get('/msg/outboxDetail',routeMsg.outboxDetail);//get发件箱的详细页面
+
 /* msg */
 
 

@@ -4,15 +4,13 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 	$scope.readedAsynMsg = [];//全部已读来信
 	$scope.unreadAsynMsg = []; //全部未读来信
 
-	$scope.asynMsgMulitple = [];//多次来信
+
+	$scope.asynMsgMulitple = [];//多次来信 已读信息
+	$scope.asynMsgMulitpleUnread = [];//多次来信 未读信息
 
 	$scope.readedMsg = false;
 	$scope.unreadMsg = true;
-
-	$scope.readedMsgTotal = true;
-	$scope.readedMsgMutliple = false;
-	$scope.readedMsgtimeSort = false;
-
+	//控制切换已读信息和未读信息
 
 	$scope.showReadedMsg = function(){
 		$scope.readedMsg = true;
@@ -23,27 +21,62 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 		$scope.readedMsg = false;
 		$scope.unreadMsg = true;
 	};
+	//切换已读信息和未读信息的tab
 
 
-	$scope.showAll = function(){
+	$scope.readedMsgTotalUnread = true;
+	$scope.readedMsgMutlipleUnread = false;
+	$scope.readedMsgtimeSortUnread = false;
+	//初始化未读信息的子显示模块
+
+	$scope.showAllUnread = function(){
+		$scope.readedMsgTotalUnread = true;
+		$scope.readedMsgMutlipleUnread = false;
+		$scope.readedMsgtimeSortUnread = false;
+	};
+	//显示所有未读信息
+
+	$scope.asynMsgMultiUnread = function(){
+		$scope.readedMsgTotalUnread = false;
+		$scope.readedMsgMutlipleUnread = true;
+		$scope.readedMsgtimeSortUnread = false;
+	};
+	//显示所有多次来信的未读信息
+
+	$scope.sortByTimeUnread = function(){
+		$scope.readedMsgTotalUnread = false;
+		$scope.readedMsgMutlipleUnread = false;
+		$scope.readedMsgtimeSortUnread = true;
+	};
+	//显示所有按时间排序的未读信息信息
+
+
+	$scope.readedMsgTotal = true;
+	$scope.readedMsgMutliple = false;
+	$scope.readedMsgtimeSort = false;
+	//初始化已读信息的子显示模块
+
+	$scope.showAllReaded = function(){
 		$scope.readedMsgTotal = true;
 		$scope.readedMsgMutliple = false;
 		$scope.readedMsgtimeSort = false;
 	};
+	//显示所有已读信息
 
-
-	$scope.asynMsgMulti = function(){
+	$scope.asynMsgMultiReaded = function(){
 		$scope.readedMsgTotal = false;
 		$scope.readedMsgMutliple = true;
 		$scope.readedMsgtimeSort = false;
-
 	};
+	//显示所有多次来信的已读信息
 
-	$scope.sortByTime = function(type){
+	$scope.sortByTimeReaded = function(type){
 		$scope.readedMsgTotal = false;
 		$scope.readedMsgMutliple = false;
 		$scope.readedMsgtimeSort = true;
 	};
+	//显示所有按时间排序的已读信息
+
 
 
 	$scope.asynMsgMulitpleComes = function(data){
@@ -74,6 +107,33 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 	};
 
 
+	$scope.asynMsgMulitpleComesUnread = function(data){
+		var arr = [];
+		for(var i = 0 ; i < data.length; i++){
+			arr.push(data[i]['uid']);
+		}
+		var repeatedArr = [];
+
+		for(var i = 0; i < arr.length; i++){
+			for(var q = (i+1); q < arr.length; q++){
+				if(arr[i] === arr[q]){
+					repeatedArr.push(arr[i]);
+				}
+			}
+		}
+		var mutipleComesUids = utility.removeRedundant(repeatedArr);
+		var finalData = []; //多次来信的所有信息
+		for(var i = 0; i < mutipleComesUids.length; i++){
+			for(var q = 0; q < data.length; q++){
+				if(mutipleComesUids[i] === data[q]['uid']){
+					finalData.push(data[q]);
+				}
+			}
+		}
+		//console.log(finalData);
+		$scope.asynMsgMulitpleUnread = finalData;
+	};
+
 	$scope.filterMsg = function(data){
 		for(var i = 0; i < data.length; i++){
 			if(data[i]['isTheMsgNew'] == 0){
@@ -84,6 +144,8 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 		}
 		$scope.readedAsynMsg = utility.sortDataByTimestamp($scope.readedAsynMsg);
 		$scope.unreadAsynMsg = utility.sortDataByTimestamp($scope.unreadAsynMsg);
+		$scope.asynMsgMulitpleComes($scope.readedAsynMsg);
+		$scope.asynMsgMulitpleComesUnread($scope.unreadAsynMsg);
 	};
 
 
@@ -109,90 +171,11 @@ agMain.controller('inbox', function($scope, $http, utility, api){
 				//将消息内容缩略化 只显示前三个字符，后面加省略号
 
 				$scope.filterMsg(data);
-				$scope.asynMsgMulitpleComes(data);
+				
 
 			} else {
 				alert("您目前暂无新消息");
 			}
-
-
-			/*
-			function displayAsyMsg(o){
-				var store = {"con":null};
-				var store2 = {};
-				var storeInfo = {};
-				var user = getTargetCookie("username");//己方用户名
-				var whoSent = $(o).parents(".insertMsg").find(".msgFromWhom2").text();//信息是谁发的
-				var msgContent = $(o).parents(".insertMsg").find(".contents").text();//信息的内容
-				store2["user"] = user;
-				store2["msgContent"] = msgContent;
-				store2["whoSent"] = whoSent;
-				store["con"] = store2;
-				$.ajax({
-						url:"/oldMsg",
-						data:store,
-						cache:false,
-						type:"POST",
-					success:function(returnedData){
-						
-					}
-				}); 
-			}*/
-
-			//必须通过属性isTheMessageNew 判断是否已读还是未读 1为未读 0为已读
-
-
-			//alert(JSON.stringify($scope.asynMessages));
-
-                /*
-                for(var i=0;i<data1.length;i++){
-                    var isTheMsgNewFlag="";
-                    var contents=data1[i].data;
-					if(contents.length>10){
-					  var msgPreview=contents.substring(0,10);
-					  msgPreview=msgPreview+"...";
-					}
-					else{
-					  msgPreview=contents;
-					}
-                    var fromWhom=data1[i].fromFalseName;
-                    var msgTo=data1[i].to;
-                    var sentTime=data1[i]["whenSent"];
-                    var isTheMsgNew=data1[i]["isTheMsgNew"];//用户有没有读过这个信息
-                    var sentTimeProcessed=sentTime.substring(0,(sentTime.length)-2);
-                    //将日期最后二位AM或者PM去掉
-                    var msgInserted=$("<div class='insertMsg'>"+"<input type='checkbox'  class='confirmDelete' />"+
-                                    "<span class='msgFromWhom1'>来自:</span>"+"<span class='msgFromWhom2'>"+fromWhom+"</span>"+
-                                    "<span class='readMsg' onclick='displayAsyMsg(this)'>读消息</span>"+
-                                    "<span class='contents'>"+contents+"</span><br />"+
-                                    "<span class='sentTime'>"+sentTime+"</span><br />"+
-									"<span class='msgPreview'>"+msgPreview+"</span>"+
-                                    "</div>");
-                    if(isTheMsgNew==1){
-					 //根据这个值来决定 msgInserted 插在哪个div里面
-                      msgInserted.appendTo($("#newMsgContainer"));
-                    }
-                    else{
-                      msgInserted.appendTo($("#oldMsgContainer"));
-                    }
-                    if(i==((data1.length)-1)){
-					 //最后一个循环
-                      var deleteAllIcon=$("<span>全选</span>");
-                      var deleteAll=$("<input type='checkbox' id='deleteAllMsg' onclick='dAll(this)' />");
-                      var deleteButton=$("<input type='button' class='deleteThisMsg' value='删除' onclick='deleteMsg(this);'>");
-                       if(isTheMsgNew==1){
-                        deleteAllIcon.appendTo($("#newMsgContainer"));
-                        deleteAll.appendTo($("#newMsgContainer"));
-                        deleteButton.appendTo($("#newMsgContainer"));
-                       }
-                       else{
-                        deleteAllIcon.appendTo($("#oldMsgContainer"));
-                        deleteAll.appendTo($("#oldMsgContainer"));
-                        deleteButton.appendTo($("#oldMsgContainer"));
-                       }
-                    }  
-                }*/
-		
 
 		}).error(function(dataBack){
 
