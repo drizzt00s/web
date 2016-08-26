@@ -206,8 +206,13 @@ agMain.factory('utility', function(){
 		        return legal;
 		    }
 		    return storeNewO;
-		}
+		},
 
+		getTimestampByUrl:function(url){
+			var index = url.indexOf('msgTimestamp=');
+			var newStr = url.substring((index + 13));
+			return newStr;
+		}
 
 	}
 });

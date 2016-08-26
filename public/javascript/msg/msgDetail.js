@@ -10,6 +10,8 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	$scope.whenSent = '';
 	$scope.msgTag = '';
 
+	$scope.targetUsername = '';//对方的用户名
+
 	var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
 	var username = localStorage.getItem('username') || utility.getTargetCookie('username');
 
@@ -56,7 +58,8 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 		var data = {
 			msgTag:$("#storeMsgTag").text(),
 			uid:uid,
-			msgTimestamp:msgTimestamp
+			msgTimestamp:msgTimestamp,
+			targetUsername:$scope.targetUsername
 		}
 
 		$http({
@@ -72,6 +75,19 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 		})
 	};
 
+
+	$scope.getThisMsg = function(){
+		//var thisMsg = receivedMsg[receivedMsg.length - 1]
+		//alert(thisMsg);
+		//var msgTag = thisMsg.msgTag;
+		//var msgTimestamp = thisMsg.msgTimestamp;
+
+		 var msgTag = $("#storeMsgTag").text();
+		 var msgTimestamp = utility.getTimestampByUrl(window.location.href);
+
+		$scope.changeUnreadMsgToReadMsg(msgTag, msgTimestamp);
+	};
+	//实际的信息
 
 	$scope.buildMsgTree = function(){
 		var url = '/msg/mySentMsg';
@@ -90,18 +106,11 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 			var sentMsg = d;
 			var dataAll = buildData(receivedMsg, sentMsg);
 			$scope.MsgTree = sortData(dataAll);
-			$scope.getThisMsg(receivedMsg);
-		
+			//$scope.getThisMsg(receivedMsg);
+			$scope.getThisMsg();
 		});
 
-	$scope.getThisMsg = function(receivedMsg){
-		var thisMsg = receivedMsg[receivedMsg.length - 1]
-		//alert(thisMsg);
-		var msgTag = thisMsg.msgTag;
-		var msgTimestamp = thisMsg.msgTimestamp;
-		$scope.changeUnreadMsgToReadMsg(msgTag, msgTimestamp);
-	};
-	//实际的信息
+
 
 
 		function buildData(receivedMsg, sentMsg){
@@ -197,6 +206,8 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 		$scope.fromFalseName = data.fromFalseName;
 		$scope.profile = data.profile;
 		$scope.whenSent = data.whenSent;
+
+		$scope.targetUsername = data.from;
 
 		$("#storeMsgTag").text(data.msgTag);
 		
