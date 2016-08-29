@@ -14,6 +14,8 @@ agMain.controller('outbox', function($scope, $http, utility, api){
 	$scope.outboxUnreaded = false;
 	//控制未读信息tab
 
+	$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
+	$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
 
 	$scope.showAll = function(){
 		$scope.outboxAll = true;
