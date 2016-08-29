@@ -6,7 +6,6 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 	$scope.falseName = '';
 	$scope.allUsers = null;
 
-	alert(document.cookie);
 
 	$scope.checkCookie = function(){
 		if(utility.getTargetCookie('username')){
@@ -15,19 +14,6 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 		} 
 	};
 	$scope.checkCookie();
-
-	$scope.fetchAllUser = function(){
-		$http({
-			method:'POST',
-			url:api.getAllUsers,
-		}).success(function(data){
-			var data =  utility.trimAge(data.allUserInfo);
-			data =  utility.trimProfileUrl(data);
-			$scope.allUsers = data;
-		})
-	};
-	$scope.fetchAllUser();
-
 
 	$scope.setUid = function(){
 		$.ajax({
@@ -47,5 +33,20 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 	if($scope.isLogin){
 		$scope.setUid();
 	}
+
+	$scope.fetchAllUser = function(){
+		$http({
+			method:'POST',
+			url:api.getAllUsers,
+		}).success(function(data){
+			var data =  utility.trimAge(data.allUserInfo);
+			data =  utility.trimProfileUrl(data);
+			$scope.allUsers = data;
+		})
+	};
+	$scope.fetchAllUser();
+
+
+
 
 });

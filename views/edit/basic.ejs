@@ -1,0 +1,78 @@
+<script src="/javascript/edit/basic.js"></script>
+<link rel='stylesheet' href='/stylesheets/edit/edit.css' />
+
+
+
+<breadcrumb></breadcrumb>
+
+<div class='main' ng-controller='editBasic'>
+
+
+	<div class='userstatusWrap'>
+		<userstatus></userstatus>
+	</div>
+
+	<div class='main_left'>
+		<div class='cpPreview login'>
+			<div>
+				<cppreview></cppreview>
+			</div>
+			<div>
+				<register></register>
+			</div>
+		</div>
+
+		<div class='toolList'>
+			<toolist></toolist>
+		</div>
+	</div>
+
+	<div class='main_right'>
+		<ul class='editList'>
+			<li ng-click='showBasicTab()'>基本资料</li>
+			<li ng-click='showCoreInfoTab()'>详细资料</li>
+			<li ng-click='showMonologTab()'>内心独白</li>
+			<li ng-click='showProfileTab()'>上传头像</li>
+			<li ng-click='showAvatarsTab()'>我的相册</li>
+			<li ng-click='showMatchCondtionTab()'>征友条件</li>
+			<li ng-click='showProofsTab()'>诚信认证</li>
+			<li ng-click='changePassTab()'>修改密码</li>
+		</ul>
+
+		<div class='showBasic' ng-show='showBasic'>
+			
+		</div>
+
+		<div class='showCoreInfo' ng-show='showCoreInfo'>
+			
+		</div>
+
+		<div class='showMonolog' ng-show='showMonolog'>
+			
+		</div>
+
+		<div class='showProfile' ng-show='showProfile'>
+			
+		</div>
+
+		<div class='showAvatars' ng-show='showAvatars'>
+			
+		</div>
+
+		<div class='showMatchCondtion' ng-show='showMatchCondtion'>
+			
+		</div>
+
+		<div class='showProofs' ng-show='showProofs'>
+			
+		</div>
+
+		<div class='changePass' ng-show='changePass'>
+			
+		</div>
+
+
+
+	</div>
+
+</div>

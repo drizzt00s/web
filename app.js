@@ -38,11 +38,12 @@ http.createServer(app).listen(app.get('port'), function(){
 require('socketAll.js').startSocket();
 var utility = require('utlity.js');
 var dbUtlity = require('dbUtlity.js');
+var tools = require('tools/tools.js');
+
 var routerLogin = require('routerLogin.js');
 var routeMsg = require('routerMsg.js');
 var register = require('register/register.js');
-var tools = require('tools/tools.js');
-
+var routeEdit = require('modules/edit/routerEdit.js');
 
 
 
@@ -773,14 +774,11 @@ app.get("/home",routes.home);
 
 
 
-
 /* landing */
 app.post("/allUsers",routerLogin.showAllUsers);
 app.get("/landing",routes.landing);
 //show all register users in another page, not in index page
 /* landing */
-
-
 
 
 
@@ -832,6 +830,9 @@ app.get("/cp/matchCondition",routes.newMatchCondition);
 /* cp */
 
 
+/* edit */
+app.get("/edit/basic",routeEdit.editBasic);
+/* edit */
 
 
 
