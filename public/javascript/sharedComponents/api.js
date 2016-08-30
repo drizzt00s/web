@@ -8,6 +8,11 @@ agMain.factory('api', function(){
 		outboxMsg: '/msg/msgAsyn',
 		outboxAllMsg:'/msg/outboxAllMsg',
 		outbox:'/msg/outbox',
-		changeNewMsgToOld: '/msg/turnOldMsg'
+		changeNewMsgToOld: '/msg/turnOldMsg',
+		global:{
+			'userInfo':'/global/userInfo'
+		}
+
+
 	}
 });

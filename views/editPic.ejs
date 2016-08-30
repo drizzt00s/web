@@ -81,6 +81,8 @@ function checkIsAllowedToUpload(){
 $("#submitPic").bind("click",checkIsAllowedToUpload);
  })
 </script>
+
+
 <input type="hidden" value="<%=isSubmitted%>" id="checkSubmitted" />
 <div class="showUploadPicResult">
  <p>一次最多可上传4张照片，可多次上传，您总共还能上传<span id="remainingPic"><%=remainingPic%></span>张照片</p>

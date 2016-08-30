@@ -1,6 +1,7 @@
 ﻿<script src="/javascript/moveInnerJsToOutside/editBasic1.js"></script>
 <style type="text/css">
  .fixedInfo{
+
 position:relative;
 }
 .toEditFixedInfo{
@@ -22,15 +23,7 @@ position:absolute;
       <p>
        您是一位<span><%=editGender%></span>士 ,<span><%=editBirthday%></span>出生,<span><%=editMarriageStatus%></span>,<span><%=editEducation%></span>学历, 身高<span><%=editHeight%></span><a href="#" class="editFixedInfo" id="editFixedInfo" >我要修改</a>
      </p>
-     <div class="toEditFixedInfo">
-       <h4>修改途径</h4>
-       <p><b>性别</b>请致电:021-64895968 客服帮助修改</p>
-       <p><b>出生日期</b><a href="#">认证身份证</a>或<a href="#">上传身份证</a>，系统自动更改</p>
-       <p><b>婚姻状况</b><a href="#">上传户口本或婚育证明</a>，客服帮助修改</p>
-       <p><b>学历</b><a href="#">上传毕业证或学位证</a>，客服帮助修改</p>
-       <p><b>身高</b>发送体检证明至drizzt82s@163.com，注明ID和真实姓名，客服帮助修改</p>
-       <a href="#" id="closeToEditFixedInfo">关闭</a>
-     </div>
+
   </div>
   <form action="/user/editBasic1.ejs" method="post" id="editBasic1">
     <div>

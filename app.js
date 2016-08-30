@@ -44,6 +44,7 @@ var routerLogin = require('routerLogin.js');
 var routeMsg = require('routerMsg.js');
 var register = require('register/register.js');
 var routeEdit = require('modules/edit/routerEdit.js');
+var globalApi = require('modules/global/global.js');
 
 
 
@@ -521,37 +522,7 @@ app.post("/WebstormProjects/web/views/posts.ejs",function(req,res){
 app.get("/mapSearch",routes.mapSearch);
 /* map */
 
-/* user */
-app.get("/user/userDetails.ejs", routes.checkUserDetails);
-//用户查看其它用户的详细资料
-app.get("/user/match_condition",routes.getMatchCondition);
-app.post("/user/edit_match_condition",routes.editMatchCondition);
-app.get("/user/editBasic1.ejs",routes.edit);
-app.post("/user/editBasic1.ejs",routes.editPost);
-app.get("/user/edit1.ejs",routes.edit);
-app.post("/user/edit1.ejs",routes.editPost);
-app.get("/user/edit2.ejs",routes.edit);
-app.post("/user/edit2.ejs",routes.editPost);
-app.get("/user/edit3.ejs",routes.edit);
-app.post("/user/edit3.ejs",routes.editPost);
-app.get("/user/edit4.ejs",routes.edit);
-app.post("/user/edit4.ejs",routes.editPost);
-app.get("/user/edit5.ejs",routes.edit);
-app.post("/user/edit5.ejs",routes.editPost);
-app.get("/user/edit6.ejs",routes.edit);
-app.post("/user/edit6.ejs",routes.editPost);
-app.get("/user/editPic.ejs",routes.edit);
-app.post("/user/editPic.ejs",routes.editPost);
-app.get("/user/userPhotoes.ejs",routes.edit);
-app.get("/user/matchCondition.ejs",routes.matchCondition);
-app.post("/user/matchConditionPost",routes.matchConditionPost);
-app.post("/user/fetchCondtion",routes.fetchCondtion);
-app.get("/user/editProfile",routes.editProfile);
-app.post("/user/whoOnline",routes.who_online);
 
-app.get("/route/login/showUserPic",routerLogin.showUserPic);
-
-/* user */
 
 app.get("/WebstormProjects/web/views/picResult.ejs",routes.edit);
 app.post("/homePageHelp.ejs",routes.homePageHelp);
@@ -664,26 +635,7 @@ app.get("/",routes.index);
 
 
 
-app.post("/global/uid",function(req, res){
-    var userName = req.body.data;
-    var queryString = "select personid from d where account='" + userName + "'";
 
-
-    console.log(queryString);
-
-    var client = utility.prepareDb();
-
-    client.query(queryString, function(error, d){
-        if(error){
-            throw error;
-        }
-        console.log( 'result:' +JSON.stringify(d) );
-        var uid = d[0]['personid'];
-        res.send({data:uid});
-        client.end();
-
-    });
-});
 
 
 
@@ -767,10 +719,36 @@ app.get("/test",function(req,res){
 
 /************************************************************* remade*****************************/
 
-
-
 app.get("/home",routes.home);
 //new index page
+
+
+
+
+/* global */
+app.post("/global/uid",function(req, res){
+    var userName = req.body.data;
+    var queryString = "select personid from d where account='" + userName + "'";
+
+
+    console.log(queryString);
+
+    var client = utility.prepareDb();
+
+    client.query(queryString, function(error, d){
+        if(error){
+            throw error;
+        }
+        console.log( 'result:' +JSON.stringify(d) );
+        var uid = d[0]['personid'];
+        res.send({data:uid});
+        client.end();
+
+    });
+});
+
+app.post("/global/userInfo", globalApi.returnUserInfo);
+/* global */
 
 
 
@@ -830,9 +808,47 @@ app.get("/cp/matchCondition",routes.newMatchCondition);
 /* cp */
 
 
+
+
 /* edit */
 app.get("/edit/basic",routeEdit.editBasic);
+
+app.get("/user/userDetails.ejs", routes.checkUserDetails);
+//用户查看其它用户的详细资料
+app.get("/user/match_condition",routes.getMatchCondition);
+app.post("/user/edit_match_condition",routes.editMatchCondition);
+
+app.get("/user/editBasic1.ejs",routes.edit);
+app.get("/user/edit1.ejs",routes.edit);
+app.get("/user/edit2.ejs",routes.edit);
+app.get("/user/edit3.ejs",routes.edit);
+app.get("/user/edit4.ejs",routes.edit);
+app.get("/user/edit5.ejs",routes.edit);
+app.get("/user/edit6.ejs",routes.edit);
+app.get("/user/editPic.ejs",routes.edit);
+
+app.get("/user/editProfile",routes.editProfile);
+app.get("/user/userPhotoes.ejs",routes.edit);
+app.get("/user/matchCondition.ejs",routes.matchCondition);
+app.get("/route/login/showUserPic",routerLogin.showUserPic);
+
+
+app.post("/user/editBasic1.ejs",routes.editPost);
+app.post("/user/edit1.ejs",routes.editPost);
+app.post("/user/edit2.ejs",routes.editPost);
+app.post("/user/edit3.ejs",routes.editPost);
+app.post("/user/edit4.ejs",routes.editPost);
+app.post("/user/edit5.ejs",routes.editPost);
+app.post("/user/edit6.ejs",routes.editPost);
+app.post("/user/editPic.ejs",routes.editPost);
+
+app.post("/user/matchConditionPost",routes.matchConditionPost);
+app.post("/user/fetchCondtion",routes.fetchCondtion);
+app.post("/user/whoOnline",routes.who_online);
+
 /* edit */
+
+
 
 
 
