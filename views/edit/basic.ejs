@@ -44,13 +44,12 @@
 
 		<div class='showBasic' ng-show='showBasic'>
 
-			<div class="editBasic1">
+			<div class="editBasic">
 				<div class="fixedInfo">
 					<h4>您的基本信息</h4>
 				</div>
 
-				
-				<div id="editBasic1">
+				<div id="editBasic">
 					<div>
 						<label for="editFalseName">昵称:</label><input type="text" id="editFalseName"  name="editFalseName" ng-model="userAllData.falseName" />
 					</div>
@@ -97,27 +96,17 @@
 					</div>
 
 
-					<input type="button" value="保存" ng-click='editBasic1()' /><br />
+					<input type="button" value="保存" ng-click='editBasic()' /><br />
 					
 				</div>
 			</div>
 		</div>
 
-
-
-
-
-
-
-
-
-
 		<div class='showCoreInfo' ng-show='showCoreInfo'>
-			<form action="/user/edit1.ejs" method="post" id="editStep1">
-				
+			<div class='edit1'>
 				<div>
 					<label for='edit2'>体重:</label>
-					<select id="myS" name="weight">
+					<select id="myS" name="weight" ng-model='userAllData.weight'>
 						<option>100</option>
 						<option>110</option>
 						<option>120</option>
@@ -127,35 +116,50 @@
 				</div>
 				<div>
 					<label for='edit4'>生肖:</label>
-					<select name="sign">
-					<script type="text/javascript">
-					var sx=["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"];
-					var inserted5=createHtml(sx,1);
-					document.write(inserted5);
-					</script>
+					<select name="sign" ng-model='userAllData.horoscope'>
+						<option>鼠</option>
+						<option>牛</option>
+						<option>虎</option>
+						<option>兔</option>
+						<option>龙</option>
+						<option>蛇</option>
+						<option>马</option>
+						<option>羊</option>
+						<option>猴</option>
+						<option>鸡</option>
+						<option>狗</option>
+						<option>猪</option>
 					</select>
 				</div>
-				<div><label for='edit5'>星座:</label><select name="horoscope">
-				<script type="text/javascript">
-				var xz=["白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天枰座","天蝎座","射手座","魔蝎座","水瓶座","双鱼座"];
-				var inserted4=createHtml(xz,1);
-				document.write(inserted4);
-				</script>
-
-				</select>
+				<div>
+					<label for='edit5'>星座:</label>
+					<select name="horoscope" ng-model='userAllData.sign'>
+						<option>白羊座</option>
+						<option>金牛座</option>
+						<option>双子座</option>
+						<option>巨蟹座</option>
+						<option>狮子座</option>
+						<option>处女座</option>
+						<option>天枰座</option>
+						<option>天蝎座</option>
+						<option>射手座</option>
+						<option>魔蝎座</option>
+						<option>水瓶座</option>
+						<option>双鱼座</option>
+					</select>
 				</div>
 				<div>
 					<label for='edit6'>血型:</label>
-					<select name="bloodType">
-					<option>A型</option>
-					<option>B型</option>
-					<option>AB型</option>
-					<option>O型</option>
+					<select name="bloodType" ng-model='userAllData.bloodType'>
+						<option>A型</option>
+						<option>B型</option>
+						<option>AB型</option>
+						<option>O型</option>
 					</select>
 				</div>
 				<div>
 					<label for='edit7'>民族:</label>
-					<select name="race">
+					<select name="race" ng-model='userAllData.race'>
 						<option>汉族</option>
 						<option>蒙古族</option>
 						<option>回族</option>
@@ -170,7 +174,7 @@
 				</div>
 				<div>
 					<label for='edit8'>宗教信仰:</label>
-					<select name="religion">
+					<select name="religion" ng-model='userAllData.religion'>
 						<option>无</option>
 						<option>佛教</option>
 						<option>基督教</option>
@@ -178,298 +182,302 @@
 						<option>穆斯林</option>
 					</select>
 				</div>
-				<div><div>描述一下您的性格，开朗、文静、乐观、友善、理智？</div><textarea name="selfIntri"></textarea></div>
-				<input type="submit" value="保存" /><br />
+				<div>
+					<div>描述一下您的性格，开朗、文静、乐观、友善、理智？</div>
+					<textarea name="selfIntri" ng-model='userAllData.selfintri'></textarea>
+				</div>
+				<input type="button" value="保存"  ng-click='edit1()' />
 				<input type="hidden" name="checkSubmit" />
-			</form>
+			</div>
 		</div>
 
 		<div class='showMonolog' ng-show='showMonolog'>
-			<form action="/user/edit2.ejs" method="post" id="editStep2">
+			<div  class='edit2'>
 				<div>
-					<span>是否吸烟</span>
-					<select  id="edit2a" name="edit2a">
-						<option>不抽烟</option>
-						<option>有时社交场合抽一点</option>
-						<option>经常抽</option>
-					</select>
-				</div>
-				<div>
-					<span>是否喝酒</span>
-					<select  id="edit2b" name="edit2b">
-						<option>不喝酒</option>
-						<option>有时社交场合喝一点</option>
-						<option>经常喝</option>
-					</select>
-				</div>
-				<div>
-					<span>是否购车</span>
-					<select  id="edit2c" name="edit2c" class="checkEmpty">
-						<option>请选择</option>
-						<option>已购车</option>
-						<option>未购车</option>
-					</select>
-				</div>
-				<div>
-					<span>厨艺</span>
-					<select  id="edit2d" name="edit2d" class="checkEmpty">
-						<option>请选择</option>
-						<option>色香味俱全</option>
-						<option>能做几样可口的小菜</option>
-						<option>有待提高</option>
-					</select>
-				</div>
-				<div>
-					<span>家务</span>
-					<select  id="edit2e" name="edit2e" class="checkEmpty">
-						<option>请选择</option>
-						<option>愿意承担大部分家务</option>
-						<option>希望对方承担大部分家务</option>
-						<option>各自忙闲，协商分担家务</option>
-					</select>
-				</div>
-				<div>
-					<span>存款</span>
-					<select  id="edit2f" name="edit2f" class="checkEmpty">
-						<option>请选择</option>
-						<option>3万以下</option>
-						<option>3-10万</option>
-						<option>10-50万</option>
-						<option>50万以上</option>
-						<option>保密</option>
-					</select>
-				</div>
-				<div>
-					<span>何时想结婚</span>
-					<select  id="edit2g" name="edit2g" class="checkEmpty">
-						<option>请选择</option>
-						<option>认同闪婚</option>
-						<option>一年内</option>
-						<option>二年内</option>
-						<option>三年内</option>
-						<option>时机成熟就结婚</option>
-					</select>
-				</div>
-				<div>
-					<span>是否想要孩子</span>
-					<select  id="edit2h" name="edit2h" class="checkEmpty">
-						<option>请选择</option>
-						<option>想要孩子</option>
-						<option>不想要孩子</option>
-						<option>视情况而定</option>
-					</select>
-				</div>
-				<div>
-					<span>与对方父母同住</span>
-					<select  id="edit2i" name="edit2i" class="checkEmpty">
-						<option>请选择</option>
-						<option>愿意</option>
-						<option>不愿意</option>
-						<option>视具体情况而定</option>
-					</select>
-				</div>
-				<div>
-					<span>较大的消费：</span>
-					<span><input type="checkbox" name="mainCost"  value="美食" /><span>美食</span></span>
-					<span><input type="checkbox" name="mainCost"  value="服饰" /><span>服饰</span></span>
-					<span><input type="checkbox" name="mainCost"  value="化妆" /><span>化妆</span></span>
-					<span><input type="checkbox" name=mainCost""  value="健身" /><span>健身</span></span>
-					<span><input type="checkbox" name="mainCost"  value="娱乐" /><span>娱乐</span></span>
-					<span><input type="checkbox" name="mainCost"  value="旅行" /><span>旅行</span></span>
-					<span><input type="checkbox" name="mainCost"  value="社交" /><span>社交</span></span>
-					<span><input type="checkbox" name="mainCost"  value="文化" /><span>文化</span></span>
-					<span><input type="checkbox" name="mainCost"  value="自我提升" /><span>自我提升</span></span>
-					<span><input type="checkbox" name="mainCost"  value="其他" /><span>其他</span></span>
-				</div>
-				<div>
-					<span>喜欢怎样的约会：</span>
-					<span><input type="checkbox" name="mainRecreation"  value="餐厅" /><span>餐厅</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="茶楼" /><span>茶楼</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="咖啡厅" /><span>咖啡厅</span></span>
-					<span><input type="checkbox" name=mainRecreation""  value="酒吧" /><span>酒吧</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="看电影" /><span>看电影</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="看演出" /><span>看演出</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="看展览" /><span>看展览</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="逛街" /><span>逛街</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="公园散步" /><span>公园散步</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="郊游" /><span>郊游</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="户外运动" /><span>户外运动</span></span>
-					<span><input type="checkbox" name="mainRecreation"  value="其它" /><span>其它</span></span>
-				</div>
-				<input type="submit" value="保存" /><br />
-				<input type="hidden" name="checkSubmit" />
-			</form>
+					<div>
+						<span>是否吸烟</span>
+						<select  id="edit2a" name="edit2a" ng-model='userAllData.ifSmoking'>
+							<option>不抽烟</option>
+							<option>有时社交场合抽一点</option>
+							<option>经常抽</option>
+						</select>
+					</div>
+					<div>
+						<span>是否喝酒</span>
+						<select  id="edit2b" name="edit2b" ng-model='userAllData.ifDrinking'>
+							<option>不喝酒</option>
+							<option>有时社交场合喝一点</option>
+							<option>经常喝</option>
+						</select>
+					</div>
+					<div>
+						<span>是否购车</span>
+						<select  id="edit2c" name="edit2c" class="checkEmpty" ng-model='userAllData.ifHasCar'>
+							<option>请选择</option>
+							<option>已购车</option>
+							<option>未购车</option>
+						</select>
+					</div>
+					<div>
+						<span>厨艺</span>
+						<select  id="edit2d" name="edit2d" class="checkEmpty" ng-model='userAllData.cooks'>
+							<option>请选择</option>
+							<option>色香味俱全</option>
+							<option>能做几样可口的小菜</option>
+							<option>有待提高</option>
+						</select>
+					</div>
+					<div>
+						<span>家务</span>
+						<select  id="edit2e" name="edit2e" class="checkEmpty" ng-model='userAllData.houseKeeping'>
+							<option>请选择</option>
+							<option>愿意承担大部分家务</option>
+							<option>希望对方承担大部分家务</option>
+							<option>各自忙闲，协商分担家务</option>
+						</select>
+					</div>
+					<div>
+						<span>存款</span>
+						<select  id="edit2f" name="edit2f" class="checkEmpty" ng-model='userAllData.saving'>
+							<option>请选择</option>
+							<option>3万以下</option>
+							<option>3-10万</option>
+							<option>10-50万</option>
+							<option>50万以上</option>
+							<option>保密</option>
+						</select>
+					</div>
+					<div>
+						<span>何时想结婚</span>
+						<select  id="edit2g" name="edit2g" class="checkEmpty" ng-model='userAllData.whenToMarrige'>
+							<option>请选择</option>
+							<option>认同闪婚</option>
+							<option>一年内</option>
+							<option>二年内</option>
+							<option>三年内</option>
+							<option>时机成熟就结婚</option>
+						</select>
+					</div>
+					<div>
+						<span>是否想要孩子</span>
+						<select  id="edit2h" name="edit2h" class="checkEmpty" ng-model='userAllData.whenHasChild'>
+							<option>请选择</option>
+							<option>想要孩子</option>
+							<option>不想要孩子</option>
+							<option>视情况而定</option>
+						</select>
+					</div>
+					<div>
+						<span>与对方父母同住</span>
+						<select  id="edit2i" name="edit2i" class="checkEmpty" ng-model='userAllData.liveWithParents'>
+							<option>请选择</option>
+							<option>愿意</option>
+							<option>不愿意</option>
+							<option>视具体情况而定</option>
+						</select>
+					</div>
+					<div>
+						<span>较大的消费：</span>
+						<span><input type="checkbox" name="mainCost"  value="美食" /><span>美食</span></span>
+						<span><input type="checkbox" name="mainCost"  value="服饰" /><span>服饰</span></span>
+						<span><input type="checkbox" name="mainCost"  value="化妆" /><span>化妆</span></span>
+						<span><input type="checkbox" name="mainCost"  value="健身" /><span>健身</span></span>
+						<span><input type="checkbox" name="mainCost"  value="娱乐" /><span>娱乐</span></span>
+						<span><input type="checkbox" name="mainCost"  value="旅行" /><span>旅行</span></span>
+						<span><input type="checkbox" name="mainCost"  value="社交" /><span>社交</span></span>
+						<span><input type="checkbox" name="mainCost"  value="文化" /><span>文化</span></span>
+						<span><input type="checkbox" name="mainCost"  value="自我提升" /><span>自我提升</span></span>
+						<span><input type="checkbox" name="mainCost"  value="其他" /><span>其他</span></span>
+					</div>
+					<div>
+						<span>喜欢怎样的约会：</span>
+						<span><input type="checkbox" name="mainRecreation"  value="餐厅" /><span>餐厅</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="茶楼" /><span>茶楼</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="咖啡厅" /><span>咖啡厅</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="酒吧" /><span>酒吧</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="看电影" /><span>看电影</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="看演出" /><span>看演出</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="看展览" /><span>看展览</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="逛街" /><span>逛街</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="公园散步" /><span>公园散步</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="郊游" /><span>郊游</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="户外运动" /><span>户外运动</span></span>
+						<span><input type="checkbox" name="mainRecreation"  value="其它" /><span>其它</span></span>
+					</div>
+					<input type="button" value="保存" ng-click='edit2()' /><br />
+					<input type="hidden" name="checkSubmit" />
+			</div>
+			</div>
 		</div>
 
 		<div class='showProfile' ng-show='showProfile'>
-			<form action="/user/edit4.ejs" method="post" id="editStep4">
+			<div>
 			      <div>
 			            <a href="#">喜欢的活动</a>
-			            <input type="checkbox" name="sportsLoved1"  value="电脑/网络" /><label for="sportsLoved1">电脑/网络</label>
-			            <input type="checkbox" name="sportsLoved1" value="电子游戏" /><label for="sportsLoved2">电子游戏</label>
-			            <input type="checkbox" name="sportsLoved1" value="与朋友喝酒" /><label for="sportsLoved3">与朋友喝酒</label>
-			            <input type="checkbox" name="sportsLoved1" value="品茗" /><label for="sportsLoved4">品茗</label>
-			            <input type="checkbox" name="sportsLoved1" value="看电影/电视" /><label for="sportsLoved5">看电影/电视</label>
-			            <input type="checkbox" name="sportsLoved1" value="听音乐" /><label for="sportsLoved6">听音乐</label>
-			            <input type="checkbox" name="sportsLoved1" value="乐器演奏" /><label for="sportsLoved7">乐器演奏</label>
-			            <input type="checkbox" name="sportsLoved1" value="烹调" /><label for="sportsLoved8">烹调</label>
-			            <input type="checkbox" name="sportsLoved1" value="摄影" /><label for="sportsLoved9">摄影</label>
-			            <input type="checkbox" name="sportsLoved1" value="下棋/打牌" /><label for="sportsLoved10">下棋/打牌</label>
-			            <input type="checkbox" name="sportsLoved1" value="观光旅游" /><label for="sportsLoved11">观光旅游</label>
-			            <input type="checkbox" name="sportsLoved1" value="逛街购物" /><label for="sportsLoved12">逛街购物</label>
-			            <input type="checkbox" name="sportsLoved1" value="阅读" /><label for="sportsLoved13">阅读</label>
-			            <input type="checkbox" name="sportsLoved1" value="写作" /><label for="sportsLoved14">写作</label>
-			            <input type="checkbox" name="sportsLoved1" value="舞会/卡拉OK" /><label for="sportsLoved15">舞会/卡拉OK</label>
-			            <input type="checkbox" name="sportsLoved1" value="各种收集活动" /><label for="sportsLoved16">各种收集活动</label>
-			            <input type="checkbox" name="sportsLoved1" value="理财/投资" /><label for="sportsLoved17">理财/投资</label>
-			            <input type="checkbox" name="sportsLoved1" value="文艺表演" /><label for="sportsLoved18">文艺表演</label>
-			            <input type="checkbox" name="sportsLoved1" value="聊天" /><label for="sportsLoved19">聊天</label>
-			            <input type="checkbox" name="sportsLoved1" value="家务/手工艺" /><label for="sportsLoved20">家务/手工艺</label>
-			            <input type="checkbox" name="sportsLoved1" value="书法/绘画" /><label for="sportsLoved21">书法/绘画</label>
-			            <input type="checkbox" name="sportsLoved1" value="其他" /><label for="sportsLoved22">其他</label>
+			            <input type="checkbox" name="sportsLoved1" value="电脑/网络" /><label>电脑/网络</label>
+			            <input type="checkbox" name="sportsLoved1" value="电子游戏" /><label>电子游戏</label>
+			            <input type="checkbox" name="sportsLoved1" value="与朋友喝酒" /><label>与朋友喝酒</label>
+			            <input type="checkbox" name="sportsLoved1" value="品茗" /><label>品茗</label>
+			            <input type="checkbox" name="sportsLoved1" value="看电影/电视" /><label>看电影/电视</label>
+			            <input type="checkbox" name="sportsLoved1" value="听音乐" /><label>听音乐</label>
+			            <input type="checkbox" name="sportsLoved1" value="乐器演奏" /><label>乐器演奏</label>
+			            <input type="checkbox" name="sportsLoved1" value="烹调" /><label>烹调</label>
+			            <input type="checkbox" name="sportsLoved1" value="摄影" /><label>摄影</label>
+			            <input type="checkbox" name="sportsLoved1" value="下棋/打牌" /><label>下棋/打牌</label>
+			            <input type="checkbox" name="sportsLoved1" value="观光旅游" /><label>观光旅游</label>
+			            <input type="checkbox" name="sportsLoved1" value="逛街购物" /><label>逛街购物</label>
+			            <input type="checkbox" name="sportsLoved1" value="阅读" /><label>阅读</label>
+			            <input type="checkbox" name="sportsLoved1" value="写作" /><label>写作</label>
+			            <input type="checkbox" name="sportsLoved1" value="舞会/卡拉OK" /><label>舞会/卡拉OK</label>
+			            <input type="checkbox" name="sportsLoved1" value="各种收集活动" /><label>各种收集活动</label>
+			            <input type="checkbox" name="sportsLoved1" value="理财/投资" /><label>理财/投资</label>
+			            <input type="checkbox" name="sportsLoved1" value="文艺表演" /><label>文艺表演</label>
+			            <input type="checkbox" name="sportsLoved1" value="聊天" /><label>聊天</label>
+			            <input type="checkbox" name="sportsLoved1" value="家务/手工艺" /><label>家务/手工艺</label>
+			            <input type="checkbox" name="sportsLoved1" value="书法/绘画" /><label>书法/绘画</label>
+			            <input type="checkbox" name="sportsLoved1" value="其他" /><label>其他</label>
 			      </div>
 			      <div>
 			            <a href="#">喜欢的体育活动</a>
-			            <input type="checkbox" name="sportsLoved2" value="足球" /><label for="sportsLoved23">足球</label>
-			            <input type="checkbox" name="sportsLoved2" value="排球" /><label for="sportsLoved24">排球</label>
-			            <input type="checkbox" name="sportsLoved2" value="篮球" /><label for="sportsLoved25">篮球</label>
-			            <input type="checkbox" name="sportsLoved2" value="骑单车/摩托车" /><label for="sportsLoved26">骑单车/摩托车</label>
-			            <input type="checkbox" name="sportsLoved2" value="乒乓球" /><label for="sportsLoved27">乒乓球</label>
-			            <input type="checkbox" name="sportsLoved2" value="保龄球" /><label for="sportsLoved28">保龄球</label>
-			            <input type="checkbox" name="sportsLoved2" value="健身/跑步" /><label for="sportsLoved29">健身/跑步</label>
-			            <input type="checkbox" name="sportsLoved2" value="足球" /><label for="sportsLoved30">钓鱼</label>
-			            <input type="checkbox" name="sportsLoved2" value="游泳/冲浪/潜水" /><label for="sportsLoved31">游泳/冲浪/潜水</label>
-			            <input type="checkbox" name="sportsLoved2" value="网球" /><label for="sportsLoved32">网球</label>
-			            <input type="checkbox" name="sportsLoved2" value="羽毛球" /><label for="sportsLoved33">羽毛球</label>
-			            <input type="checkbox" name="sportsLoved2" value="高尔夫" /><label for="sportsLoved34">高尔夫</label>
-			            <input type="checkbox" name="sportsLoved2" value="滑冰/滑雪" /><label for="sportsLoved35">滑冰/滑雪</label>
-			            <input type="checkbox" name="sportsLoved2" value="其他" /><label for="sportsLoved36">其他</label>
-			            <input type="checkbox" name="sportsLoved2" value="舞会/卡拉O" /><label for="sportsLoved37">舞会/卡拉OK</label>
+			            <input type="checkbox" name="sportsLoved2" value="足球" /><label>足球</label>
+			            <input type="checkbox" name="sportsLoved2" value="排球" /><label>排球</label>
+			            <input type="checkbox" name="sportsLoved2" value="篮球" /><label>篮球</label>
+			            <input type="checkbox" name="sportsLoved2" value="骑单车/摩托车" /><label>骑单车/摩托车</label>
+			            <input type="checkbox" name="sportsLoved2" value="乒乓球" /><label>乒乓球</label>
+			            <input type="checkbox" name="sportsLoved2" value="保龄球" /><label>保龄球</label>
+			            <input type="checkbox" name="sportsLoved2" value="健身/跑步" /><label>健身/跑步</label>
+			            <input type="checkbox" name="sportsLoved2" value="足球" /><label>钓鱼</label>
+			            <input type="checkbox" name="sportsLoved2" value="游泳/冲浪/潜水" /><label>游泳/冲浪/潜水</label>
+			            <input type="checkbox" name="sportsLoved2" value="网球" /><label>网球</label>
+			            <input type="checkbox" name="sportsLoved2" value="羽毛球" /><label>羽毛球</label>
+			            <input type="checkbox" name="sportsLoved2" value="高尔夫" /><label>高尔夫</label>
+			            <input type="checkbox" name="sportsLoved2" value="滑冰/滑雪" /><label>滑冰/滑雪</label>
+			            <input type="checkbox" name="sportsLoved2" value="其他" /><label>其他</label>
+			            <input type="checkbox" name="sportsLoved2" value="舞会/卡拉O" /><label>舞会/卡拉OK</label>
 			      </div>
 			      <div>
 			            <a href="#">喜欢的音乐</a>
-			            <input  type="checkbox" name="musicLoved" value="中文流行音乐" /><label for="musicLoved1">中文流行音乐</label>
-			            <input  type="checkbox" name="musicLoved" value="轻音乐" /><label for="musicLoved2">轻音乐</label>
-			            <input  type="checkbox" name="musicLoved" value="民族音乐" /><label for="musicLoved3">民族音乐</label>
-			            <input  type="checkbox" name="musicLoved" value="老歌" /><label for="musicLoved4">老歌</label>
-			            <input  type="checkbox" name="musicLoved" value="舞曲" /><label for="musicLoved5">舞曲</label>
-			            <input  type="checkbox" name="musicLoved" value="歌剧" /><label for="musicLoved6">歌剧</label>
-			            <input  type="checkbox" name="musicLoved" value="西部乡村" /><label for="musicLoved7">西部乡村</label>
-			            <input  type="checkbox" name="musicLoved" value="英文流行音乐" /><label for="musicLoved8">英文流行音乐</label>
-			            <input  type="checkbox" name="musicLoved" value="交响乐" /><label for="musicLoved9">交响乐</label>
-			            <input  type="checkbox" name="musicLoved" value="地方戏曲" /><label for="musicLoved10">地方戏曲</label>
-			            <input  type="checkbox" name="musicLoved" value="摇滚" /><label for="musicLoved11">摇滚</label>
-			            <input  type="checkbox" name="musicLoved" value="另类" /><label for="musicLoved12">另类</label>
-			            <input  type="checkbox" name="musicLoved" value="灵歌" /><label for="musicLoved13">灵歌</label>
-			            <input  type="checkbox" name="musicLoved" value="爵士/蓝调" /><label for="musicLoved14">爵士/蓝调</label>
-			            <input  type="checkbox" name="musicLoved" value="其他" /><label for="musicLoved15">其他</label>
+			            <input  type="checkbox" name="musicLoved" value="中文流行音乐" /><label>中文流行音乐</label>
+			            <input  type="checkbox" name="musicLoved" value="轻音乐" /><label>轻音乐</label>
+			            <input  type="checkbox" name="musicLoved" value="民族音乐" /><label>民族音乐</label>
+			            <input  type="checkbox" name="musicLoved" value="老歌" /><label>老歌</label>
+			            <input  type="checkbox" name="musicLoved" value="舞曲" /><label>舞曲</label>
+			            <input  type="checkbox" name="musicLoved" value="歌剧" /><label>歌剧</label>
+			            <input  type="checkbox" name="musicLoved" value="西部乡村" /><label>西部乡村</label>
+			            <input  type="checkbox" name="musicLoved" value="英文流行音乐" /><label>英文流行音乐</label>
+			            <input  type="checkbox" name="musicLoved" value="交响乐" /><label>交响乐</label>
+			            <input  type="checkbox" name="musicLoved" value="地方戏曲" /><label>地方戏曲</label>
+			            <input  type="checkbox" name="musicLoved" value="摇滚" /><label>摇滚</label>
+			            <input  type="checkbox" name="musicLoved" value="另类" /><label>另类</label>
+			            <input  type="checkbox" name="musicLoved" value="灵歌" /><label>灵歌</label>
+			            <input  type="checkbox" name="musicLoved" value="爵士/蓝调" /><label>爵士/蓝调</label>
+			            <input  type="checkbox" name="musicLoved" value="其他" /><label>其他</label>
 			      </div>
 			      <div>
 			            <a href="#">喜欢的电影</a>
-			            <input  type="checkbox" name="movieLoved" value="故事片" /><label for="movieLoved1">故事片</label>
-			            <input  type="checkbox" name="movieLoved" value="文艺爱情" /><label for="movieLoved2">文艺爱情</label>
-			            <input  type="checkbox" name="movieLoved" value="科幻" /><label for="movieLoved3">科幻</label>
-			            <input  type="checkbox" name="movieLoved" value="动作武侠" /><label for="movieLoved4">动作武侠</label>
-			            <input  type="checkbox" name="movieLoved" value="侦探推理" /><label for="movieLoved5">侦探推理</label>
-			            <input  type="checkbox" name="movieLoved" value="实验电影" /><label for="movieLoved6">实验电影</label>
-			            <input  type="checkbox" name="movieLoved" value="老电影" /><label for="movieLoved7">老电影</label>
-			            <input  type="checkbox" name="movieLoved" value="限制级电影" /><label for="movieLoved8">限制级电影</label>
-			            <input  type="checkbox" name="movieLoved" value="儿童/卡通片" /><label for="movieLoved9">儿童/卡通片</label>
-			            <input  type="checkbox" name="movieLoved" value="纪录片" /><label for="movieLoved10">纪录片</label>
-			            <input  type="checkbox" name="movieLoved" value="西部电影" /><label for="movieLoved11">西部电影</label>
-			            <input  type="checkbox" name="movieLoved" value="恐怖" /><label for="movieLoved12">恐怖</label>
-			            <input  type="checkbox" name="movieLoved" value="得奖电影" /><label for="movieLoved13">得奖电影</label>
-			            <input  type="checkbox" name="movieLoved" value="艺术电影" /><label for="movieLoved14">艺术电影</label>
-			            <input  type="checkbox" name="movieLoved" value="音乐歌舞" /><label for="movieLoved15">音乐歌舞</label>
-			            <input  type="checkbox" name="movieLoved" value="肥皂剧" /><label for="movieLoved16">肥皂剧</label>
-			            <input  type="checkbox" name="movieLoved" value="喜剧" /><label for="movieLoved18">喜剧</label>
-			            <input  type="checkbox" name="movieLoved" value="其他" /><label for="movieLoved19">其他</label>
-			            <input  type="checkbox" name="movieLoved" value="什么都看" /><label for="movieLoved20">什么都看</label>
+			            <input  type="checkbox" name="movieLoved" value="故事片" /><label>故事片</label>
+			            <input  type="checkbox" name="movieLoved" value="文艺爱情" /><label>文艺爱情</label>
+			            <input  type="checkbox" name="movieLoved" value="科幻" /><label>科幻</label>
+			            <input  type="checkbox" name="movieLoved" value="动作武侠" /><label>动作武侠</label>
+			            <input  type="checkbox" name="movieLoved" value="侦探推理" /><label>侦探推理</label>
+			            <input  type="checkbox" name="movieLoved" value="实验电影" /><label>实验电影</label>
+			            <input  type="checkbox" name="movieLoved" value="老电影" /><label>老电影</label>
+			            <input  type="checkbox" name="movieLoved" value="限制级电影" /><label>限制级电影</label>
+			            <input  type="checkbox" name="movieLoved" value="儿童/卡通片" /><label>儿童/卡通片</label>
+			            <input  type="checkbox" name="movieLoved" value="纪录片" /><label>纪录片</label>
+			            <input  type="checkbox" name="movieLoved" value="西部电影" /><label>西部电影</label>
+			            <input  type="checkbox" name="movieLoved" value="恐怖" /><label>恐怖</label>
+			            <input  type="checkbox" name="movieLoved" value="得奖电影" /><label>得奖电影</label>
+			            <input  type="checkbox" name="movieLoved" value="艺术电影" /><label>艺术电影</label>
+			            <input  type="checkbox" name="movieLoved" value="音乐歌舞" /><label>音乐歌舞</label>
+			            <input  type="checkbox" name="movieLoved" value="肥皂剧" /><label>肥皂剧</label>
+			            <input  type="checkbox" name="movieLoved" value="喜剧" /><label>喜剧</label>
+			            <input  type="checkbox" name="movieLoved" value="其他" /><label>其他</label>
+			            <input  type="checkbox" name="movieLoved" value="什么都看" /><label>什么都看</label>
 			      </div>
 			      <div>
 			            <a href="#">喜欢的食物</a>
-			            <input  type="checkbox" name="foodLoved" value="川菜" /><label for="foodLoved1">川菜</label>
-			            <input  type="checkbox" name="foodLoved" value="江浙菜" /><label for="foodLoved2">江浙菜</label>
-			            <input  type="checkbox" name="foodLoved" value="湘菜" /><label for="foodLoved3">湘菜</label>
-			            <input  type="checkbox" name="foodLoved" value="火锅" /><label for="foodLoved4">火锅</label>
-			            <input  type="checkbox" name="foodLoved" value="烧烤" /><label for="foodLoved5">烧烤</label>
-			            <input  type="checkbox" name="foodLoved" value="家常菜" /><label for="foodLoved6">家常菜</label>
-			            <input  type="checkbox" name="foodLoved" value="路边摊" /><label for="foodLoved7">路边摊</label>
-			            <input  type="checkbox" name="foodLoved" value="健康食品" /><label for="foodLoved8">健康食品</label>
-			            <input  type="checkbox" name="foodLoved" value="零食" /><label for="foodLoved9">零食</label>
-			            <input  type="checkbox" name="foodLoved" value="粤菜" /><label for="foodLoved10">粤菜</label>
-			            <input  type="checkbox" name="foodLoved" value="北方菜" /><label for="foodLoved11">北方菜</label>
-			            <input  type="checkbox" name="foodLoved" value="面食" /><label for="foodLoved12">面食</label>
-			            <input  type="checkbox" name="foodLoved" value="素食" /><label for="foodLoved13">素食</label>
-			            <input  type="checkbox" name="foodLoved" value="甜食" /><label for="foodLoved14">甜食</label>
-			            <input  type="checkbox" name="foodLoved" value="自助餐" /><label for="foodLoved15">自助餐</label>
-			            <input  type="checkbox" name="foodLoved" value="减肥餐"/><label for="foodLoved16">减肥餐</label>
-			            <input  type="checkbox" name="foodLoved" value="能填饱肚子就好" /><label for="foodLoved17">能填饱肚子就好</label>
-			            <input  type="checkbox" name="foodLoved" value="其他" /><label for="foodLoved18">其他</label>
+			            <input  type="checkbox" name="foodLoved" value="川菜" /><label>川菜</label>
+			            <input  type="checkbox" name="foodLoved" value="江浙菜" /><label>江浙菜</label>
+			            <input  type="checkbox" name="foodLoved" value="湘菜" /><label>湘菜</label>
+			            <input  type="checkbox" name="foodLoved" value="火锅" /><label>火锅</label>
+			            <input  type="checkbox" name="foodLoved" value="烧烤" /><label>烧烤</label>
+			            <input  type="checkbox" name="foodLoved" value="家常菜" /><label>家常菜</label>
+			            <input  type="checkbox" name="foodLoved" value="路边摊" /><label>路边摊</label>
+			            <input  type="checkbox" name="foodLoved" value="健康食品" /><label>健康食品</label>
+			            <input  type="checkbox" name="foodLoved" value="零食" /><label>零食</label>
+			            <input  type="checkbox" name="foodLoved" value="粤菜" /><label>粤菜</label>
+			            <input  type="checkbox" name="foodLoved" value="北方菜" /><label>北方菜</label>
+			            <input  type="checkbox" name="foodLoved" value="面食" /><label>面食</label>
+			            <input  type="checkbox" name="foodLoved" value="素食" /><label>素食</label>
+			            <input  type="checkbox" name="foodLoved" value="甜食" /><label>甜食</label>
+			            <input  type="checkbox" name="foodLoved" value="自助餐" /><label>自助餐</label>
+			            <input  type="checkbox" name="foodLoved" value="减肥餐"/><label>减肥餐</label>
+			            <input  type="checkbox" name="foodLoved" value="能填饱肚子就好" /><label>能填饱肚子就好</label>
+			            <input  type="checkbox" name="foodLoved" value="其他" /><label>其他</label>
 			      </div>
 			      <div>
 			            <a href="#">喜欢的地方</a>
-			            <input  type="checkbox" name="placeLoved" value="都市" /><label for="placeLoved1">都市</label>
-			            <input  type="checkbox" name="placeLoved" value="村庄" /><label for="placeLoved2">村庄</label>
-			            <input  type="checkbox" name="placeLoved" value="小镇" /><label for="placeLoved3">小镇</label>
-			            <input  type="checkbox" name="placeLoved" value="山区" /><label for="placeLoved4">山区</label>
-			            <input  type="checkbox" name="placeLoved" value="办公室/学校" /><label for="placeLoved5">办公室/学校</label>
-			            <input  type="checkbox" name="placeLoved" value="游乐场" /><label for="placeLoved6">游乐场</label>
-			            <input  type="checkbox" name="placeLoved" value="购物中心" /><label for="placeLoved7">购物中心</label>
-			            <input  type="checkbox" name="placeLoved" value="我家/我的房间" /><label for="placeLoved8">我家/我的房间</label>
-			            <input  type="checkbox" name="placeLoved" value="海滨" /><label for="placeLoved9">海滨</label>
-			            <input  type="checkbox" name="placeLoved" value="岛屿" /><label for="placeLoved10">岛屿</label>
-			            <input  type="checkbox" name="placeLoved" value="沙漠" /><label for="placeLoved11">沙漠</label>
-			            <input  type="checkbox" name="placeLoved" value="雪野" /><label for="placeLoved12">雪野</label>
-			            <input  type="checkbox" name="placeLoved" value="图书馆/书店" /><label for="placeLoved13">图书馆/书店</label>
-			            <input  type="checkbox" name="placeLoved" value="展览馆" /><label for="placeLoved14">展览馆</label>
-			            <input  type="checkbox" name="placeLoved" value="古迹" /><label for="placeLoved15">古迹</label>
-			            <input  type="checkbox" name="placeLoved" value="森林" /><label for="placeLoved16">森林</label>
-			            <input  type="checkbox" name="placeLoved" value="公园" /><label for="placeLoved17">公园</label>
-			            <input  type="checkbox" name="placeLoved" value="咖啡厅/酒吧" /><label for="placeLoved18">咖啡厅/酒吧</label>
-			            <input  type="checkbox" name="placeLoved" value="动物园" /><label for="foodLoved18">动物园</label>
-			            <input  type="checkbox" name="placeLoved" value="夜市赶集" /><label for="foodLoved18">夜市赶集</label>
-			            <input  type="checkbox" name="placeLoved" value="各种俱乐部" /><label for="foodLoved18">各种俱乐部</label>
-			            <input  type="checkbox" name="placeLoved" value="其他" /><label for="foodLoved18">其他</label>
+			            <input  type="checkbox" name="placeLoved" value="都市" /><label>都市</label>
+			            <input  type="checkbox" name="placeLoved" value="村庄" /><label>村庄</label>
+			            <input  type="checkbox" name="placeLoved" value="小镇" /><label>小镇</label>
+			            <input  type="checkbox" name="placeLoved" value="山区" /><label>山区</label>
+			            <input  type="checkbox" name="placeLoved" value="办公室/学校" /><label>办公室/学校</label>
+			            <input  type="checkbox" name="placeLoved" value="游乐场" /><label>游乐场</label>
+			            <input  type="checkbox" name="placeLoved" value="购物中心" /><label>购物中心</label>
+			            <input  type="checkbox" name="placeLoved" value="我家/我的房间" /><label>我家/我的房间</label>
+			            <input  type="checkbox" name="placeLoved" value="海滨" /><label>海滨</label>
+			            <input  type="checkbox" name="placeLoved" value="岛屿" /><label>岛屿</label>
+			            <input  type="checkbox" name="placeLoved" value="沙漠" /><label>沙漠</label>
+			            <input  type="checkbox" name="placeLoved" value="雪野" /><label>雪野</label>
+			            <input  type="checkbox" name="placeLoved" value="图书馆/书店" /><label>图书馆/书店</label>
+			            <input  type="checkbox" name="placeLoved" value="展览馆" /><label>展览馆</label>
+			            <input  type="checkbox" name="placeLoved" value="古迹" /><label>古迹</label>
+			            <input  type="checkbox" name="placeLoved" value="森林" /><label>森林</label>
+			            <input  type="checkbox" name="placeLoved" value="公园" /><label>公园</label>
+			            <input  type="checkbox" name="placeLoved" value="咖啡厅/酒吧" /><label>咖啡厅/酒吧</label>
+			            <input  type="checkbox" name="placeLoved" value="动物园" /><label>动物园</label>
+			            <input  type="checkbox" name="placeLoved" value="夜市赶集" /><label>夜市赶集</label>
+			            <input  type="checkbox" name="placeLoved" value="各种俱乐部" /><label>各种俱乐部</label>
+			            <input  type="checkbox" name="placeLoved" value="其他" /><label>其他</label>
 			      </div>
 			      <div>
 			            <a href="#">喜欢的宠物</a>
-			            <input  type="checkbox" name="petLoved" value="狗" /><label for="petLoved1">狗</label>
-			            <input  type="checkbox" name="petLoved" value="猫" /><label for="petLoved2">猫</label>
-			            <input  type="checkbox" name="petLoved" value="鱼" /><label for="petLoved3">鱼</label>
-			            <input  type="checkbox" name="petLoved" value="兔" /><label for="petLoved4">兔</label>
-			            <input  type="checkbox" name="petLoved" value="鸟" /><label for="petLoved5">鸟</label>
-			            <input  type="checkbox" name="petLoved" value="乌龟" /><label for="petLoved6">乌龟</label>
-			            <input  type="checkbox" name="petLoved" value="蜥蜴" /><label for="petLoved7">蜥蜴</label>
-			            <input  type="checkbox" name="petLoved" value="鼠" /><label for="petLoved8">鼠</label>
-			            <input  type="checkbox" name="petLoved" value="蛇" /><label for="petLoved9">蛇</label>
-			            <input  type="checkbox" name="petLoved" value="另类宠物" /><label for="petLoved10">另类宠物</label>
-			            <input  type="checkbox" name="petLoved" value="另类宠物" /><label for="petLoved10">另类宠物</label>
+			            <input  type="checkbox" name="petLoved" value="狗" /><label>狗</label>
+			            <input  type="checkbox" name="petLoved" value="猫" /><label>猫</label>
+			            <input  type="checkbox" name="petLoved" value="鱼" /><label>鱼</label>
+			            <input  type="checkbox" name="petLoved" value="兔" /><label>兔</label>
+			            <input  type="checkbox" name="petLoved" value="鸟" /><label>鸟</label>
+			            <input  type="checkbox" name="petLoved" value="乌龟" /><label>乌龟</label>
+			            <input  type="checkbox" name="petLoved" value="蜥蜴" /><label>蜥蜴</label>
+			            <input  type="checkbox" name="petLoved" value="鼠" /><label>鼠</label>
+			            <input  type="checkbox" name="petLoved" value="蛇" /><label>蛇</label>
+			            <input  type="checkbox" name="petLoved" value="另类宠物" /><label>另类宠物</label>
 			      </div>
 
-			      <input type="submit" value="保存" /><br />
+			      <input type="button" value="保存" ng-click='edit4()' />
 			      <input type="hidden" name="checkSubmit" />
-			</form>
+			</div>
 		</div>
 
 		<div class='showAvatars' ng-show='showAvatars'>
-			<form action="/user/edit5.ejs" method="post" id="editStep5">
+			<div class='edit5'>
 			    <div>
 			        <p>说说您的日常生活，喜欢干些什么，与对方分享</p>
 			        <p>比如喜欢哪部电影，爱吃什么，去过哪些地方旅游等等</p>
-			        <textarea name="edit5a" id="edit5a"  rows="10" cols="40"></textarea>
+			        <textarea name="edit5a" id="edit5a"  rows="10" cols="40" ng-model='userAllData.hobby'></textarea>
 			        <div>限20-500字，目前已输入<span id="edit5cCounter1">0</span>字，您还可以输入<span id="edit5cCounter2">500</span>字</div>
 			    </div>
-			    <input type="submit" value="保存" /><br />
+			    <input type="button" value="保存" ng-click='edit5()' /><br />
 			    <input type="hidden" name="checkSubmit" />
-			</form>
+			</div>
 		</div>
 
 		<div class='showMatchCondtion' ng-show='showMatchCondtion'>
-			<form action="/user/edit6.ejs" method="post" id="editStep6">
+			<div class='edit6'>
 			    <div>
 			        <span>父母状况</span>
-			        <select name="editStep6a" id="editStep6a" class="checkEmpty">
+			        <select name="editStep6a" id="editStep6a" ng-model='userAllData.parentstatus'>
 			            <option>请选择</option>
 			            <option>父母均健在</option>
 			            <option>只有父亲健在</option>
@@ -480,7 +488,7 @@
 
 			    <div>
 			        <span>兄弟姐妹</span>
-			        <select name="editStep6b" id="editStep6b" class="checkEmpty">
+			        <select name="editStep6b" id="editStep6b" ng-model='userAllData.siblingsstatus'>
 			            <option>请选择</option>
 			            <option>独身子女</option>
 			            <option>2</option>
@@ -494,7 +502,7 @@
 
 			    <div > 
 			        <span>婚后与父母住吗</span>
-			        <select name="editStep6d" class="checkEmpty">
+			        <select name="editStep6d" ng-model='userAllData.livewithparents2'>
 			            <option>请选择</option>
 			            <option>与自己父母同住</option>
 			            <option>不与自己父母同住</option>
@@ -506,14 +514,21 @@
 			    <div>
 			        <p>说说您的家庭氛围、父母的职业及对您的期望</p>
 			        <p>您的伴侣可以更好的融入您的家庭</p>
-			        <textarea name="editStep6e" id="edit5a"  rows="10" cols="40"></textarea>
+			        <textarea name="editStep6e" id="edit5a"  rows="10" cols="40" ng-model='userAllData.talkaboutfamily'></textarea>
 			        <div>限20-500字，目前已输入<span id="edit5cCounter1">0</span>字，您还可以输入<span id="edit5cCounter2">500</span>字</div>
 			    </div>
 
-			    <input type="submit" value="提交审核">
+			    <input type="button" value="保存" ng-click='edit6()'>
 			    <input type="hidden" name="checkSubmit" />
-			</form>
+			</div>
 		</div>
+
+
+
+
+
+
+
 
 		<div class='showProofs' ng-show='showProofs'>
 			<div>
@@ -557,12 +572,11 @@
 			</div>
 		</div>
 
-
 		<div class='changePass' ng-show='changePass'>
-			<form action="/user/edit3.ejs" method="post" id="editStep3">
+			<div class='edit3'>
 				<div>
 					<span>职业类别:</span>
-					<select  class="checkEmpty" name="edit3a" id="edit3a">
+					<select  class="checkEmpty" name="edit3a" id="edit3a" ng-model='userAllData.jobinfo1'>
 						<option>请选择</option>
 						<option>销售</option>
 						<option>客户服务</option>
@@ -593,13 +607,13 @@
 						<option>待业</option>
 						<option>其他职业</option>
 					</select>
-					<select  class="checkEmpty" name="edit3aSub" id="edit3aSub">
+					<select  class="checkEmpty" name="edit3aSub" id="edit3aSub"  ng-model='userAllData.jobinfo'>
 						<option>请选择</option>
 					</select>
 				</div>
 				<div>
 					<span>公司类别:</span>
-					<select class="checkEmpty" name="edit3b" id="edit3b">
+					<select class="checkEmpty" name="edit3b" id="edit3b" ng-model='userAllData.companyinfo'> 
 						<option>请选择</option>
 						<option>政府机关</option>
 						<option>事业单位</option>
@@ -614,13 +628,13 @@
 				<div>
 					<p>说说您的工作情况，描述越详细，越有助您找到合适的伴侣</p>
 					<p>比如您的职位，工作感受，要不要经常出差，社交应酬多不多等等</p>
-					<textarea name="edit3c" id="edit3c"  rows="10" cols="40"></textarea>
+					<textarea name="edit3c" id="edit3c"  rows="10" cols="40" ng-model='userAllData.joboverview'></textarea>
 					<div>限20-500字，目前已输入<span id="edit3cCounter1">0</span>字，您还可以输入<span id="edit3cCounter2">500</span>字</div>
 				</div>
 
-				<input type="submit" value="保存" /><br />
+				<input type="button" value="保存" ng-click='edit3()' />
 				<input type="hidden" name="checkSubmit" />
-			</form>
+			</div>
 		</div>
 
 

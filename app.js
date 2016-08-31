@@ -44,6 +44,7 @@ var routerLogin = require('routerLogin.js');
 var routeMsg = require('routerMsg.js');
 var register = require('register/register.js');
 var routeEdit = require('modules/edit/routerEdit.js');
+
 var globalApi = require('modules/global/global.js');
 
 
@@ -811,7 +812,7 @@ app.get("/cp/matchCondition",routes.newMatchCondition);
 
 
 /* edit */
-app.get("/edit/basic",routeEdit.editBasic);
+
 
 app.get("/user/userDetails.ejs", routes.checkUserDetails);
 //用户查看其它用户的详细资料
@@ -845,17 +846,25 @@ app.post("/user/editPic.ejs",routes.editPost);
 app.post("/user/matchConditionPost",routes.matchConditionPost);
 app.post("/user/fetchCondtion",routes.fetchCondtion);
 app.post("/user/whoOnline",routes.who_online);
-
 /* edit */
 
 
 
+/* user edit */
+app.get("/edit/basic",routeEdit.editBasic);
+
+app.post('/edit/basicInfo', routeEdit.basicInfo);
+app.post('/edit/edit1', routeEdit.edit1);
+app.post('/edit/edit2', routeEdit.edit2);
+app.post('/edit/edit4', routeEdit.edit4);
+app.post('/edit/edit5', routeEdit.edit5);
+
+app.post('/edit/edit6', routeEdit.edit6);
+
+app.post('/edit/edit3', routeEdit.edit3);
 
 
-
-
-
-
+/* user edit */
 
 
 

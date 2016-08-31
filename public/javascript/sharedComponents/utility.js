@@ -298,7 +298,34 @@ agMain.factory('utility', function(){
 				eachOption.text(subOptions[i]);
 				$("#edit3aSub").append(eachOption);
 			}
+		},
+
+		returnMultiValuesCheckbox:function(checkboxName){
+			var selectedVal = [];
+			$.each($("input[name='" + checkboxName + "']"), function(i, v){
+				var isSelected = $(v).attr('checked');
+				if(isSelected){
+					selectedVal.push($(v).attr('value'));	
+				}
+			});  
+			 return selectedVal;
+		},
+
+		renderValuesForCheck:function(checkboxName, values){
+			if(values.length === 0){
+				return false;
+			}
+			var checkboxs = $("input[name='" + checkboxName + "']");
+			var selectValues = values.split(',');
+			for(var i = 0 ; i < selectValues.length; i++ ){
+				$.each(checkboxs, function(index, val){
+					if( $(val).attr('value') ==  selectValues[i]  ){
+						$(val).attr('checked', 'checked')
+					}
+				});
+			}
 		}
+
 
 	}
 });
