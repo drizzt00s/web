@@ -1,11 +1,10 @@
 agMain.controller('editBasic', function($scope, $http, utility, api, localStore){
 
-
-
-
-
 	$scope.userAllData = null;
-	$scope.falseName = localStorage.getItem('falseName') || utility.getTargetCookie('falseName');
+
+	$scope.falseName = localStorage.getItem('falseName') || utility.getTargetCookie('falseName');//己方昵称
+	$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
+	$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
 
 	$scope.showBasic = true;
 	$scope.showCoreInfo = false;
@@ -16,8 +15,6 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 	$scope.showProofs = false;
 	$scope.changePass = false;
 	//各个tab的初始状态
-
-
 
 	$scope.showBasicTab = function(){
 		$scope.showBasic = true;
@@ -107,8 +104,47 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 		$scope.changePass = true;
 	};
 
-	$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
-	$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
+	$scope.showTabsViaTabIndex = function(){
+		var tabIndex = $("#tabIndex").text();
+		tabIndex = $.trim(tabIndex);
+		tabIndex = parseInt(tabIndex);
+
+		switch(tabIndex) {
+			case 1:
+			$scope.showBasicTab();
+			break;
+
+			case 2:
+			$scope.showCoreInfoTab();
+			break;
+
+			case 3:
+			$scope.showMonologTab();
+			break;
+
+			case 4:
+			$scope.showProfileTab();
+			break;
+
+			case 5:
+			$scope.showAvatarsTab();
+			break;
+
+			case 6:
+			$scope.showMatchCondtionTab();
+			break;
+
+			case 7:
+			$scope.showProofsTab();
+			break;
+
+			case 8:
+			$scope.changePassTab();
+			break;
+		}
+	};
+
+	$scope.showTabsViaTabIndex();
 
 	$scope.renderValForCheckbox = function(){
 		utility.renderValuesForCheck('mainCost', $scope.userAllData.mainCosts);
@@ -122,7 +158,35 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 		utility.renderValuesForCheck('petLoved', $scope.userAllData.petloved);
 	};
 
+	
+	$scope.setNullValueForSelect = function(){
+		$scope.userAllData.monthincome = $scope.userAllData.monthincome ? $scope.userAllData.monthincome : '请选择';
+		$scope.userAllData.ifhaschildren = $scope.userAllData.ifhaschildren ? $scope.userAllData.ifhaschildren : '请选择';
+		$scope.userAllData.housingcondition = $scope.userAllData.housingcondition ? $scope.userAllData.housingcondition : '请选择';
+		$scope.userAllData.weight = $scope.userAllData.weight ? $scope.userAllData.weight : '请选择';
+		$scope.userAllData.horoscope = $scope.userAllData.horoscope ? $scope.userAllData.horoscope : '请选择';
+		$scope.userAllData.sign = $scope.userAllData.sign ? $scope.userAllData.sign : '请选择';
+		$scope.userAllData.bloodType = $scope.userAllData.bloodType ? $scope.userAllData.bloodType : '请选择';
+		$scope.userAllData.race = $scope.userAllData.race ? $scope.userAllData.race : '请选择';
+		$scope.userAllData.religion = $scope.userAllData.religion ? $scope.userAllData.religion : '请选择';
+		$scope.userAllData.ifSmoking = $scope.userAllData.ifSmoking ? $scope.userAllData.ifSmoking : '请选择';
+		$scope.userAllData.ifDrinking = $scope.userAllData.ifDrinking ? $scope.userAllData.ifDrinking : '请选择';
+		$scope.userAllData.ifHasCar = $scope.userAllData.ifHasCar ? $scope.userAllData.ifHasCar : '请选择';
+		$scope.userAllData.cooks = $scope.userAllData.cooks ? $scope.userAllData.cooks : '请选择';
+		$scope.userAllData.houseKeeping = $scope.userAllData.houseKeeping ? $scope.userAllData.houseKeeping : '请选择';
+		$scope.userAllData.saving = $scope.userAllData.saving ? $scope.userAllData.saving : '请选择';
+		$scope.userAllData.whenToMarrige = $scope.userAllData.whenToMarrige ? $scope.userAllData.whenToMarrige : '请选择';
+		$scope.userAllData.whenHasChild = $scope.userAllData.whenHasChild ? $scope.userAllData.whenHasChild : '请选择';
+		$scope.userAllData.liveWithParents = $scope.userAllData.liveWithParents ? $scope.userAllData.liveWithParents : '请选择';
+		$scope.userAllData.parentstatus = $scope.userAllData.parentstatus ? $scope.userAllData.parentstatus : '请选择';
+		$scope.userAllData.siblingsstatus = $scope.userAllData.siblingsstatus ? $scope.userAllData.siblingsstatus : '请选择';
+		$scope.userAllData.livewithparents2 = $scope.userAllData.livewithparents2 ? $scope.userAllData.livewithparents2 : '请选择';
+		$scope.userAllData.jobinfo1 = $scope.userAllData.jobinfo1 ? $scope.userAllData.jobinfo1 : '请选择';
+		$scope.userAllData.jobinfo = $scope.userAllData.jobinfo ? $scope.userAllData.jobinfo : '请选择';
+		$scope.userAllData.companyinfo = $scope.userAllData.companyinfo ? $scope.userAllData.companyinfo : '请选择';
+	};
 
+	
 	$scope.getUserDataByHttp = function(){
 		$http({
 			url:api.global.userInfo,
@@ -131,6 +195,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 		}).success(function(d){
 			$scope.userAllData = d[0]; //obj
 			$scope.renderValForCheckbox();
+			$scope.setNullValueForSelect();
 			if(typeof Storage !== "undefined"){
 				localStore.setUserLocalData(JSON.stringify(d));
 			}
@@ -146,6 +211,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 				$scope.userAllData =JSON.parse(localStore.getUserLocalData('allInfo'));
 				$scope.userAllData = $scope.userAllData[0];
 				$scope.renderValForCheckbox();
+				$scope.setNullValueForSelect();
 			}
 		} else {
 			$scope.getUserDataByHttp();
@@ -153,6 +219,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 	};
 
 	$scope.getUserData();
+
 
 
 
@@ -172,7 +239,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.showBasicTab();
 			}
 		});
 	};
@@ -194,7 +261,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.showCoreInfoTab();
 			}
 		});
 	};
@@ -220,7 +287,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.showMonologTab();
 			}
 		});
 
@@ -252,7 +319,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.showProfileTab();
 			}
 		});
 	};
@@ -268,7 +335,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.showAvatarsTab();
 			}
 		});
 	};
@@ -286,7 +353,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.showMatchCondtionTab();
 			}
 		});
 	};
@@ -306,13 +373,16 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			success:function(){
 				alert('更改成功');
 				localStore.removeAllLocalStorage();
-				window.location.href = window.location.href;
+				$scope.changePassTab();
 			}
 		});
 
 	};
 
 
+	$scope.editAvatar = function(){
+		document.getElementById("editPic").submit();
+	};	
 
 
 
@@ -373,32 +443,6 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 
 
 
-
-
-
-
-
-
-
-
-	$("#edit3a").bind("change",utility.buildSubProfessionTree);
-
-	function checkUploadedPicStatus(){
-        var url="/route/login/showUserPic";
-        $.ajax({
-            url:url,
-            type:"GET",
-            cache:false,
-            success:function(data, textStatus, jqXHR){
-                leftPicLength = data.remainingPic;
-            },
-            error:function(jqXHR, textStatus, errorThrown){
-                alert('function checkUploadedPicStatus error!');
-            }
-        })
-    }
-
-    checkUploadedPicStatus();
 
 
 	function checkFileType(){
@@ -422,6 +466,42 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 			return false;
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+	$("#edit3a").bind("change",utility.buildSubProfessionTree);
+
+	function checkUploadedPicStatus(){
+        var url="/route/login/showUserPic";
+        $.ajax({
+            url:url,
+            type:"GET",
+            cache:false,
+            success:function(data, textStatus, jqXHR){
+                leftPicLength = data.remainingPic;
+            },
+            error:function(jqXHR, textStatus, errorThrown){
+                alert('function checkUploadedPicStatus error!');
+            }
+        })
+    }
+
+    checkUploadedPicStatus();
+
 
 
 function checkIsAllowedToUpload(){
@@ -448,6 +528,7 @@ function checkIsAllowedToUpload(){
 }
 
 $("#submitPic").bind("click",checkIsAllowedToUpload);
+*/
 
 
 

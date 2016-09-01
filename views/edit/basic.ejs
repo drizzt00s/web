@@ -6,6 +6,9 @@
 <breadcrumb></breadcrumb>
 
 <div class='main' ng-controller='editBasic'>
+	<div id='tabIndex'>
+		<%- tabIndex %>
+	</div>
 
 
 	<div class='userstatusWrap'>
@@ -63,6 +66,7 @@
 					<div>
 						<span>月收入:</span>
 						<select name="editIncome" ng-model='userAllData.monthincome'>
+							<option>请选择</option>
 							<option><2000</option>
 							<option>2000-5000</option>
 							<option>5000-10000</option>
@@ -86,6 +90,7 @@
 					<div>
 						<span>住房条件:</span>
 						<select name="editHouse" ng-model='userAllData.housingcondition'>
+							<option>请选择</option>
 							<option>与父母同住</option>
 							<option>租房</option>
 							<option>已购房</option>
@@ -107,6 +112,7 @@
 				<div>
 					<label for='edit2'>体重:</label>
 					<select id="myS" name="weight" ng-model='userAllData.weight'>
+						<option>请选择</option>
 						<option>100</option>
 						<option>110</option>
 						<option>120</option>
@@ -117,6 +123,7 @@
 				<div>
 					<label for='edit4'>生肖:</label>
 					<select name="sign" ng-model='userAllData.horoscope'>
+						<option>请选择</option>
 						<option>鼠</option>
 						<option>牛</option>
 						<option>虎</option>
@@ -134,6 +141,7 @@
 				<div>
 					<label for='edit5'>星座:</label>
 					<select name="horoscope" ng-model='userAllData.sign'>
+						<option>请选择</option>
 						<option>白羊座</option>
 						<option>金牛座</option>
 						<option>双子座</option>
@@ -151,6 +159,7 @@
 				<div>
 					<label for='edit6'>血型:</label>
 					<select name="bloodType" ng-model='userAllData.bloodType'>
+						<option>请选择</option>
 						<option>A型</option>
 						<option>B型</option>
 						<option>AB型</option>
@@ -160,6 +169,7 @@
 				<div>
 					<label for='edit7'>民族:</label>
 					<select name="race" ng-model='userAllData.race'>
+						<option>请选择</option>
 						<option>汉族</option>
 						<option>蒙古族</option>
 						<option>回族</option>
@@ -175,6 +185,7 @@
 				<div>
 					<label for='edit8'>宗教信仰:</label>
 					<select name="religion" ng-model='userAllData.religion'>
+						<option>请选择</option>
 						<option>无</option>
 						<option>佛教</option>
 						<option>基督教</option>
@@ -197,6 +208,7 @@
 					<div>
 						<span>是否吸烟</span>
 						<select  id="edit2a" name="edit2a" ng-model='userAllData.ifSmoking'>
+							<option>请选择</option>
 							<option>不抽烟</option>
 							<option>有时社交场合抽一点</option>
 							<option>经常抽</option>
@@ -205,6 +217,7 @@
 					<div>
 						<span>是否喝酒</span>
 						<select  id="edit2b" name="edit2b" ng-model='userAllData.ifDrinking'>
+							<option>请选择</option>
 							<option>不喝酒</option>
 							<option>有时社交场合喝一点</option>
 							<option>经常喝</option>
@@ -536,11 +549,13 @@
 			            <p><label for="uploadPic">上传照片</label><input type="file" id="uploadPic" name="uploadPic" class="myUpLoadPic" /></p>
 
 	
-			            <input type="button" value="立刻上传" id="submitPic"/><br />
+			            <input type="button" value="立刻上传" id="submitPic" ng-click='editAvatar()'/><br />
 			        </div>
 			     
 			    </form>
+
 		</div>
+		 <%- editAvatarErroMsg %>
 
 
 
@@ -612,4 +627,5 @@
 
 
 	</div>
+
 </div>
