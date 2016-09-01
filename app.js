@@ -863,6 +863,7 @@ app.post('/edit/edit6', routeEdit.edit6);
 
 app.post('/edit/edit3', routeEdit.edit3);
 
+app.post('/edit/editAvatar', routeEdit.editAvatar);
 
 /* user edit */
 

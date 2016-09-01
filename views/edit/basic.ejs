@@ -531,46 +531,18 @@
 
 
 		<div class='showProofs' ng-show='showProofs'>
-			<div>
-			    <p>一次最多可上传4张照片，可多次上传，您总共还能上传<span id="remainingPic"><%=remainingPic%></span>张照片</p>
-			    <p>照片上传完毕!</p>
-			    <p id="picUploadResultWrap">
-			        <p class="uploadedPicWrap">
-			            照片<span id="picIndex"><%=picIndex%></span>:
-			            <span id="picUploadResult"><%=picUploadResult%></span><span id="picUploadFailureReason"><%=picUploadFailureReason%></span>
-			        </p>
-			        <p class="uploadedPicWrap">
-			            照片<span id="picIndex2"><%=picIndexB%></span>:
-			            <span id="picUploadResult2"><%=picUploadResultB%></span><span id="picUploadFailureReason2"><%=picUploadFailureReasonB%></span>
-			        </p>
-			        <p class="uploadedPicWrap">
-			            照片<span id="picIndex3"><%=picIndexC%></span>:
-			            <span id="picUploadResult3"><%=picUploadResultC%></span><span id="picUploadFailureReason3"><%=picUploadFailureReasonC%></span>
-			        </p>
-			        <p class="uploadedPicWrap">
-			            照片<span id="picIndex4"><%=picIndexD%></span>:
-			            <span id="picUploadResult4"><%=picUploadResultD%></span><span id="picUploadFailureReason4"><%=picUploadFailureReasonD%></span>
-			        </p>
-			    </p>
-
-			    <p>进入<a href="userPhotoes.ejs">“您的影集”</a> ，或者 <a href="editPic.ejs">继续上传</a> 照片。</p>
-			    <input type="button" id="uploadPicAgain" value="继续上传照片" onclick="window.location.href='editPic.ejs'" />
-			</div>
-
-			<div class="editPic">
-			    <form action="/user/editPic.ejs" method="post" id="editPic" enctype="multipart/form-data">
+				<form action="/edit/editAvatar" method="post" id="editPic" enctype="multipart/form-data">
 			        <div id="submitPicWrap">
-			            <p><label for="uploadPic">上传照片1</label><input type="file" id="uploadPic" name="uploadPic" class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
-			            <p><label for="uploadPic2">上传照片2</label><input type="file" id="uploadPic2" name="uploadPic2"  class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
-			            <p><label for="uploadPic3">上传照片3</label><input type="file" id="uploadPic3" name="uploadPic3" class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
-			            <p><label for="uploadPic4">上传照片4</label><input type="file" id="uploadPic4" name="uploadPic4" class="myUpLoadPic" /><span class="errorInfo" style="display:none;">只能上传图片</span></p>
-			            <input type="hidden" value="0" name="checkRefresh" id="jsCheckRefresh" />
+			            <p><label for="uploadPic">上传照片</label><input type="file" id="uploadPic" name="uploadPic" class="myUpLoadPic" /></p>
+
+	
 			            <input type="button" value="立刻上传" id="submitPic"/><br />
 			        </div>
-			        <input type="hidden" name="checkSubmit" />
+			     
 			    </form>
-			</div>
 		</div>
+
+
 
 		<div class='changePass' ng-show='changePass'>
 			<div class='edit3'>

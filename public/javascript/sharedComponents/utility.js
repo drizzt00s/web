@@ -1,4 +1,4 @@
-agMain.factory('utility', function(){
+agMain.factory('utility', function(validation){
 	return {
 		trimAge:function(d){
 			if(d && d instanceof Array){
@@ -312,7 +312,7 @@ agMain.factory('utility', function(){
 		},
 
 		renderValuesForCheck:function(checkboxName, values){
-			if(values.length === 0){
+			if(validation.isEmpty(values)){
 				return false;
 			}
 			var checkboxs = $("input[name='" + checkboxName + "']");
