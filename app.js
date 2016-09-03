@@ -42,10 +42,12 @@ var tools = require('tools/tools.js');
 
 var routerLogin = require('routerLogin.js');
 var routeMsg = require('routerMsg.js');
-var register = require('register/register.js');
 var routeEdit = require('modules/edit/routerEdit.js');
+var routeSearch = require('modules/search/routeSearch.js');
 
+var register = require('register/register.js');
 var globalApi = require('modules/global/global.js');
+
 
 
 
@@ -749,6 +751,10 @@ app.post("/global/uid",function(req, res){
 });
 
 app.post("/global/userInfo", globalApi.returnUserInfo);
+app.post("/global/userGender", globalApi.userGender);
+
+
+
 /* global */
 
 
@@ -868,6 +874,17 @@ app.post('/edit/editAvatar', routeEdit.editAvatar);
 /* user edit */
 
 
+
+
+/* search */
+app.get("/search/searchMain",routeSearch.searchMain);
+
+
+
+app.post("/search/autoSearch",routeSearch.autoSearch);
+
+
+/* search */
 
 
 

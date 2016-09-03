@@ -1,0 +1,22 @@
+<script src="/javascript/search/search.js"></script>
+
+<div class='main centered' ng-controller="search">
+
+	<div class="col-sm-6 col-md-3" ng-repeat = "eachAutoSearch in autoSearchData">
+
+		<div class="thumbnail">
+			<a href="/user/userDetails.ejs?check={{::eachAutoSearch.account}}"><img src="{{::eachAutoSearch.profile}}"  /></a>
+			<div class="caption text-center">
+				<h5>{{::eachAutoSearch.falseName}}</h5>
+				<p>{{::eachAutoSearch.address}}</p>
+				<p>{{::eachAutoSearch.education}}</p>
+				<p>{{::eachAutoSearch.monthincome}}</p>
+				<p><a href="/user/userDetails.ejs?check={{::eachAutoSearch.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
+			</div>
+		</div>
+
+	</div>
+
+
+
+</div>

@@ -9,8 +9,12 @@ agMain.factory('api', function(){
 		outboxAllMsg:'/msg/outboxAllMsg',
 		outbox:'/msg/outbox',
 		changeNewMsgToOld: '/msg/turnOldMsg',
+		search:{
+			'autoSearch':'/search/autoSearch'
+		},
 		global:{
-			'userInfo':'/global/userInfo'
+			'userInfo':'/global/userInfo',
+			'userGender':'/global/userGender'
 		}
 
 

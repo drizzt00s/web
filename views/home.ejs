@@ -22,33 +22,16 @@
 	</div>
 
 	<div class='main_right'>
-		
-
-	
-				<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
-					<div class="thumbnail">
-						<a href="/user/userDetails.ejs?check={{::user.account}}"><img src="{{::user.profile}}"></a>
-						<div class="caption text-center">
-							<h5>{{::user.falseName}}</h5>
-							<p>{{::user.age}}</p>
-							<p>{{::user.address}}</p>
-							<p><a href="/user/userDetails.ejs?check={{::user.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
-						</div>
-					</div>
+		<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
+			<div class="thumbnail">
+				<a href="/user/userDetails.ejs?check={{::user.account}}"><img src="{{::user.profile}}"></a>
+				<div class="caption text-center">
+					<h5>{{::user.falseName}}</h5>
+					<p>{{::user.age}}</p>
+					<p>{{::user.address}}</p>
+					<p><a href="/user/userDetails.ejs?check={{::user.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
 				</div>
-		
-
-	
+			</div>
+		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
 </div>

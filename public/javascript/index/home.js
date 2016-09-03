@@ -46,7 +46,5 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 	};
 	$scope.fetchAllUser();
 
-
-
-
 });
+

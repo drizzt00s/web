@@ -14,9 +14,10 @@ agMain.controller('login', function($scope, $http, api, showError, utility){
 			if(d.success){
 				if(typeof Storage !== "undefined"){
 					//支持本地存储
-						localStorage.setItem('uid',d.uid);
-						localStorage.setItem('username',d.username);
-						localStorage.setItem('falseName',d.falseName);
+						localStorage.setItem('uid', d.uid);
+						localStorage.setItem('username', d.username);
+						localStorage.setItem('falseName', d.falseName);
+						localStorage.setItem('gender', d.gender);
 				}
 				window.location.href='/home';
 			} else{
