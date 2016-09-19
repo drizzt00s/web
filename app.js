@@ -45,7 +45,7 @@ var routeMsg = require('routerMsg.js');
 var routeEdit = require('modules/edit/routerEdit.js');
 var routeSearch = require('modules/search/routeSearch.js');
 var routerCp = require('modules/cp/routerCp.js');
-
+var routerBackStageReport = require('modules/backstageSupporter/backstageSupporter');
 
 
 var register = require('register/register.js');
@@ -566,15 +566,7 @@ app.get("/payment",routes.payemnt);
 
 
 
-/* backstage supporter */
 
-app.get("/backstageSupporter/proofs", routes.loadProof);
-
-app.post("/backstageSupporter/proofs/:operationType", routes.vlidateProofs);
-
-app.get("/backstageSupporter/proof_validation", routes.getProofValidationPage);
-
-/* backstage supporter */
 
 
 
@@ -886,6 +878,15 @@ app.post("/search/autoSearch",routeSearch.autoSearch);
 
 
 /* search */
+
+
+/* backstage supporter */
+
+app.get("/backstageSupporter/proofs", routerBackStageReport.loadProof);
+app.get("/backstageSupporter/proof_validation", routerBackStageReport.getProofValidationPage);
+app.post("/backstageSupporter/proofs/:operationType", routerBackStageReport.vlidateProofs);
+
+/* backstage supporter */
 
 
 
