@@ -44,9 +44,13 @@ var routerLogin = require('routerLogin.js');
 var routeMsg = require('routerMsg.js');
 var routeEdit = require('modules/edit/routerEdit.js');
 var routeSearch = require('modules/search/routeSearch.js');
+var routerCp = require('modules/cp/routerCp.js');
+
+
 
 var register = require('register/register.js');
 var globalApi = require('modules/global/global.js');
+
 
 
 
@@ -576,15 +580,12 @@ app.get("/backstageSupporter/proof_validation", routes.getProofValidationPage);
 
 /* cp */
 app.post("/cp/checkProfile",routes.checkProfile);
-app.get("/cp/proof",routes.getProofPage);
-app.post("/cp/proof",routes.submitProof);
 app.post("/cp/profile",routes.updateProfile);
 app.post("/cp/profile_deletion",routes.deleteProfile);
 
 
-
-
-
+app.get("/cp/proof",routerCp.getProofPage);
+app.post("/cp/proof",routerCp.submitProof);
 
 
 
