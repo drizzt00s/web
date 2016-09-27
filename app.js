@@ -2,11 +2,11 @@ var connect = require('connect');
 var express = require('express');
 var routes = require('routeIndex.js');
 var user = require("moduleUser");
-//var commons = require('serverCommon.js');
+
 var http = require('http');
 var path = require('path');
 var fs = require("fs");
-//required modules
+
 var app = express();
 var partials = require("express-partials");
 app.configure(function(){
