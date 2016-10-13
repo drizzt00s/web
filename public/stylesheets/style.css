@@ -141,4 +141,6 @@ display:none;
     float:right;
 
 }
-
+.error{
+    color:red;
+}

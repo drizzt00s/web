@@ -1,16 +1,16 @@
+body{
+		background-image:url('/images/land/landscape.jpg');
+		height:1600px;
+}
 .header{
 	overflow:hidden;
 }
 .landingScroll{
 	width:60%;
-
-
 }
 .login{
 	width:39%;
-
 }
-
 .indexMemberWrap{
 	text-align:center;
 	background-color:#f9f9f9;
@@ -21,4 +21,149 @@
 }
 .indexMemberHolder{
 	margin-top:15px;
+}
+.landMain{
+	width:980px;
+	margin:0 auto;
+
+}
+.landMain_main{
+	height:362px;
+	background-image:url('/images/land/landscape_main.jpg');
+	margin-top:38px;
+
+}
+.landMain_register{
+	width:486px;
+	height:30px;
+	background-image:url('/images/land/landscape_register.jpg');
+	
+	line-height:30px;
+	text-align:center;
+	color:#42426F;
+	font-weight:bolder;
+	font-size:13px;
+}
+.landMain_login{
+	width:490px;
+	height:30px;
+	background-image:url('/images/land/landscape_login.jpg');
+	line-height:30px;
+	text-align:center;
+	color:#42426F;
+	font-weight:bolder;
+	font-size:13px;
+}
+.landMain_quickLogin{
+	overflow:hidden;
+	_zoom:1;
+	background-color:#fff;
+	padding-top:30px;
+	padding-bottom:30px;
+}
+
+.regAndLoginWrap{
+	background-color:#fff;
+}
+
+.regAndLogin{
+	width:976px;
+	height:30px;
+	background-image:url('/images/land/landscape_registerAndLogin.jpg');
+	margin:0 auto;
+}
+
+.quickLogin_acc,.quickLogin_ps,.quickLogin_loginButton{
+	float:left;
+	width:30%;
+}
+.quickLogin{
+	width:270px;
+	height:39px;
+	background-image:url('/images/land/landscape_loginButton.jpg');
+	line-height:39px;
+	text-align:center;
+	color:#fff;
+	font-weight:bolder;
+	border: none;
+    outline:none;
+
+}
+.quickLogin_accInput{
+	border:solid 1px #dfdfdf;
+	width:200px;
+	height:25px;
+}
+.quickLogin_psInput{
+	border:solid 1px #dfdfdf;
+	width:200px;
+	height:25px;
+}
+.quickLogin_acc{
+	color:#777;
+	margin-left:50px;
+}
+.quickLogin_ps{
+	color:#777;
+}
+
+.quickLogin_loginButton{
+	margin-top:-10px;
+}
+.rememberPass{
+	margin-top: 15px;
+	color:#999;
+}
+.rememberPass a{
+	color:#999;
+	text-decoration:underline;
+}
+.rememberPassCheckbox{
+	vertical-align:sub;
+}
+.forgetPassLink{
+	margin-left:65px;
+}
+.avatarWall{
+	width:980px;
+	height:323px;
+	background-image:url('/images/land/landscape_avatarWall.jpg');
+	cursor:pointer;
+}
+.falseAvatar{
+	overflow:hidden;
+	_zoom:1;
+	background-color:#fff;
+}
+.thumbnail{
+	overflow:hidden;
+	_zoom:1;
+}
+.thumbnailImg{
+	float:left;
+}
+.caption{
+	float:left;
+	margin-left:25px;
+}
+.row{
+	margin:0!important;
+
+}
+
+.landing_check{
+	width:98px;
+	height:32px;
+	display:block;
+	background-image:url('/images/land/landscape_check.jpg');
+	line-height:32px;
+	color:#fff;
+	text-decoration:none;
+	text-align:center;
+	cursor:pointer;
+}
+.landing_gap{
+	height:30px;
+	border-bottom:#efefef;
+	background-color:#fff;
 }

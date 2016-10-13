@@ -1,41 +1,56 @@
 <script src="/javascript/landing/landing.js"></script>
-
 <script src="/javascript/tools/jquery.slideBox.js" type="text/javascript"></script>
 
-<link rel='stylesheet' href='/stylesheets/directive/directive_cppreview.css' />
 <link rel='stylesheet' href='/stylesheets/directive/directive_main_side_menu.css' />
 <link rel='stylesheet' href='/stylesheets/landing/landing.css' />
 <link rel="stylesheet" href="/stylesheets/tools/jquery.slideBox.css"  type="text/css" />
 
-<div class="main alignedCenter">
-	<div class="header">
-		<div class="landingScroll float-left" style="border:solid 1px red;">
-			<div id="slideBox" class="slideBox">
-				<ul class="items">
-					<li><a href="#" title=""><img src="/images/default/tools/landing_slide/landing_slide1.jpg"></a></li>
-					<li><a href="#" title=""><img src="/images/default/tools/landing_slide/landing_slide2.jpg"></a></li>
-				</ul>
-			</div>
-		</div>
 
-		<div class="login float-right">
-			<register></register>
+
+<div class="landMain" ng-controller='landing'>
+	<div class='landMain_main'></div>
+
+	<div class='regAndLoginWrap'>
+		<div class='regAndLogin'>
+
 		</div>
 	</div>
 
-	<div id="showingPic" ng-controller='landing'>
-		<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
+	<div class='landMain_quickLogin'>
+		<div class='quickLogin_acc username'><label>登录账号:</label><input type='text' class='quickLogin_accInput' ng-model='username' /><div class='error'></div></div>
+		<div class='quickLogin_ps password'><label>登录密码:</label><input type='password' class='quickLogin_psInput' ng-model='pass' /><div class='error'></div></div>
+		<div class='quickLogin_loginButton'>
+			<button class='quickLogin' ng-click='login()'>立即登录 遇见有缘人</button><br />
+			<div class='rememberPass'>
+				<input type='checkbox' class='rememberPassCheckbox'/><label style='margin-left:1px;'>记住密码(公共场所慎用)</label>
+				<a href='#' class='forgetPassLink'>忘记密码?</a>
+			</div>
+		</div>
+	</div>
+
+	<div class='avatarWall'>
+	</div>
+
+	<div class='landing_gap'>
+
+	</div>
+
+	<div class='falseAvatar row'>
+
+			<div class="col-md-4" ng-repeat = "user in allUsers">
 			<div class="thumbnail">
-				<a href="/user/userDetails.ejs?check={{::user.account}}"><img src="{{::user.profile}}"></a>
+				<a href="#" class='thumbnailImg'><img src="{{::user.profile}}"></a>
 				<div class="caption text-center">
 					<h5>{{::user.falseName}}</h5>
 					<p>{{::user.age}}</p>
 					<p>{{::user.address}}</p>
-					<p><a href="/user/userDetails.ejs?check={{::user.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
+					<p><span class="landing_check" role="button">去看看</span></p>
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 </div>
 
 

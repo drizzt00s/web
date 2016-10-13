@@ -1,8 +1,14 @@
 agMain.factory('showError', function(){
 	return {
-		displayError:function(errorObj){
+		displayError:function(errorObj, whichPage){
 			for(var i = 0 ; i < errorObj.length; i ++){
-				this.InsertError(errorObj[i]);
+
+				if(whichPage === 'landing'){
+					this.insertErrorSimple(errorObj[i]);
+				} else{
+					this.InsertError(errorObj[i]);
+				}
+				
 			}
 		},
 
@@ -21,11 +27,19 @@ agMain.factory('showError', function(){
 				}
 				
 			}
+		},
 
+		insertErrorSimple:function(errorObj){
+				for( r in errorObj){
+					var error = errorObj[r];
+					var errContainer = $('.' + r).find('.error');
+					errContainer.text(error);
+				}
 		},
 
 		reset:function(){
 			$('.vlidationError').remove();
+			$(".error").text('');
 		},
 
 		removeError:function(errorBubble){

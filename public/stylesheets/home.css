@@ -1,0 +1,16 @@
+body{
+		background-image:url('/images/land/landscape.jpg');
+		height:1600px;
+}
+.breadcrumb{
+	padding:0;
+	background-color:#660099;
+
+}
+.breadcrumb a{
+	color:#fff!important;
+}
+.breadcrumb a:hover{
+	background-color:transparent!important;
+	border:none!important;
+}
