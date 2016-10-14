@@ -1,19 +1,24 @@
 <script src="/javascript/index/home.js"></script>
 <link rel='stylesheet' href='/stylesheets/home.css' />
 
-<breadcrumb></breadcrumb>
+
 
 <div class='main' ng-controller='home'>
-	<div class='userstatusWrap' ng-if='isLogin'>
-		<userstatus></userstatus>
+
+	<div class='headerWrap'>
+		<img src='/images/home/index_logo.png' class='logo' />
+		<breadcrumb></breadcrumb>
+		<div class='userstatusWrap' ng-if='isLogin'>
+			<userstatus></userstatus>
+		</div>
 	</div>
 
 	<div class='main_left'>
 		<div class='cpPreview login'>
-			<div ng-if='isLogin' style='border:solid 1px red;'>
+			<div ng-if='isLogin'>
 				<cppreview></cppreview>
 			</div>
-			<div ng-if='!isLogin'  style='border:solid 1px green;'>
+			<div ng-if='!isLogin'>
 				<register></register>
 			</div>
 		</div>
@@ -24,6 +29,9 @@
 	</div>
 
 	<div class='main_right'>
+		<div class='banner'>
+			亲，今天已有超过10万人通过每日姻缘找到对象！守株待“缘”，不如主动出击
+		</div>
 		<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
 			<div class="thumbnail">
 				<a href="/user/userDetails.ejs?check={{::user.account}}"><img src="{{::user.profile}}"></a>

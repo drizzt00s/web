@@ -27,7 +27,6 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 				}
 			}
 		});
-
 	};
 
 	if($scope.isLogin){
@@ -39,7 +38,7 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 			method:'POST',
 			url:api.getAllUsers,
 		}).success(function(data){
-			var data =  utility.trimAge(data.allUserInfo);
+			var data = utility.trimAge(data.allUserInfo);
 			data =  utility.trimProfileUrl(data);
 			$scope.allUsers = data;
 		})

@@ -3,7 +3,7 @@ agMain.directive('userstatus', function($http, localStore){
 		restrict:'E',
 		scope:false,
 		template:"<div>"+
-		          	"<span>hi {{falseName}}</span><span style='cursor:pointer;' ng-click='logOff()'>退出</span>"+
+		          	"<span>你好， {{falseName}} </span><span style='cursor:pointer;' ng-click='logOff()'>退出</span>"+
 		          "</div>",
 		link:function(scope){
 			scope.logOff = function(){

@@ -144,3 +144,85 @@ display:none;
 .error{
     color:red;
 }
+
+
+
+.breadcrumb_ul{
+    overflow: hidden;
+    _zoom:1;
+    margin-top:-5px;
+}
+
+.breadcrumb_ul li{
+    float:left;
+    list-style-type:none;
+}
+
+.breadcrumb_ul li a{
+    font-size:14px;
+}
+
+
+
+.breadcrumb_ul .nav_index{
+    background-image:url('/images/home/index_house.jpg');
+    background-repeat:no-repeat;
+    padding-left:30px;
+    margin-left:100px;
+   
+}
+
+.breadcrumb_ul .nav_selfInfo{
+    background-image:url('/images/home/index_icon.jpg');
+    background-repeat:no-repeat;
+    padding-left:28px;
+    margin-left:40px;
+}
+
+.breadcrumb_ul .nav_search{
+    background-image:url('/images/home/index_search.jpg');
+    background-repeat:no-repeat;
+    background-position:left 1px;
+    padding-left:30px;
+    margin-left:40px;
+}
+
+.breadcrumb_ul .nav_service{
+    background-image:url('/images/home/edit.jpg');
+    background-repeat:no-repeat;
+    background-position:left 1px;
+    padding-left:30px;
+    margin-left:40px;
+}
+
+.breadcrumb_ul .nav_mailbox{
+    background-image:url('/images/home/index_mail.jpg');
+    background-repeat:no-repeat;
+    background-position:left 3px;
+    padding-left:32px;
+    margin-left:40px;
+}
+.nav  li{
+    margin-left:25px;
+}
+
+.nav > li > a{
+    padding:0!important;
+    font-size:14px;
+
+}
+
+.nav{
+    border-bottom:none!important;
+}
+
+.userstatusWrap{
+   float:right;
+   margin-top:-40px;
+   padding-right:50px;
+   color:#f9bca1;
+   background-image:url('/images/home/index_bell.jpg');
+   background-repeat:no-repeat;
+   background-position:right top;
+
+}
