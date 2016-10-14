@@ -14,23 +14,34 @@
 	</div>
 
 	<div class='main_left'>
-		<div class='cpPreview login'>
-			<div ng-if='isLogin'>
-				<cppreview></cppreview>
+		<div class='main_leftWrap'>
+			<div class='cpPreview login'>
+				<div ng-if='isLogin'>
+					<cppreview></cppreview>
+				</div>
+				<div ng-if='!isLogin'>
+					<register></register>
+				</div>
 			</div>
-			<div ng-if='!isLogin'>
-				<register></register>
+
+			<div class='toolList'>
+				<toolist></toolist>
 			</div>
 		</div>
 
-		<div class='toolList'>
-			<toolist></toolist>
-		</div>
 	</div>
+
+
+
 
 	<div class='main_right'>
 		<div class='banner'>
 			亲，今天已有超过10万人通过每日姻缘找到对象！守株待“缘”，不如主动出击
+		</div>
+
+		<div class='search'>
+
+
 		</div>
 		<div class="col-sm-6 col-md-3" ng-repeat = "user in allUsers">
 			<div class="thumbnail">

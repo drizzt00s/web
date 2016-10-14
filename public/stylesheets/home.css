@@ -21,8 +21,14 @@ body{
 	top:4px;
 }
 .main_left{
+	background-color:#f2f4fe;
+}
+
+.main_leftWrap{
 	background-color:#fff;
 }
+
+
 .main_right{
 	background-color:#fff;
 	padding-top:10px;
@@ -50,4 +56,45 @@ body{
 }
 .breadcrumb{
 	margin-top:13px;
+}
+.list-group-item{
+	border:none!important;
+}
+.indexGap{
+	background-image:url('/images/home/index_gap.jpg');
+	padding-left:10px;
+	background-repeat:no-repeat;
+
+}
+.cp_preview_img{
+	padding-top:25px;
+}
+.index_avatar{
+	margin:0 auto;
+	display:block;
+}
+.cp_preview_detail{
+
+}
+.previewCp{
+	text-align:center;
+}
+
+.cp_preview a{
+	color:#333!important;
+}
+.cp_preview_charge a{
+	color:#333!important;
+}
+.toolListWrap{
+	margin-top:60px;
+}
+.falseName{
+	text-align:center;
+}
+.quantity{
+	margin-left:30px;
+}
+.charge{
+	margin-right:30px;
 }
