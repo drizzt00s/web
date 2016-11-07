@@ -1,10 +1,11 @@
 <script src="/javascript/cp/newMatchCondition.js"></script>
-
 <link rel='stylesheet' href='/stylesheets/cp/matchCondition.css'/>
+<link rel='stylesheet' href='/stylesheets/home.css' />
 
 
-<div class='main centered'  ng-controller='matchCondition'>
-
+<div class='main centered'  ng-controller='matchCondition' style='position:relative;'>
+	<img src='/images/home/index_logo.png' class='logo' />
+	<breadcrumb></breadcrumb>
 	<div class='userstatusWrap'>
 		<userstatus></userstatus>
 	</div>
@@ -38,184 +39,333 @@
 
 		<div class="setCondtion" id="setCondtion">
 			<span>您的择偶要求:</span><br />
-			<script src="/javascript/selectLocation.js"></script>
-			<span>婚姻状况:</span><br />
-			<input type="checkbox" name="marriageStatus" class="marriageStatus" value="未婚" /><span></span>未婚<br />
-			<input type="checkbox" name="marriageStatus" class="marriageStatus" value="离异" /><span></span>离异<br />
-			<input type="checkbox" name="marriageStatus" class="marriageStatus" value="丧偶" /><span></span>丧偶<br />
-			<div class="height">
-			<label for="height">身高:</label>
-			<select id="height">
-				<option>140</option>
-				<option>141</option>
-				<option>142</option>
-				<option>143</option>
-				<option>144</option>
-				<option>145</option>
-				<option>146</option>
-				<option>147</option>
-				<option>148</option>
-				<option>149</option>
-				<option>150</option>
-				<option>151</option>
-				<option>152</option>
-				<option>153</option>
-				<option>154</option>
-				<option>155</option>
-				<option>156</option>
-				<option>157</option>
-				<option>158</option>
-				<option>159</option>
-				<option>160</option>
-				<option>161</option>
-				<option>162</option>
-				<option>163</option>
-				<option>164</option>
-				<option>165</option>
-				<option>166</option>
-				<option>167</option>
-				<option>168</option>
-				<option>169</option>
-				<option>170</option>
-				<option>171</option>
-				<option>172</option>
-				<option>173</option>
-				<option>174</option>
-				<option>175</option>
-				<option>176</option>
-				<option>177</option>
-				<option>178</option>
-				<option>179</option>
-				<option>180</option>
-				<option>181</option>
-				<option>182</option>
-				<option>183</option>
-				<option>184</option>
-				<option>185</option>
-				<option>186</option>
-				<option>187</option>
-				<option>188</option>
-				<option>189</option>
-				<option>190</option>
-				<option>191</option>
-				<option>192</option>
-				<option>193</option>
-				<option>194</option>
-				<option>195</option>
-				<option>196</option>
-				<option>197</option>
-				<option>198</option>
-				<option>199</option>
-				<option>200</option>
-			</select>-
-			<select id="height2">
-				<option>140</option>
-				<option>141</option>
-				<option>142</option>
-				<option>143</option>
-				<option>144</option>
-				<option>145</option>
-				<option>146</option>
-				<option>147</option>
-				<option>148</option>
-				<option>149</option>
-				<option>150</option>
-				<option>151</option>
-				<option>152</option>
-				<option>153</option>
-				<option>154</option>
-				<option>155</option>
-				<option>156</option>
-				<option>157</option>
-				<option>158</option>
-				<option>159</option>
-				<option>160</option>
-				<option>161</option>
-				<option>162</option>
-				<option>163</option>
-				<option>164</option>
-				<option>165</option>
-				<option>166</option>
-				<option>167</option>
-				<option>168</option>
-				<option>169</option>
-				<option>170</option>
-				<option>171</option>
-				<option>172</option>
-				<option>173</option>
-				<option>174</option>
-				<option>175</option>
-				<option>176</option>
-				<option>177</option>
-				<option>178</option>
-				<option>179</option>
-				<option>180</option>
-				<option>181</option>
-				<option>182</option>
-				<option>183</option>
-				<option>184</option>
-				<option>185</option>
-				<option>186</option>
-				<option>187</option>
-				<option>188</option>
-				<option>189</option>
-				<option>190</option>
-				<option>191</option>
-				<option>192</option>
-				<option>193</option>
-				<option>194</option>
-				<option>195</option>
-				<option>196</option>
-				<option>197</option>
-				<option>198</option>
-				<option>199</option>
-				<option>200</option>
-			</select>米
-		</div>
 
-		<label>教育程度:</label>
-		<select id="education">
-			<option>不限</option>
-			<option>小学及以上</option>
-			<option>初中及以上</option>
-			<option>高中及以上</option>
-			<option>大专及以上</option>
-			<option>本科及以上</option>
-			<option>硕士及以上</option>
-			<option>博士及以上</option>
-		</select><br />
+			<div class='selectLeft'>
+				<div>
+					<span style='font-weight:bolder;'>婚姻状况:</span>
+				</div>
+
+				<div>
+					<label for="height">身高:</label>
+				</div>
+
+				<div>
+					<label>教育程度:</label>
+				</div>
+
+				<div>
+					<label>民族:</label>
+				</div>
+
+				<div>
+					<label>有无照片:</label>
+				</div>
+
+				<div>
+					<label>诚信等级:</label>
+				</div>
 
 
-		<label>民族:</label>
-		<select id="race">
-			<option>不限</option>
-			<option>汉族</option>
-			<option>蒙古族</option>
-			<option>回族</option>
-			<option>藏族</option>
-			<option>壮族</option>
-			<option>布依族</option>
-			<option>朝鲜族</option>
-			<option>满族</option>
-			<option>其他民族</option>
-		</select><br />
+
+				<div>
+					<label>有无小孩:</label>
+				</div>
+
+				<div>
+					<label>住房条件:</label>
+				</div>
+
+				<div>
+					<label>月薪</label>
+				</div>
+
+				<div>
+					<label>生肖:</label>
+				</div>
+
+				<div>
+					<label>星座:</label>
+				</div>
+
+				<div>
+					<label>宗教信仰:</label>
+				</div>
 
 
-		<label>有无照片:</label><br />
-		<input type="radio" name="ifHasPic" class="ifHasPic" value="1" /><span>有照片</span><br />
-		<input type="radio" checked="checked" name="ifHasPic" class="ifHasPic" value="0" /><span>不限</span><br />
-
-		<label>诚信等级:</label><br />
-		<input type="radio" name="proofRanking" class="proofRanking" value="1" /><span>星级会员</span><br />
-		<input type="radio" checked="checked" name="proofRanking" class="proofRanking" value="0" /><span>不限</span><br />
-		<br />
-
-		<!--是否为强制条件，如果设成强制条件，不满足条件的用户之间无法交流-->
-		<input type="radio" name="isCompulsive" class="isCompulsive" value="1" /><span>我要设定必须符合的择友条件</span><br />
-		<input type="radio" checked="checked" name="isCompulsive" class="isCompulsive" value="0" /><span>以上条件仅供参考</span><br />
 
 
-		<button id="saveCondtion" ng-click='saveMatchCondtion()'>保存</button>
+			</div>
+
+			<div class='selectRight'>
+				<div class='selectMarriageStatus'>
+					<input type="checkbox" name="marriageStatus" class="marriageStatus" value="未婚" /><label class='selectMarriage' style='font-weight:normal;'>未婚</label>
+					<input type="checkbox" name="marriageStatus" class="marriageStatus" value="离异" /><label class='selectMarriage' style='font-weight:normal;'>离异</label>
+					<input type="checkbox" name="marriageStatus" class="marriageStatus" value="丧偶" /><label class='selectMarriage' style='font-weight:normal;'>丧偶</label>
+				</div>
+
+				<div class='selectHeight'>
+					<select id="height">
+						<option>140</option>
+						<option>141</option>
+						<option>142</option>
+						<option>143</option>
+						<option>144</option>
+						<option>145</option>
+						<option>146</option>
+						<option>147</option>
+						<option>148</option>
+						<option>149</option>
+						<option>150</option>
+						<option>151</option>
+						<option>152</option>
+						<option>153</option>
+						<option>154</option>
+						<option>155</option>
+						<option>156</option>
+						<option>157</option>
+						<option>158</option>
+						<option>159</option>
+						<option>160</option>
+						<option>161</option>
+						<option>162</option>
+						<option>163</option>
+						<option>164</option>
+						<option>165</option>
+						<option>166</option>
+						<option>167</option>
+						<option>168</option>
+						<option>169</option>
+						<option>170</option>
+						<option>171</option>
+						<option>172</option>
+						<option>173</option>
+						<option>174</option>
+						<option>175</option>
+						<option>176</option>
+						<option>177</option>
+						<option>178</option>
+						<option>179</option>
+						<option>180</option>
+						<option>181</option>
+						<option>182</option>
+						<option>183</option>
+						<option>184</option>
+						<option>185</option>
+						<option>186</option>
+						<option>187</option>
+						<option>188</option>
+						<option>189</option>
+						<option>190</option>
+						<option>191</option>
+						<option>192</option>
+						<option>193</option>
+						<option>194</option>
+						<option>195</option>
+						<option>196</option>
+						<option>197</option>
+						<option>198</option>
+						<option>199</option>
+						<option>200</option>
+					</select> -
+					<select id="height2">
+						<option>140</option>
+						<option>141</option>
+						<option>142</option>
+						<option>143</option>
+						<option>144</option>
+						<option>145</option>
+						<option>146</option>
+						<option>147</option>
+						<option>148</option>
+						<option>149</option>
+						<option>150</option>
+						<option>151</option>
+						<option>152</option>
+						<option>153</option>
+						<option>154</option>
+						<option>155</option>
+						<option>156</option>
+						<option>157</option>
+						<option>158</option>
+						<option>159</option>
+						<option>160</option>
+						<option>161</option>
+						<option>162</option>
+						<option>163</option>
+						<option>164</option>
+						<option>165</option>
+						<option>166</option>
+						<option>167</option>
+						<option>168</option>
+						<option>169</option>
+						<option>170</option>
+						<option>171</option>
+						<option>172</option>
+						<option>173</option>
+						<option>174</option>
+						<option>175</option>
+						<option>176</option>
+						<option>177</option>
+						<option>178</option>
+						<option>179</option>
+						<option>180</option>
+						<option>181</option>
+						<option>182</option>
+						<option>183</option>
+						<option>184</option>
+						<option>185</option>
+						<option>186</option>
+						<option>187</option>
+						<option>188</option>
+						<option>189</option>
+						<option>190</option>
+						<option>191</option>
+						<option>192</option>
+						<option>193</option>
+						<option>194</option>
+						<option>195</option>
+						<option>196</option>
+						<option>197</option>
+						<option>198</option>
+						<option>199</option>
+						<option>200</option>
+					</select>
+					<span>米</span>
+				</div>
+
+				<div class='selectEducation'>
+					<select id="education">
+					<option>不限</option>
+						<option>小学及以上</option>
+						<option>初中及以上</option>
+						<option>高中及以上</option>
+						<option>大专及以上</option>
+						<option>本科及以上</option>
+						<option>硕士及以上</option>
+						<option>博士及以上</option>
+					</select>
+				</div>
+
+				<div class='selectRace'>
+					<select id="race">
+						<option>不限</option>
+						<option>汉族</option>
+						<option>蒙古族</option>
+						<option>回族</option>
+						<option>藏族</option>
+						<option>壮族</option>
+						<option>布依族</option>
+						<option>朝鲜族</option>
+						<option>满族</option>
+						<option>其他民族</option>
+					</select>
+				</div>
+
+				<div class='selectIfHasPic'>
+					<input type="radio" name="ifHasPic" class="ifHasPic" value="1" /><span>有照片</span>
+					<input type="radio" checked="checked" name="ifHasPic" class="ifHasPic" value="0" /><span>不限</span>
+				</div>
+
+				<div class='selectIfisStart'>
+					<input type="radio" name="proofRanking" class="proofRanking" value="1" /><span>星级会员</span>
+					<input type="radio" checked="checked" name="proofRanking" class="proofRanking" value="0" /><span>不限</span>
+				</div>
+
+				<div class='selectIfHasChildren'>
+					<select ng-model='ifHasChildren'>
+						<option>不限</option>
+						<option>无小孩</option>
+						<option>有小孩归自己</option>
+						<option>有小孩归对方</option>
+					</select>
+				</div>
+
+				<div class='selectHousing'>
+					<select ng-model='housingCondition'>
+						<option>不限</option>
+						<option>与父母同住</option>
+						<option>租房</option>
+						<option>已购房</option>
+						<option>已购房有贷款</option>
+						<option>住单位</option>
+						<option>住亲朋家</option>
+					</select>
+				</div>
+
+
+				<div class='selectMonthIncome'>
+					<select ng-model='monthIncome'>
+						<option>不限</option>
+						<option><2000</option>
+						<option>2000-5000</option>
+						<option>5000-10000</option>
+						<option>10000-15000</option>
+						<option>15000-20000</option>
+						<option>20000-30000</option>
+						<option>50000以上</option>
+					</select>
+				</div>
+
+				<div class='selectZodiac'>
+					<select ng-model='zodiac'>
+						<option>不限</option>
+						<option>鼠</option>
+						<option>牛</option>
+						<option>虎</option>
+						<option>兔</option>
+						<option>龙</option>
+						<option>蛇</option>
+						<option>马</option>
+						<option>羊</option>
+						<option>猴</option>
+						<option>鸡</option>
+						<option>狗</option>
+						<option>猪</option>
+					</select>
+				</div>
+
+				<div class='selectConstellation'>
+					<select ng-model='constellation'>
+						<option>不限</option>
+						<option>白羊座</option> 
+						<option>金牛座</option>
+						<option>双子座</option>
+						<option>巨蟹座</option>
+						<option>狮子座</option>
+						<option>处女座</option>
+						<option>天秤座</option>
+						<option>天蝎座</option>
+						<option>射手座</option>
+						<option>摩羯座</option>
+						<option>水瓶座</option>
+						<option>双鱼座</option>
+					</select>
+				</div>
+
+
+				<div class='selectRegion'>
+					<select ng-model='region'>
+						<option>不限</option>
+						<option>无</option> 
+						<option>佛教</option>
+						<option>基督教</option>
+						<option>天主教</option>
+						<option>穆斯林</option>
+					</select>
+				</div>
+			</div>
+
+			
+
+			<div style='clear:both;'>	
+				<script src="/javascript/selectLocation.js"></script>
+				<input type="radio" name="isCompulsive" class="isCompulsive" value="1" /><span>我要设定必须符合的择友条件</span><br />
+				<input type="radio" checked="checked" name="isCompulsive" class="isCompulsive" value="0" /><span>以上条件仅供参考</span><br />
+				<button id="saveCondtion" ng-click='saveMatchCondtion()'>保存</button>
+			</div>
+
+
+
 
 		</div>
 

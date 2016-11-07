@@ -226,3 +226,8 @@ display:none;
    background-position:right top;
 
 }
+.previewCp{
+    background-image:url('/images/home/viewProfile.jpg');
+    background-repeat:no-repeat;
+    background-position:135px 2px;
+}

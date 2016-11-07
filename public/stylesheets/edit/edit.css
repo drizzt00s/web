@@ -1,10 +1,110 @@
 .editList{
 	overflow:hidden;
+	background-color:#F3F3F3;
+	border-bottom:1px solid #E5E5E5;
 }
 .editList li{
 	float:left;
 	list-style-type:none;
-	margin-left:10px;
+	
+	border-right:solid 1px #e5e5e5;
+	width:85px;
+	height:44px;
+}
+a.editList_sub{
+	text-decoration:none;
+	color:#666;
+	font-size:14px;
+	font-weight:bolder;
+	border-left:solid 1px #fff;
+	display:block;
+	width:84px;
+	height:44px;
+	line-height:44px;
+	text-align:center;
+}
+.main_right{
+	padding-left:0px!important;
+	padding-top:0px!important;
+}
+
+.showBasic{
+	padding-left:20px;
+	padding-bottom:70px;
+	color:#666;
+}
+
+#selectMonthIncome{
+	width:140px;
+	padding:3px 0;
+	border:solid 1px #c5c5c5;
+	position:relative;
+	left:11px;
+}
+#editOffspring{
+	width:140px;
+	padding:3px 0;
+	border:solid 1px #c5c5c5;
+}
+#selectHouseCondition{
+	width:140px;
+	padding:3px 0;
+	border:solid 1px #c5c5c5;
+}
+#editFalseName{
+	width:140px;
+	height:24px;
+	border:solid 1px #c5c5c5;
+}
+#editMobile{
+	width:140px;
+	height:24px;
+	border:solid 1px #c5c5c5;
+}
+#editMail{
+	width:140px;
+	height:24px;
+	border:solid 1px #c5c5c5;
+}
+
+.editBasic_sub{
+	margin-top:25px;
+}
+
+.editBasic{
+	overflow:hidden;
+}
+.editBasicLeft{
+	width:30%;
+	float:left;
+}
+.editBasicRight{
+	width:69%;
+	float:left;
+}
+
+#submitBasic{
+	width: 114px;
+    height: 38px;
+    background: url('/images/default/icons.png') -628px -278px no-repeat;
+    border:none;
+    clear:both;
+    color:#fff;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:55px;
+
+
 
 }
+
+
+
+
+
+
+
+
+
 

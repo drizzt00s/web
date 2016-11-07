@@ -3,3 +3,4 @@ app.js.map
 npm-debug.log
 intermediates/*.js
 intermediates/*.js.map
+node_modules

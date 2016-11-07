@@ -1,14 +1,10 @@
 ﻿window.onload=function(){
-setCity();
+	setCity();
 }
 var provinces=["任意","北京","天津","河北","山西","内蒙古","辽宁",
 "吉林","黑龙江","上海","江苏","浙江","安徽","福建","江西","山东","河南",
 "湖北","湖南","广东","广西","海南","重庆","四川","贵州","云南","西藏","陕西",
 "甘肃","青海","宁夏","新疆","台湾","香港","澳门"];
-
-
-
-
 
 var storeCity=[
 {"province":"北京","area":["任意","东城","西城","崇文","宣武","朝阳","丰台","石景山","海淀","门头沟","房山","通州","顺义","昌平","大兴","怀柔","平谷","密云","延庆"]},
@@ -68,31 +64,27 @@ function setCity(){
 }
 //根据不同的省份或者直辖市生成不同的城市
 
-
-
-
 document.write("<div class='search'>"+
-"<span>年龄</span>"+
+"<span style='margin-rigth:5px;font-weight:bolder;'>年龄:</span>"+
 "<select id='searchAge1' name='searchAge1'>");
 for(var i=18;i<66;i++){
-document.write("<option value='"+i+"'>"+i+"</option>");
+document.write("<option class='selectAgeFrom' value='"+i+"'>"+i+"</option>");
 }
 document.write("</select>"+
-"<span>岁 至</span>"+
+"<span>-</span>"+
 "<select id='searchAge2' name='searchAge2'>");
 for(var i=18;i<66;i++){
 document.write("<option value='"+i+"'>"+i+"</option>");
 }
 document.write("</select>"+
-"<span>岁</span>"+
-"<span>地区</span>");
+"<span>岁</span><br />"+
+"<span style='font-weight:bolder;'>地区:</span>");
 document.write("<select onchange='setCity()' id='searchLocation' name='searchLocation'>");
 for(var i2=0;i2<provinces.length;i2++){
 document.write("<option value='"+provinces[i2]+"'>"+provinces[i2]+"</option>");
 }
 document.write("</select>");
+document.write("<span>-</span>");
 document.write("<select id='searchLocation2' name='searchLocation2'>");
 document.write("</select>");
-
-
 document.write("</div>");

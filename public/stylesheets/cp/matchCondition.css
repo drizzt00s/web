@@ -1,0 +1,64 @@
+#searchAge1{
+	width:100px;
+	margin-right:5px;
+	margin-left:7px;
+}
+#searchAge2{
+	width:100px;
+	margin-left:5px;
+}
+#searchLocation{
+	width:100px;
+	margin-right:5px;
+	margin-left:7px;
+}
+#searchLocation2{
+	width:100px;
+	margin-left:5px;
+}
+.selectMarriage{
+
+}
+#height{
+	width:100px;
+
+}
+#height2{
+	width:100px;
+	margin-right:1px;
+}
+#education{
+	width:100px;
+
+}
+#race{
+	width:100px;
+}
+.selectLeft{
+	overflow:hidden;
+	_zoom:1;
+	width:20%;
+	float:left;
+	text-align:right;
+	
+}
+.selectRight{
+	overflow:hidden;
+	_zoom:1;
+	width:80%;
+	float:right;
+	text-align:left;
+
+}
+.selectLeft div{
+
+}
+.selectRight div{
+
+}
+
+.setCondtion{
+	overflow:hidden;
+	_zoom:1;
+
+}

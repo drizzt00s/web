@@ -1,14 +1,21 @@
 <script src="/javascript/edit/basic.js"></script>
 <link rel='stylesheet' href='/stylesheets/edit/edit.css' />
-
-
-
-<breadcrumb></breadcrumb>
+<link rel='stylesheet' href='/stylesheets/home.css' />
 
 <div class='main' ng-controller='editBasic'>
+
+	<div class='headerWrap'>
+		<img src='/images/home/index_logo.png' class='logo' />
+		<breadcrumb></breadcrumb>
+		<div class='userstatusWrap' ng-if='isLogin'>
+			<userstatus></userstatus>
+		</div>
+	</div>
+
+	<!--
 	<div id='tabIndex'>
 		<%- tabIndex %>
-	</div>
+	</div>-->
 
 
 	<div class='userstatusWrap'>
@@ -20,9 +27,7 @@
 			<div>
 				<cppreview></cppreview>
 			</div>
-			<div>
-				<register></register>
-			</div>
+		
 		</div>
 
 		<div class='toolList'>
@@ -32,79 +37,83 @@
 
 	<div class='main_right'>
 		<ul class='editList'>
-			<li ng-click='showBasicTab()'>基本资料</li>
-			<li ng-click='showCoreInfoTab()'>详细资料</li>
-			<li ng-click='showMonologTab()'>内心独白</li>
-			<li ng-click='showProfileTab()'>上传头像</li>
-			<li ng-click='showAvatarsTab()'>我的相册</li>
-			<li ng-click='showMatchCondtionTab()'>征友条件</li>
-			<li ng-click='showProofsTab()'>诚信认证</li>
-			<li ng-click='changePassTab()'>修改密码</li>
+			<li ng-click='showBasicTab()'><a href='#' class='editList_sub'>基本资料</a></li>
+			<li ng-click='showCoreInfoTab()'><a href='#' class='editList_sub'>详细资料</a></li>
+			<li ng-click='showMonologTab()'><a href='#' class='editList_sub'>内心独白</a></li>
+			<li ng-click='showProfileTab()'><a href='#' class='editList_sub'>上传头像</a></li>
+			<li ng-click='showAvatarsTab()'><a href='#' class='editList_sub'>我的相册</a></li>
+			<li ng-click='showMatchCondtionTab()'><a href='#' class='editList_sub'>征友条件</a></li>
+			<li ng-click='showProofsTab()'><a href='#' class='editList_sub'>诚信认证</a></li>
+			<li ng-click='changePassTab()'><a href='#' class='editList_sub'>修改密码</a></li>
+			<li><a href='#'></a></li>
 		</ul>
 
-
-
-
 		<div class='showBasic' ng-show='showBasic'>
-
 			<div class="editBasic">
-				<div class="fixedInfo">
-					<h4>您的基本信息</h4>
-				</div>
-
 				<div id="editBasic">
-					<div>
-						<label for="editFalseName">昵称:</label><input type="text" id="editFalseName"  name="editFalseName" ng-model="userAllData.falseName" />
-					</div>
-					<div>
-						<label for="editMobile">手机:</label><input type="text" id="editMobile"  name="editMobile" ng-model="userAllData.mobile" />
-					</div>
-					<div>
-						<label for="editMail">邮箱:</label><input type="text" id="editMail"  name="editMail" ng-model="userAllData.email" />
-					</div>
-
-					<div>
-						<span>月收入:</span>
-						<select name="editIncome" ng-model='userAllData.monthincome'>
-							<option>请选择</option>
-							<option><2000</option>
-							<option>2000-5000</option>
-							<option>5000-10000</option>
-							<option>10000-15000</option>
-							<option>15000-20000</option>
-							<option>20000-30000</option>
-							<option>50000以上</option>
-						</select>
-					</div>
-
-					<div>
-						<span>有无孩子:</span>
-						<select name="editOffspring" id="editOffspring" ng-model='userAllData.ifhaschildren'>
-							<option>请选择</option>
-							<option>无小孩</option>
-							<option>有小孩归自己</option>
-							<option>有小孩归对方</option>
-						</select>
-					</div>
-
-					<div>
-						<span>住房条件:</span>
-						<select name="editHouse" ng-model='userAllData.housingcondition'>
-							<option>请选择</option>
-							<option>与父母同住</option>
-							<option>租房</option>
-							<option>已购房</option>
-							<option>已购房有贷款</option>
-							<option>住单位</option>
-							<option>住亲朋家</option>
-						</select>
-					</div>
 
 
-					<input type="button" value="保存" ng-click='editBasic()' /><br />
+					<div class='editBasicLeft'>
+						<div class='editBasic_sub'>
+							<span>昵称:</span><input type="text" id="editFalseName"  name="editFalseName" ng-model="userAllData.falseName" />
+						</div>
+
+						<div class='editBasic_sub'>
+							<span>手机:</span><input type="text" id="editMobile"  name="editMobile" ng-model="userAllData.mobile" />
+						</div>
+
+						<div class='editBasic_sub'>
+							<span>邮箱:</span><input type="text" id="editMail"  name="editMail" ng-model="userAllData.email" />
+						</div>
+					</div>
+
+					<div class='editBasicRight'>
+						<div class='editBasic_sub'>
+							<span>月收入:</span>
+							<select name="editIncome" ng-model='userAllData.monthincome' id='selectMonthIncome'>
+								<option>请选择</option>
+								<option><2000</option>
+								<option>2000-5000</option>
+								<option>5000-10000</option>
+								<option>10000-15000</option>
+								<option>15000-20000</option>
+								<option>20000-30000</option>
+								<option>50000以上</option>
+							</select>
+						</div>
+
+						<div class='editBasic_sub'>
+							<span>有无孩子:</span>
+							<select name="editOffspring" id="editOffspring" ng-model='userAllData.ifhaschildren'>
+								<option>请选择</option>
+								<option>无小孩</option>
+								<option>有小孩归自己</option>
+								<option>有小孩归对方</option>
+							</select>
+						</div>
+
+						<div class='editBasic_sub'>
+							<span>住房条件:</span>
+							<select name="editHouse" ng-model='userAllData.housingcondition'  id='selectHouseCondition'>
+								<option>请选择</option>
+								<option>与父母同住</option>
+								<option>租房</option>
+								<option>已购房</option>
+								<option>已购房有贷款</option>
+								<option>住单位</option>
+								<option>住亲朋家</option>
+							</select>
+						</div>
+					</div>
+
 					
+						
+			
+
 				</div>
 			</div>
+
+			<input type="button" id='submitBasic' value="保存" ng-click='editBasic()' />
 		</div>
 
 		<div class='showCoreInfo' ng-show='showCoreInfo'>

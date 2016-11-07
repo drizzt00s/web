@@ -804,7 +804,7 @@ app.get("/msg/allSentMsg", function(req, res){
 
 
 /* cp */
-app.get("/cp/matchCondition",routes.newMatchCondition);
+app.get("/cp/matchCondition",routeSearch.newMatchCondition);
 /* cp */
 
 
@@ -871,10 +871,10 @@ app.post('/edit/editAvatar', routeEdit.editAvatar);
 
 /* search */
 app.get("/search/searchMain",routeSearch.searchMain);
-
-
-
 app.post("/search/autoSearch",routeSearch.autoSearch);
+app.post("/search/matchCondition",routeSearch.fetchMachCondition);
+
+
 
 
 /* search */

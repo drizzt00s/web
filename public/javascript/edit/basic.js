@@ -1,4 +1,8 @@
-agMain.controller('editBasic', function($scope, $http, utility, api, localStore){
+agMain.controller('editBasic', function($scope, $http, utility, api, localStore, loginHelp){
+
+	loginHelp.checkIfLogined()//如果没登录 转到登录页面
+	$scope.isLogin = loginHelp.isLogined();
+
 
 	$scope.userAllData = null;
 
@@ -360,7 +364,6 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 
 	$scope.edit3 = function(){
 		var data = {};
-
 		data.edit3a = $scope.userAllData.jobinfo1;
 		data.edit3aSub = $scope.userAllData.jobinfo;
 		data.edit3b = $scope.userAllData.companyinfo;
@@ -376,13 +379,17 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore)
 				$scope.changePassTab();
 			}
 		});
-
 	};
 
 
 	$scope.editAvatar = function(){
 		document.getElementById("editPic").submit();
 	};	
+
+	$(".editList_sub").bind('click', function(e){
+		$(e.target).css('background-color','#fff');
+		$(e.target).parent('li').siblings().find('a').css('background-color','#F3F3F3');
+	});
 
 
 

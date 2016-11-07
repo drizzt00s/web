@@ -3,6 +3,13 @@ agMain.controller('matchCondition', function($scope, $http, utility, api, loginH
 	$scope.isLogin = false;
 	$scope.falseName = '';
 
+	$scope.ifHasChildren = '不限';
+	$scope.housingCondition = '不限';
+	$scope.monthIncome = '不限';
+	$scope.zodiac = '不限';
+	$scope.constellation = '不限';
+	$scope.region = '不限';
+
 	$scope.checkCookie = function(){
 		if(utility.getTargetCookie('username')){
 			$scope.falseName = utility.getTargetCookie('username');
@@ -32,6 +39,7 @@ agMain.controller('matchCondition', function($scope, $http, utility, api, loginH
 		var ifHasPic = $(".ifHasPic:checked").val();
 		var proofRanking = $(".proofRanking:checked").val();    
 		var isCompulsive = $(".isCompulsive:checked").val();	
+
 		storeData["storeMarriageStatus"] = storeMarriageStatus;
 		storeData["ageFrom"] = ageFrom;
 		storeData["ageTo"] = ageTo;
@@ -45,6 +53,16 @@ agMain.controller('matchCondition', function($scope, $http, utility, api, loginH
 		storeData["proofRanking"] = proofRanking;
 		storeData["isCompulsive"] = isCompulsive;
 		storeData["username"] = username;
+
+		storeData['ifHasChildren'] = $scope.ifHasChildren;
+		storeData['housingCondition'] = $scope.housingCondition;
+		storeData['monthIncome'] = $scope.monthIncome;
+		storeData['zodiac'] = $scope.zodiac;
+		storeData['constellation'] = $scope.constellation;
+		storeData['region'] = $scope.region;
+
+
+
 		var url = "/user/matchConditionPost";
 		$.ajax({
 			url:url,
