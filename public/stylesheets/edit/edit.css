@@ -38,8 +38,6 @@ a.editList_sub{
 	width:140px;
 	padding:3px 0;
 	border:solid 1px #c5c5c5;
-	position:relative;
-	left:11px;
 }
 #editOffspring{
 	width:140px;
@@ -73,6 +71,8 @@ a.editList_sub{
 
 .editBasic{
 	overflow:hidden;
+	padding-bottom:3px;
+
 }
 .editBasicLeft{
 	width:30%;
@@ -94,17 +94,118 @@ a.editList_sub{
     margin-left:auto;
     margin-right:auto;
     margin-top:55px;
+}
 
+.submitBasic{
+	width: 114px;
+    height: 38px;
+    background: url('/images/default/icons.png') -628px -278px no-repeat;
+    border:none;
+    color:#fff;
+    display:block;
+    margin:0 auto;
+    margin-top:35px;
+}
 
+.editBasic_sub_inHasChild{
+	position:relative;
+	top:3px;
+}
+.editBasic_sub_houseCondition{
 
 }
 
+.showCoreInfo{
+	color:#666;
+	line-height:35px;
+	padding-left:10px;
+}
+.showCoreInfo select{
+	width:140px;
+	height:24px;
+}
+.describeCharacter{
+	width:500px;
+	height:300px;
+}
 
 
+.showMonolog{
+	color:#666;
+	line-height:35px;
+	padding-left:10px;
+}
+.showMonolog select{
+	width:140px;
+	height:24px;
+}
+.mainCosts{
+	position:relative;
+	bottom:3px;
+}
+.mainHobby{
+	position:relative;
+	bottom:3px;
+}
+.mainCostsList{
+	margin-left:5px;
+}
+.mainHobbyList{
+	margin-left:5px;
+}
 
+.showProfile{
+	color:#666;
+	padding:25px;
+}
+.showProfile label{
+	position:relative;
+	bottom:3px;
+	margin-right:10px;
+}
 
+.loved{
+	margin-top:20px;
 
+}
 
+.loved label{
+	
+}
+.lovedPart{
+	
+}
+.showAvatars{
+	color:#666;
+	padding:25px;
+}
+.talkHobby{
+	width:500px;
+	height:300px;
+}
+.showMatchCondtion{
+	color:#666;
+	padding:25px;
+}
+.showMatchCondtion select{
+	width:140px;
+	height:24px;
+}
 
-
-
+.siblingsstatus{
+	margin-top:15px;
+}
+.ifLiveWithParents{
+	margin-top:15px;
+}
+.talkExpection{
+	margin-top:15px;
+}
+.ifWithParents{
+	width:500px;
+	height:300px;
+}
+.showProofs{
+	color:#666;
+	padding:25px;
+}

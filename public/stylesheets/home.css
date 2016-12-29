@@ -4,7 +4,6 @@ body{
 }
 
 .breadcrumb{
-
 }
 
 .headerWrap{
@@ -35,6 +34,7 @@ body{
 	background-color:#fff;
 	padding-top:10px;
 	padding-left:22px;
+	min-height:834px;
 }
 .banner{
 	background-image:url('/images/home/index_banner.jpg');

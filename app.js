@@ -35,7 +35,10 @@ http.createServer(app).listen(app.get('port'), function(){
 //页面有时候会出现死锁的情况 原因不明 需要解决
 //isonline有bug 0表示不在线 1表示在线 可能是用户退出登录的时候字段没有更新
 
+
 require('socketAll.js').startSocket();
+
+
 var utility = require('utlity.js');
 var dbUtlity = require('dbUtlity.js');
 var tools = require('tools/tools.js');
@@ -50,11 +53,6 @@ var routerBackStageReport = require('modules/backstageSupporter/backstageSupport
 
 var register = require('register/register.js');
 var globalApi = require('modules/global/global.js');
-
-
-
-
-
 
 
 
@@ -714,8 +712,8 @@ app.get("/test",function(req,res){
 
 
 /************************************************************* remade*****************************/
-
 app.get("/home",routes.home);
+
 //new index page
 
 
@@ -887,8 +885,6 @@ app.get("/backstageSupporter/proof_validation", routerBackStageReport.getProofVa
 app.post("/backstageSupporter/proofs/:operationType", routerBackStageReport.vlidateProofs);
 
 /* backstage supporter */
-
-
 
 
 
