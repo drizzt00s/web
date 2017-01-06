@@ -7,13 +7,9 @@
 <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
 
 
-
+<!--
 <script src="/javascript/libs/jquery-1.4.2.js"></script>
 <script src="/javascript/Compents.js"></script>
-
-<!--
-<script src="/javascript/xmlHttpRequest.js"></script>
--->
 
 <script src="/javascript/userEdit.js"></script>
 <script src="/javascript/json.js"></script>
@@ -25,8 +21,8 @@
 <script src="/javascript/libs/angular-resource.js"></script>
 
 
-<script src="/javascript/initAjax.js"></script>
 <script src="/javascript/agMain/agMain.js"></script>
+
 <script src="/javascript/sharedComponents/utility.js"></script>
 <script src="/javascript/sharedComponents/constant.js"></script>
 <script src="/javascript/sharedComponents/api.js"></script>
@@ -44,20 +40,18 @@
 <script src="/javascript/directive/mainSideMenu.js"></script>
 <script src="/javascript/directive/registerAndLogin.js"></script>
 <script src="/javascript/directive/userStatusBanner.js"></script>
+-->
 
 
 
-
-
+<script data-main="javascript/main.js" src="javascript/libs/require.js"></script>
 
 </head>
-<body ng-app = 'main'>
+<body>
 	<div>
 		
 		<!--<spotlight></spotlight>-->
 	</div><!--common parts-->
-
-
 
     <%- body %>
 </body>

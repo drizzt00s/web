@@ -1,7 +1,5 @@
-<script src="/javascript/cp/newMatchCondition.js"></script>
 <link rel='stylesheet' href='/stylesheets/cp/matchCondition.css'/>
 <link rel='stylesheet' href='/stylesheets/home.css' />
-
 
 <div class='main centered'  ng-controller='matchCondition' style='position:relative;'>
 	<img src='/images/home/index_logo.png' class='logo' />
@@ -90,13 +88,11 @@
 				<div>
 					<label>宗教信仰:</label>
 				</div>
-
-
-
-
 			</div>
 
-			<div class='selectRight'>
+
+
+			<div class='selectRight' style='border:solid 1px red;'>
 				<div class='selectMarriageStatus'>
 					<input type="checkbox" name="marriageStatus" class="marriageStatus" value="未婚" /><label class='selectMarriage' style='font-weight:normal;'>未婚</label>
 					<input type="checkbox" name="marriageStatus" class="marriageStatus" value="离异" /><label class='selectMarriage' style='font-weight:normal;'>离异</label>
@@ -355,16 +351,13 @@
 				</div>
 			</div>
 
-			
-
+		
 			<div style='clear:both;'>	
 				<script src="/javascript/selectLocation.js"></script>
 				<input type="radio" name="isCompulsive" class="isCompulsive" value="1" /><span>我要设定必须符合的择友条件</span><br />
 				<input type="radio" checked="checked" name="isCompulsive" class="isCompulsive" value="0" /><span>以上条件仅供参考</span><br />
 				<button id="saveCondtion" ng-click='saveMatchCondtion()'>保存</button>
 			</div>
-
-
 
 
 		</div>

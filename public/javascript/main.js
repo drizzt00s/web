@@ -1,99 +1,59 @@
-requirejs.config({
-	baseUrl:'/javascript/libs',
-	paths: {
-		modules:'../modules'
+require.config({
+	baseUrl:'javascript',
+	paths:{
+		'angular':'libs/angular',
+		'angularAMD': 'libs/angularAMD',
+		'jquery':'libs/jquery-1.4.2',
+		'ngStrap':'libs/angular-strap',
+		//libs
+
+		'api':'services/api',
+		'constant':'services/constant',
+		'errorMsg':'services/errorMsg',
+		'localStore':'services/localStorage',
+		'loginHelp':'services/loginHelp',
+		'showError':'services/showError',
+		'utility':'services/utility',
+		'validation':'services/validation',
+		//services
+
+		'breadcrumb':'directive/breadcrumb',
+		'cppreview':'directive/cpPreview',
+		'toolist':'directive/mainSideMenu',
+		'onlinetalk':'directive/onlineTalk',
+		'pickaddress':'directive/pickAddress',
+		'pickbirthday':'directive/pickBirthday',
+		'pickeducation':'directive/pickEducation',
+		'pickheight':'directive/pickHeight',
+		'pickincome':'directive/pickIncome',
+		'profile':'directive/profile',
+		'register':'directive/registerAndLogin',
+		'spotlight':'directive/spotlight',
+		'userstatus':'directive/userStatusBanner',
+		//directive
+
+		'webController':'sub_modules/webController',
+		//sub modules controller
+		'landing':'controllers/landing/landing',
+		'register':'controllers/register/register',
+		'home':'controllers/home/home',
+		'edit':'controllers/edit/basic',
+		'login':'controllers/login/login',
+		'matchCondition':'controllers/research/newMatchCondition'
+
+		
 	},
-	shim: {
-		'jquery': {
-			exports: '$'
+	shim:{
+		'angular': {
+			exports: 'angular'
 		},
-		'angular':{
-			exports: 'angular',
-		},
-		'angular-resource':{
-			deps:['angular'],
-			exports:'angular-resource'
-		},
-		'modules/agMain':{
-			deps:['angular']
-		}
-	
+		'ngStrap':['angular'],
 
-	}
-});
-
-var modules = [
-'jquery', 
-'angular',
-'angular-resource',
-'modules/userEdit', 
-'modules/Compents', 
-'modules/cookieHelp', 
-'modules/socket', 
-'modules/message',
-'modules/index',
-'modules/moveoutIndex',
-'modules/header',
-'modules/agMain'
-];
-
-
-
-require(modules, function ($, angular) {  
-	
-
-var main = angular.module("main",[]);
-
-
-main.factory("login",["$resource",function($resource){
-    return $resource("/login");
-}]);
-
-
-main.controller("loginAreaController",function($scope, login){
-     $scope.checkIfLogined=function(){
-         return parseInt(jQuery("#checkLogin").val());
-     }
- 
-     $scope.data={
-     	showLoginArea:$scope.checkIfLogined(),
-        account:"",
-        pass:"",
-        accErrorMsg:"",
-        passErrorMsg:"",
-        userFalseName:"",
-        username:""
-     };
-
-
-      $scope.submitLogin=function(){
-      	   var username=$scope.data.account;
-      	   var pass=$scope.data.pass;
-           login.save({},{username:username,pass:pass},function(d){
-             $scope.data.accErrorMsg=d.accResult;
-             $scope.data.passErrorMsg=d.passResult;
-             if(!d.accResult&&!d.passResult){
-                var userFalseName=getTargetCookie("falseName");
-                var username=getTargetCookie("username");
-                socket = io.connect('http://localhost:8080');
-                socket.on("connect",function(){
-		        socket.emit("watchOtherLogin2",{"username":username,"falseName":userFalseName},function(){
-		        window.location.reload();
-		      });
-		     });
-            }
-
-
-          },function(d){
-
-          });
-           
-      }
-});
-
-
-
-
-
-
+		'landing':['angular','webController'],
+		'register':['angular','webController'],
+		'home':['angular','webController'],
+		'edit':['angular','webController'],
+		'login':['angular','webController']
+	},
+	 deps: ['app']
 });

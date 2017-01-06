@@ -15,11 +15,11 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 	$scope.checkPassword = '';
 	$scope.username = '';
 
-	$scope.selCity = Constant.addressMap;
+	$scope.selCity = Constant.addressMap();
 	$scope.heights = Constant.generateHeightList();
-	$scope.educations = Constant.Educations;
-	$scope.incomes = Constant.Incomes;
-	$scope.months = Constant.Months;
+	$scope.educations = Constant.Educations();
+	$scope.incomes = Constant.Incomes();
+	$scope.months = Constant.Months();
 	//create meta data for sub directives
 
 
@@ -32,7 +32,7 @@ agMain.controller('register', function($scope, $http, Constant, utility, api, va
 		
 		var data = $scope.collectData();
 		$http({
-			url:api.register,
+			url:api.register(),
 			method:'post',
 			data:data
 		}).success(function(d){

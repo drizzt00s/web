@@ -16,7 +16,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 	var username = localStorage.getItem('username') || utility.getTargetCookie('username');
 
 	$scope.replayDetail = function(){
-		var url = api.sendOutboxMsg;
+		var url = api.sendOutboxMsg();
 		var targetProfileUrl = $("#targetProfile").attr("src");
 
 		var msgJson = {
@@ -54,7 +54,7 @@ agMain.controller('msgDetail', function($scope, $http, utility, api){
 
 
 	$scope.changeUnreadMsgToReadMsg = function(msgTag, msgTimestamp){
-		var url = api.changeNewMsgToOld;
+		var url = api.changeNewMsgToOld();
 		var data = {
 			msgTag:$("#storeMsgTag").text(),
 			uid:uid,

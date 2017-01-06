@@ -12,7 +12,7 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 	$scope.getMatchCondition = function(){
 		$http({
 			method:'POST',
-			url:api.search.matchCondition,
+			url:api.matchCondition(),
 			data:{uid:localStorage.getItem('uid')}
 		}).success(function(d){
 			console.log(d);
@@ -24,7 +24,7 @@ agMain.controller('home', function($scope, $http, utility, api, loginHelp){
 	$scope.fetchAllUser = function(){
 		$http({
 			method:'POST',
-			url:api.getAllUsers,
+			url:api.getAllUsers(),
 		}).success(function(data){
 			var data = utility.trimAge(data.allUserInfo);
 			data =  utility.trimProfileUrl(data);

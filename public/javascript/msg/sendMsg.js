@@ -5,7 +5,7 @@ agMain.controller('sendMsg', function($scope, utility, api){
 	var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
 	
 	$scope.sendAjaxMsg = function(){   
-	    var url = api.sendOutboxMsg;
+	    var url = api.sendOutboxMsg();
 	    var msgTag = (new Date()).getTime() + '_' + Math.random() + '_' + uid;
 	    var targetProfileUrl = $("#targetProfile").attr("src");
 	    var msgJson = {

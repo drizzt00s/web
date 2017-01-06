@@ -7,7 +7,7 @@ agMain.controller('login', function($scope, $http, api, showError, utility){
 		data.username = $scope.username;
 		data.pass = $scope.pass;
 		$http({
-			url:api.login,
+			url:api.login(),
 			method:'post',
 			data:data
 		}).success(function(d){

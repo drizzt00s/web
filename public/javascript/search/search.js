@@ -10,7 +10,7 @@ agMain.controller('search', function($scope, $http, api, showError, utility, val
 
 	$scope.getGenderByHttp = function(){
 		$http({
-			url:api.global.userGender,
+			url:api.userGender(),
 			method:'post',
 			data:{username:$scope.cp_username}
 		}).success(function(d){
@@ -25,7 +25,7 @@ agMain.controller('search', function($scope, $http, api, showError, utility, val
 	$scope.autoSearch = function(){
 		//页面刚进来 根据用户性别 $scope.gender 返回所有db中的结果
 		$http({
-			url:api.search.autoSearch,
+			url:api.autoSearch(),
 			method:'post',
 			data:{userGender:$scope.gender}
 		}).success(function(d){

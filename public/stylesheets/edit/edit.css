@@ -209,3 +209,23 @@ a.editList_sub{
 	color:#666;
 	padding:25px;
 }
+.changePass{
+	color:#666;
+	padding:25px;
+	line-height:30px;
+}
+#edit3c{
+	width:500px;
+	height:300px;
+}
+#edit3a{
+	width:140px;
+	height:24px;
+}
+#edit3b{
+	width:140px;
+	height:24px;
+}
+input[type='text']{
+	margin-left:4px;
+}	

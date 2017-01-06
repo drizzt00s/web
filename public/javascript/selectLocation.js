@@ -68,7 +68,7 @@ document.write("<div class='search'>"+
 "<span style='margin-rigth:5px;font-weight:bolder;'>年龄:</span>"+
 "<select id='searchAge1' name='searchAge1'>");
 for(var i=18;i<66;i++){
-document.write("<option class='selectAgeFrom' value='"+i+"'>"+i+"</option>");
+    document.write("<option class='selectAgeFrom' value='"+i+"'>"+i+"</option>");
 }
 document.write("</select>"+
 "<span>-</span>"+

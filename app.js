@@ -476,11 +476,9 @@ app.post("/search",routes.search);
 
 
 /* register */
-app.get("/register",routes.register);
-//old register page
 app.get("/logoff",routes.logoff);
 app.post("/register",routes.registerPost);
-app.get("/regist", register.register);
+app.get("/register", register.register);
 
 
 /* register */
@@ -802,7 +800,7 @@ app.get("/msg/allSentMsg", function(req, res){
 
 
 /* cp */
-app.get("/cp/matchCondition",routeSearch.newMatchCondition);
+app.get("/matchCondition",routeSearch.newMatchCondition);
 /* cp */
 
 
@@ -848,7 +846,7 @@ app.post("/user/whoOnline",routes.who_online);
 
 
 /* user edit */
-app.get("/edit/basic",routeEdit.editBasic);
+app.get("/edit",routeEdit.editBasic);
 
 app.post('/edit/basicInfo', routeEdit.basicInfo);
 app.post('/edit/edit1', routeEdit.edit1);

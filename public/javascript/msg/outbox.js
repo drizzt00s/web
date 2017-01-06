@@ -37,7 +37,7 @@ agMain.controller('outbox', function($scope, $http, utility, api){
 
 	$scope.displaySentAsynMSg = function(){
 		var username = localStorage.getItem('username') || utility.getTargetCookie('username');
-		var url = api.outboxAllMsg;
+		var url = api.outboxAllMsg();
 		var msgJson = {username:username};
 		//自己的uid
 		$http({

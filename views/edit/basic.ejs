@@ -1,9 +1,7 @@
-<script src="/javascript/edit/basic.js"></script>
 <link rel='stylesheet' href='/stylesheets/edit/edit.css' />
 <link rel='stylesheet' href='/stylesheets/home.css' />
 
 <div class='main' ng-controller='editBasic'>
-
 	<div class='headerWrap'>
 		<img src='/images/home/index_logo.png' class='logo' />
 		<breadcrumb></breadcrumb>
@@ -553,7 +551,6 @@
 
 			    <div class='talkExpection'>
 			        <p>说说您的家庭氛围、父母的职业及对您的期望</p>
-			        <p>您的伴侣可以更好的融入您的家庭</p>
 			        <textarea name="editStep6e" id="edit5a"  class='ifWithParents'rows="10" cols="40" ng-model='userAllData.talkaboutfamily'></textarea>
 			        <div>限20-500字，目前已输入<span id="edit5cCounter1">0</span>字，您还可以输入<span id="edit5cCounter2">500</span>字</div>
 			    </div>
@@ -583,7 +580,7 @@
 			<div class='edit3'>
 				<div>
 					<span>职业类别:</span>
-					<select  class="checkEmpty" name="edit3a" id="edit3a" ng-model='userAllData.jobinfo1'>
+					<select  class="checkEmpty" name="edit3a" id="edit3a" ng-model='userAllData.jobinfo1' ng-change='selectJobCategory()'>
 						<option>请选择</option>
 						<option>销售</option>
 						<option>客户服务</option>
@@ -614,9 +611,9 @@
 						<option>待业</option>
 						<option>其他职业</option>
 					</select>
-					<select  class="checkEmpty" name="edit3aSub" id="edit3aSub"  ng-model='userAllData.jobinfo'>
-						<option>请选择</option>
-					</select>
+					<!--
+					<select  class="checkEmpty" name="edit3aSub" id="edit3aSub">
+					</select>-->
 				</div>
 				<div>
 					<span>公司类别:</span>
@@ -633,8 +630,8 @@
 					</select>
 				</div>
 				<div>
-					<p>说说您的工作情况，描述越详细，越有助您找到合适的伴侣</p>
-					<p>比如您的职位，工作感受，要不要经常出差，社交应酬多不多等等</p>
+					<p>说说您的工作情况，描述越详细，越有助您找到合适的伴侣比如您的职位，工作感受，要不要经常出差，社交应酬多不多等等</p>
+	
 					<textarea name="edit3c" id="edit3c"  rows="10" cols="40" ng-model='userAllData.joboverview'></textarea>
 					<div>限20-500字，目前已输入<span id="edit3cCounter1">0</span>字，您还可以输入<span id="edit3cCounter2">500</span>字</div>
 				</div>

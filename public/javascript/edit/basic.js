@@ -193,7 +193,7 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore,
 	
 	$scope.getUserDataByHttp = function(){
 		$http({
-			url:api.global.userInfo,
+			url:api.userInfo(),
 			method:"post",
 			data:{uid:$scope.cp_uid}
 		}).success(function(d){
@@ -391,67 +391,6 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore,
 		$(e.target).parent('li').siblings().find('a').css('background-color','#F3F3F3');
 	});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	function checkFileType(){
 		var flag = true;
 		$.each($(".myUpLoadPic"),function(i,v){
@@ -473,70 +412,5 @@ agMain.controller('editBasic', function($scope, $http, utility, api, localStore,
 			return false;
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-	$("#edit3a").bind("change",utility.buildSubProfessionTree);
-
-	function checkUploadedPicStatus(){
-        var url="/route/login/showUserPic";
-        $.ajax({
-            url:url,
-            type:"GET",
-            cache:false,
-            success:function(data, textStatus, jqXHR){
-                leftPicLength = data.remainingPic;
-            },
-            error:function(jqXHR, textStatus, errorThrown){
-                alert('function checkUploadedPicStatus error!');
-            }
-        })
-    }
-
-    checkUploadedPicStatus();
-
-
-
-function checkIsAllowedToUpload(){
-	var checkFile = checkFileType();
-	if(!checkFile){
-		return false;
-	}
-	var upLoadPicNumber = 0;
-		$.each($(".myUpLoadPic"),function(index,value){
-		var checkIfPicUpload = $(value).val();
-		if(checkIfPicUpload != ""){
-			upLoadPicNumber++
-		}
-	})
-	if(upLoadPicNumber > leftPicLength){
-		alert("您只能上传12张图片，您现在已经上传了" + (12 - leftPicLength) + "张图片!");
-		return false;
-	} else {
-		var currentSubmitTime = parseInt($("#jsCheckRefresh").val());
-		currentSubmitTime++;
-		$("#jsCheckRefresh").val(currentSubmitTime.toString());
-		document.getElementById("editPic").submit();
-	}
-}
-
-$("#submitPic").bind("click",checkIsAllowedToUpload);
-*/
-
-
 
 });
