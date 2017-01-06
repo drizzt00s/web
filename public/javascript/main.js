@@ -1,5 +1,5 @@
 require.config({
-	baseUrl:'javascript',
+	baseUrl:'/javascript',
 	paths:{
 		'angular':'libs/angular',
 		'angularAMD': 'libs/angularAMD',
@@ -39,7 +39,13 @@ require.config({
 		'home':'controllers/home/home',
 		'edit':'controllers/edit/basic',
 		'login':'controllers/login/login',
-		'matchCondition':'controllers/research/newMatchCondition'
+		'matchCondition':'controllers/research/newMatchCondition',
+
+		'inbox':'controllers/msg/inbox',
+		'sendMsg':'controllers/msg/sendMsg',
+
+
+		'userDetail':'controllers/user/userDetail'
 
 		
 	},

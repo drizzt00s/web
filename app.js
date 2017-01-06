@@ -487,39 +487,6 @@ app.get("/register", register.register);
 app.get("/info/me",routes.me);
 /* self info */
 
-/* forum */
-app.get("/forum", routes.getForum);
-app.post("/forum/getForumImgsOnEntering", routes.getForumImgsOnEntering);
-app.post("/forum/postDetail", routes.postDetail);
-app.post("/forum/replyPost", routes.replyPost);
-app.post("/postDetailImg.ejs", routes.forumPostImage);
-app.post("/forum/submitPreviewPic.ejs", routes.submitPreviewPic);
-app.get("/forum/postDetail.ejs", routes.getPostDetail);
-app.post("/forum/getReplyPics.ejs", routes.getReplyPics);
-app.get("/WebstormProjects/web/views/postPicPreview.ejs", routes.postPicPreview);
-app.get("/WebstormProjects/web/views/whiteCollar.ejs", routes.whiteCollar);
-app.post("/WebstormProjects/web/views/postPicPreview.ejs",routes.displayPostPicPreview);
-app.post("/WebstormProjects/web/views/savePost.ejs", routes.savePost);
-app.get("/WebstormProjects/web/views/displayAllPost.ejs", routes.displayAllPost);
-app.post("/WebstormProjects/web/views/replySubPost.ejs", routes.replySubPost);
-//回复子
-app.get("/WebstormProjects/web/views/getFinalSubReps.ejs",routes.getFinalSubReps);
-app.post("/WebstormProjects/web/views/returnIcons.ejs", routes.returnIcons);
-//postDetail.ejs页面返回所有回帖人的头像
-app.post("/WebstormProjects/web/views/replyPostOwnerIcon.ejs", routes.replyPostOwnerIcon);
-
-app.get("/WebstormProjects/web/views/posts.ejs",function(req,res){
-    res.render("./posts.ejs",{title:"发帖"});
-})
-
-app.post("/WebstormProjects/web/views/posts.ejs",function(req,res){
-    var postTitle=req.body.postTitle;
-    var postBody=req.body.postContent; 
-})
-/* forum */
-
-
-
 
 /* map */
 app.get("/mapSearch",routes.mapSearch);

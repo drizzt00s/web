@@ -16,7 +16,7 @@ define(['angularAMD'], function(angularAMD){
 			return '/global/uid';
 		};
 		this.outboxMsg = function(){
-			return '/msg/msgAsy';
+			return '/msg/msgAsyn';
 		};
 		this.outboxAllMsg = function(){
 			return '/msg/outboxAllMsg';
