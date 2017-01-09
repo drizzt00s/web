@@ -136,6 +136,20 @@ define(['angular'], function(){
 			} else if (proofRanking == 1){
 				$("#matchProofRanking").text("星级会员");
 			}
+
+			var ifHasChildren = o.ifHasChildren;
+			var zodiac = o.zodiac;
+			var region = o.region; //信仰
+			var monthIncome = o.monthIncome;
+			var housingCondition = o.housingCondition;
+			var constellation = o.constellation;
+
+			$("#matchIfHasChildren").text(ifHasChildren);
+			$("#matchZodiac").text(zodiac);
+			$("#matchReligion").text(region);
+			$("#matchIncome").text(monthIncome);
+			$("#matchHouseCondition").text(housingCondition);
+			$("#matchConstellation").text(constellation);
 		};
 
 
@@ -201,6 +215,8 @@ define(['angular'], function(){
 			setRadioDefault("ifHasPic",ifHasPic);
 			setRadioDefault("proofRanking",proofRanking);
 			setRadioDefault("isCompulsive",isCompulsive);
+
+
 		};
 
 		$scope.showCurrentCondition = function(){
@@ -230,7 +246,7 @@ define(['angular'], function(){
 
 						storeAll.ifHasChildren = d.ifHasChildren;
 						storeAll.zodiac = d.zodiac;
-						storeAll.region = d.region;
+						storeAll.region = d.region; //信仰
 						storeAll.monthIncome = d.monthIncome;
 						storeAll.housingCondition = d.housingCondition;
 						storeAll.constellation = d.constellation;

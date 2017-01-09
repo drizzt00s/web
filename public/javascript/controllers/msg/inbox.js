@@ -1,6 +1,9 @@
 define(['angular'], function(){
-	angular.module('web.controller').controller('inbox',['$scope', '$http', 'utility', 'api', function($scope, $http, utility, api){
+	angular.module('web.controller').controller('inbox',['$scope', '$http', 'utility', 'api', 'loginHelp',  function($scope, $http, utility, api, loginHelp){
 		
+		loginHelp.checkIfLogined()//如果没登录 转到登录页面
+		$scope.isLogin = loginHelp.isLogined();
+
 		$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
 		var username = localStorage.getItem('username') || utility.getTargetCookie('username');
 

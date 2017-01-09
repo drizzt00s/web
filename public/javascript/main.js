@@ -43,6 +43,7 @@ require.config({
 
 		'inbox':'controllers/msg/inbox',
 		'sendMsg':'controllers/msg/sendMsg',
+		'msgDetail':'controllers/msg/msgDetail',
 
 
 		'userDetail':'controllers/user/userDetail'
@@ -61,5 +62,5 @@ require.config({
 		'edit':['angular','webController'],
 		'login':['angular','webController']
 	},
-	 deps: ['app']
+	 deps: ['application']
 });
