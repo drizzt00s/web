@@ -32,8 +32,10 @@ define(['angular'], function(){
             //userProfile
 
             if($scope.data.avatar){
-                $scope.avatars = eval("("+ $scope.data.avatar+")")['con'];// array of images
-                $scope.avatars = utility.createCompleteUserImageList($scope.avatars, $scope.data.account);
+               // $scope.avatars = eval("("+ $scope.data.avatar+")")['con'];// array of images
+
+                $scope.avatars = eval("("+ $scope.data.avatar+")"); // array of images
+                $scope.avatars = utility.createCompleteUserImageListAvatar($scope.avatars, $scope.data.account);
                 $scope.avatarLength = $scope.avatars.length;
             }
             //image slides

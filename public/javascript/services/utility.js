@@ -25,7 +25,7 @@ define(['angularAMD'], function(angularAMD){
 					d.profile = '/uploads/pic/default/unknown.png';
 				} else {
 					var account = d.account;
-					d.profile = '/uploads/pic/' + account + '/' + d['profile'];
+					d.profile = d.profile;
 				}
 				return d;
 			}
