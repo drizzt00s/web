@@ -6,10 +6,3 @@ define(['angularAMD'], function(angularAMD){
 		};
 	});
 });
-/*
-agMain.directive('toolist', function(){
-	return {
-		restrict:"E",
-		templateUrl:"/mainSideMenu"
-	};
-});*/

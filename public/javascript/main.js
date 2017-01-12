@@ -42,13 +42,13 @@ require.config({
 		'matchCondition':'controllers/research/newMatchCondition',
 
 		'inbox':'controllers/msg/inbox',
+		'outbox':'controllers/msg/outbox',
 		'sendMsg':'controllers/msg/sendMsg',
 		'msgDetail':'controllers/msg/msgDetail',
+		'outboxDetail':'controllers/msg/outboxDetail',
 
-
-		'userDetail':'controllers/user/userDetail'
-
-		
+		'userDetail':'controllers/user/userDetail',
+		'userImage':'controllers/user/userImage'
 	},
 	shim:{
 		'angular': {

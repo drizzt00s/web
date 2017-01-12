@@ -11,10 +11,7 @@ define(['angularAMD'], function(angularAMD){
 		this.trimProfileUrl = function(d){
 			if(d && d instanceof Array){
 				for(var i = 0 ;i < d.length; i++){
-					if(d[i]['profile'].length > 0){
-						var falseName = d[i]['account'];
-						d[i]['profile'] = '/uploads/pic/' + falseName + '/' + d[i]['profile'];
-					} else if(d[i]['profile'].length <=0 ){
+			    if(d[i]['profile'].length <=0 ){
 						d[i]['profile'] = '/uploads/pic/default/unknown.png';
 					}
 				}
@@ -77,6 +74,17 @@ define(['angularAMD'], function(angularAMD){
 				var data = [];
 				for(var i = 0 ; i < imageList.length; i++ ){
 					var newImageUrl = '/uploads/pic/' + userAccount +'/'+imageList[i];
+					data.push(newImageUrl);
+				}
+				return data;
+			}
+		};
+
+		this.createCompleteUserImageListAvatar = function(imageList, userAccount){
+			if(imageList.length > 0 && userAccount ){
+				var data = [];
+				for(var i = 0 ; i < imageList.length; i++ ){
+					var newImageUrl = '/uploads/avatar/' + userAccount +'/'+imageList[i];
 					data.push(newImageUrl);
 				}
 				return data;

@@ -39,6 +39,15 @@ define(['angularAMD'], function(angularAMD){
 		this.userGender = function(){
 			return '/global/userGender';
 		};
+		this.cpImages = function(){
+			return '/cp/allImages';
+		};
+		this.setProfile = function(){
+			return '/cp/setProfile';
+		};
+		this.getProfile = function(){
+			return '/cp/returnProfile';
+		};
 	});
 });
 

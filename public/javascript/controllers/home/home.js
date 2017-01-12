@@ -3,6 +3,11 @@ define(['angular'], function(){
 		 loginHelp.checkIfLogined()//如果没登录 转到登录页面
 		$scope.isLogin = loginHelp.isLogined();
 		$scope.falseName = loginHelp.getFalseName();
+
+		$scope.profile = '';
+		$scope.uid = localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
+		$scope.username = localStorage.getItem('username') || utility.getTargetCookie("username");	
+
 		if($scope.isLogin){
 			loginHelp.setUid();
 		}
@@ -27,10 +32,16 @@ define(['angular'], function(){
 				url:api.getAllUsers(),
 			}).success(function(data){
 				var data = utility.trimAge(data.allUserInfo);
-				data =  utility.trimProfileUrl(data);
+				data = utility.trimProfileUrl(data);
 				$scope.allUsers = data;
 			})
 		};
 		$scope.fetchAllUser();
+
+
+		
+
+
+
 	 }]);
 });

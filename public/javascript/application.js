@@ -39,11 +39,14 @@ define(['angularAMD',
 		'login',
 		'matchCondition',
 		'inbox',
+		'outbox',
 		'sendMsg',
 		'msgDetail',
+		'outboxDetail',
 
 
-		'userDetail'
+		'userDetail',
+		'userImage'
 		//controllers
 
 		], function (angularAMD) {

@@ -212,47 +212,9 @@ app.post("/deletSynMsg",function(req,res){
 
 
 
-app.get("/WebstormProjects/web/views/initAjax.ejs",function(req,res){
-      var Client =require("mysql").Client;
-      var client =new Client();
-      client.user="root";
-      client.password="5611559w";
-      client.query("USE user");
-      var getQueryType=req.query;//json
-      var account=getQueryType["account"];
-      var queryType=getQueryType["queryType"];
-      if(queryType=="unreadBoxMsg"){
-       //读取收件箱的未读信息
-        var queryString="select * from d where account='"+account+"'";
-          client.query(queryString,function(error,result){
-               if(error){
-                      throw error;
-               }
-              if(result[0]["msgAsyn"]){
-                  var resultP1= eval("("+result[0]["msgAsyn"]+")");
-                  if(resultP1){
-                      var resultP2=resultP1["con"];//array
-                      var newMsgLength=[];//这个数组存储未读消息，下面会计算它的长度
-                     // var unreadBoxMsgLength=resultP2.length;
-                      for(var i=0;i<resultP2.length;i++){
-                         if(resultP2[i]["isTheMsgNew"]==="1"){
-                             newMsgLength.push(resultP2[i]);
-                         }
-                      }
-                      var unreadBoxMsgLength=newMsgLength.length;
-                  }
-                  else{
-                      var unreadBoxMsgLength="";
-                  }
-              }
-            client.end();
-            res.send({"unreadBoxMsgLength":unreadBoxMsgLength});
-          });
-      }
-});
+
 
 app.post("/WebstormProjects/web/views/index.ejs",routes.indexPost);
-
 
 app.get("/WebstormProjects/web/views/ajaxShowUserPic.ejs",routes.ajaxShowUserPic);
 
@@ -263,44 +225,34 @@ app.post("/WebstormProjects/web/views/checkSentMsg",routes.checkSentMsgs);
 app.post("/WebstormProjects/web/views/updateProfileLink",routes.updateProfileLink);
 
 
-
-app.get("/WebstormProjects/web/views/save.ejs",function(req,res){
-
-
-});
-
-app.post("/WebstormProjects/web/views/save.ejs",function(req,res){
-
+app.get("/uploads/avatar/:name/:pic",function(req,res){
+        var username = req.params.name;
+        var pic = req.params.pic;
+        res.sendfile("/Users/wanmengj/pro2/web/uploads/avatar/" + username + "/" + pic);
 });
 
 app.get("/uploads/pic/:name/:pic",function(req,res){
-        var username=req.params.name;
-        var pic=req.params.pic;
+        var username = req.params.name;
+        var pic = req.params.pic;
        // res.sendfile("./web/uploads/pic/"+username+"/"+pic);
         res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
         
 });
-app.get("/uploads/pic/:name/:pic",function(req,res){
-        var username=req.params.name;
-        var pic=req.params.pic;
-      //  res.sendfile("./web/uploads/pic/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
-});
-//上传的图片的路由
+
 app.get("/uploads/postPic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
       //  res.sendfile("./web/uploads/postPic/"+username+"/"+pic);
        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
-//上传的图片的路由
+
 app.get("/uploads/postPicPreview/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
       //  res.sendfile("./web/uploads/postPicPreview/"+username+"/"+pic);
        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
-//上传的图片的路由
+
 app.get("/uploads/subPostPic/:name/:pic",function(req,res){
         var username=req.params.name;
         var pic=req.params.pic;
@@ -308,8 +260,6 @@ app.get("/uploads/subPostPic/:name/:pic",function(req,res){
        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
 //上传的图片的路由
-
-
 app.get("/WebstormProjects/web/views/search.ejs",routes.search);
 
 /*********************************** reconstructions**********************************/
@@ -527,13 +477,12 @@ app.get("/payment",routes.payemnt);
 /* payment */
 
 
-
-
-
-
-
-
 /* cp */
+
+
+app.get('/cp/images', routerCp.userImages);
+app.post('/cp/allImages',routerCp.getAllImages);
+
 app.post("/cp/checkProfile",routes.checkProfile);
 app.post("/cp/profile",routes.updateProfile);
 app.post("/cp/profile_deletion",routes.deleteProfile);
@@ -549,6 +498,12 @@ app.get("/uploads/proofPic/income/:username/:pic", routes.income);
 app.get("/uploads/proofPic/housing/:username/:pic", routes.housing);
 app.get("/uploads/proofPic/drive/:username/:pic", routes.drive);
 app.get("/uploads/proofPic/gangao/:username/:pic", routes.gangao);
+
+app.get("/matchCondition",routeSearch.newMatchCondition);
+
+app.post('/cp/setProfile',routerCp.setProfile);
+app.post('/cp/returnProfile',routerCp.returnProfile);
+
 /* cp */
 
 
@@ -688,12 +643,8 @@ app.get("/home",routes.home);
 app.post("/global/uid",function(req, res){
     var userName = req.body.data;
     var queryString = "select personid from d where account='" + userName + "'";
-
-
     console.log(queryString);
-
     var client = utility.prepareDb();
-
     client.query(queryString, function(error, d){
         if(error){
             throw error;
@@ -702,7 +653,6 @@ app.post("/global/uid",function(req, res){
         var uid = d[0]['personid'];
         res.send({data:uid});
         client.end();
-
     });
 });
 
@@ -766,9 +716,6 @@ app.get("/msg/allSentMsg", function(req, res){
 
 
 
-/* cp */
-app.get("/matchCondition",routeSearch.newMatchCondition);
-/* cp */
 
 
 
@@ -804,29 +751,21 @@ app.post("/user/edit4.ejs",routes.editPost);
 app.post("/user/edit5.ejs",routes.editPost);
 app.post("/user/edit6.ejs",routes.editPost);
 app.post("/user/editPic.ejs",routes.editPost);
-
 app.post("/user/matchConditionPost",routes.matchConditionPost);
 app.post("/user/fetchCondtion",routes.fetchCondtion);
 app.post("/user/whoOnline",routes.who_online);
 /* edit */
 
-
-
 /* user edit */
 app.get("/edit",routeEdit.editBasic);
-
 app.post('/edit/basicInfo', routeEdit.basicInfo);
 app.post('/edit/edit1', routeEdit.edit1);
 app.post('/edit/edit2', routeEdit.edit2);
 app.post('/edit/edit4', routeEdit.edit4);
 app.post('/edit/edit5', routeEdit.edit5);
-
 app.post('/edit/edit6', routeEdit.edit6);
-
 app.post('/edit/edit3', routeEdit.edit3);
-
 app.post('/edit/editAvatar', routeEdit.editAvatar);
-
 /* user edit */
 
 
@@ -836,19 +775,13 @@ app.post('/edit/editAvatar', routeEdit.editAvatar);
 app.get("/search/searchMain",routeSearch.searchMain);
 app.post("/search/autoSearch",routeSearch.autoSearch);
 app.post("/search/matchCondition",routeSearch.fetchMachCondition);
-
-
-
-
 /* search */
 
 
 /* backstage supporter */
-
 app.get("/backstageSupporter/proofs", routerBackStageReport.loadProof);
 app.get("/backstageSupporter/proof_validation", routerBackStageReport.getProofValidationPage);
 app.post("/backstageSupporter/proofs/:operationType", routerBackStageReport.vlidateProofs);
-
 /* backstage supporter */
 
 

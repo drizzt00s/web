@@ -1,13 +1,9 @@
-<script src="/javascript/msg/outbox.js"></script>
-
 <div ng-controller='outbox'>
 	
 	<span ng-click='showAll()'>全部信息</span>
 	<span ng-click='showReadedMsg()'>对方已读</span>    
 	<span ng-click='showUnreadedMsg()'>对方未读</span>
 	
-
-
 	<ul ng-show='outboxAll'>
 		<li ng-repeat='asynMessage in allSentMsg'>
 			<span>收信人：</span>  <img src={{asynMessage.targetProfile}} /> <span> {{asynMessage.towhom}}</span>
