@@ -63,14 +63,14 @@ app.get("/WebstormProjects/web/views/sendImage.ejs",function(req,res){
 
 
 app.post("/WebstormProjects/web/views/socketImage.ejs",function(req,res){
-    var uploadedTempPath=(req.files)["myFile"]["path"];
-    var uploadedImageName=(req.files)["myFile"]["name"];
-    var uploadSize=(req.files)["myFile"]["size"];
+    var uploadedTempPath = (req.files)["myFile"]["path"];
+    var uploadedImageName = (req.files)["myFile"]["name"];
+    var uploadSize = (req.files)["myFile"]["size"];
     //上传的图片临时位置,图片名,图片大小
-    var imageSentTo=req.body.whoGotImage;
-    var imageSentBy=req.body.whoSentImage;
+    var imageSentTo = req.body.whoGotImage;
+    var imageSentBy = req.body.whoSentImage;
    //图片发给谁
-    uploadedNewPath=__dirname+"/uploads/pic/"+uploadedImageName;//decide the image's new path
+    uploadedNewPath = __dirname + "/uploads/pic/" + uploadedImageName;//decide the image's new path
     //console.log(uploadedNewPath);
     fs.readFile(uploadedTempPath,function(error,data){
       //read the uploaded image and get the data(A) of the function readFile
@@ -83,7 +83,7 @@ app.post("/WebstormProjects/web/views/socketImage.ejs",function(req,res){
           throw error;
          }
          res.redirect("/WebstormProjects/web/views/sendImage.ejs");
-         var isUserOnline=myClosure(imageSentTo);
+         var isUserOnline = myClosure(imageSentTo);
          //服务器转发图片:这里要判断目标用户是否在线
          if(isUserOnline){
            sendSocketImage(req,res,imageSentTo,imageSentBy);
@@ -101,24 +101,24 @@ app.post("/WebstormProjects/web/views/socketImage.ejs",function(req,res){
 
 
 app.post("/WebstormProjects/web/views/imagePreview.ejs",function(req,res){
-  var img=req.files;
+  var img = req.files;
   res.redirect("/WebstormProjects/web/views/sendImage.ejs");
 });
 
 app.get("/WebstormProjects/web/views/checkOffLineMsg.ejs",function(req,res){
     var userFalseName=req.query.userFalseName;
     //谁登录
-     var Client =require("mysql").Client;
-     var client =new Client();
-     client.user="root";
-     client.password="5611559w";
+     var Client = require("mysql").Client;
+     var client = new Client();
+     client.user = "root";
+     client.password = "5611559w";
      client.query("USE user");
-     var queryStringIsValueExist="SELECT * FROM d WHERE falseName="+"'"+userFalseName+"'";
+     var queryStringIsValueExist = "SELECT * FROM d WHERE falseName=" + "'" + userFalseName + "'";
      client.query(queryStringIsValueExist,function(error,result){
       if(error){
         throw error;
       }
-      var checkUnreadMsg=result;
+      var checkUnreadMsg = result;
                     if(!checkUnreadMsg[0]){
                       return false;
                     }
@@ -130,9 +130,8 @@ app.get("/WebstormProjects/web/views/checkOffLineMsg.ejs",function(req,res){
                     }
                     else{
                       //该用户有临时信息没读，这些临时信息存储在数据库里的字段unreadmsg中
-                        var currentUnMsg=checkUnreadMsg[0]["unreadmsg"];//string
+                        var currentUnMsg = checkUnreadMsg[0]["unreadmsg"];//string
                         res.send(currentUnMsg);
-                       
                     }
 
     });
@@ -147,51 +146,51 @@ app.get("/WebstormProjects/web/views/checkOffLineMsg.ejs",function(req,res){
 
 
 app.post("/deletSynMsg",function(req,res){
-        var storeNewMsgArray=[];
-        var data=req.body;//json
-        var dataArray=data["con"];//array
+        var storeNewMsgArray = [];
+        var data = req.body;//json
+        var dataArray = data["con"];//array
 
         //从前端接受的数据,类型为数组
-        var targetUser=dataArray[0]["targetUser"];//在谁的页面上删除信息(帐号)
+        var targetUser = dataArray[0]["targetUser"];//在谁的页面上删除信息(帐号)
         //从前端接受数据
-        var Client =require("mysql").Client;
-        var client =new Client();
-        client.user="root";
-        client.password="5611559w";
+        var Client = require("mysql").Client;
+        var client = new Client();
+        client.user ="root";
+        client.password = "5611559w";
         client.query("USE user");
         //准备数据库
-        var queryString1="SELECT * FROM d WHERE account='"+targetUser+"'";
+        var queryString1 = "SELECT * FROM d WHERE account='" + targetUser + "'";
         client.query(queryString1,function(err,data){
               if(err){
                throw err;
               }
               //data is an array from db       
-              var dataProcessed0=eval("("+ data[0].msgAsyn+")");//json
-              var dataProcessed1=dataProcessed0['con'];//array
+              var dataProcessed0 = eval("("+ data[0].msgAsyn+")");//json
+              var dataProcessed1 = dataProcessed0['con'];//array
               //dataProcessed1 is the output from db
-              for(var i=0;i<dataProcessed1.length;i++){
-                 var checkMsgSentBy=dataProcessed1[i].fromFalseName;//信息是由谁发的(昵称)(db)
-                 var checkMsgContent=dataProcessed1[i].data;//信息体(db)
-                 for(var z=0;z<dataArray.length;z++){
-                  var deleteWhoseMsg=dataArray[z]["deleteWhoseMsg"];//删除谁发的信息(昵称) 
-                  var msgToBeDeleted=dataArray[z]["msgToBeDelete"];//要删除信息的内容
-                    if(checkMsgSentBy==deleteWhoseMsg&&checkMsgContent==msgToBeDeleted){
+              for(var i = 0;i < dataProcessed1.length;i++){
+                 var checkMsgSentBy = dataProcessed1[i].fromFalseName;//信息是由谁发的(昵称)(db)
+                 var checkMsgContent = dataProcessed1[i].data;//信息体(db)
+                 for(var z = 0;z < dataArray.length;z++){
+                  var deleteWhoseMsg = dataArray[z]["deleteWhoseMsg"];//删除谁发的信息(昵称) 
+                  var msgToBeDeleted = dataArray[z]["msgToBeDelete"];//要删除信息的内容
+                    if(checkMsgSentBy == deleteWhoseMsg && checkMsgContent == msgToBeDeleted){
                        delete dataProcessed1[i]; 
                     }
                  }
                  //inner for              
               }
               //outer for
-              var storeFinalArray=[];
-              for(var ii=0;ii<dataProcessed1.length;ii++){
+              var storeFinalArray = [];
+              for(var ii = 0;ii < dataProcessed1.length;ii++){
                  if(dataProcessed1[ii]){
                     storeFinalArray.push(dataProcessed1[ii]);                 
                  }
               }
               //storeFinalArray 是最后删除数据后保留的数据
-              dataProcessed0.con=storeFinalArray;
-              var dataProcessed0Processed=JSON.stringify(dataProcessed0);//string
-              var queryString2="UPDATE d SET msgAsyn='"+dataProcessed0Processed+"' WHERE account='"+targetUser+"'";
+              dataProcessed0.con = storeFinalArray;
+              var dataProcessed0Processed = JSON.stringify(dataProcessed0);//string
+              var queryString2 = "UPDATE d SET msgAsyn='" + dataProcessed0Processed + "' WHERE account='" + targetUser + "'";
               client.query(queryString2,function(err){
                  if(err){
                    throw err;
@@ -243,21 +242,21 @@ app.get("/uploads/postPic/:name/:pic",function(req,res){
         var username = req.params.name;
         var pic = req.params.pic;
       //  res.sendfile("./web/uploads/postPic/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/" + username + "/" + pic);
 });
 
 app.get("/uploads/postPicPreview/:name/:pic",function(req,res){
         var username = req.params.name;
         var pic = req.params.pic;
       //  res.sendfile("./web/uploads/postPicPreview/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/" + username + "/" + pic);
 });
 
 app.get("/uploads/subPostPic/:name/:pic",function(req,res){
-        var username=req.params.name;
-        var pic=req.params.pic;
+        var username = req.params.name;
+        var pic = req.params.pic;
       //  res.sendfile("./web/uploads/subPostPic/"+username+"/"+pic);
-       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
+       res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/" + username + "/" + pic);
 });
 //上传的图片的路由
 app.get("/WebstormProjects/web/views/search.ejs",routes.search);
@@ -274,9 +273,9 @@ app.get("/forgetPass",function(req,res){
 
 app.post("/forgetPass",function(req,res){
      //console.log(req.body);
-     var email=req.body.email;
+     var email = req.body.email;
      var client = utility.prepareDb();
-     var queryString="select account from d where account='"+email+"'";
+     var queryString = "select account from d where account='" + email + "'";
      client.query(queryString,function(e,r){
         if(e){
           throw e;
@@ -318,64 +317,64 @@ app.post("/forgetPass",function(req,res){
 
 
 app.post("/WebstormProjects/web/ajax",function(req,res){
-    var checkFlag=req.body.d.flag;
-    if(checkFlag==="checkWatch"){
+    var checkFlag = req.body.d.flag;
+    if(checkFlag === "checkWatch"){
       var checkUsername=req.body.d.username;
-      var dataArray=[checkUsername];
-      var columnArray=["username"];
-      var queryType=2;
-      var tableName="extra2";
+      var dataArray = [checkUsername];
+      var columnArray = ["username"];
+      var queryType = 2;
+      var tableName = "extra2";
       var queryString = dbUtlity.createQueryString(dataArray,columnArray,queryType,tableName);
-      var client=utility.prepareDb();
+      var client = utility.prepareDb();
       client.query(queryString,function(e,r){
          if(e){
            throw e;
          }
-         var storeNewR=[];
-         for(var i=0;i< r.length;i++){
-             var eachJson=r[i]//json
-             var findWatch=eachJson["watch"];
+         var storeNewR = [];
+         for(var i = 0;i < r.length;i++){
+             var eachJson = r[i]//json
+             var findWatch = eachJson["watch"];
              storeNewR.push(findWatch);
          }
-         var newR=utility.removeRedundant(storeNewR);
-         var storeWatch={};
+         var newR = utility.removeRedundant(storeNewR);
+         var storeWatch = {};
          dbUtlity.recurQuery(newR,"d","falseName",res);
       });
       return false;
     }
     
-    if(checkFlag==="whoWatchMe"){
-      var checkFalseName=req.body.d.falseName;
-      var dataArray=[checkFalseName];
-      var columnArray=["watch"];
-      var queryType=2
-      var tableName="extra2";
+    if(checkFlag === "whoWatchMe"){
+      var checkFalseName = req.body.d.falseName;
+      var dataArray = [checkFalseName];
+      var columnArray = ["watch"];
+      var queryType = 2
+      var tableName = "extra2";
       var queryString = dbUtlity.createQueryString(dataArray,columnArray,queryType,tableName);
-      var client=utility.prepareDb();
+      var client = utility.prepareDb();
       client.query(queryString,function(e,r){
          if(e){
            throw e;
          }
-         var storeNewR=[];
-         for(var i=0;i< r.length;i++){
-             var eachJson=r[i]//json
-             var findWatch=eachJson["username"];
+         var storeNewR = [];
+         for(var i = 0;i < r.length;i++){
+             var eachJson = r[i]//json
+             var findWatch = eachJson["username"];
              storeNewR.push(findWatch);
          }
-         var newR=utility.removeRedundant(storeNewR);
-         var storeWatch={};
+         var newR = utility.removeRedundant(storeNewR);
+         var storeWatch = {};
          dbUtlity.recurQuery(newR,"d","account",res);
       });
       return false;
     }
-    var target=req.body.d.target;
-    var whoWatch=req.body.d.whoWatch;
-    var dataArray=[whoWatch,target];
-    var columnArray=["username","watch"];
-    var table="extra2";
-    var type=1;
+    var target = req.body.d.target;
+    var whoWatch = req.body.d.whoWatch;
+    var dataArray = [whoWatch,target];
+    var columnArray = ["username","watch"];
+    var table = "extra2";
+    var type = 1;
     var queryString = dbUtlity.createQueryString(dataArray,columnArray,type,table);
-    var client=utility.prepareDb();
+    var client = utility.prepareDb();
     client.query(queryString,function(e){
         if(e){
           throw e;
