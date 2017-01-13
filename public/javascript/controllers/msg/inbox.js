@@ -180,9 +180,7 @@ define(['angular'], function(){
 
 		$scope.receiveAsynMsg = function(){
 	       var catchUserName = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
-
 	       var url = api.outboxMsg();
-
 	       	$http({
 				method:'GET',
 				cache:false,

@@ -8,7 +8,7 @@ define(['angular'], function(){
 		$scope.uid = localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
 		$scope.username = localStorage.getItem('username') || utility.getTargetCookie("username");	
 
-		if($scope.isLogin){
+		if($scope.isLogin && !(localStorage.getItem('uid'))){
 			loginHelp.setUid();
 		}
 
@@ -24,8 +24,6 @@ define(['angular'], function(){
 			})
 		};
 
-		$scope.getMatchCondition();
-
 		$scope.fetchAllUser = function(){
 			$http({
 				method:'POST',
@@ -36,12 +34,11 @@ define(['angular'], function(){
 				$scope.allUsers = data;
 			})
 		};
+
+
+		$scope.getMatchCondition();
+
 		$scope.fetchAllUser();
-
-
-		
-
-
 
 	 }]);
 });

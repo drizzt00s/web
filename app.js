@@ -235,20 +235,20 @@ app.get("/uploads/pic/:name/:pic",function(req,res){
         var username = req.params.name;
         var pic = req.params.pic;
        // res.sendfile("./web/uploads/pic/"+username+"/"+pic);
-        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
+        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/" + username+"/" + pic);
         
 });
 
 app.get("/uploads/postPic/:name/:pic",function(req,res){
-        var username=req.params.name;
-        var pic=req.params.pic;
+        var username = req.params.name;
+        var pic = req.params.pic;
       //  res.sendfile("./web/uploads/postPic/"+username+"/"+pic);
        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
 
 app.get("/uploads/postPicPreview/:name/:pic",function(req,res){
-        var username=req.params.name;
-        var pic=req.params.pic;
+        var username = req.params.name;
+        var pic = req.params.pic;
       //  res.sendfile("./web/uploads/postPicPreview/"+username+"/"+pic);
        res.sendfile("/Users/wanmengj/pro2/web/uploads/pic/"+username+"/"+pic);
 });
@@ -426,7 +426,7 @@ app.post("/search",routes.search);
 
 
 /* register */
-app.get("/logoff",routes.logoff);
+app.get("/global/logoff",routes.logoff);
 app.post("/register",routes.registerPost);
 app.get("/register", register.register);
 

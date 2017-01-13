@@ -1,5 +1,5 @@
 define(['angular'], function(){
-    angular.module('web.controller').controller('userImage',['$scope', '$http','loginHelp', 'api', 'utility', function($scope, $http, loginHelp, api, utility){
+    angular.module('web.controller').controller('userImage',['$scope', '$http','loginHelp', 'api', 'utility', 'validation', function($scope, $http, loginHelp, api, utility, validation){
 		loginHelp.checkIfLogined()//如果没登录 转到登录页面
 		$scope.isLogin = loginHelp.isLogined();
 		$scope.imgList = null; //用户的全部图片
@@ -12,10 +12,14 @@ define(['angular'], function(){
 				data:{uid:localStorage.getItem('uid')}
 			}).success(function(d){
 				d = eval("("+ d[0].avatar+")"); 
-				var userAccount = localStorage.getItem('username');
-				d = utility.createCompleteUserImageListAvatar(d, userAccount);
-				console.log(d);
-				$scope.imgList = d;
+                if(!d){
+                    alert('你还没上传过照片');
+                } else {
+                    var userAccount = localStorage.getItem('username');
+                    d = utility.createCompleteUserImageListAvatar(d, userAccount);
+                    console.log(d);
+                    $scope.imgList = d;
+                }
 			});
 
 		};

@@ -48,6 +48,7 @@ define(['angular'], function(){
 							//支持本地存储
 							localStorage.setItem('username',d.username);
 							localStorage.setItem('falseName',d.falseName);
+							localStorage.setItem('gender',d.gender);
 						}
 						window.location.href='/home';
 					}

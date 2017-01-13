@@ -1,5 +1,5 @@
 define(['angularAMD'], function(angularAMD){
-	angularAMD.directive('userstatus', function($http, localStore){
+	angularAMD.directive('userstatus', function($http, localStore,api){
 		return {
 			restrict:'E',
 			scope:false,
@@ -11,7 +11,7 @@ define(['angularAMD'], function(angularAMD){
 					 ///logoff
 					 $http({
 					 	method:'get',
-					 	url:'/logoff'
+					 	url:api.userLogoff()
 					 }).success(function(d){
 					 	if(d.data){
 					 		localStore.removeAllLocalStorage();
