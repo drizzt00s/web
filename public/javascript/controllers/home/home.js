@@ -6,6 +6,7 @@ define(['angular'], function(){
 
 		$scope.profile = '';
 		$scope.uid = localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
+
 		$scope.username = localStorage.getItem('username') || utility.getTargetCookie("username");	
 
 		if($scope.isLogin && !(localStorage.getItem('uid'))){

@@ -27,6 +27,7 @@ define(['angularAMD'], function(angularAMD){
 				success:function(d){
 				if(typeof Storage !== "undefined"){
 						//支持本地存储
+						alert('uid:' + d.data);
 						localStorage.setItem('uid',d.data);
 					}
 				}

@@ -15,6 +15,8 @@ define(['angularAMD'], function(angularAMD){
 		this.returnUid = function(){
 			return '/global/uid';
 		};
+		
+
 		this.outboxMsg = function(){
 			return '/msg/msgAsyn';
 		};
@@ -27,6 +29,11 @@ define(['angularAMD'], function(angularAMD){
 		this.changeNewMsgToOld = function(){
 			return '/msg/turnOldMsg';
 		};
+		this.buildDataTree = function(){
+			return '/msg/buildDataTree'
+		};
+
+
 		this.autoSearch = function(){
 			return '/search/autoSearch';
 		};

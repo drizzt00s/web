@@ -1,5 +1,10 @@
 <div ng-controller='outboxDetail'>
-	
-
-
+	<ul>
+		<li ng-repeat='eachMsg in msg '>
+			<div>消息:{{eachMsg.data}}</div>
+			<div><span>来自:{{eachMsg.from}}</span><img src='{{eachMsg.profile}}' /></div>
+			<div>时间:{{eachMsg.time}}</div>
+		</li>
+	</ul>
+	<div id='storeAll' class='hidden'> <%-msgFound %> </div>
 </div>

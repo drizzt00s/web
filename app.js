@@ -100,6 +100,7 @@ app.post("/WebstormProjects/web/views/socketImage.ejs",function(req,res){
 //socket聊天图片逻辑
 
 
+
 app.post("/WebstormProjects/web/views/imagePreview.ejs",function(req,res){
   var img = req.files;
   res.redirect("/WebstormProjects/web/views/sendImage.ejs");
@@ -679,6 +680,10 @@ app.post("/msg/outboxAllMsg",routeMsg.returnAllSentMsg);//全部发送的消息
 app.post("/msg/msgDetail",routeMsg.replayMsgDetail);
 app.post("/msg/mySentMsg",routeMsg.getAllSentMsg);
 app.post("/msg/turnOldMsg",routeMsg.changeNewMsgToOld);
+app.post("/msg/buildDataTree",routeMsg.buildDataTree);
+
+
+
 
 
 

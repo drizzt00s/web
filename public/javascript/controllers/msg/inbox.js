@@ -5,6 +5,7 @@ define(['angular'], function(){
 		$scope.isLogin = loginHelp.isLogined();
 
 		$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
+
 		var username = localStorage.getItem('username') || utility.getTargetCookie('username');
 
 		$scope.readedAsynMsg = [];//全部已读来信
