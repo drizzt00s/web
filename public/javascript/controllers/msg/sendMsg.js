@@ -3,8 +3,11 @@ define(['angular'], function(){
 		$scope.msgContents = '';
 
 		var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
+
+
 		
-		$scope.sendAjaxMsg = function(){   
+		$scope.sendAjaxMsg = function(){ 
+			var replyMsg = $scope.msgContents.replace(/'/g, ''); 
 		    var url = api.sendOutboxMsg();
 		    var msgTag = (new Date()).getTime() + '_' + Math.random() + '_' + uid;
 		    var targetProfileUrl = $("#targetProfile").attr("src");
@@ -12,7 +15,7 @@ define(['angular'], function(){
 		        from:utility.getTargetCookie('username'), //发件人用户名
 		        fromFalseName:utility.getTargetCookie('falseName'),//发件人昵称
 		       	uid:uid, //发件人uid
-		        data:$scope.msgContents,//发送的信息
+		        data:replyMsg,//发送的信息
 		        to:$("#falseNameWrap").text(),//收件人昵称
 		        toAccount:$("#account").text(), //收件人用户名
 		        targetProfileUrl:targetProfileUrl,//收件人的头像profile url

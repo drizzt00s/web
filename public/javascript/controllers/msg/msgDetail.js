@@ -20,12 +20,15 @@ define(['angular'], function(){
 		$scope.replayDetail = function(){
 			var url = api.sendOutboxMsg();
 			var targetProfileUrl = $("#targetProfile").attr("src");
+		//	var replyMsg = $scope.replyMsg.replace(/'/g, "\'");
+			var replyMsg = $scope.replyMsg.replace(/'/g, ''); 
+
 
 			var msgJson = {
 		        from:localStorage.getItem('username') || utility.getTargetCookie('username'), //发件人用户名 
 		        fromFalseName:localStorage.getItem('falseName') || utility.getTargetCookie('falseName'),//发件人昵称
 		       	uid:uid, //发件人uid
-		        data:$scope.replyMsg,//发送的信息
+		        data:replyMsg,//发送的信息
 		        to:$("#falseNameWrap").text(),//收件人昵称
 		        toAccount:$("#storeTargetAccount").text(),//收件人用户名
 		        targetProfileUrl:targetProfileUrl,//收件人的头像profile url
