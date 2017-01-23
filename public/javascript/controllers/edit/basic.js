@@ -217,6 +217,17 @@ define(['angular'], function(){
 		$scope.getUserData();
 
 
+		$scope.updateLocalStorageAllInfo = function(){
+			$http({
+				url:api.userInfo(),
+				method:"post",
+				data:{account:utility.getTargetCookie('username')}
+			}).success(function(d){
+				localStore.setUserLocalData(JSON.stringify(d));
+			});
+		};
+
+
 		$scope.editBasic = function(){
 			var data = {};
 			data.editFalseName = $scope.userAllData.falseName;
@@ -232,6 +243,7 @@ define(['angular'], function(){
 				url:'/edit/basicInfo',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.showBasicTab();
 				}
 			});
@@ -253,6 +265,7 @@ define(['angular'], function(){
 				url:'/edit/edit1',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.showCoreInfoTab();
 				}
 			});
@@ -278,6 +291,7 @@ define(['angular'], function(){
 				url:'/edit/edit2',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.showMonologTab();
 				}
 			});
@@ -309,6 +323,7 @@ define(['angular'], function(){
 				url:'/edit/edit4',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.showProfileTab();
 				}
 			});
@@ -324,6 +339,7 @@ define(['angular'], function(){
 				url:'/edit/edit5',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.showAvatarsTab();
 				}
 			});
@@ -341,6 +357,7 @@ define(['angular'], function(){
 				url:'/edit/edit6',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.showMatchCondtionTab();
 				}
 			});
@@ -359,6 +376,7 @@ define(['angular'], function(){
 				url:'/edit/edit3',
 				success:function(){
 					alert('更改成功');
+					$scope.updateLocalStorageAllInfo();
 					$scope.changePassTab();
 				}
 			});
