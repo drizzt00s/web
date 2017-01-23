@@ -201,41 +201,20 @@ define(['angular'], function(){
 
 		};
 
-		
-		$scope.getUserDataByHttp = function(){
-			$http({
-				url:api.userInfo(),
-				method:"post",
-				data:{uid:$scope.cp_uid}
-			}).success(function(d){
-				$scope.userAllData = d[0]; //obj
-				$scope.renderValForCheckbox();
-				$scope.setNullValueForSelect();
-				if(typeof Storage !== "undefined"){
-					localStore.setUserLocalData(JSON.stringify(d));
-				}
-		
-			});
-		};
-
+	
 		$scope.getUserData = function(){
 			if(typeof Storage !== "undefined"){
-				if(!localStore.getUserLocalData('allInfo')){
-					$scope.getUserDataByHttp();
-				} else {
 					$scope.userAllData =JSON.parse(localStore.getUserLocalData('allInfo'));
 					$scope.userAllData = $scope.userAllData[0];
 					$scope.renderValForCheckbox();
 					$scope.setNullValueForSelect();
-				}
+			
 			} else {
-				$scope.getUserDataByHttp();
+				//get data by $rootScope
 			}
 		};
 
 		$scope.getUserData();
-
-
 
 
 		$scope.editBasic = function(){
@@ -253,7 +232,6 @@ define(['angular'], function(){
 				url:'/edit/basicInfo',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.showBasicTab();
 				}
 			});
@@ -275,7 +253,6 @@ define(['angular'], function(){
 				url:'/edit/edit1',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.showCoreInfoTab();
 				}
 			});
@@ -301,7 +278,6 @@ define(['angular'], function(){
 				url:'/edit/edit2',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.showMonologTab();
 				}
 			});
@@ -333,7 +309,6 @@ define(['angular'], function(){
 				url:'/edit/edit4',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.showProfileTab();
 				}
 			});
@@ -349,7 +324,6 @@ define(['angular'], function(){
 				url:'/edit/edit5',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.showAvatarsTab();
 				}
 			});
@@ -367,7 +341,6 @@ define(['angular'], function(){
 				url:'/edit/edit6',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.showMatchCondtionTab();
 				}
 			});
@@ -386,7 +359,6 @@ define(['angular'], function(){
 				url:'/edit/edit3',
 				success:function(){
 					alert('更改成功');
-					localStore.removeAllLocalStorage();
 					$scope.changePassTab();
 				}
 			});

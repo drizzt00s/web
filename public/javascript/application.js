@@ -43,10 +43,9 @@ define(['angularAMD',
 		'sendMsg',
 		'msgDetail',
 		'outboxDetail',
-
-
 		'userDetail',
-		'userImage'
+		'userImage',
+		'searchMain',
 		//controllers
 
 		], function (angularAMD) {

@@ -1,30 +1,32 @@
 define(['angular'], function(){
-	 angular.module('web.controller').controller('home', ['$scope', '$http', 'utility', 'api', 'loginHelp', function($scope, $http, utility, api, loginHelp){
-		 loginHelp.checkIfLogined()//如果没登录 转到登录页面
-		$scope.isLogin = loginHelp.isLogined();
-		$scope.falseName = loginHelp.getFalseName();
-
-		$scope.profile = '';
-		$scope.uid = localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
-
-		$scope.username = localStorage.getItem('username') || utility.getTargetCookie("username");	
-
-		if($scope.isLogin && !(localStorage.getItem('uid'))){
-			loginHelp.setUid();
-		}
-
+	 angular.module('web.controller').controller('home', ['$scope', '$http', 'utility', 'api', 'loginHelp', 'localStore', function($scope, $http, utility, api, loginHelp, localStore){
+		
+		loginHelp.checkIfLogined()//如果没登录 转到登录页面, 这个逻辑应该放到被公共使用的directive中
+		
 		$scope.allUsers = null;
-
-		$scope.getMatchCondition = function(){
-			$http({
-				method:'POST',
-				url:api.matchCondition(),
-				data:{uid:localStorage.getItem('uid')}
-			}).success(function(d){
-				console.log(d);
-			})
+	
+		$scope.getUserData = function(){
+			if(typeof Storage !== "undefined"){
+				//get all user data and store it in localStorage
+				var localAllInfo = JSON.parse( localStore.getUserLocalData('allInfo')); 
+				if(!localAllInfo || localAllInfo.length == 0){
+					$http({
+						url:api.userInfo(),
+						method:"post",
+						data:{account:utility.getTargetCookie('username')}
+					}).success(function(d){
+						localStore.setUserLocalData(JSON.stringify(d));
+					});
+				} 
+			} 
+			else {
+				//not support localStorage, store data in $rootScope
+			}
 		};
 
+		$scope.getUserData();
+
+		
 		$scope.fetchAllUser = function(){
 			$http({
 				method:'POST',
@@ -36,10 +38,8 @@ define(['angular'], function(){
 			})
 		};
 
-
-		$scope.getMatchCondition();
-
 		$scope.fetchAllUser();
+		
 
 	 }]);
 });

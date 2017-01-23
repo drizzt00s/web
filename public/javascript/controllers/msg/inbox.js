@@ -108,7 +108,6 @@ define(['angular'], function(){
 		//显示所有按时间排序的已读信息
 
 
-
 		$scope.asynMsgMulitpleComes = function(data){
 			var arr = [];
 			for(var i = 0 ; i < data.length; i++){
@@ -209,8 +208,10 @@ define(['angular'], function(){
 		$scope.receiveAsynMsg();
 
 
-		/*
-		$scope.removeInitList = function(data){
+
+
+/*
+	$scope.removeInitList = function(data){
 			var newData = [];
 			for(var i = 0; i < data.length; i++){
 				if(data[i]['msgType'] === 'replay'){
@@ -218,13 +219,14 @@ define(['angular'], function(){
 				}
 			}
 			return newData;
-		};
+	};
 
-
-		$scope.readReturned = function(){
+	$scope.readReturned = function(){
 			$scope.readedMsgTotal = false;
 			$scope.readedMsgMutliple = false;
 			$scope.readedMsgtimeSort = false;
+			$scope.msgUnReturned = false;
+
 			$scope.msgReturned = true;
 
 			var returnedMsgTag = [];
@@ -254,12 +256,7 @@ define(['angular'], function(){
 			});
 
 			function sortReadReturned(returnData, storeMsgTag, returnedMsgTimestamp, username){
-				
-				console.log(storeMsgTag);
-				console.log(returnedMsgTimestamp);
 				var returnData = $scope.removeInitList(returnData);
-
-				console.log(returnData);
 				var returnedMsgTag = [];
 
 				for(var i = 0 ; i < storeMsgTag.length; i++){
@@ -271,7 +268,6 @@ define(['angular'], function(){
 				}
 				returnedMsgTag = utility.removeRedundant(returnedMsgTag);
 				buildReadReturned(returnedMsgTag);
-				
 			}
 
 			function buildReadReturned(data){
@@ -285,7 +281,14 @@ define(['angular'], function(){
 				}
 				$scope.asynMsgReturned  = storeReadReturned;
 			}
-		};*/
+	};
+	$scope.unreplyedMsg = function(){
+		$scope.readedMsgTotal = false;
+		$scope.readedMsgMutliple = false;
+		$scope.readedMsgtimeSort = false;
+		$scope.msgReturned = false;
+		$scope. msgUnReturned = true;
+	};*/
 
 
 		//************************************************************************inbox

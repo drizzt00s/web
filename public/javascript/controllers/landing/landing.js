@@ -28,13 +28,6 @@ define(['angular'], function () {
 					data:data
 				}).success(function(d){
 					if(d.success){
-						if(typeof Storage !== "undefined"){
-							//支持本地存储
-								localStorage.setItem('uid', d.uid);
-								localStorage.setItem('username', d.username);
-								localStorage.setItem('falseName', d.falseName);
-								localStorage.setItem('gender', d.gender);
-						}
 						window.location.href='/home';
 					} else{
 						var errArray = utility.createErrorArray(d.errorColumn, d.msg);

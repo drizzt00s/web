@@ -2,11 +2,17 @@ define(['angularAMD'], function(angularAMD){
 	angularAMD.directive('userstatus', function($http, localStore,api){
 		return {
 			restrict:'E',
-			scope:false,
+			scope:{},
 			template:"<div>"+
-			          	"<span>你好， {{falseName}} </span><span style='cursor:pointer;' ng-click='logOff()'>退出</span>"+
+			          	"<span>你好,{{falseName}} </span><span style='cursor:pointer;' ng-click='logOff()'>退出</span>"+
 			          "</div>",
 			link:function(scope){
+				scope.getFalseName = function(){
+					scope.falseName = localStore.getUserInfo('falseName');
+					scope.$apply();
+				};
+				setTimeout(scope.getFalseName, 1000);
+
 				scope.logOff = function(){
 					 ///logoff
 					 $http({
@@ -15,7 +21,7 @@ define(['angularAMD'], function(angularAMD){
 					 }).success(function(d){
 					 	if(d.data){
 					 		localStore.removeAllLocalStorage();
-					 		window.location.href = '/home';
+					 		window.location.href = '/landing';
 					 	}
 					 });
 				}

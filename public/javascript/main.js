@@ -40,6 +40,7 @@ require.config({
 		'edit':'controllers/edit/basic',
 		'login':'controllers/login/login',
 		'matchCondition':'controllers/research/newMatchCondition',
+		'searchMain':'controllers/research/searchMain',
 
 		'inbox':'controllers/msg/inbox',
 		'outbox':'controllers/msg/outbox',
@@ -60,7 +61,9 @@ require.config({
 		'register':['angular','webController'],
 		'home':['angular','webController'],
 		'edit':['angular','webController'],
-		'login':['angular','webController']
+		'login':['angular','webController'],
+		'userstatus':['home'],
+		'cppreview':['home']
 	},
 	 deps: ['application']
 });

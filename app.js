@@ -481,7 +481,6 @@ app.get("/payment",routes.payemnt);
 
 
 app.get('/cp/images', routerCp.userImages);
-app.post('/cp/allImages',routerCp.getAllImages);
 
 app.post("/cp/checkProfile",routes.checkProfile);
 app.post("/cp/profile",routes.updateProfile);
@@ -694,26 +693,7 @@ app.get('/msg/detail',routeMsg.msgDetail);
 app.get('/msg/msgAsyn',routeMsg.getMsgAsyn);//所有信息
 
 app.get('/msg/outboxDetail',routeMsg.outboxDetail);//get发件箱的详细页面
-
-
-app.get("/msg/allSentMsg", function(req, res){
-    var username = req.query.username;
-    var queryString = "select * from message where username='" + username + "'";
-    var client = utility.prepareDb();
-    client.query(queryString, function(error, d){
-        if(error){
-            throw error;
-        }
-
-       // console.log(typeof d);
-
-        res.send(d);
-        client.end();
-
-    });
-
-
-});
+app.get("/msg/allSentMsg", routeMsg.allSentMsg);
 
 
 /* msg */

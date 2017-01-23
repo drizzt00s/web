@@ -73,6 +73,7 @@ define(['angular'], function(){
 				data:data
 			}).success(function(d){
 				if(d){
+				
 				}
 			}).error(function(){
 				alert('change msg to old error!');

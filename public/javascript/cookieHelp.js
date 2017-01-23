@@ -1,22 +1,19 @@
 ﻿function getTargetCookie(cookieName){
-    var userCookies=document.cookie;
+    var userCookies = document.cookie;
     var userCookiesArray=userCookies.split(";");
-    for(var i=0;i<userCookiesArray.length;i++){
-        var checkCookie=userCookiesArray[i].indexOf(cookieName);
-        if(checkCookie!=-1){
-            var targetCookie=userCookiesArray[i];
-            var targetValue=(targetCookie.split("="))[1];
+    for(var i = 0;i < userCookiesArray.length;i++){
+        var checkCookie = userCookiesArray[i].indexOf(cookieName);
+        if(checkCookie != -1){
+            var targetCookie = userCookiesArray[i];
+            var targetValue = (targetCookie.split("="))[1];
         }
     }
     return targetValue;
 }
 
-
-
 function delCookie(name){
     document.cookie=name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
-
 
 function noticeUserOfMsg2(fromWhom){
     var whoSentMsg=null;

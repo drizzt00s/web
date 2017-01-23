@@ -1,37 +1,13 @@
 define(['angularAMD'], function(angularAMD){
 	angularAMD.service('loginHelp', function(utility){
 		this.isLogined = function(){
-			return utility.getTargetCookie('falseName') ? true : false;
+			return utility.getTargetCookie('username') ? true : false;
 		};
 
 		this.checkIfLogined = function(){
 			if(!(this.isLogined())){
-				window.location.href = '/login';
+				window.location.href = '/landing';
 			}
-		};
-
-		this.getFalseName = function(){
-				if(this.isLogined){
-					var falseName = utility.getTargetCookie('falseName');
-				} else {
-					var falseName = undefined;
-				}
-				return falseName;
-		};
-
-		this.setUid = function(){
-			$.ajax({
-				url:'/global/uid',
-				type:'post',
-				data:{data:utility.getTargetCookie('username')},
-				success:function(d){
-				if(typeof Storage !== "undefined"){
-						//支持本地存储
-						alert('uid:' + d.data);
-						localStorage.setItem('uid',d.data);
-					}
-				}
-			});
 		};
 	});
 });

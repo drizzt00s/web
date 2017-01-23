@@ -49,9 +49,6 @@ define(['angularAMD'], function(angularAMD){
 		this.userLogoff = function(){
 			return '/global/logoff'
 		};
-		this.cpImages = function(){
-			return '/cp/allImages';
-		};
 		this.setProfile = function(){
 			return '/cp/setProfile';
 		};

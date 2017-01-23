@@ -1,29 +1,17 @@
 define(['angular'], function(){
-    angular.module('web.controller').controller('userImage',['$scope', '$http','loginHelp', 'api', 'utility', 'validation', function($scope, $http, loginHelp, api, utility, validation){
+    angular.module('web.controller').controller('userImage',['$scope', '$http','loginHelp', 'api', 'utility', 'validation', 'localStore', function($scope, $http, loginHelp, api, utility, validation, localStore){
 		loginHelp.checkIfLogined()//如果没登录 转到登录页面
 		$scope.isLogin = loginHelp.isLogined();
 		$scope.imgList = null; //用户的全部图片
 		$scope.profile = '';//用户的头像，待选择
 
-		var getAvatars = function(){
-			$http({
-				method:'POST',
-				url:api.cpImages(),
-				data:{uid:localStorage.getItem('uid')}
-			}).success(function(d){
-				d = eval("("+ d[0].avatar+")"); 
-                if(!d){
-                    alert('你还没上传过照片');
-                } else {
-                    var userAccount = localStorage.getItem('username');
-                    d = utility.createCompleteUserImageListAvatar(d, userAccount);
-                    console.log(d);
-                    $scope.imgList = d;
-                }
-			});
+        $scope.getAvatars = function(){
+             $scope.imgList = eval("(" + localStore.getUserInfo('avatar') + ")");
+             var username = localStore.getUserInfo('account');
+             $scope.imgList = utility.createCompleteUserImageListAvatar($scope.imgList, username);
+        };
 
-		};
-		getAvatars();
+		$scope.getAvatars();
 	
        $scope.selectImg = function(e){
        		$(e.target).addClass('imgClick');

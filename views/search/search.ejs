@@ -1,21 +1,46 @@
-<script src="/javascript/search/search.js"></script>
-
+<link rel='stylesheet' href='/stylesheets/home.css' />
 <div class='main centered' ng-controller="search">
 
-	<div class="col-sm-6 col-md-3" ng-repeat = "eachAutoSearch in autoSearchData">
+	<div class='headerWrap'>
+		<img src='/images/home/index_logo.png' class='logo' />
+		<breadcrumb></breadcrumb>
+		<div class='userstatusWrap' ng-if='isLogin'>
+			<userstatus></userstatus>
+		</div>
+	</div>
 
-		<div class="thumbnail">
-			<a href="/user/userDetails.ejs?check={{::eachAutoSearch.account}}"><img src="{{::eachAutoSearch.profile}}"  /></a>
-			<div class="caption text-center">
-				<h5>{{::eachAutoSearch.falseName}}</h5>
-				<p>{{::eachAutoSearch.address}}</p>
-				<p>{{::eachAutoSearch.education}}</p>
-				<p>{{::eachAutoSearch.monthincome}}</p>
-				<p><a href="/user/userDetails.ejs?check={{::eachAutoSearch.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
+	<div class='main_left'>
+		<div class='main_leftWrap'>
+			<div class='cpPreview login'>
+				<div>
+					<cppreview></cppreview>
+				</div>
+			</div>
+
+			<div class='toolList'>
+				<toolist></toolist>
 			</div>
 		</div>
-
 	</div>
+
+	<div class='main_right'>
+		<div class="col-sm-6 col-md-3" ng-repeat = "eachAutoSearch in autoSearchData">
+			<div class="thumbnail">
+				<a href="/user/userDetails.ejs?check={{::eachAutoSearch.account}}"><img src="{{::eachAutoSearch.profile}}"  /></a>
+				<div class="caption text-center">
+					<h5>{{::eachAutoSearch.falseName}}</h5>
+					<p>{{::eachAutoSearch.address}}</p>
+					<p>{{::eachAutoSearch.education}}</p>
+					<p>{{::eachAutoSearch.monthincome}}</p>
+					<p><a href="/user/userDetails.ejs?check={{::eachAutoSearch.account}}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-heart"></span>去看看</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
 
 
 
