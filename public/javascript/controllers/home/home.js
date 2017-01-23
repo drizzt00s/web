@@ -1,7 +1,7 @@
 define(['angular'], function(){
 	 angular.module('web.controller').controller('home', ['$scope', '$http', 'utility', 'api', 'loginHelp', 'localStore', function($scope, $http, utility, api, loginHelp, localStore){
 		
-		loginHelp.checkIfLogined()//如果没登录 转到登录页面, 这个逻辑应该放到被公共使用的directive中
+		//loginHelp.checkIfLogined()//如果没登录 转到登录页面, 这个逻辑应该放到被公共使用的directive中
 		
 		$scope.allUsers = null;
 	

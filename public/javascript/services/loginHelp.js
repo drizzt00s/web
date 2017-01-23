@@ -6,6 +6,7 @@ define(['angularAMD'], function(angularAMD){
 
 		this.checkIfLogined = function(){
 			if(!(this.isLogined())){
+				alert('cookie 已失效， 你将被转到登录页面');
 				window.location.href = '/landing';
 			}
 		};

@@ -1,8 +1,11 @@
 define(['angularAMD'], function(angularAMD){
-	angularAMD.directive('breadcrumb', function(){
+	angularAMD.directive('breadcrumb', function(loginHelp){
 		return {
 			restrict:"E",
-			templateUrl:"/breadcrumb"
+			templateUrl:"/breadcrumb",
+			link:function(scope){
+				loginHelp.checkIfLogined();
+			}
 		};
 	});
 });
