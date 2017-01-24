@@ -62,9 +62,7 @@ require.config({
 		'register':['angular','webController'],
 		'home':['angular','webController'],
 		'edit':['angular','webController'],
-		'login':['angular','webController'],
-		'userstatus':['home'],
-		'cppreview':['home']
+		'login':['angular','webController']
 	},
 	 deps: ['application']
 });

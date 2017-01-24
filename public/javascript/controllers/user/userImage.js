@@ -5,6 +5,18 @@ define(['angular'], function(){
 		$scope.imgList = null; //用户的全部图片
 		$scope.profile = '';//用户的头像，待选择
 
+
+        $scope.updateLocalStorageAllInfo = function(){
+            $http({
+                url:api.userInfo(),
+                method:"post",
+                data:{account:utility.getTargetCookie('username')}
+            }).success(function(d){
+                localStore.setUserLocalData(JSON.stringify(d));
+                window.location.href = window.location.href;
+            });
+        };
+
         $scope.getAvatars = function(){
              $scope.imgList = eval("(" + localStore.getUserInfo('avatar') + ")");
              var username = localStore.getUserInfo('account');
@@ -24,7 +36,7 @@ define(['angular'], function(){
        			alert('请先选择头像');
        			return false;
        		}
-    		var uid = localStorage.getItem('uid');
+    		var uid = localStore.getUserInfo('personid'); //getUserInfo
     		$http({
     			method:'POST',
     			url:api.setProfile(),
@@ -35,16 +47,10 @@ define(['angular'], function(){
     		}).success(function(d){
     			if(d){
     				alert('设置头像成功');
-    				window.location.href = window.location.href;
+                    $scope.updateLocalStorageAllInfo();
     			}
     		})
         }
-
-
-
-
-
-
 
     }]);
 })

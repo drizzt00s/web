@@ -81,14 +81,14 @@ define(['angularAMD'], function(angularAMD){
 		};
 
 		this.createCompleteUserImageListAvatar = function(imageList, userAccount){
-			if(imageList.length > 0 && userAccount ){
-				var data = [];
+			var data = [];
+			if(imageList && userAccount ){
 				for(var i = 0 ; i < imageList.length; i++ ){
 					var newImageUrl = '/uploads/avatar/' + userAccount +'/'+imageList[i];
 					data.push(newImageUrl);
 				}
-				return data;
 			}
+			return data;
 		};
 
 		this.createReadableMatchCondition = function(matchConditionObj){

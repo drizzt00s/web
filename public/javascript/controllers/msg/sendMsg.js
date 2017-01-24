@@ -1,8 +1,8 @@
 define(['angular'], function(){
-	angular.module('web.controller').controller('sendMsg',['$scope', 'utility', 'api', function($scope, utility, api){
+	angular.module('web.controller').controller('sendMsg',['$scope', 'utility', 'api', 'localStore', function($scope, utility, api, localStore){
 		$scope.msgContents = '';
 
-		var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
+		var uid = localStore.getUserInfo('personid');
 
 
 		
@@ -13,7 +13,10 @@ define(['angular'], function(){
 		    var targetProfileUrl = $("#targetProfile").attr("src");
 		    var msgJson = {
 		        from:utility.getTargetCookie('username'), //发件人用户名
-		        fromFalseName:utility.getTargetCookie('falseName'),//发件人昵称
+		       // fromFalseName:utility.getTargetCookie('falseName'),//发件人昵称
+		      	fromFalseName:localStore.getUserInfo('falseName'),//发件人昵称
+
+
 		       	uid:uid, //发件人uid
 		        data:replyMsg,//发送的信息
 		        to:$("#falseNameWrap").text(),//收件人昵称

@@ -1,5 +1,5 @@
 define(['angular'], function(){
-	angular.module('web.controller').controller('outbox', ['$scope', '$http', 'utility', 'api', function($scope, $http, utility, api){
+	angular.module('web.controller').controller('outbox', ['$scope', '$http', 'utility', 'api', 'localStore', function($scope, $http, utility, api, localStore){
 			$scope.allSentMsg = null;
 			//全部已发信息
 			$scope.sentMagUnreaded = [];
@@ -14,8 +14,8 @@ define(['angular'], function(){
 			$scope.outboxUnreaded = false;
 			//控制未读信息tab
 
-			$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
-			$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
+			$scope.cp_username = localStore.getUserInfo('account');//己方用户名
+			$scope.cp_uid =  localStore.getUserInfo('persionid');//己方uid
 
 			$scope.showAll = function(){
 				$scope.outboxAll = true;
@@ -36,7 +36,7 @@ define(['angular'], function(){
 			};
 
 			$scope.displaySentAsynMSg = function(){
-				var username = localStorage.getItem('username') || utility.getTargetCookie('username');
+				var username = localStore.getUserInfo('account');
 				var url = api.outboxAllMsg();
 				var msgJson = {username:username};
 				//自己的uid

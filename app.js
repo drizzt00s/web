@@ -487,7 +487,7 @@ app.post("/cp/profile",routes.updateProfile);
 app.post("/cp/profile_deletion",routes.deleteProfile);
 
 
-app.get("/cp/proof",routerCp.getProofPage);
+
 app.post("/cp/proof",routerCp.submitProof);
 
 

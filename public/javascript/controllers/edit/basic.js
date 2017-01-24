@@ -5,9 +5,14 @@ define(['angular'], function(){
 
 		$scope.userAllData = null;
 
-		$scope.falseName = localStorage.getItem('falseName') || utility.getTargetCookie('falseName');//己方昵称
-		$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
-		$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
+		//$scope.falseName = localStorage.getItem('falseName') || utility.getTargetCookie('falseName');//己方昵称
+		//$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
+		//$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid	
+
+		$scope.falseName = localStore.getUserInfo('falseName') //己方昵称
+		$scope.cp_username = localStore.getUserInfo('account') //己方用户名
+		$scope.cp_uid =  localStore.getUserInfo('personid') //己方uid	
+
 
 		$scope.showBasic = true;
 		$scope.showCoreInfo = false;
@@ -247,6 +252,8 @@ define(['angular'], function(){
 				localStore.setUserLocalData(JSON.stringify(d));
 			});
 		};
+
+		$scope.updateLocalStorageAllInfo();
 
 
 		$scope.editBasic = function(){

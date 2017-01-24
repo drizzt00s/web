@@ -1,12 +1,12 @@
 define(['angular'], function(){
-	angular.module('web.controller').controller('inbox',['$scope', '$http', 'utility', 'api', 'loginHelp',  function($scope, $http, utility, api, loginHelp){
+	angular.module('web.controller').controller('inbox',['$scope', '$http', 'utility', 'api', 'loginHelp', 'localStore',  function($scope, $http, utility, api, loginHelp, localStore){
 		
 		loginHelp.checkIfLogined()//如果没登录 转到登录页面
 		$scope.isLogin = loginHelp.isLogined();
 
-		$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
+		$scope.cp_uid =  localStore.getUserInfo('personid');//己方uid
 
-		var username = localStorage.getItem('username') || utility.getTargetCookie('username');
+		var username = localStore.getUserInfo('account');
 
 		$scope.readedAsynMsg = [];//全部已读来信
 		$scope.unreadAsynMsg = []; //全部未读来信
@@ -179,7 +179,7 @@ define(['angular'], function(){
 
 
 		$scope.receiveAsynMsg = function(){
-	       var catchUserName = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
+	       var catchUserName = localStore.getUserInfo('account');//己方用户名
 	       var url = api.outboxMsg();
 	       	$http({
 				method:'GET',
@@ -308,8 +308,8 @@ define(['angular'], function(){
 			$scope.outboxUnreaded = false;
 			//控制未读信息tab
 
-			$scope.cp_username = localStorage.getItem('username') || utility.getTargetCookie("username");//己方用户名
-			$scope.cp_uid =  localStorage.getItem('uid') || utility.getTargetCookie("uid");//己方uid
+			$scope.cp_username = localStore.getUserInfo('account');//己方用户名
+			$scope.cp_uid =  localStore.getUserInfo('personid');//己方uid
 
 			$scope.showAll = function(){
 				$scope.outboxAll = true;
@@ -330,7 +330,7 @@ define(['angular'], function(){
 			};
 
 			$scope.displaySentAsynMSg = function(){
-				var username = localStorage.getItem('username') || utility.getTargetCookie('username');
+				var username = localStore.getUserInfo('account');
 				var url = api.outboxAllMsg();
 				var msgJson = {username:username};
 				//自己的uid

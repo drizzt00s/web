@@ -1,5 +1,5 @@
 define(['angular'], function(){
-	angular.module('web.controller').controller('msgDetail',['$scope', '$http', 'utility', 'api', function($scope, $http, utility, api){
+	angular.module('web.controller').controller('msgDetail',['$scope', '$http', 'utility', 'api', 'localStore', function($scope, $http, utility, api, localStore){
 		
 		$scope.MsgTree = null;
 
@@ -14,8 +14,8 @@ define(['angular'], function(){
 
 		$scope.targetUsername = '';//对方的用户名
 
-		var uid = localStorage.getItem('uid') || utility.getTargetCookie('uid');
-		var username = localStorage.getItem('username') || utility.getTargetCookie('username');
+		var uid = localStore.getUserInfo('personid');
+		var username = localStore.getUserInfo('account');
 
 		$scope.replayDetail = function(){
 			var url = api.sendOutboxMsg();
@@ -25,8 +25,8 @@ define(['angular'], function(){
 
 
 			var msgJson = {
-		        from:localStorage.getItem('username') || utility.getTargetCookie('username'), //发件人用户名 
-		        fromFalseName:localStorage.getItem('falseName') || utility.getTargetCookie('falseName'),//发件人昵称
+		        from:localStore.getUserInfo('account'), //发件人用户名 
+		        fromFalseName:localStore.getUserInfo('falseName'),//发件人昵称
 		       	uid:uid, //发件人uid
 		        data:replyMsg,//发送的信息
 		        to:$("#falseNameWrap").text(),//收件人昵称
