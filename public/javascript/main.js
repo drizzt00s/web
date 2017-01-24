@@ -49,7 +49,8 @@ require.config({
 		'outboxDetail':'controllers/msg/outboxDetail',
 
 		'userDetail':'controllers/user/userDetail',
-		'userImage':'controllers/user/userImage'
+		'userImage':'controllers/user/userImage',
+		'userProof':'controllers/user/userProof'
 	},
 	shim:{
 		'angular': {

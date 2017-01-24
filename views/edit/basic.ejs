@@ -10,12 +10,6 @@
 		</div>
 	</div>
 
-	<!--
-	<div id='tabIndex'>
-		<%- tabIndex %>
-	</div>-->
-
-
 	<div class='userstatusWrap'>
 		<userstatus></userstatus>
 	</div>
@@ -37,13 +31,13 @@
 		<ul class='editList'>
 			<li ng-click='showBasicTab()'><a href='#' class='editList_sub'>基本资料</a></li>
 			<li ng-click='showCoreInfoTab()'><a href='#' class='editList_sub'>详细资料</a></li>
-			<li ng-click='showMonologTab()'><a href='#' class='editList_sub'>内心独白</a></li>
-			<li ng-click='showProfileTab()'><a href='#' class='editList_sub'>上传头像</a></li>
-			<li ng-click='showAvatarsTab()'><a href='#' class='editList_sub'>我的相册</a></li>
-			<li ng-click='showMatchCondtionTab()'><a href='#' class='editList_sub'>征友条件</a></li>
-			<li ng-click='showProofsTab()'><a href='#' class='editList_sub'>诚信认证</a></li>
-			<li ng-click='changePassTab()'><a href='#' class='editList_sub'>修改密码</a></li>
-			<li><a href='#'></a></li>
+			<li ng-click='showMonologTab()'><a href='#' class='editList_sub'>生活习惯</a></li>
+			<li ng-click='showProfileTab()'><a href='#' class='editList_sub'>兴趣爱好</a></li>
+			<li ng-click='showAvatarsTab()'><a href='#' class='editList_sub'>内心独白</a></li>
+			<li ng-click='showMatchCondtionTab()'><a href='#' class='editList_sub'>家庭状况</a></li>
+			<li ng-click='showProofsTab()'><a href='#' class='editList_sub'>我的相册</a></li>
+			<li ng-click='changePassTab()'><a href='#' class='editList_sub'>工作状况</a></li>
+			<li ng-click='showSubmitProof()'><a class='editList_sub' href='#'>身份认证</a></li>
 		</ul>
 
 		<div class='showBasic' ng-show='showBasic'>
@@ -573,7 +567,7 @@
 			    </form>
 
 		</div>
-		 <%- editAvatarErroMsg %>
+		
 
 		<div class='changePass' ng-show='changePass'>
 			<div class='edit3'>
@@ -638,6 +632,41 @@
 				<input type="button" class='submitBasic' value="保存" ng-click='edit3()' />
 				<input type="hidden" name="checkSubmit" />
 			</div>
+		</div>
+
+		<div class='submitProofs' ng-show='submitProof'>
+			<div class="wrap">
+		        <form action="/cp/proof" class="submitForm" method="post" id="submitProofIdCard" enctype="multipart/form-data">
+		            <label for="submitId">身份证截图:</label><input type="file" class="selectFile" name="uploadFile" id="submitId" />
+		            <input type="hidden" class="checkAccount" name="checkUsername" value="" />
+		            <input type="hidden" name="proofType" value="1" class="proofType" />
+		            <input type="button" id="submitUserID" value="提交" ng-click="submitFile($event)" />
+		        </form>
+		        <form action="/cp/proof" class="submitForm" method="post" id="submitProofIncome2" enctype="multipart/form-data">
+		            <label for="submitId2">收入证明:</label><input type="file" class="selectFile" name="uploadFile" id="submitId2" />
+		            <input type="hidden" class="checkAccount" name="checkUsername" value="" />
+		            <input type="hidden" name="proofType" value="2" class="proofType" />
+		            <input type="button" id="submitUserIncome" value="提交" ng-click="submitFile($event)" />
+		        </form>
+		        <form action="/cp/proof" class="submitForm" method="post" id="submitProofIncome3" enctype="multipart/form-data">
+		            <label for="submitId3">房产证明:</label><input type="file" class="selectFile" name="uploadFile" id="submitId3" />
+		            <input type="hidden" class="checkAccount" name="checkUsername" value="" />
+		            <input type="hidden" name="proofType" value="3" class="proofType" />
+		            <input type="button" id="submitUserIncome2" value="提交" ng-click="submitFile($event)" />
+		        </form>
+		            <form action="/cp/proof" class="submitForm" method="post" id="submitProofIncome4" enctype="multipart/form-data">
+		            <label for="submitId4">港澳通行证:</label><input type="file" class="selectFile" name="uploadFile" id="submitId4" />
+		            <input type="hidden" class="checkAccount" name="checkUsername" value=""  />
+		            <input type="hidden" name="proofType" value="4"  class="proofType" />
+		            <input type="button" id="submitUserIncome3" value="提交" ng-click="submitFile($event)" />
+		        </form>
+		        <form action="/cp/proof" class="submitForm" method="post" id="submitProofIncome5" enctype="multipart/form-data">
+		            <label for="submitId5">驾驶证:</label><input type="file" class="selectFile" name="uploadFile" id="submitId5" />
+		            <input type="hidden" class="checkAccount" name="checkUsername" value=""  />
+		            <input type="hidden" name="proofType" value="5" class="proofType" />
+		            <input type="button" id="submitUserIncome3" value="提交" ng-click="submitFile($event)" />
+		        </form>
+	    	</div>
 		</div>
 
 

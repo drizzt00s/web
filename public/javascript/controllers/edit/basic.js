@@ -17,6 +17,7 @@ define(['angular'], function(){
 		$scope.showMatchCondtion = false;
 		$scope.showProofs = false;
 		$scope.changePass = false;
+		$scope.submitProof = false;
 		//各个tab的初始状态
 
 		$scope.selectJobCategory = function(){
@@ -38,6 +39,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = false;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.showCoreInfoTab = function(){
@@ -49,6 +51,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = false;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.showMonologTab = function(){
@@ -60,6 +63,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = false;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.showProfileTab = function(){
@@ -71,6 +75,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = false;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.showAvatarsTab = function(){
@@ -82,6 +87,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = false;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.showMatchCondtionTab = function(){
@@ -93,6 +99,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = true;
 			$scope.showProofs = false;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.showProofsTab = function(){
@@ -104,6 +111,7 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = true;
 			$scope.changePass = false;
+			$scope.submitProof = false;
 		};
 
 		$scope.changePassTab = function(){
@@ -115,7 +123,20 @@ define(['angular'], function(){
 			$scope.showMatchCondtion = false;
 			$scope.showProofs = false;
 			$scope.changePass = true;
+			$scope.submitProof = false;
 		};
+
+		$scope.showSubmitProof = function(){
+			$scope.showBasic = false;
+			$scope.showCoreInfo = false;
+			$scope.showMonolog = false;
+			$scope.showProfile = false;
+			$scope.showAvatars = false;
+			$scope.showMatchCondtion = false;
+			$scope.showProofs = false;
+			$scope.changePass = false;
+			$scope.submitProof = true;
+		}
 
 		$scope.showTabsViaTabIndex = function(){
 			var tabIndex = $("#tabIndex").text();
@@ -413,6 +434,22 @@ define(['angular'], function(){
 				return false;
 			}
 		}
+
+
+		$scope.submitFile = function(o){
+			var ele = o.target;
+			var checkUsername = utility.getTargetCookie("username");
+			if(checkUsername){
+				$(ele).parent("form").find(".checkAccount").val(checkUsername);
+				var checkFile=$(ele).parent("form").find(".selectFile").val();
+				if(checkFile){
+					$(ele).parent("form").submit();
+				} else {
+					alert("请选择文件");
+				}
+			} 
+		};
+		
 	}]);
 });
 

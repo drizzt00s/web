@@ -45,6 +45,7 @@ define(['angularAMD',
 		'outboxDetail',
 		'userDetail',
 		'userImage',
+		'userProof',
 		'searchMain',
 		//controllers
 
